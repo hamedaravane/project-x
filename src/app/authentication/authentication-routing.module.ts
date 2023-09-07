@@ -9,8 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    pathMatch: 'full',
-    loadComponent: () => import('./feature/register-form/register-form.component').then(c => c.RegisterFormComponent)
+    loadChildren: () => import('./feature/register/register.module').then(m => m.RegisterModule)
   }
 ]
 
