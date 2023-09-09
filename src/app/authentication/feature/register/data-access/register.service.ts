@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {UserType} from "./type";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  private readonly userType = new Subject<'influencer' | 'business'>();
+  private readonly userType = new BehaviorSubject<UserType | null>(null);
 
-  selectUserType(type: 'influencer' | 'business') {
+  selectUserType(type: UserType) {
     this.userType.next(type);
   }
 
-  get UserTypeState(): Observable<'influencer' | 'business'> {
-    return this.userType.asObservable();
+  get UserTypeState(): Observable<UserType> {
+    return this.userType.asObservable() as Observable<UserType>;
   }
 }

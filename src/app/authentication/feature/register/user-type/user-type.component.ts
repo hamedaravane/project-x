@@ -5,7 +5,7 @@ import {RegisterService} from "../data-access/register.service";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzSpinModule} from "ng-zorro-antd/spin";
 import {NzIconModule} from "ng-zorro-antd/icon";
-
+import {UserType} from "../data-access/type";
 @Component({
   standalone: true,
   selector: 'app-user-type',
@@ -23,10 +23,11 @@ export class UserTypeComponent {
   private readonly router = inject(Router);
   private readonly registerService = inject(RegisterService);
 
-  userType!: 'influencer' | 'business';
+  userType!: UserType;
   loading: boolean = false;
 
-  selectUserType(type: 'influencer' | 'business') {
+  selectUserType(type: UserType) {
+    this.userType = type;
     this.loading = true;
     setTimeout(async () => {
       this.registerService.selectUserType(type);

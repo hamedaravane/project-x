@@ -34,6 +34,8 @@ import {RegisterService} from "../data-access/register.service";
 export class BasicInfoComponent {
   private readonly registerService = inject(RegisterService);
 
+  userType = this.registerService.UserTypeState;
+
   basicRegisterInfoForm = new FormGroup({
     email: new FormControl<null | string>(null, [Validators.required, Validators.email]),
     password: new FormControl<null | string>(null, [Validators.required, strongPasswordValidator]),

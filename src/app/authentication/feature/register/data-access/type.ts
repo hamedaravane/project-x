@@ -1,5 +1,5 @@
 export interface User {
-  userType: 'influencer' | 'business';
+  userType: UserType;
   email: string;
   password: string;
   businessName: string;
@@ -12,6 +12,8 @@ export interface User {
   phoneNumber: string;
   nationalIdNumber: string;
 }
+
+export type UserType = 'influencer' | 'business';
 
 export interface UserBasicInfo {
   email: string;

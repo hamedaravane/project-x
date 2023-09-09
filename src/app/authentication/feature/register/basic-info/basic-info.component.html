@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="w-full px-4">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050.8619 704.35284">
     <path
       d="M1125.431,472.17637c0,142.47-90.2998,263.86-216.77978,310.05a326.34413,326.34413,0,0,1-59.32032,15.57,332.22787,332.22787,0,0,1-165.71972-15.05c-127.28028-45.81-218.24024-167.61-218.18018-310.64,0-182.18,147.75-329.93,330-329.93a328.56355,328.56355,0,0,1,192.01026,61.6C1070.991,263.63639,1125.431,361.54636,1125.431,472.17637Z"
@@ -65,6 +65,11 @@
 </div>
 <form nz-form [nzDisableAutoTips]="true" [formGroup]="basicRegisterInfoForm" (ngSubmit)="submitForm()">
   <nz-form-item>
+    <nz-input-group [nzPrefix]="InfoIcon">
+      <input type="text" nz-input disabled [placeholder]="(userType | async) === 'influencer' ? 'تولید کننده محتوا' : 'کسب و کار'">
+    </nz-input-group>
+  </nz-form-item>
+  <nz-form-item>
     <nz-form-control [nzErrorTip]="EmailErrorTip">
       <nz-input-group [nzPrefix]="UserIcon">
         <input type="email" nz-input formControlName="email" placeholder="آدرس ایمیل">
@@ -124,6 +129,9 @@
 </ng-template>
 <ng-template #UserIcon>
   <i class="fa-solid fa-user"></i>
+</ng-template>
+<ng-template #InfoIcon>
+  <i class="fa-solid fa-circle-info"></i>
 </ng-template>
 <ng-template #LockIcon>
   <i class="fa-solid fa-lock"></i>

@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'basic-info',
     loadComponent: () => import('./basic-info/basic-info.component').then(c => c.BasicInfoComponent)
+  },
+  {
+    path: 'select-profile-photo',
+    loadComponent: () => import('./select-profile-photo/select-profile-photo.component').then(c => c.SelectProfilePhotoComponent)
   }
 ]
 @NgModule({
