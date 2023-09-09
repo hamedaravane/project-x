@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
@@ -9,6 +9,7 @@ import {RouterLink} from "@angular/router";
 import {AsyncPipe, NgClass, NgIf} from "@angular/common";
 import {confirmPasswordValidator, strongPasswordValidator} from "../../../../shared/data-access/validators/custom-validators";
 import {NzPopoverModule} from "ng-zorro-antd/popover";
+import {RegisterService} from "../data-access/register.service";
 
 @Component({
   standalone: true,
@@ -31,6 +32,8 @@ import {NzPopoverModule} from "ng-zorro-antd/popover";
   styleUrls: ['./basic-info.component.scss']
 })
 export class BasicInfoComponent {
+  private readonly registerService = inject(RegisterService);
+
   basicRegisterInfoForm = new FormGroup({
     email: new FormControl<null | string>(null, [Validators.required, Validators.email]),
     password: new FormControl<null | string>(null, [Validators.required, strongPasswordValidator]),

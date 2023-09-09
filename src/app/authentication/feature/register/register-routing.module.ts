@@ -10,10 +10,6 @@ const routes: Routes = [
   {
     path: 'basic-info',
     loadComponent: () => import('./basic-info/basic-info.component').then(c => c.BasicInfoComponent)
-  },
-  {
-    path: '**',
-    redirectTo: ''
   }
 ]
 @NgModule({

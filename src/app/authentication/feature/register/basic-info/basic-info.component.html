@@ -72,10 +72,10 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control nzErrorTip="کلمه عبور را وارد کنید">
+    <nz-form-control nzErrorTip="کلمه عبور را به درستی وارد کنید">
       <div nz-popover
-           nzPopoverTrigger="click"
-           nzPopoverPlacement="bottomRight"
+           [nzPopoverTrigger]="'click' || 'focus'"
+           nzPopoverPlacement="topRight"
            [nzPopoverTitle]="PasswordCheckComplexityTitle"
            [nzPopoverContent]="PasswordCheckComplexityContent">
         <nz-input-group [nzPrefix]="LockIcon"
@@ -108,46 +108,12 @@
     <button nz-button class="w-full" nzType="primary" [disabled]="!basicRegisterInfoForm.valid" nzSize="large">
       ثبت نام اولیه
     </button>
-    <button nz-button class="w-full" nzType="default" nzSize="large">
+    <button routerLink="/auth/register/user-type" nz-button class="w-full" nzType="default" nzSize="large">
       بازگشت
     </button>
   </div>
 </form>
 
-<ng-template #PasswordCheckComplexityTitle>
-  <div class="flex flex-nowrap gap-2 items-center">
-    <i class="fa-solid fa-key"></i>
-    <span>پیچیدگی کلمه عبور</span>
-  </div>
-</ng-template>
-<ng-template #PasswordCheckComplexityContent>
-  <div class="flex gap-2">
-    <i [ngClass]="{ 'text-red-400 fa-xmark' : !!password.errors?.['passwordTooShort'] }"
-       class="fa-solid text-green-600 fa-check"></i>
-    <span [ngClass]="{ 'text-red-400' : !!password.errors?.['passwordTooShort'] }" class="text-green-600">حداقل بیشتر از ۸ حرف باشد</span>
-  </div>
-  <div class="flex gap-2">
-    <i [ngClass]="{ 'text-red-400 fa-xmark' : !!password.errors?.['missingUpperCase'] }"
-       class="fa-solid text-green-600 fa-check"></i>
-    <span [ngClass]="{ 'text-red-400' : !!password.errors?.['missingUpperCase'] }" class="text-green-600">شامل حروف کپیتال (بزرگ) باشد</span>
-  </div>
-  <div class="flex gap-2">
-    <i [ngClass]="{ 'text-red-400 fa-xmark' : !!password.errors?.['missingLowerCase'] }"
-       class="fa-solid text-green-600 fa-check"></i>
-    <span [ngClass]="{ 'text-red-400' : !!password.errors?.['missingLowerCase'] }" class="text-green-600">شامل حروف کوچک باشد</span>
-  </div>
-  <div class="flex gap-2">
-    <i [ngClass]="{ 'text-red-400 fa-xmark' : !!password.errors?.['missingNumber'] }"
-       class="fa-solid text-green-600 fa-check"></i>
-    <span [ngClass]="{ 'text-red-400' : !!password.errors?.['missingNumber'] }"
-          class="text-green-600">شامل عدد باشد</span>
-  </div>
-  <div class="flex gap-2">
-    <i [ngClass]="{ 'text-red-400 fa-xmark' : !!password.errors?.['missingSpecialCharacter'] }"
-       class="fa-solid text-green-600 fa-check"></i>
-    <span [ngClass]="{ 'text-red-400' : !!password.errors?.['missingSpecialCharacter'] }" class="text-green-600">شامل حروف ویژه (!@#$%^&*) باشد</span>
-  </div>
-</ng-template>
 <ng-template #EmailErrorTip>
   <ng-container *ngIf="email.errors?.['email']">آدرس ایمیل صحیح نیست</ng-container>
   <ng-container *ngIf="email.errors?.['required']">آدرس ایمیل را وارد کنید</ng-container>
@@ -167,4 +133,41 @@
 </ng-template>
 <ng-template #CloseEyeIcon>
   <i (click)="isHidePassword = true" class="fa-solid fa-eye-slash"></i>
+</ng-template>
+<ng-template #PasswordCheckComplexityTitle>
+  <div class="flex flex-nowrap gap-2 items-center">
+    <i class="fa-solid fa-key"></i>
+    <span>پیچیدگی کلمه عبور</span>
+  </div>
+</ng-template>
+<ng-template #PasswordCheckComplexityContent>
+  <!-- Password Length -->
+  <div class="flex items-center gap-2">
+    <i [ngClass]="password.hasError('passwordTooShort') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <span>بیشتر از ۸ حرف باشد</span>
+  </div>
+
+  <!-- Uppercase Characters -->
+  <div class="flex items-center gap-2">
+    <i [ngClass]="password.hasError('missingUpperCase') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <span>شامل حروف بزرگ باشد</span>
+  </div>
+
+  <!-- Lowercase Characters -->
+  <div class="flex items-center gap-2">
+    <i [ngClass]="password.hasError('missingLowerCase') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <span>شامل حروف کوچک باشد</span>
+  </div>
+
+  <!-- Number Characters -->
+  <div class="flex items-center gap-2">
+    <i [ngClass]="password.hasError('missingNumber') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <span>شامل عدد باشد</span>
+  </div>
+
+  <!-- Special Characters -->
+  <div class="flex items-center gap-2">
+    <i [ngClass]="password.hasError('missingSpecialCharacter') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <span>شامل کارکترهای ویژه (!@#$%^&*) باشد</span>
+  </div>
 </ng-template>
