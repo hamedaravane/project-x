@@ -1,14 +1,32 @@
 <div class="mt-8">
   <div
     class="flex justify-center items-center rounded-full mx-auto w-20 h-20 bg-gray-300 border-2 border-dashed border-gray-400">
-    <i class="fa-solid fa-file-circle-plus text-2xl text-gray-50"></i>
+    <img *ngIf="selectedImageSrc" [src]="selectedImageSrc" class="w-full h-full rounded-full object-cover" alt="Selected profile photo">
+    <i *ngIf="!selectedImageSrc" class="fa-solid fa-file-circle-plus text-2xl text-gray-50"></i>
   </div>
 </div>
+
 <div class="my-4">
   <h1 class="whitespace-nowrap text-lg text-center">انتخاب عکس پروفایل</h1>
   <p class="text-center text-gray-500">برای کسب و کارها پیشنهاد میکنیم که لوگوی کسب و کار رو انتخاب کنین و برای تولید
     کنندگان محتوا عکس پروفایل شبکه اجتماعی میتونه بهترین گزینه باشه</p>
 </div>
+<input type="file" #fileInput (change)="onFileSelected($event)" class="hidden">
 <div class="w-full flex justify-center">
-  <button nz-button nzSize="large" nzType="primary">انتخاب عکس از گالری</button>
+  <button nz-button nzSize="large" nzType="primary" (click)="triggerFileInput()">انتخاب عکس از گالری</button>
 </div>
+
+<div class="flex justify-between gap-4 mt-12 w-full">
+  <button nz-button class="w-full" nzType="primary" [disabled]="!selectedImageSrc" nzSize="large">
+    ثبت نام اولیه
+  </button>
+  <button routerLink="/auth/register/user-type" nz-button class="w-full" nzType="default" nzSize="large">
+    بازگشت
+  </button>
+</div>
+
+<nz-modal [(nzVisible)]="isCropModalVisible" nzTitle="Crop your photo" (nzOnCancel)="closeCropModal()" (nzOnOk)="confirmCrop()">
+  <div class="w-full h-full">
+    <img #image [src]="selectedImageSrc" alt="Crop this image" class="max-w-full max-h-full">
+  </div>
+</nz-modal>

@@ -8,6 +8,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CropperJs */
+@import "~cropperjs/dist/cropper.css";
+
 :host {
   font-family: "Vazirmatn", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
   'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
