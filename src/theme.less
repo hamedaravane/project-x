@@ -5,11 +5,21 @@
 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
 'Noto Color Emoji';
 
+@border-radius-base: 4px;
+
 /* Customization for Result Component */
 @import "~node_modules/ng-zorro-antd/result/style/index.less";
 
 .@{result-prefix-cls} {
   &-content {
     background-color: transparent;
+  }
+}
+
+/* Customization for Modal Component */
+@import "~node_modules/ng-zorro-antd/style/mixins/modal-mask.less";
+.modal-mask() {
+  &-mask {
+    backdrop-filter: blur(3px);
   }
 }

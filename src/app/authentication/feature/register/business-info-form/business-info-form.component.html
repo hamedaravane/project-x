@@ -1,0 +1,37 @@
+<div class="my-4">
+  <h1 class="whitespace-nowrap text-lg">اطلاعات تکمیلی</h1>
+</div>
+<form nz-form [nzDisableAutoTips]="true" [formGroup]="businessInfoForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-input-group [nzPrefix]="InfoIcon">
+      <input type="text" nz-input disabled [placeholder]="(userType | async) === 'influencer' ? 'تولید کننده محتوا' : 'کسب و کار'">
+    </nz-input-group>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzErrorTip]="PersianBusinessNameErrorTip">
+      <nz-input-group>
+        <input type="text" nz-input placeholder="نام کسب و کار به فارسی" formControlName="persianBusinessName">
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="نام کسب و کار را به انگلیسی وارد کنید">
+      <nz-input-group>
+        <input type="text" nz-input placeholder="نام کسب و کار به انگلیسی" formControlName="englishBusinessName">
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      nz-sele
+    </nz-form-control>
+  </nz-form-item>
+
+</form>
+
+<ng-template #InfoIcon>
+  <i class="fa-solid fa-circle-info"></i>
+</ng-template>
+<ng-template #PersianBusinessNameErrorTip>
+  <ng-container *ngIf="persianBusinessName.errors?.['notPersianCharacters']">از حروف فارسی استفاده کنید</ng-container>
+</ng-template>
