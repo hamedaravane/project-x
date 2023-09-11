@@ -9,29 +9,72 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="PersianBusinessNameErrorTip">
-      <nz-input-group>
+      <nz-input-group [nzPrefix]="inputTextIcon">
         <input type="text" nz-input placeholder="نام کسب و کار به فارسی" formControlName="persianBusinessName">
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control nzErrorTip="نام کسب و کار را به انگلیسی وارد کنید">
-      <nz-input-group>
+    <nz-form-control [nzErrorTip]="EnglishBusinessNameErrorTip">
+      <nz-input-group [nzPrefix]="inputTextIcon">
         <input type="text" nz-input placeholder="نام کسب و کار به انگلیسی" formControlName="englishBusinessName">
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
-      nz-sele
+      <nz-select nzPlaceHolder="نوع کسب و کار" formControlName="businessIndustry">
+        <nz-option *ngFor="let businessIndustry of industryList" [nzValue]="businessIndustry" [nzLabel]="businessIndustry.label"></nz-option>
+      </nz-select>
     </nz-form-control>
   </nz-form-item>
-
+  <nz-form-item>
+    <nz-form-control nzErrorTip="نام کاربری وارد شده صحیح نمی‌باشد.">
+      <nz-input-group [nzPrefix]="instagramIcon">
+        <input type="text" nz-input placeholder="آیدی پیج اینستاگرام" formControlName="instagramAccount">
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="نام کاربری وارد شده صحیح نمی‌باشد.">
+      <nz-input-group [nzPrefix]="twitterIcon">
+        <input type="text" nz-input placeholder="آیدی حساب توئیتر" formControlName="twitterAccount">
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-select nzPlaceHolder="انتخاب استان" formControlName="businessProvince" (select)="selectProvince()">
+        <nz-option *ngFor="let province of provinceList | async" [nzValue]="province" [nzLabel]="province.name"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-select nzPlaceHolder="انتخاب شهر" formControlName="businessCity" (select)="selectCity()" [nzDisabled]="!businessCity.value">
+        <nz-option *ngFor="let city of cityList | async" [nzValue]="city" [nzLabel]="city.name"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
 </form>
 
 <ng-template #InfoIcon>
   <i class="fa-solid fa-circle-info"></i>
 </ng-template>
+<ng-template #inputTextIcon>
+  <i class="fa-solid fa-input-text"></i>
+</ng-template>
+<ng-template #instagramIcon>
+  <i class="fa-brands fa-instagram"></i>
+</ng-template>
+<ng-template #twitterIcon>
+  <i class="fa-brands fa-twitter"></i>
+</ng-template>
 <ng-template #PersianBusinessNameErrorTip>
+  <ng-container *ngIf="persianBusinessName.errors?.['required']">نام کسب و کار به فارسی الزامی است</ng-container>
   <ng-container *ngIf="persianBusinessName.errors?.['notPersianCharacters']">از حروف فارسی استفاده کنید</ng-container>
+</ng-template>
+<ng-template #EnglishBusinessNameErrorTip>
+  <ng-container *ngIf="englishBusinessName.errors?.['required']">نام کسب و کار به انگلیسی الزامی است</ng-container>
+  <ng-container *ngIf="englishBusinessName.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
 </ng-template>

@@ -30,6 +30,10 @@ export function strongPasswordValidator(control: AbstractControl): ValidationErr
   const value: string = control.value || '';
   const errors: ValidationErrors = {};
 
+  if (!value) {
+    return null;
+  }
+
   const hasUpperCase = /[A-Z]/.test(value);
   const hasLowerCase = /[a-z]/.test(value);
   const hasNumber = /[0-9]/.test(value);
@@ -44,3 +48,12 @@ export function strongPasswordValidator(control: AbstractControl): ValidationErr
   return Object.keys(errors).length ? errors : null;
 }
 
+export function persianCharValidator(control: AbstractControl): ValidationErrors | null {
+  const value: string = control.value || '';
+
+  if (!value) {
+    return null;
+  }
+  const pattern = /^[\u0600-\u06FF\s]+$/;
+  return !pattern.test(value) ? {notPersianCharacters: true} : null;
+}

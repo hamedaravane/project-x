@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'select-profile-photo',
     loadComponent: () => import('./select-profile-photo/select-profile-photo.component').then(c => c.SelectProfilePhotoComponent)
+  },
+  {
+    path: 'business-info',
+    loadComponent: () => import('./business-info-form/business-info-form.component').then(c => c.BusinessInfoFormComponent)
   }
 ]
 @NgModule({
