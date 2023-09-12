@@ -44,22 +44,25 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
-      <nz-select nzPlaceHolder="انتخاب استان" formControlName="businessProvince" (select)="selectProvince()">
-        <nz-option *ngFor="let province of provinceList | async" [nzValue]="province" [nzLabel]="province.name"></nz-option>
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="انتخاب شهر" formControlName="businessCity">
+        <nz-option *ngFor="let city of cityList" [nzValue]="city.name" [nzLabel]="city.faName"></nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item>
-    <nz-form-control>
-      <nz-select nzPlaceHolder="انتخاب شهر" formControlName="businessCity" (select)="selectCity()" [nzDisabled]="!businessCity.value">
-        <nz-option *ngFor="let city of cityList | async" [nzValue]="city" [nzLabel]="city.name"></nz-option>
-      </nz-select>
+  <nz-form-item dir="ltr">
+    <nz-form-control dir="ltr" nzErrorTip="شماره وارد شده صحیح نمی‌باشد.">
+      <nz-input-group dir="ltr" nzAddOnAfter="+98" [nzPrefix]="phoneIcon">
+        <input type="number" nz-input placeholder="شماره موبایل (ایران)" formControlName="phoneNumber">
+      </nz-input-group>
     </nz-form-control>
   </nz-form-item>
 </form>
 
 <ng-template #InfoIcon>
   <i class="fa-solid fa-circle-info"></i>
+</ng-template>
+<ng-template #phoneIcon>
+  <i class="fa-solid fa-phone"></i>
 </ng-template>
 <ng-template #inputTextIcon>
   <i class="fa-solid fa-input-text"></i>

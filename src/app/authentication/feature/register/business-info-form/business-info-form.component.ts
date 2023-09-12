@@ -9,33 +9,32 @@ import {NzSelectModule} from "ng-zorro-antd/select";
 import {CustomInputGroupComponent} from "../../../../shared/ui/custom-input-group/custom-input-group.component";
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom, map, Observable} from "rxjs";
+import {NzSkeletonModule} from "ng-zorro-antd/skeleton";
+import {CitiesListService} from "../data-access/cities-list.service";
 
 @Component({
     standalone: true,
     selector: 'app-business-info-form',
     templateUrl: './business-info-form.component.html',
-    imports: [
-        NzFormModule,
-        ReactiveFormsModule,
-        AsyncPipe,
-        NzInputModule,
-        NgIf,
-        NzSelectModule,
-        NgForOf,
-        CustomInputGroupComponent,
-        FormsModule
-    ],
+  imports: [
+    NzFormModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+    NzInputModule,
+    NgIf,
+    NzSelectModule,
+    NgForOf,
+    CustomInputGroupComponent,
+    FormsModule,
+    NzSkeletonModule
+  ],
     styleUrls: ['./business-info-form.component.scss']
 })
-export class BusinessInfoFormComponent implements OnInit {
+export class BusinessInfoFormComponent {
     private readonly registerService = inject(RegisterService);
-    private readonly http = inject(HttpClient);
+    private readonly citiesListService = inject(CitiesListService);
     userType = this.registerService.UserTypeState;
-
-    provinceList!: Observable<any[]>;
-    cityList!: Observable<any[]>;
-    selectedProvince!: any;
-    selectedCity!: any;
+    cityList = this.citiesListService.cityList;
 
     industryList: { value: any | null, label: string | number | null }[] = [
         {value: 'Restaurant & Cafe', label: 'کافه و رستوران'},
@@ -58,41 +57,17 @@ export class BusinessInfoFormComponent implements OnInit {
         instagramAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z0-9._]{1,30}$/)),
         twitterAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z_][a-zA-Z0-9_]{0,14}$/)),
         businessIndustry: new FormControl<string | null>(null, Validators.required),
-        businessProvince: new FormControl<any | null>(null, Validators.required),
         businessCity: new FormControl<any | null>(null, Validators.required),
-    })
+    });
 
     persianBusinessName = this.businessInfoForm.get('persianBusinessName') as AbstractControl<string | null>;
     englishBusinessName = this.businessInfoForm.get('englishBusinessName') as AbstractControl<string | null>;
     instagramAccount = this.businessInfoForm.get('instagramAccount') as AbstractControl<string | null>;
     twitterAccount = this.businessInfoForm.get('instagramAccount') as AbstractControl<string | null>;
     businessIndustry = this.businessInfoForm.get('businessIndustry') as AbstractControl<string | null>;
-    businessProvince = this.businessInfoForm.get('businessProvince') as AbstractControl<any | null>;
     businessCity = this.businessInfoForm.get('businessCity') as AbstractControl<any | null>;
-
-    ngOnInit() {
-
-
-
-    }
-
-    selectProvince() {
-        this.provinceList = this.http.get('https://iran-locations-api.vercel.app/api/v1/states').pipe(
-            map((provinceList) => {
-                return provinceList as Array<object>
-            })
-        )
-    }
-    selectCity() {
-        this.cityList = this.http.get('iran-locations-api.vercel.app/api/v1/states?id=' + this.businessProvince.value.id).pipe(
-            map((cityList) => {
-                return cityList as Array<object>
-            })
-        )
-    }
 
     submitForm() {
         console.log('businessInfoForm submitted')
     }
-
 }
