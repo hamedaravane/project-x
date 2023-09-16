@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'business-info',
     loadComponent: () => import('./business-info-form/business-info-form.component').then(c => c.BusinessInfoFormComponent)
+  },
+  {
+    path: 'influencer-info',
+    loadComponent: () => import('./influencer-info-form/influencer-info-form.component').then(c => c.InfluencerInfoFormComponent)
   }
 ]
 @NgModule({

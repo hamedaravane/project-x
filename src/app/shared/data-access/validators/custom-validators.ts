@@ -51,9 +51,8 @@ export function strongPasswordValidator(control: AbstractControl): ValidationErr
 export function persianCharValidator(control: AbstractControl): ValidationErrors | null {
   const value: string = control.value || '';
 
-  if (!value) {
-    return null;
-  }
+  if (!value) return null;
+
   const pattern = /^[\u0600-\u06FF\s]+$/;
   return !pattern.test(value) ? {notPersianCharacters: true} : null;
 }
