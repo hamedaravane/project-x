@@ -13,7 +13,6 @@ import {RegisterService} from "../data-access/register.service";
 import {CitiesListService} from "../data-access/cities-list.service";
 import {persianCharValidator} from "@shared/data-access/validators/custom-validators";
 import {NzI18nService, fa_IR} from 'ng-zorro-antd/i18n';
-import {CustomDatePickerComponent} from "@shared/ui/custom-date-picker/custom-date-picker.component";
 
 @Component({
   standalone: true,
@@ -31,8 +30,7 @@ import {CustomDatePickerComponent} from "@shared/ui/custom-date-picker/custom-da
     NzSelectModule,
     NzWaveModule,
     ReactiveFormsModule,
-    RouterLink,
-    CustomDatePickerComponent
+    RouterLink
   ],
   styleUrls: ['./influencer-info-form.component.scss']
 })

@@ -9,8 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import en from '@angular/common/locales/en';
 import fa from '@angular/common/locales/fa';
-import {NzDateAdapter} from "ng-met-antd/core";
-import {JalaliDateAdapter} from "@shared/data-access/jalali-date.adapter";
 
 registerLocaleData(en);
 registerLocaleData(fa);
@@ -37,7 +35,6 @@ registerLocaleData(fa);
         }
       }, deps: [LOCALE_ID]
     },
-    { provide: NzDateAdapter, useClass: JalaliDateAdapter },
     { provide: NZ_DATE_CONFIG, useValue: {
         firstDayOfWeek: 6,
         displayFormats: {

@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+  },
+  {
+    path: 'test',
+    loadComponent: () => import('@shared/ui/purple-date-picker/purple-date-picker.component').then(c => c.PurpleDatePickerComponent)
   }
 ];
 

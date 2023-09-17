@@ -1,0 +1,24 @@
+<!-- Container -->
+<div class="h-72 w-64 drop-shadow-xl overflow-clip bg-gray-50">
+  <!-- Header -->
+  <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between">
+    <i class="fa-solid fa-chevron-right text-gray-400"></i>
+    <div class="flex gap-4 items-baseline">
+      <span>{{currentMonth}}</span>
+      <span>{{currentYear}}</span>
+    </div>
+    <i class="fa-solid fa-chevron-left text-gray-400"></i>
+  </div>
+  <!-- Content -->
+  <div>
+    <!-- Day of the Week -->
+    <div class="grid grid-cols-7 w-full py-2 px-4">
+      <div *ngFor="let shortNameDay of daysOfWeek">{{shortNameDay}}</div>
+    </div>
+    <!-- Date -->
+    <div class="grid grid-cols-7 grid-rows-6 w-full">
+      <div *ngFor="let dateItem of daysOfMonth" [class.text-gray-300]="!dateItem?.isCurrentMonth">{{dateItem?.date}}</div>
+    </div>
+  </div>
+  <!-- Footer -->
+</div>
