@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {screenSizeGuard} from "./core/screen-size.guard";
+import {PurpleDatePickerComponent} from "@shared/ui/purple-date-picker/purple-date-picker.component";
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'test',
-    loadComponent: () => import('@shared/ui/purple-date-picker/purple-date-picker.component').then(c => c.PurpleDatePickerComponent)
+    component: PurpleDatePickerComponent
   }
 ];
 
