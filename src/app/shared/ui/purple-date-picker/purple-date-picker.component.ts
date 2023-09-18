@@ -1,22 +1,31 @@
-import {Component, OnInit} from '@angular/core';
-import {NgForOf} from "@angular/common";
+import {Component, Input, OnInit} from '@angular/core';
+import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {PersianDigitPipe} from "@shared/util/persian-digit.pipe";
 import * as moment from 'moment-jalaali';
 
 @Component({
   standalone: true,
   selector: 'app-purple-date-picker',
   imports: [
-    NgForOf
+    NgForOf,
+    PersianDigitPipe,
+    NgClass,
+    NgIf
   ],
   templateUrl: './purple-date-picker.component.html',
   styleUrls: ['./purple-date-picker.component.scss']
 })
 export class PurpleDatePickerComponent implements OnInit {
-  currentMonth!: number;
+  @Input() showToday = true;
+  @Input() mode: 'year' | 'month' | undefined = undefined;
+  now = moment();
+  currentDay = this.now.jDate();
+  currentMonth = this.now.jMonth();
+  currentYear = this.now.jYear();
   currentMonthView!: string;
-  currentYear!: number;
   daysOfMonth: any[] = [];
   daysOfWeek: string[] = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'];
+  monthsOfYear: any[] = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
 
   monthsMapping: {[key: number]: string} = {
     0: 'فروردین',
@@ -34,11 +43,12 @@ export class PurpleDatePickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    const now = moment(); // jalali moment
-    this.currentMonth = now.jMonth();
     this.currentMonthView = this.monthsMapping[this.currentMonth]
-    this.currentYear = now.jYear();
     this.generateDates();
+  }
+
+  changeMode(value: string) {
+    this.mode = value as 'year' | 'month' | undefined;
   }
 
   generateDates() {
@@ -67,12 +77,11 @@ export class PurpleDatePickerComponent implements OnInit {
 
     for(let day = startOfGrid; day.isSameOrBefore(endOfGrid); day.add(1, 'day')) {
       this.daysOfMonth.push({
-        date: day.jDate().toLocaleString('fa'),
+        date: day.jDate(),
         month: day.jMonth(),
-        isCurrentMonth: day.isSameOrAfter(startOfMonth) && day.isSameOrBefore(endOfMonth)
+        isCurrentMonth: day.isSameOrAfter(startOfMonth) && day.isSameOrBefore(endOfMonth),
+        isCurrentDay: day.jDate() === this.currentDay
       });
     }
   }
-
-
 }

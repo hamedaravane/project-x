@@ -1,23 +1,43 @@
-<div class="h-72 w-64 drop-shadow-xl overflow-clip bg-gray-50">
+<div class="h-fit w-64 custom-shadow rounded-md overflow-clip bg-white">
   <!-- Header -->
-  <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-gray-400">
-    <i class="fa-solid fa-chevron-right text-gray-400"></i>
-    <div class="flex gap-4 items-baseline">
-      <span>{{currentMonthView}}</span>
-      <span>{{currentYear}}</span>
+  <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-gray-200">
+    <div class="flex gap-2">
+      <i class="fa-solid fa-angles-right text-gray-300"></i>
+      <i class="fa-solid fa-angle-right text-gray-300"></i>
     </div>
-    <i class="fa-solid fa-chevron-left text-gray-400"></i>
+    <div class="flex gap-4 items-baseline">
+      <strong (click)="changeMode('month')">{{currentMonthView}}</strong>
+      <strong>{{currentYear | persianDigit}}</strong>
+    </div>
+    <div class="flex gap-2">
+      <i class="fa-solid fa-angle-left text-gray-300"></i>
+      <i class="fa-solid fa-angles-left text-gray-300"></i>
+    </div>
   </div>
-  <!-- Content -->
-  <div>
+  <!-- Dates Container -->
+  <div *ngIf="!mode" class="my-4">
     <!-- Day of the Week -->
-    <div class="grid grid-cols-7 w-full py-2 px-4">
-      <div class="text-center" *ngFor="let shortNameDay of daysOfWeek">{{shortNameDay}}</div>
+    <div class="grid grid-cols-7 w-full items-center justify-items-center px-4 gap-2">
+      <div class="text-center h-8 w-6 my-auto text-sm" *ngFor="let shortNameDay of daysOfWeek">{{shortNameDay}}</div>
     </div>
     <!-- Date -->
-    <div class="grid grid-cols-7 grid-rows-6 w-full px-4">
-      <div class="text-center py-1" [class.text-gray-400]="!dateItem.isCurrentMonth" *ngFor="let dateItem of daysOfMonth">{{dateItem.date}}</div>
+    <div class="grid grid-cols-7 grid-rows-6 items-center justify-items-center w-full px-4 gap-2">
+      <div [ngClass]="{ 'border border-purple-600' : dateItem.isCurrentDay }"
+           class="text-center h-6 w-6 text-sm rounded-sm hover:bg-zinc-100"
+           [class.text-gray-400]="!dateItem.isCurrentMonth"
+           *ngFor="let dateItem of daysOfMonth">{{dateItem.date | persianDigit}}</div>
+    </div>
+  </div>
+
+  <!-- Month Container -->
+  <div *ngIf="mode === 'month'" class="my-4">
+    <!-- Month -->
+    <div class="grid grid-cols-3 grid-rows-4 w-full px-4">
+      <div *ngFor="let month of monthsOfYear" class="h-16 w-22 rounded-sm hover:bg-zinc-100 flex justify-center items-center">
+        <span [ngClass]="{ 'border border-purple-600' : false }" class="text-center rounded-sm text-sm w-15 h-6 align-middle">{{month}}</span>
+      </div>
     </div>
   </div>
   <!-- Footer -->
+  <button *ngIf="showToday && !mode" class="w-full h-11 border-t border-b-gray-200 text-purple-600 cursor-pointer">امروز</button>
 </div>
