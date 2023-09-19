@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault} from "@angular/common";
 import {PersianDigitPipe} from "@shared/util/persian-digit.pipe";
 import * as moment from 'moment-jalaali';
 
@@ -10,7 +10,10 @@ import * as moment from 'moment-jalaali';
     NgForOf,
     PersianDigitPipe,
     NgClass,
-    NgIf
+    NgIf,
+    NgSwitch,
+    NgSwitchDefault,
+    NgSwitchCase
   ],
   templateUrl: './purple-date-picker.component.html',
   styleUrls: ['./purple-date-picker.component.scss']
@@ -25,30 +28,23 @@ export class PurpleDatePickerComponent implements OnInit {
   currentMonthView!: string;
   daysOfMonth: any[] = [];
   daysOfWeek: string[] = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'];
-  monthsOfYear: any[] = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
-
-  monthsMapping: {[key: number]: string} = {
-    0: 'فروردین',
-    1: 'اردیبهشت',
-    2: 'خرداد',
-    3: 'تیر',
-    4: 'مرداد',
-    5: 'شهریور',
-    6: 'مهر',
-    7: 'آبان',
-    8: 'آذر',
-    9: 'دی',
-    10: 'بهمن',
-    11: 'اسفند',
-  }
+  monthsOfYear: string[] = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
+  selectedMonth!: number;
+  yearsRangeView: number[] = [];
 
   ngOnInit() {
-    this.currentMonthView = this.monthsMapping[this.currentMonth]
+    this.currentMonthView = this.monthsOfYear[this.currentMonth]
     this.generateDates();
+    this.generateYearsRange();
   }
 
-  changeMode(value: string) {
+  changeMode(value?: string) {
     this.mode = value as 'year' | 'month' | undefined;
+  }
+
+  generateYearsRange() {
+    const startYear = Math.floor(this.currentYear / 10) * 10 - 1;  // The first year of the current decade, minus 1
+    this.yearsRangeView = Array(12).fill(0).map((_, i) => startYear + i);
   }
 
   generateDates() {
@@ -80,7 +76,7 @@ export class PurpleDatePickerComponent implements OnInit {
         date: day.jDate(),
         month: day.jMonth(),
         isCurrentMonth: day.isSameOrAfter(startOfMonth) && day.isSameOrBefore(endOfMonth),
-        isCurrentDay: day.jDate() === this.currentDay
+        isCurrentDay: day.jDate() === this.currentDay && day.jMonth() === this.currentMonth && day.jYear() === this.currentYear
       });
     }
   }
