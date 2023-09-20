@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault} from "@angular/common";
 import {PersianDigitPipe} from "@shared/util/persian-digit.pipe";
 import * as moment from 'moment-jalaali';
+import {Day} from "@shared/data-access/models/date.model";
 
 @Component({
   standalone: true,
@@ -21,36 +22,184 @@ import * as moment from 'moment-jalaali';
 export class PurpleDatePickerComponent implements OnInit {
   @Input() showToday = true;
   @Input() mode: 'year' | 'month' | undefined = undefined;
+  @Output() dateSelected = new EventEmitter<string>();
   now = moment();
+  // current
   currentDay = this.now.jDate();
   currentMonth = this.now.jMonth();
   currentYear = this.now.jYear();
+  // viewing
+  viewingDay = this.currentDay;
+  viewingMonth = this.currentMonth;
+  viewingYear = this.currentYear;
   currentMonthView!: string;
-  daysOfMonth: any[] = [];
+  daysOfMonth: Day[] = [];
   daysOfWeek: string[] = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'];
   monthsOfYear: string[] = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
-  selectedMonth!: number;
   yearsRangeView: number[] = [];
 
+  selectedDay!: number;
+  selectedMonth!: number;
+  selectedYear!: number;
+
+  showDatePicker = false;
+
   ngOnInit() {
-    this.currentMonthView = this.monthsOfYear[this.currentMonth]
+    this.currentMonthView = this.monthsOfYear[this.viewingMonth]
     this.generateDates();
     this.generateYearsRange();
   }
 
-  changeMode(value?: string) {
-    this.mode = value as 'year' | 'month' | undefined;
+  openDatePicker() {
+    this.showDatePicker = true;
+  }
+
+  selectDate(date: any) {
+    this.dateSelected.emit('formatted date here');
+  }
+
+  selectDay(value: Day) {
+    this.selectedDay = value.date;
+    if (this.selectedMonth) this.selectedMonth = this.viewingMonth;
+    if (this.selectedYear) this.selectedYear = this.viewingYear;
+    this.changeModeDecision();
+  }
+
+  selectMonth(value: number) {
+    this.selectedMonth = value;
+    if (this.selectedYear) this.selectedYear = this.viewingYear;
+    this.changeModeDecision();
+  }
+
+  selectYear(value: number) {
+    this.selectedYear = value;
+    this.changeModeDecision();
+  }
+
+  changeModeDecision() {
+    switch (true) {
+      case !!this.selectedYear && !!this.selectedMonth && !!this.selectedDay: // if user select all of them
+        this.viewingYear = this.selectedYear;
+        this.viewingMonth = this.selectedMonth;
+        this.viewingDay = this.selectedDay;
+        this.changeMode() // change mode to day as default
+        this.updateView();
+        break
+      case !!this.selectedYear && !this.selectedMonth && !this.selectedDay: // if user first select year
+        this.viewingYear = this.selectedYear;
+        this.changeMode('month')
+        break
+      case !this.selectedYear && !!this.selectedDay && !this.selectedMonth: // if user first select day
+        this.changeMode('month')
+        break
+      case !this.selectedYear && !!this.selectedMonth && !this.selectedDay: // if user first select month
+        this.viewingMonth = this.selectedMonth;
+        this.changeMode('year')
+        break
+      case !this.selectedDay: // if user not selected day
+        this.viewingYear = this.selectedYear;
+        this.viewingMonth = this.selectedMonth;
+        this.changeMode();
+        this.updateView();
+        break
+      case !this.selectedMonth: // if user not selected month
+        this.viewingDay = this.selectedDay;
+        this.viewingYear = this.selectedYear;
+        this.changeMode('month');
+        break
+      case !this.selectedYear: // if user not selected year
+        this.viewingDay = this.selectedDay;
+        this.viewingMonth = this.selectedMonth;
+        this.changeMode('year');
+        break;
+    }
+  }
+
+  today() {
+    this.viewingDay = this.currentDay;
+    this.viewingMonth = this.currentMonth;
+    this.viewingYear = this.currentYear;
+    this.generateDates();
+    this.generateYearsRange();
+  }
+
+  previousYear() {
+    if (!this.mode || this.mode === 'month') {
+      this.viewingYear--;
+    } else { // 'year' mode
+      this.viewingYear -= 10;
+    }
+    this.updateView();
+  }
+
+  nextYear() {
+    if (!this.mode || this.mode === 'month') {
+      this.viewingYear++;
+    } else { // 'year' mode
+      this.viewingYear += 10;
+    }
+    this.updateView();
+  }
+
+  previousMonth() {
+    if (!this.mode) {
+      if (this.viewingMonth === 0) { // Farvardin in Jalali
+        this.viewingMonth = 11; // Esfand
+        this.viewingYear--;
+      } else {
+        this.viewingMonth--;
+      }
+    }
+    this.updateView();
+  }
+
+  nextMonth() {
+    if (!this.mode) {
+      if (this.viewingMonth === 11) { // Esfand in Jalali
+        this.viewingMonth = 0; // Farvardin
+        this.viewingYear++;
+      } else {
+        this.viewingMonth++;
+      }
+    }
+    this.updateView();
+  }
+
+  updateView() {
+    this.currentMonthView = this.monthsOfYear[this.viewingMonth]
+    if (!this.mode) {
+      this.generateDates();
+    } else if (this.mode === 'month') {
+      // Call the respective month view update function.
+    } else {
+      this.generateYearsRange();
+    }
+  }
+
+  changeMode(value?: 'year' | 'month') {
+    this.mode = value;
+  }
+
+  previousDecade() {
+    this.viewingYear -= 10;
+    this.generateYearsRange();
+  }
+
+  nextDecade() {
+    this.viewingYear += 10;
+    this.generateYearsRange();
   }
 
   generateYearsRange() {
-    const startYear = Math.floor(this.currentYear / 10) * 10 - 1;  // The first year of the current decade, minus 1
+    const startYear = Math.floor(this.viewingYear / 10) * 10 - 1;
     this.yearsRangeView = Array(12).fill(0).map((_, i) => startYear + i);
   }
 
   generateDates() {
+    this.daysOfMonth = [];
     // Start and end of the current month
-    const startOfMonth = moment().jYear(this.currentYear).jMonth(this.currentMonth).startOf('jMonth');
-    const endOfMonth = moment().jYear(this.currentYear).jMonth(this.currentMonth).endOf('jMonth');
+    const startOfMonth = moment().jYear(this.viewingYear).jMonth(this.viewingMonth).startOf('jMonth');
+    const endOfMonth = moment().jYear(this.viewingYear).jMonth(this.viewingMonth).endOf('jMonth');
 
     const daysOfWeekMapping: {[key: string]: number} = {
       'ش': 6,  // Saturday
@@ -80,4 +229,6 @@ export class PurpleDatePickerComponent implements OnInit {
       });
     }
   }
+
+  protected readonly undefined = undefined;
 }

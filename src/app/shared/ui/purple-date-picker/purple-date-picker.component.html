@@ -1,90 +1,97 @@
-<div class="h-fit w-64 custom-shadow rounded-md overflow-clip bg-white">
-  <!-- Header -->
-  <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-gray-200">
-    <ng-container [ngSwitch]="mode">
-      <ng-container *ngSwitchCase="'month'">
-        <div class="flex gap-2">
-          <i class="fa-solid fa-angles-right text-gray-300"></i>
-        </div>
-        <div class="flex gap-4 items-baseline">
-          <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('year')">{{currentYear | persianDigit}}</strong>
-        </div>
-        <div class="flex gap-2">
-          <i class="fa-solid fa-angles-left text-gray-300"></i>
-        </div>
-      </ng-container>
-      <ng-container *ngSwitchCase="'year'">
-        <div class="flex gap-2">
-          <i class="fa-solid fa-angles-right text-gray-300"></i>
-        </div>
-        <div class="flex gap-4 items-baseline">
-          <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('year')">
-            {{yearsRangeView[1] | persianDigit}}-{{yearsRangeView[yearsRangeView.length - 2] | persianDigit}}
-          </strong>
-        </div>
-        <div class="flex gap-2">
-          <i class="fa-solid fa-angles-left text-gray-300"></i>
-        </div>
-      </ng-container>
-      <ng-container *ngSwitchDefault>
-        <div class="flex gap-2">
-          <i class="fa-solid fa-angles-right text-gray-300"></i>
-          <i class="fa-solid fa-angle-right text-gray-300"></i>
-        </div>
-        <div class="flex gap-4 items-baseline">
-          <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('month')">{{currentMonthView}}</strong>
-          <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('year')">{{currentYear | persianDigit}}</strong>
-        </div>
-        <div class="flex gap-2">
-          <i class="fa-solid fa-angle-left text-gray-300"></i>
-          <i class="fa-solid fa-angles-left text-gray-300"></i>
-        </div>
-      </ng-container>
-    </ng-container>
-  </div>
+<input (click)="openDatePicker()" placeholder="تاریخ را انتخاب کنید" type="text" name="date-picker" value="salam">
 
-  <!-- Dates View -->
-  <div *ngIf="!mode" class="my-4">
-    <!-- Day of the Week -->
-    <div class="grid grid-cols-7 w-full items-center justify-items-center px-4 gap-2">
-      <div class="text-center h-8 w-6 my-auto text-sm" *ngFor="let shortNameDay of daysOfWeek">{{shortNameDay}}</div>
+<ng-container *ngIf="showDatePicker">
+  <div class="h-fit w-64 custom-shadow rounded-md overflow-clip bg-white">
+    <!-- Header -->
+    <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-gray-200">
+      <ng-container [ngSwitch]="mode">
+        <ng-container *ngSwitchCase="'month'">
+          <div class="flex gap-2">
+            <i class="fa-solid fa-angles-right text-gray-300" (click)="previousYear()"></i>
+          </div>
+          <div class="flex gap-4 items-baseline">
+            <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('year')">{{viewingYear | persianDigit}}</strong>
+          </div>
+          <div class="flex gap-2">
+            <i class="fa-solid fa-angles-left text-gray-300" (click)="nextYear()"></i>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'year'">
+          <div class="flex gap-2">
+            <i class="fa-solid fa-angles-right text-gray-300" (click)="previousDecade()"></i>
+          </div>
+          <div class="flex gap-4 items-baseline">
+            <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('month')">
+              {{yearsRangeView[1] | persianDigit}}-{{yearsRangeView[yearsRangeView.length - 2] | persianDigit}}
+            </strong>
+          </div>
+          <div class="flex gap-2">
+            <i class="fa-solid fa-angles-left text-gray-300" (click)="nextDecade()"></i>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <div class="flex gap-2">
+            <i class="fa-solid fa-angles-right text-gray-300" (click)="previousYear()"></i>
+            <i class="fa-solid fa-angle-right text-gray-300" (click)="previousMonth()"></i>
+          </div>
+          <div class="flex gap-4 items-baseline">
+            <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('month')">{{currentMonthView}}</strong>
+            <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('year')">{{viewingYear | persianDigit}}</strong>
+          </div>
+          <div class="flex gap-2">
+            <i class="fa-solid fa-angle-left text-gray-300" (click)="nextMonth()"></i>
+            <i class="fa-solid fa-angles-left text-gray-300" (click)="nextYear()"></i>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
-    <!-- Date -->
-    <div class="grid grid-cols-7 grid-rows-6 items-center justify-items-center w-full px-4 gap-2">
-      <div [ngClass]="{ 'border border-purple-600' : dateItem.isCurrentDay }"
-           class="text-center h-6 w-6 text-sm rounded-sm hover:bg-zinc-100"
-           [class.text-gray-400]="!dateItem.isCurrentMonth"
-           *ngFor="let dateItem of daysOfMonth">{{dateItem.date | persianDigit}}</div>
-    </div>
-  </div>
 
-  <!-- Month View -->
-  <div *ngIf="mode === 'month'" class="my-4">
-    <!-- Month -->
-    <div class="grid grid-cols-3 grid-rows-4 w-full px-4">
-      <div *ngFor="let month of monthsOfYear; let i = index"
-           class="h-16 w-22 rounded-sm cursor-pointer flex justify-center items-center">
-        <span class="text-center text-sm w-15 px-2 hover:bg-zinc-100 rounded-sm"
-              [ngClass]="{ 'border border-purple-600' : i === currentMonth, 'bg-purple-600 text-white': i === selectedMonth }">{{month}}</span>
+    <!-- Dates View -->
+    <div *ngIf="!mode" class="my-4">
+      <!-- Day of the Week -->
+      <div class="grid grid-cols-7 w-full items-center justify-items-center px-4 gap-2">
+        <div class="text-center h-8 w-6 my-auto text-sm leading-unset" *ngFor="let shortNameDay of daysOfWeek">{{shortNameDay}}</div>
+      </div>
+      <!-- Date -->
+      <div class="grid grid-cols-7 grid-rows-6 items-center justify-items-center w-full px-4 gap-2">
+        <div [ngClass]="{ 'border border-purple-600' : dateItem.isCurrentDay  && viewingYear === currentYear, 'bg-purple-600 text-white hover:!bg-purple-600' : dateItem.date === selectedDay && viewingMonth === selectedMonth && viewingYear === selectedYear && dateItem.isCurrentMonth }"
+             class="text-center leading-unset h-6 w-6 text-sm rounded-sm hover:bg-zinc-100"
+             [class.text-gray-400]="!dateItem.isCurrentMonth"
+             (click)="selectDay(dateItem)"
+             *ngFor="let dateItem of daysOfMonth">{{dateItem.date | persianDigit}}</div>
       </div>
     </div>
-  </div>
 
-  <!-- Year View -->
-  <div *ngIf="mode === 'year'" class="my-4">
-    <!-- Year -->
-    <div class="grid grid-cols-3 grid-rows-4 w-full px-4">
-      <div *ngFor="let year of yearsRangeView; let i = index"
-           class="h-16 w-22 rounded-sm cursor-pointer flex justify-center items-center">
+    <!-- Month View -->
+    <div *ngIf="mode === 'month'" class="my-4">
+      <!-- Month -->
+      <div class="grid grid-cols-3 grid-rows-4 w-full px-4">
+        <div *ngFor="let month of monthsOfYear; let i = index"
+             (click)="selectMonth(i)"
+             class="h-16 w-22 rounded-sm cursor-pointer flex justify-center items-center">
+        <span class="text-center text-sm w-15 px-2 hover:bg-zinc-100 rounded-sm"
+              [ngClass]="{ 'border border-purple-600' : i === currentMonth && viewingYear === currentYear, 'bg-purple-600 text-white hover:!bg-purple-600': i === selectedMonth && viewingYear === selectedYear }">{{month}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Year View -->
+    <div *ngIf="mode === 'year'" class="my-4">
+      <!-- Year -->
+      <div class="grid grid-cols-3 grid-rows-4 w-full px-4">
+        <div *ngFor="let year of yearsRangeView; let i = index"
+             (click)="selectYear(year)"
+             class="h-16 w-22 rounded-sm cursor-pointer flex justify-center items-center">
         <span class="text-center text-sm w-15 px-2 hover:bg-zinc-100 rounded-sm"
               [ngClass]="{ 'text-gray-300 cursor-default': i === 0 || i === yearsRangeView.length - 1, 'border border-purple-600' : year === currentYear }">
           {{year | persianDigit}}
         </span>
+        </div>
       </div>
     </div>
+    <!-- Footer -->
+    <button *ngIf="showToday && !mode" (click)="today()" class="w-full h-11 border-t border-b-gray-200 text-purple-600 cursor-pointer">
+      امروز
+    </button>
   </div>
-  <!-- Footer -->
-  <button *ngIf="showToday && !mode" class="w-full h-11 border-t border-b-gray-200 text-purple-600 cursor-pointer">
-    امروز
-  </button>
-</div>
+</ng-container>

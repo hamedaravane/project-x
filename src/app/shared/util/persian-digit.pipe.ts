@@ -6,6 +6,7 @@ import {Pipe, PipeTransform} from "@angular/core";
 })
 export class PersianDigitPipe implements PipeTransform{
   transform(value: any): any {
+    if (value === undefined || null) return '';
     if (typeof value !== "string") {
       value = String(value);
     }
