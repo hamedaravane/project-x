@@ -3,6 +3,7 @@ import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault} from "@
 import {PersianDigitPipe} from "@shared/util/persian-digit.pipe";
 import * as moment from 'moment-jalaali';
 import {Day} from "@shared/data-access/models/date.model";
+import {NzInputModule} from "ng-zorro-antd/input";
 
 @Component({
   standalone: true,
@@ -14,7 +15,8 @@ import {Day} from "@shared/data-access/models/date.model";
     NgIf,
     NgSwitch,
     NgSwitchDefault,
-    NgSwitchCase
+    NgSwitchCase,
+    NzInputModule
   ],
   templateUrl: './purple-date-picker.component.html',
   styleUrls: ['./purple-date-picker.component.scss']
