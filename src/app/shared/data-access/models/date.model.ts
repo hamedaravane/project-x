@@ -4,3 +4,8 @@ export interface Day {
   isCurrentMonth: boolean;
   isCurrentDay: boolean;
 }
+
+export interface PurpleDate {
+  jalaliDate: string;
+  jsDate: Date;
+}

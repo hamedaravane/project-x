@@ -20,7 +20,7 @@ registerLocaleData(fa);
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: NZ_I18N,

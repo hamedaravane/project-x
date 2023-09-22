@@ -1,12 +1,60 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+  display: block;
 }
 
 .custom-shadow {
   box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+}
+
+#date-picker-container {
+  position: absolute;
+  z-index: 1000;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(217, 217, 217);
+  padding: .25rem 11px;
+  border-radius: .25rem;
+  transition: border-color 0.3s;
+  width: 100%;
+  max-width: 10rem;
+
+  &:hover {
+    border-color: #7c3aed;
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    width: 100%;
+
+    &:placeholder-shown {
+      text-overflow: ellipsis;
+    }
+
+    &::placeholder {
+      color: #bfbfbf;
+      user-select: none;
+    }
+  }
+
+  i {
+    position: absolute;
+    left: 10px;
+    color: #777;
+    cursor: pointer;
+
+    &:hover {
+      color: #555;
+    }
+  }
+}
+
+.on-focus {
+  box-shadow: 0 0 5pt 1pt rgb(233 213 255);
+  outline-width: 0;
 }

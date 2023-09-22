@@ -78,6 +78,7 @@
     <path
       d="M533.17365,516.11789a33,33,0,1,1,33-33A33.03734,33.03734,0,0,1,533.17365,516.11789Zm0-64a31,31,0,1,0,31,31A31.0352,31.0352,0,0,0,533.17365,452.11789Z"
       transform="translate(-160.6669 -108.65425)" fill="#3f3d56"/>
+
   </svg>
 </div>
 <form nz-form [nzDisableAutoTips]="true" [formGroup]="influencerInfoForm" (ngSubmit)="submitForm()">
@@ -117,7 +118,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
-      <input type="text" nz-input placeholder="تاریخ تولد">
+      <purple-date-picker placeholder="تاریخ تولد" formControlName="birthDate"></purple-date-picker>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>

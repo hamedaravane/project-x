@@ -12,7 +12,8 @@ import {RouterLink} from "@angular/router";
 import {RegisterService} from "../data-access/register.service";
 import {CitiesListService} from "../data-access/cities-list.service";
 import {persianCharValidator} from "@shared/data-access/validators/custom-validators";
-import {NzI18nService, fa_IR} from 'ng-zorro-antd/i18n';
+import {PurpleDatePickerComponent} from "@shared/ui/purple-date-picker/purple-date-picker.component";
+import {PurpleDate} from "@shared/data-access/models/date.model";
 
 @Component({
   standalone: true,
@@ -30,7 +31,8 @@ import {NzI18nService, fa_IR} from 'ng-zorro-antd/i18n';
     NzSelectModule,
     NzWaveModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    PurpleDatePickerComponent
   ],
   styleUrls: ['./influencer-info-form.component.scss']
 })
@@ -39,10 +41,6 @@ export class InfluencerInfoFormComponent {
   private readonly citiesListService = inject(CitiesListService);
   userType = this.registerService.UserTypeState;
   cityList = this.citiesListService.cityList;
-
-  constructor(private readonly i18n: NzI18nService) {
-    this.i18n.setLocale(fa_IR);
-  }
 
   influencerTypeList: { value: any | null, label: string | number | null }[] = [
     {value: 'Restaurant & Cafe', label: 'کافه و رستوران'},
@@ -64,6 +62,7 @@ export class InfluencerInfoFormComponent {
     persianInfluencerLastName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
     englishInfluencerName: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]),
     englishInfluencerLastName: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]),
+    birthDate: new FormControl<PurpleDate | null>(null, Validators.required),
     influencerType: new FormControl<string | null>(null, Validators.required),
     instagramAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z0-9._]{1,30}$/)),
     twitterAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z_][a-zA-Z0-9_]{0,14}$/)),
@@ -75,6 +74,7 @@ export class InfluencerInfoFormComponent {
   persianInfluencerLastName = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<string | null>;
   englishInfluencerName = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string | null>;
   englishInfluencerLastName = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string | null>;
+  birthDate = this.influencerInfoForm.get('birthDate') as AbstractControl<PurpleDate | null>;
   influencerType = this.influencerInfoForm.get('influencerType') as AbstractControl<string | null>;
   instagramAccount = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
   twitterAccount = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;

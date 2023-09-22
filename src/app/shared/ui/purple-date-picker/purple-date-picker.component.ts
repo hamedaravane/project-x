@@ -1,13 +1,24 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  HostListener,
+  inject,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault} from "@angular/common";
 import {PersianDigitPipe} from "@shared/util/persian-digit.pipe";
 import * as moment from 'moment-jalaali';
-import {Day} from "@shared/data-access/models/date.model";
-import {NzInputModule} from "ng-zorro-antd/input";
+import {Day, PurpleDate} from "@shared/data-access/models/date.model";
+import {animate, state, style, transition, trigger} from "@angular/animations";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
   standalone: true,
-  selector: 'app-purple-date-picker',
+  selector: 'purple-date-picker',
   imports: [
     NgForOf,
     PersianDigitPipe,
@@ -15,21 +26,48 @@ import {NzInputModule} from "ng-zorro-antd/input";
     NgIf,
     NgSwitch,
     NgSwitchDefault,
-    NgSwitchCase,
-    NzInputModule
+    NgSwitchCase
   ],
   templateUrl: './purple-date-picker.component.html',
-  styleUrls: ['./purple-date-picker.component.scss']
+  styleUrls: ['./purple-date-picker.component.scss'],
+  providers: [
+    PersianDigitPipe,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PurpleDatePickerComponent),
+      multi: true
+    }
+  ],
+  animations: [
+    trigger('openClose', [
+      state('open', style({
+        opacity: 1,
+        height: '*'
+      })),
+      state('closed', style({
+        opacity: 0,
+        height: '100px'
+      })),
+      transition('open <=> closed', [
+        animate('300ms cubic-bezier(0.35, 0, 0.25, 1)')
+      ]),
+    ]),
+  ]
 })
-export class PurpleDatePickerComponent implements OnInit {
+export class PurpleDatePickerComponent implements OnInit, ControlValueAccessor {
+  private readonly el = inject(ElementRef);
+
+  @Input() placeholder: string | undefined;
   @Input() showToday = true;
   @Input() mode: 'year' | 'month' | undefined = undefined;
-  @Output() dateSelected = new EventEmitter<string>();
+  @Output() dateSelected = new EventEmitter<PurpleDate>();
   now = moment();
+
   // current
   currentDay = this.now.jDate();
   currentMonth = this.now.jMonth();
   currentYear = this.now.jYear();
+
   // viewing
   viewingDay = this.currentDay;
   viewingMonth = this.currentMonth;
@@ -44,7 +82,10 @@ export class PurpleDatePickerComponent implements OnInit {
   selectedMonth!: number;
   selectedYear!: number;
 
+  selectedDate!: PurpleDate;
+
   showDatePicker = false;
+
 
   ngOnInit() {
     this.currentMonthView = this.monthsOfYear[this.viewingMonth]
@@ -52,12 +93,15 @@ export class PurpleDatePickerComponent implements OnInit {
     this.generateYearsRange();
   }
 
-  openDatePicker() {
-    this.showDatePicker = true;
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: Event) {
+    if (!this.el.nativeElement.contains(event.target)) {
+      this.showDatePicker = false;
+    }
   }
 
-  selectDate(date: any) {
-    this.dateSelected.emit('formatted date here');
+  openCalendar() {
+    this.showDatePicker = true;
   }
 
   selectDay(value: Day) {
@@ -84,8 +128,14 @@ export class PurpleDatePickerComponent implements OnInit {
         this.viewingYear = this.selectedYear;
         this.viewingMonth = this.selectedMonth;
         this.viewingDay = this.selectedDay;
-        this.changeMode() // change mode to day as default
+        this.changeMode();
         this.updateView();
+        this.selectedDate = {
+          jalaliDate: `${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`,
+          jsDate: new Date(moment(`${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`, 'jYYYY/jM/jD').format('YYYY/M/D'))
+        };
+        this.updateModel(this.selectedDate)
+        this.showDatePicker = false;
         break
       case !!this.selectedYear && !this.selectedMonth && !this.selectedDay: // if user first select year
         this.viewingYear = this.selectedYear;
@@ -121,14 +171,22 @@ export class PurpleDatePickerComponent implements OnInit {
     this.viewingDay = this.currentDay;
     this.viewingMonth = this.currentMonth;
     this.viewingYear = this.currentYear;
+    this.selectedYear = this.currentYear;
+    this.selectedMonth = this.currentMonth;
+    this.selectedDay = this.currentDay;
+    this.selectedDate = {
+      jalaliDate: `${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`,
+      jsDate: new Date(moment(`${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`, 'jYYYY/jM/jD').format('YYYY/M/D'))
+    };
     this.generateDates();
     this.generateYearsRange();
+    this.showDatePicker = false;
   }
 
   previousYear() {
     if (!this.mode || this.mode === 'month') {
       this.viewingYear--;
-    } else { // 'year' mode
+    } else {
       this.viewingYear -= 10;
     }
     this.updateView();
@@ -137,7 +195,7 @@ export class PurpleDatePickerComponent implements OnInit {
   nextYear() {
     if (!this.mode || this.mode === 'month') {
       this.viewingYear++;
-    } else { // 'year' mode
+    } else {
       this.viewingYear += 10;
     }
     this.updateView();
@@ -145,8 +203,8 @@ export class PurpleDatePickerComponent implements OnInit {
 
   previousMonth() {
     if (!this.mode) {
-      if (this.viewingMonth === 0) { // Farvardin in Jalali
-        this.viewingMonth = 11; // Esfand
+      if (this.viewingMonth === 0) {
+        this.viewingMonth = 11;
         this.viewingYear--;
       } else {
         this.viewingMonth--;
@@ -157,8 +215,8 @@ export class PurpleDatePickerComponent implements OnInit {
 
   nextMonth() {
     if (!this.mode) {
-      if (this.viewingMonth === 11) { // Esfand in Jalali
-        this.viewingMonth = 0; // Farvardin
+      if (this.viewingMonth === 11) {
+        this.viewingMonth = 0;
         this.viewingYear++;
       } else {
         this.viewingMonth++;
@@ -172,7 +230,6 @@ export class PurpleDatePickerComponent implements OnInit {
     if (!this.mode) {
       this.generateDates();
     } else if (this.mode === 'month') {
-      // Call the respective month view update function.
     } else {
       this.generateYearsRange();
     }
@@ -199,7 +256,6 @@ export class PurpleDatePickerComponent implements OnInit {
 
   generateDates() {
     this.daysOfMonth = [];
-    // Start and end of the current month
     const startOfMonth = moment().jYear(this.viewingYear).jMonth(this.viewingMonth).startOf('jMonth');
     const endOfMonth = moment().jYear(this.viewingYear).jMonth(this.viewingMonth).endOf('jMonth');
 
@@ -212,16 +268,11 @@ export class PurpleDatePickerComponent implements OnInit {
       'پ': 4,  // Thursday
       'ج': 5   // Friday
     };
-
-    // Calculate start of the grid by determining the day of week for the startOfMonth and subtracting
     let startOfGrid = startOfMonth.clone();
     while (startOfGrid.day() !== daysOfWeekMapping[this.daysOfWeek[0]]) {
       startOfGrid.subtract(1, 'day');
     }
-
-    // The end of the grid will be 42 days (6 weeks * 7 days) from the startOfGrid
     const endOfGrid = startOfGrid.clone().add(41, 'days');
-
     for(let day = startOfGrid; day.isSameOrBefore(endOfGrid); day.add(1, 'day')) {
       this.daysOfMonth.push({
         date: day.jDate(),
@@ -232,5 +283,21 @@ export class PurpleDatePickerComponent implements OnInit {
     }
   }
 
-  protected readonly undefined = undefined;
+  onChange: any = () => {};
+  onTouched: any = () => {};
+  writeValue(obj: any): void {
+    this.selectedDate = obj;
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {}
+  updateModel(date: any) {
+    this.selectedDate = date;
+    this.onChange(this.selectedDate);
+    this.onTouched();
+  }
 }

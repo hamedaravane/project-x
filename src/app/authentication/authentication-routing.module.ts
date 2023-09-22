@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./feature/register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path: 'forget-password',
+    loadChildren: () => import('./feature/forget-password/forget-password.module').then(m => m.ForgetPasswordModule)
   }
 ]
 
