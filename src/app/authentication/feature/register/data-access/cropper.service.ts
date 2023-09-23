@@ -1,11 +1,10 @@
-import {ElementRef, Injectable} from '@angular/core';
 import Cropper from 'cropperjs';
+import {ElementRef, Injectable} from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CropperService {
-
   /**
    * Initializes a Cropper instance on the given image element with the specified options.
    *

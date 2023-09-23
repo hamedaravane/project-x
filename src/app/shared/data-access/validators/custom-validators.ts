@@ -1,13 +1,17 @@
-import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
+import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const passwordControl = control.get('password');
   const confirmPasswordControl = control.get('confirmPassword');
 
-  passwordControl && confirmPasswordControl && passwordControl.value !== confirmPasswordControl.value ? confirmPasswordControl?.setErrors({confirm: true}) : {};
+  passwordControl && confirmPasswordControl && passwordControl.value !== confirmPasswordControl.value
+    ? confirmPasswordControl?.setErrors({confirm: true})
+    : {};
 
-  return passwordControl && confirmPasswordControl && passwordControl.value !== confirmPasswordControl.value ? {confirm: true} : null;
-}
+  return passwordControl && confirmPasswordControl && passwordControl.value !== confirmPasswordControl.value
+    ? {confirm: true}
+    : null;
+};
 
 /**
  * Validates that the provided control value meets certain password strength requirements.

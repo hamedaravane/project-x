@@ -1,10 +1,8 @@
-import {NgModule} from "@angular/core";
-import {RegisterRoutingModule} from "./register-routing.module";
+import {NgModule} from '@angular/core';
+import {RegisterRoutingModule} from './register-routing.module';
 
 @NgModule({
   declarations: [],
-  imports: [
-    RegisterRoutingModule
-  ]
+  imports: [RegisterRoutingModule],
 })
 export class RegisterModule {}

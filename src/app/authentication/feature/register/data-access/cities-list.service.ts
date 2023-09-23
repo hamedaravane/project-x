@@ -1,4882 +1,4881 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CitiesListService {
-
   cityList = [
     {
       name: 'Azarshahr',
-      faName: 'آذرشهر'
+      faName: 'آذرشهر',
     },
     {
       name: 'Teymurlu',
-      faName: 'تیمورلو'
+      faName: 'تیمورلو',
     },
     {
       name: 'Gugan',
-      faName: 'گوگان'
+      faName: 'گوگان',
     },
     {
       name: 'Mamqan',
-      faName: 'ممقان'
+      faName: 'ممقان',
     },
     {
       name: 'Osku',
-      faName: 'اسکو'
+      faName: 'اسکو',
     },
     {
       name: 'Ilkhchi',
-      faName: 'ایلخچی'
+      faName: 'ایلخچی',
     },
     {
       name: 'Sahand',
-      faName: 'سهند'
+      faName: 'سهند',
     },
     {
       name: 'Ahar',
-      faName: 'اهر'
+      faName: 'اهر',
     },
     {
       name: 'Hurand',
-      faName: 'هوراند'
+      faName: 'هوراند',
     },
     {
       name: 'Bostanabad',
-      faName: 'بستان آباد'
+      faName: 'بستان آباد',
     },
     {
       name: 'Tekmeh Dash',
-      faName: 'تیکمه داش'
+      faName: 'تیکمه داش',
     },
     {
       name: 'Bonab',
-      faName: 'بناب'
+      faName: 'بناب',
     },
     {
       name: 'Basmenj',
-      faName: 'باسمنج'
+      faName: 'باسمنج',
     },
     {
       name: 'Tabriz',
-      faName: 'تبریز'
+      faName: 'تبریز',
     },
     {
       name: 'Khosrowshah',
-      faName: 'خسروشاه'
+      faName: 'خسروشاه',
     },
     {
       name: 'Sardrud',
-      faName: 'سردرود'
+      faName: 'سردرود',
     },
     {
       name: 'Jolfa',
-      faName: 'جلفا'
+      faName: 'جلفا',
     },
     {
       name: 'Siah Rud',
-      faName: 'سیه رود'
+      faName: 'سیه رود',
     },
     {
       name: 'Hadishahr',
-      faName: 'هادیشهر'
+      faName: 'هادیشهر',
     },
     {
       name: 'Qarah Aghaj',
-      faName: 'قره آغاج'
+      faName: 'قره آغاج',
     },
     {
       name: 'Khomarlu',
-      faName: 'خمارلو'
+      faName: 'خمارلو',
     },
     {
       name: 'Duzduzan',
-      faName: 'دوزدوزان'
+      faName: 'دوزدوزان',
     },
     {
       name: 'Sarab',
-      faName: 'سراب'
+      faName: 'سراب',
     },
     {
       name: 'Sharabian',
-      faName: 'شربیان'
+      faName: 'شربیان',
     },
     {
       name: 'Mehraban',
-      faName: 'مهربان'
+      faName: 'مهربان',
     },
     {
       name: 'Tasuj',
-      faName: 'تسوج'
+      faName: 'تسوج',
     },
     {
       name: 'Khamaneh',
-      faName: 'خامنه'
+      faName: 'خامنه',
     },
     {
       name: 'Sis',
-      faName: 'سیس'
+      faName: 'سیس',
     },
     {
       name: 'Shabestar',
-      faName: 'شبستر'
+      faName: 'شبستر',
     },
     {
       name: 'Sharafkhaneh',
-      faName: 'شرفخانه'
+      faName: 'شرفخانه',
     },
     {
       name: 'Shendabad',
-      faName: 'شندآباد'
+      faName: 'شندآباد',
     },
     {
       name: 'Sufian',
-      faName: 'صوفیان'
+      faName: 'صوفیان',
     },
     {
       name: 'Kuzeh Kanan',
-      faName: 'کوزه کنان'
+      faName: 'کوزه کنان',
     },
     {
       name: 'Vayqan',
-      faName: 'وایقان'
+      faName: 'وایقان',
     },
     {
       name: 'Javan Qala',
-      faName: 'جوان قلعه'
+      faName: 'جوان قلعه',
     },
     {
       name: 'Ajab Shir',
-      faName: 'عجب شیر'
+      faName: 'عجب شیر',
     },
     {
       name: 'Abeshahmad',
-      faName: 'آبش احمد'
+      faName: 'آبش احمد',
     },
     {
       name: 'Kaleybar',
-      faName: 'کلیبر'
+      faName: 'کلیبر',
     },
     {
       name: 'Kharajoo ',
-      faName: 'خداجو (خراجو)'
+      faName: 'خداجو (خراجو)',
     },
     {
       name: 'Maragheh',
-      faName: 'مراغه'
+      faName: 'مراغه',
     },
     {
       name: 'Benab e Marand',
-      faName: 'بناب مرند'
+      faName: 'بناب مرند',
     },
     {
       name: 'Zonouz',
-      faName: 'زنوز'
+      faName: 'زنوز',
     },
     {
       name: 'Koshksaray',
-      faName: 'کشکسرای'
+      faName: 'کشکسرای',
     },
     {
       name: 'Marand',
-      faName: 'مرند'
+      faName: 'مرند',
     },
     {
       name: 'Yamchi',
-      faName: 'یامچی'
+      faName: 'یامچی',
     },
     {
       name: 'Leylan',
-      faName: 'لیلان'
+      faName: 'لیلان',
     },
     {
       name: 'Mobarak Shahr',
-      faName: 'مبارک شهر'
+      faName: 'مبارک شهر',
     },
     {
       name: 'Malekan',
-      faName: 'ملکان'
+      faName: 'ملکان',
     },
     {
       name: 'Aqkand',
-      faName: 'آقکند'
+      faName: 'آقکند',
     },
     {
       name: 'Achachi',
-      faName: 'اچاچی'
+      faName: 'اچاچی',
     },
     {
       name: 'Tark',
-      faName: 'ترک'
+      faName: 'ترک',
     },
     {
       name: 'Torkamanchay',
-      faName: 'ترکمانچای'
+      faName: 'ترکمانچای',
     },
     {
       name: 'Mianeh',
-      faName: 'میانه'
+      faName: 'میانه',
     },
     {
       name: 'Kharvana',
-      faName: 'خاروانا'
+      faName: 'خاروانا',
     },
     {
       name: 'Varzaqan',
-      faName: 'ورزقان'
+      faName: 'ورزقان',
     },
     {
       name: 'Bakhshayesh',
-      faName: 'بخشایش'
+      faName: 'بخشایش',
     },
     {
       name: 'Khajeh',
-      faName: 'خواجه'
+      faName: 'خواجه',
     },
     {
       name: 'Zarnaq',
-      faName: 'زرنق'
+      faName: 'زرنق',
     },
     {
       name: 'Kelvanaq',
-      faName: 'کلوانق'
+      faName: 'کلوانق',
     },
     {
       name: 'Heris',
-      faName: 'هریس'
+      faName: 'هریس',
     },
     {
       name: 'Nazarkahrizi',
-      faName: 'نظرکهریزی'
+      faName: 'نظرکهریزی',
     },
     {
       name: 'Hashtrud',
-      faName: 'هشترود'
+      faName: 'هشترود',
     },
     {
       name: 'Urmia',
-      faName: 'ارومیه'
+      faName: 'ارومیه',
     },
     {
       name: 'Serow',
-      faName: 'سرو'
+      faName: 'سرو',
     },
     {
       name: 'Silvaneh',
-      faName: 'سیلوانه'
+      faName: 'سیلوانه',
     },
     {
       name: 'Qushchi',
-      faName: 'قوشچی'
+      faName: 'قوشچی',
     },
     {
       name: 'Nushin',
-      faName: 'نوشین'
+      faName: 'نوشین',
     },
     {
       name: 'Oshnavieh',
-      faName: 'اشنویه'
+      faName: 'اشنویه',
     },
     {
       name: 'Nalus',
-      faName: 'نالوس'
+      faName: 'نالوس',
     },
     {
       name: 'Bukan',
-      faName: 'بوکان'
+      faName: 'بوکان',
     },
     {
       name: 'Simmineh',
-      faName: 'سیمینه'
+      faName: 'سیمینه',
     },
     {
       name: 'Poldasht',
-      faName: 'پلدشت'
+      faName: 'پلدشت',
     },
     {
       name: 'Nazok-e Olya',
-      faName: 'نازک علیا'
+      faName: 'نازک علیا',
     },
     {
       name: 'Piranshahr',
-      faName: 'پیرانشهر'
+      faName: 'پیرانشهر',
     },
     {
       name: 'Gerd Kashaneh',
-      faName: 'گردکشانه'
+      faName: 'گردکشانه',
     },
     {
       name: 'Takab',
-      faName: 'تکاب'
+      faName: 'تکاب',
     },
     {
       name: 'Avajiq',
-      faName: 'آواجیق'
+      faName: 'آواجیق',
     },
     {
       name: 'Siah Cheshmeh',
-      faName: 'سیه چشمه'
+      faName: 'سیه چشمه',
     },
     {
       name: 'Qarah Zia od Din',
-      faName: 'قره ضیاء الدین'
+      faName: 'قره ضیاء الدین',
     },
     {
       name: 'Ivaowghli',
-      faName: 'ایواوغلی'
+      faName: 'ایواوغلی',
     },
     {
       name: 'Khoy',
-      faName: 'خوی'
+      faName: 'خوی',
     },
     {
       name: 'Dizaj Diz',
-      faName: 'دیزج دیز'
+      faName: 'دیزج دیز',
     },
     {
       name: 'Zarabad',
-      faName: 'زرآباد'
+      faName: 'زرآباد',
     },
     {
       name: 'Firuraq',
-      faName: 'فیرورق'
+      faName: 'فیرورق',
     },
     {
       name: 'Qatur',
-      faName: 'قطور'
+      faName: 'قطور',
     },
     {
       name: 'Rabat',
-      faName: 'ربط'
+      faName: 'ربط',
     },
     {
       name: 'Sardasht',
-      faName: 'سردشت'
+      faName: 'سردشت',
     },
     {
       name: 'Mirabad',
-      faName: 'میرآباد'
+      faName: 'میرآباد',
     },
     {
       name: 'Tazeh Shahr',
-      faName: 'تازه شهر'
+      faName: 'تازه شهر',
     },
     {
       name: 'Salmas',
-      faName: 'سلماس'
+      faName: 'سلماس',
     },
     {
       name: 'Shahin Dezh',
-      faName: 'شاهین دژ'
+      faName: 'شاهین دژ',
     },
     {
       name: 'Keshavarz',
-      faName: 'کشاورز'
+      faName: 'کشاورز',
     },
     {
       name: 'Mahmudabad',
-      faName: 'محمودآباد'
+      faName: 'محمودآباد',
     },
     {
       name: 'Showt',
-      faName: 'شوط'
+      faName: 'شوط',
     },
     {
       name: 'Marganlar',
-      faName: 'مرگنلر'
+      faName: 'مرگنلر',
     },
     {
       name: 'Bazargan',
-      faName: 'بازرگان'
+      faName: 'بازرگان',
     },
     {
       name: 'Maku',
-      faName: 'ماکو'
+      faName: 'ماکو',
     },
     {
       name: 'Khalifan',
-      faName: 'خلیفان'
+      faName: 'خلیفان',
     },
     {
       name: 'Mahabad',
-      faName: 'مهاباد'
+      faName: 'مهاباد',
     },
     {
       name: 'Baruq',
-      faName: 'باروق'
+      faName: 'باروق',
     },
     {
       name: 'Chahar Borj',
-      faName: 'چهاربرج'
+      faName: 'چهاربرج',
     },
     {
       name: 'Miandoab',
-      faName: 'میاندوآب'
+      faName: 'میاندوآب',
     },
     {
       name: 'Mohammadyar',
-      faName: 'محمدیار'
+      faName: 'محمدیار',
     },
     {
       name: 'Naqadeh',
-      faName: 'نقده'
+      faName: 'نقده',
     },
     {
       name: 'Ardabil',
-      faName: 'اردبیل'
+      faName: 'اردبیل',
     },
     {
       name: 'Hir',
-      faName: 'هیر'
+      faName: 'هیر',
     },
     {
       name: 'Bileh Savar',
-      faName: 'بیله سوار'
+      faName: 'بیله سوار',
     },
     {
       name: 'Jafarabad',
-      faName: 'جعفرآباد'
+      faName: 'جعفرآباد',
     },
     {
       name: 'Eslamabad',
-      faName: 'اسلام اباد'
+      faName: 'اسلام اباد',
     },
     {
       name: 'Aslan Duz',
-      faName: 'اصلاندوز'
+      faName: 'اصلاندوز',
     },
     {
       name: 'Parsabad',
-      faName: 'پارس آباد'
+      faName: 'پارس آباد',
     },
     {
       name: 'Tazeh Kand',
-      faName: 'تازه کند'
+      faName: 'تازه کند',
     },
     {
       name: 'Khalkhal',
-      faName: 'خلخال'
+      faName: 'خلخال',
     },
     {
       name: 'Kolur',
-      faName: 'کلور'
+      faName: 'کلور',
     },
     {
       name: 'Hashatjin',
-      faName: 'هشتجین'
+      faName: 'هشتجین',
     },
     {
       name: "Sar'eyn",
-      faName: 'سرعین'
+      faName: 'سرعین',
     },
     {
       name: 'Givi',
-      faName: 'گیوی'
+      faName: 'گیوی',
     },
     {
       name: 'Tazeh Kand-e Angut',
-      faName: 'تازه کندانگوت'
+      faName: 'تازه کندانگوت',
     },
     {
       name: 'Germi',
-      faName: 'گرمی'
+      faName: 'گرمی',
     },
     {
       name: 'Rizi',
-      faName: 'رضی'
+      faName: 'رضی',
     },
     {
       name: 'Fakhrabad',
-      faName: 'فخراباد'
+      faName: 'فخراباد',
     },
     {
       name: 'Qosabeh',
-      faName: 'قصابه'
+      faName: 'قصابه',
     },
     {
       name: 'Lahrud',
-      faName: 'لاهرود'
+      faName: 'لاهرود',
     },
     {
       name: 'Moradlu',
-      faName: 'مرادلو'
+      faName: 'مرادلو',
     },
     {
       name: 'Meshginshahr',
-      faName: 'مشگین شهر'
+      faName: 'مشگین شهر',
     },
     {
       name: 'Abi Beyglu',
-      faName: 'آبی بیگلو'
+      faName: 'آبی بیگلو',
     },
     {
       name: 'Anbaran',
-      faName: 'عنبران'
+      faName: 'عنبران',
     },
     {
       name: 'Namin',
-      faName: 'نمین'
+      faName: 'نمین',
     },
     {
       name: 'Kuraim',
-      faName: 'کوراییم'
+      faName: 'کوراییم',
     },
     {
       name: 'Nir',
-      faName: 'نیر'
+      faName: 'نیر',
     },
     {
       name: 'Aran va Bidgol',
-      faName: 'آران و بیدگل'
+      faName: 'آران و بیدگل',
     },
     {
       name: 'Abuzeydabad',
-      faName: 'ابوزیدآباد'
+      faName: 'ابوزیدآباد',
     },
     {
       name: 'Sefidshahr',
-      faName: 'سفیدشهر'
+      faName: 'سفیدشهر',
     },
     {
       name: 'Nushabad',
-      faName: 'نوش آباد'
+      faName: 'نوش آباد',
     },
     {
       name: 'Ardestan',
-      faName: 'اردستان'
+      faName: 'اردستان',
     },
     {
       name: 'Istgah-e Zavareh',
-      faName: 'زواره'
+      faName: 'زواره',
     },
     {
       name: 'Ezhiyeh',
-      faName: 'اژیه'
+      faName: 'اژیه',
     },
     {
       name: 'Isfahan',
-      faName: 'اصفهان'
+      faName: 'اصفهان',
     },
     {
       name: 'Baharestan',
-      faName: 'بهارستان'
+      faName: 'بهارستان',
     },
     {
       name: 'Tudeshk',
-      faName: 'تودشک'
+      faName: 'تودشک',
     },
     {
       name: 'Hasanabad',
-      faName: 'حسن اباد'
+      faName: 'حسن اباد',
     },
     {
       name: 'Ziar',
-      faName: 'زیار'
+      faName: 'زیار',
     },
     {
       name: 'Sejzi',
-      faName: 'سجزی'
+      faName: 'سجزی',
     },
     {
       name: 'Qahjavarestan',
-      faName: 'قهجاورستان'
+      faName: 'قهجاورستان',
     },
     {
       name: 'Kuhpayeh',
-      faName: 'کوهپایه'
+      faName: 'کوهپایه',
     },
     {
       name: 'Mohammadabad',
-      faName: 'محمدآباد'
+      faName: 'محمدآباد',
     },
     {
       name: 'Nasrabad',
-      faName: 'نصرآباد'
+      faName: 'نصرآباد',
     },
     {
       name: 'Nikabad',
-      faName: 'نیک آباد'
+      faName: 'نیک آباد',
     },
     {
       name: 'Varzaneh',
-      faName: 'ورزنه'
+      faName: 'ورزنه',
     },
     {
       name: 'Harand',
-      faName: 'هرند'
+      faName: 'هرند',
     },
     {
       name: 'Habibabad',
-      faName: 'حبیب آباد'
+      faName: 'حبیب آباد',
     },
     {
       name: 'Khowrzuq',
-      faName: 'خورزوق'
+      faName: 'خورزوق',
     },
     {
       name: 'Dastgerd',
-      faName: 'دستگرد'
+      faName: 'دستگرد',
     },
     {
       name: 'Dowlatabad',
-      faName: 'دولت آباد'
+      faName: 'دولت آباد',
     },
     {
       name: 'Sin',
-      faName: 'سین'
+      faName: 'سین',
     },
     {
       name: 'Shapur Abad',
-      faName: 'شاپورآباد'
+      faName: 'شاپورآباد',
     },
     {
       name: 'Komeshcheh',
-      faName: 'کمشچه'
+      faName: 'کمشچه',
     },
     {
       name: 'Afus',
-      faName: 'افوس'
+      faName: 'افوس',
     },
     {
       name: 'Buin va Miandasht',
-      faName: 'بویین ومیاندشت'
+      faName: 'بویین ومیاندشت',
     },
     {
       name: 'Tiran',
-      faName: 'تیران'
+      faName: 'تیران',
     },
     {
       name: 'Rezvanshahr',
-      faName: 'رضوانشهر'
+      faName: 'رضوانشهر',
     },
     {
       name: 'Asgaran',
-      faName: 'عسگران'
+      faName: 'عسگران',
     },
     {
       name: 'Chadegan',
-      faName: 'چادگان'
+      faName: 'چادگان',
     },
     {
       name: 'Rozveh',
-      faName: 'رزوه'
+      faName: 'رزوه',
     },
     {
       name: 'Asgharabad',
-      faName: 'اصغرآباد'
+      faName: 'اصغرآباد',
     },
     {
       name: 'Khomeyni Shahr',
-      faName: 'خمینی شهر'
+      faName: 'خمینی شهر',
     },
     {
       name: 'Darreh Chah',
-      faName: 'درچه'
+      faName: 'درچه',
     },
     {
       name: 'Kushk',
-      faName: 'کوشک'
+      faName: 'کوشک',
     },
     {
       name: 'Khansar',
-      faName: 'خوانسار'
+      faName: 'خوانسار',
     },
     {
       name: 'Jandaq',
-      faName: 'جندق'
+      faName: 'جندق',
     },
     {
       name: 'Khur',
-      faName: 'خور'
+      faName: 'خور',
     },
     {
       name: 'Farrokhi',
-      faName: 'فرخی'
+      faName: 'فرخی',
     },
     {
       name: 'Dehaqan',
-      faName: 'دهاقان'
+      faName: 'دهاقان',
     },
     {
       name: 'Golshan',
-      faName: 'گلشن'
+      faName: 'گلشن',
     },
     {
       name: 'Hanna',
-      faName: 'حنا'
+      faName: 'حنا',
     },
     {
       name: 'Semirom',
-      faName: 'سمیرم'
+      faName: 'سمیرم',
     },
     {
       name: 'Komeh',
-      faName: 'کمه'
+      faName: 'کمه',
     },
     {
       name: 'Vanak',
-      faName: 'ونک'
+      faName: 'ونک',
     },
     {
       name: 'Shahin Shahr',
-      faName: 'شاهین شهر'
+      faName: 'شاهین شهر',
     },
     {
       name: 'Gorgab',
-      faName: 'گرگاب'
+      faName: 'گرگاب',
     },
     {
       name: 'Gazborkhar',
-      faName: 'گزبرخوار'
+      faName: 'گزبرخوار',
     },
     {
       name: 'Lay Bid',
-      faName: 'لای بید'
+      faName: 'لای بید',
     },
     {
       name: 'Meymeh',
-      faName: 'میمه'
+      faName: 'میمه',
     },
     {
       name: 'Vazvan',
-      faName: 'وزوان'
+      faName: 'وزوان',
     },
     {
       name: 'Shahreza',
-      faName: 'شهرضا'
+      faName: 'شهرضا',
     },
     {
       name: 'Manzariyeh',
-      faName: 'منظریه'
+      faName: 'منظریه',
     },
     {
       name: 'Daran',
-      faName: 'داران'
+      faName: 'داران',
     },
     {
       name: 'Damaneh',
-      faName: 'دامنه'
+      faName: 'دامنه',
     },
     {
       name: 'Barf Anbar',
-      faName: 'برف انبار'
+      faName: 'برف انبار',
     },
     {
       name: 'Fereydunshahr',
-      faName: 'فریدونشهر'
+      faName: 'فریدونشهر',
     },
     {
       name: 'Abrisham',
-      faName: 'ابریشم'
+      faName: 'ابریشم',
     },
     {
       name: 'Imanshahr',
-      faName: 'ایمانشهر'
+      faName: 'ایمانشهر',
     },
     {
       name: 'Baharan Shahr',
-      faName: 'بهاران شهر'
+      faName: 'بهاران شهر',
     },
     {
       name: 'Pir Bakran',
-      faName: 'پیربکران'
+      faName: 'پیربکران',
     },
     {
       name: 'Zazeran',
-      faName: 'زازران'
+      faName: 'زازران',
     },
     {
       name: 'Falavarjan',
-      faName: 'فلاورجان'
+      faName: 'فلاورجان',
     },
     {
       name: 'Qahderijan',
-      faName: 'قهدریجان'
+      faName: 'قهدریجان',
     },
     {
       name: 'Kelishad va Sudarjan',
-      faName: 'کلیشاد و سودرجان'
+      faName: 'کلیشاد و سودرجان',
     },
     {
       name: 'Barzok',
-      faName: 'برزک'
+      faName: 'برزک',
     },
     {
       name: 'Jowsheqan-e Qali',
-      faName: 'جوشقان قالی'
+      faName: 'جوشقان قالی',
     },
     {
       name: 'Qamsar',
-      faName: 'قمصر'
+      faName: 'قمصر',
     },
     {
       name: 'Kashan',
-      faName: 'کاشان'
+      faName: 'کاشان',
     },
     {
       name: 'Kamu va Chugan',
-      faName: 'کامو و چوگان'
+      faName: 'کامو و چوگان',
     },
     {
       name: 'Meshkat',
-      faName: 'مشکات'
+      faName: 'مشکات',
     },
     {
       name: 'Neyasar',
-      faName: 'نیاسر'
+      faName: 'نیاسر',
     },
     {
       name: 'Golpayegan',
-      faName: 'گلپایگان'
+      faName: 'گلپایگان',
     },
     {
       name: 'Golshahr',
-      faName: 'گلشهر'
+      faName: 'گلشهر',
     },
     {
       name: 'Guged',
-      faName: 'گوگد'
+      faName: 'گوگد',
     },
     {
       name: 'Bagh-e Bahadoran',
-      faName: 'باغ بهادران'
+      faName: 'باغ بهادران',
     },
     {
       name: 'Baghshad',
-      faName: 'باغشاد'
+      faName: 'باغشاد',
     },
     {
       name: 'Chermahin',
-      faName: 'چرمهین'
+      faName: 'چرمهین',
     },
     {
       name: 'Chamgardan',
-      faName: 'چمگردان'
+      faName: 'چمگردان',
     },
     {
       name: 'Zayandeh Rud',
-      faName: 'زاینده رود'
+      faName: 'زاینده رود',
     },
     {
       name: 'Zarrin Shahr',
-      faName: 'زرین شهر'
+      faName: 'زرین شهر',
     },
     {
       name: 'Sedeh Lenjan',
-      faName: 'سده لنجان'
+      faName: 'سده لنجان',
     },
     {
       name: 'Fuladshahr',
-      faName: 'فولادشهر'
+      faName: 'فولادشهر',
     },
     {
       name: 'Varnamkhvast',
-      faName: 'ورنامخواست'
+      faName: 'ورنامخواست',
     },
     {
       name: 'Dizicheh',
-      faName: 'دیزیچه'
+      faName: 'دیزیچه',
     },
     {
       name: 'Zibashahr',
-      faName: 'زیباشهر'
+      faName: 'زیباشهر',
     },
     {
       name: 'Talkhvoncheh',
-      faName: 'طالخونچه'
+      faName: 'طالخونچه',
     },
     {
       name: 'Karkevand',
-      faName: 'کرکوند'
+      faName: 'کرکوند',
     },
     {
       name: 'Mobarakeh',
-      faName: 'مبارکه'
+      faName: 'مبارکه',
     },
     {
       name: 'Majlesi',
-      faName: 'مجلسی'
+      faName: 'مجلسی',
     },
     {
       name: 'Anarak',
-      faName: 'انارک'
+      faName: 'انارک',
     },
     {
       name: 'Bafran',
-      faName: 'بافران'
+      faName: 'بافران',
     },
     {
       name: 'Nain',
-      faName: 'نایین'
+      faName: 'نایین',
     },
     {
       name: 'Jowzdan',
-      faName: 'جوزدان'
+      faName: 'جوزدان',
     },
     {
       name: 'Dehaq',
-      faName: 'دهق'
+      faName: 'دهق',
     },
     {
       name: 'Alavijeh',
-      faName: 'علویجه'
+      faName: 'علویجه',
     },
     {
       name: 'Kahrizsang',
-      faName: 'کهریزسنگ'
+      faName: 'کهریزسنگ',
     },
     {
       name: 'Goldasht',
-      faName: 'گلدشت'
+      faName: 'گلدشت',
     },
     {
       name: 'Najafabad',
-      faName: 'نجف آباد'
+      faName: 'نجف آباد',
     },
     {
       name: 'Badrud',
-      faName: 'بادرود'
+      faName: 'بادرود',
     },
     {
       name: 'Khaledabad',
-      faName: 'خالدآباد'
+      faName: 'خالدآباد',
     },
     {
       name: 'Tarq Rud',
-      faName: 'طرق رود'
+      faName: 'طرق رود',
     },
     {
       name: 'Natanz',
-      faName: 'نطنز'
+      faName: 'نطنز',
     },
     {
       name: 'Eshtehard',
-      faName: 'اشتهارد'
+      faName: 'اشتهارد',
     },
     {
       name: 'Chaharbagh',
-      faName: 'چهارباغ'
+      faName: 'چهارباغ',
     },
     {
       name: 'Shahr-e Jadid-e Hashtgerd',
-      faName: 'شهر جدید هشتگرد'
+      faName: 'شهر جدید هشتگرد',
     },
     {
       name: 'Kuhsar',
-      faName: 'کوهسار'
+      faName: 'کوهسار',
     },
     {
       name: 'Golsar',
-      faName: 'گلسار'
+      faName: 'گلسار',
     },
     {
       name: 'Hashtgerd',
-      faName: 'هشتگرد'
+      faName: 'هشتگرد',
     },
     {
       name: 'Taleqan',
-      faName: 'طالقان'
+      faName: 'طالقان',
     },
     {
       name: 'Fardis',
-      faName: 'فردیس'
+      faName: 'فردیس',
     },
     {
       name: 'Meshkin Dasht',
-      faName: 'مشکین دشت'
+      faName: 'مشکین دشت',
     },
     {
       name: 'Asara',
-      faName: 'آسارا'
+      faName: 'آسارا',
     },
     {
       name: 'Karaj',
-      faName: 'کرج'
+      faName: 'کرج',
     },
     {
       name: 'Kamal Shahr',
-      faName: 'کمال شهر'
+      faName: 'کمال شهر',
     },
     {
       name: 'Garmdareh',
-      faName: 'گرمدره'
+      faName: 'گرمدره',
     },
     {
       name: 'Mahdasht',
-      faName: 'ماهدشت'
+      faName: 'ماهدشت',
     },
     {
       name: 'Mohammadshahr',
-      faName: 'محمدشهر'
+      faName: 'محمدشهر',
     },
     {
       name: 'Tankaman',
-      faName: 'تنکمان'
+      faName: 'تنکمان',
     },
     {
       name: 'Nazarabad',
-      faName: 'نظرآباد'
+      faName: 'نظرآباد',
     },
     {
       name: 'Abdanan',
-      faName: 'آبدانان'
+      faName: 'آبدانان',
     },
     {
       name: 'Sarab Bagh',
-      faName: 'سراب باغ'
+      faName: 'سراب باغ',
     },
     {
       name: 'Murmuri',
-      faName: 'مورموری'
+      faName: 'مورموری',
     },
     {
       name: 'Ilam',
-      faName: 'ایلام'
+      faName: 'ایلام',
     },
     {
       name: 'Chavar',
-      faName: 'چوار'
+      faName: 'چوار',
     },
     {
       name: 'Eyvan',
-      faName: 'ایوان'
+      faName: 'ایوان',
     },
     {
       name: 'Zarneh',
-      faName: 'زرنه'
+      faName: 'زرنه',
     },
     {
       name: 'Badreh',
-      faName: 'بدره'
+      faName: 'بدره',
     },
     {
       name: 'Asemanabad',
-      faName: 'آسمان آباد'
+      faName: 'آسمان آباد',
     },
     {
       name: 'Belavah ',
-      faName: 'بلاوه'
+      faName: 'بلاوه',
     },
     {
       name: 'Towhid',
-      faName: 'توحید'
+      faName: 'توحید',
     },
     {
       name: 'Sarableh',
-      faName: 'سرابله'
+      faName: 'سرابله',
     },
     {
       name: 'Shabab',
-      faName: 'شباب'
+      faName: 'شباب',
     },
     {
       name: 'Darreh Shahr',
-      faName: 'دره شهر'
+      faName: 'دره شهر',
     },
     {
       name: 'Mazhin',
-      faName: 'ماژین'
+      faName: 'ماژین',
     },
     {
       name: 'Pahleh',
-      faName: 'پهله'
+      faName: 'پهله',
     },
     {
       name: 'Dehloran',
-      faName: 'دهلران'
+      faName: 'دهلران',
     },
     {
       name: 'Musian',
-      faName: 'موسیان'
+      faName: 'موسیان',
     },
     {
       name: 'Lumar',
-      faName: 'لومار'
+      faName: 'لومار',
     },
     {
       name: 'Arkavaz',
-      faName: 'ارکواز'
+      faName: 'ارکواز',
     },
     {
       name: 'Delgosha',
-      faName: 'دلگشا'
+      faName: 'دلگشا',
     },
     {
       name: 'Mohr',
-      faName: 'مهر'
+      faName: 'مهر',
     },
     {
       name: 'Salehabad',
-      faName: 'صالح آباد'
+      faName: 'صالح آباد',
     },
     {
       name: 'Mehran',
-      faName: 'مهران'
+      faName: 'مهران',
     },
     {
       name: 'Bushehr',
-      faName: 'بوشهر'
+      faName: 'بوشهر',
     },
     {
       name: 'Choghadak',
-      faName: 'چغادک'
+      faName: 'چغادک',
     },
     {
       name: 'Kharg',
-      faName: 'خارک'
+      faName: 'خارک',
     },
     {
       name: 'Alishahr',
-      faName: 'عالی شهر'
+      faName: 'عالی شهر',
     },
     {
       name: 'Abad',
-      faName: 'آباد'
+      faName: 'آباد',
     },
     {
       name: 'Ahram',
-      faName: 'اهرم'
+      faName: 'اهرم',
     },
     {
       name: 'Delvar',
-      faName: 'دلوار'
+      faName: 'دلوار',
     },
     {
       name: 'Anarestan',
-      faName: 'انارستان'
+      faName: 'انارستان',
     },
     {
       name: 'Jam',
-      faName: 'جم'
+      faName: 'جم',
     },
     {
       name: 'Riz',
-      faName: 'ریز'
+      faName: 'ریز',
     },
     {
       name: 'Ab Pakhsh',
-      faName: 'آب پخش'
+      faName: 'آب پخش',
     },
     {
       name: 'Borazjan',
-      faName: 'برازجان'
+      faName: 'برازجان',
     },
     {
       name: 'Bushkan',
-      faName: 'بوشکان'
+      faName: 'بوشکان',
     },
     {
       name: 'Tang-e Eram',
-      faName: 'تنگ ارم'
+      faName: 'تنگ ارم',
     },
     {
       name: 'Dalaki',
-      faName: 'دالکی'
+      faName: 'دالکی',
     },
     {
       name: 'Sa`dabad',
-      faName: 'سعد آباد'
+      faName: 'سعد آباد',
     },
     {
       name: 'Shabankareh',
-      faName: 'شبانکاره'
+      faName: 'شبانکاره',
     },
     {
       name: 'Kalameh',
-      faName: 'کلمه'
+      faName: 'کلمه',
     },
     {
       name: 'Vahdatiyeh',
-      faName: 'وحدتیه'
+      faName: 'وحدتیه',
     },
     {
       name: 'Baduleh',
-      faName: 'بادوله'
+      faName: 'بادوله',
     },
     {
       name: 'Khormoj',
-      faName: 'خورموج'
+      faName: 'خورموج',
     },
     {
       name: 'Shanbeh',
-      faName: 'شنبه'
+      faName: 'شنبه',
     },
     {
       name: 'Kaki',
-      faName: 'کاکی'
+      faName: 'کاکی',
     },
     {
       name: 'Abadan',
-      faName: 'آبدان'
+      faName: 'آبدان',
     },
     {
       name: 'Bord Khun',
-      faName: 'بردخون'
+      faName: 'بردخون',
     },
     {
       name: 'Bardestan',
-      faName: 'بردستان'
+      faName: 'بردستان',
     },
     {
       name: 'Bandar-e Deyr',
-      faName: 'بندردیر'
+      faName: 'بندردیر',
     },
     {
       name: 'Dorahak',
-      faName: 'دوراهک'
+      faName: 'دوراهک',
     },
     {
       name: 'Imam Hassan',
-      faName: 'امام حسن'
+      faName: 'امام حسن',
     },
     {
       name: 'Bandar Deylam',
-      faName: 'بندردیلم'
+      faName: 'بندردیلم',
     },
     {
       name: 'Asaluyeh',
-      faName: 'عسلویه'
+      faName: 'عسلویه',
     },
     {
       name: 'Nakhl Taqi',
-      faName: 'نخل تقی'
+      faName: 'نخل تقی',
     },
     {
       name: 'Bandar-e Kangan',
-      faName: 'بندرکنگان'
+      faName: 'بندرکنگان',
     },
     {
       name: 'Bank',
-      faName: 'بنک'
+      faName: 'بنک',
     },
     {
       name: 'Siraf',
-      faName: 'سیراف'
+      faName: 'سیراف',
     },
     {
       name: 'Bandar Rig',
-      faName: 'بندرریگ'
+      faName: 'بندرریگ',
     },
     {
       name: 'Bandar Ganaveh',
-      faName: 'بندرگناوه'
+      faName: 'بندرگناوه',
     },
     {
       name: 'Ahmadabad-e Mostowfi',
-      faName: 'احمد آباد مستوفی'
+      faName: 'احمد آباد مستوفی',
     },
     {
       name: 'Eslamshahr',
-      faName: 'اسلامشهر'
+      faName: 'اسلامشهر',
     },
     {
       name: 'Chahardangeh',
-      faName: 'چهاردانگه'
+      faName: 'چهاردانگه',
     },
     {
       name: 'Salehieh',
-      faName: 'صالحیه'
+      faName: 'صالحیه',
     },
     {
       name: 'Golestan',
-      faName: 'گلستان'
+      faName: 'گلستان',
     },
     {
       name: 'Nasim Shahr',
-      faName: 'نسیم شهر'
+      faName: 'نسیم شهر',
     },
     {
       name: 'Pakdasht',
-      faName: 'پاکدشت'
+      faName: 'پاکدشت',
     },
     {
       name: 'Sharifabad',
-      faName: 'شریف آباد'
+      faName: 'شریف آباد',
     },
     {
       name: 'Ferunabad',
-      faName: 'فرون آباد'
+      faName: 'فرون آباد',
     },
     {
       name: 'Bumehen',
-      faName: 'بومهن'
+      faName: 'بومهن',
     },
     {
       name: 'Pardis',
-      faName: 'پردیس'
+      faName: 'پردیس',
     },
     {
       name: 'Pishva',
-      faName: 'پیشوا'
+      faName: 'پیشوا',
     },
     {
       name: 'Tehran',
-      faName: 'تهران'
+      faName: 'تهران',
     },
     {
       name: 'Absard',
-      faName: 'آبسرد'
+      faName: 'آبسرد',
     },
     {
       name: 'Abali',
-      faName: 'آبعلی'
+      faName: 'آبعلی',
     },
     {
       name: 'Damavand',
-      faName: 'دماوند'
+      faName: 'دماوند',
     },
     {
       name: 'Rudehen',
-      faName: 'رودهن'
+      faName: 'رودهن',
     },
     {
       name: 'Kilan',
-      faName: 'کیلان'
+      faName: 'کیلان',
     },
     {
       name: 'Parand',
-      faName: 'پرند'
+      faName: 'پرند',
     },
     {
       name: 'Robat Karim',
-      faName: 'رباط کریم'
+      faName: 'رباط کریم',
     },
     {
       name: 'Nasirshahr',
-      faName: 'نصیرشهر'
+      faName: 'نصیرشهر',
     },
     {
       name: 'Baqershahr',
-      faName: 'باقرشهر'
+      faName: 'باقرشهر',
     },
     {
       name: 'Hasanabad',
-      faName: 'حسن آباد'
+      faName: 'حسن آباد',
     },
     {
       name: 'Shahr-e-Rey',
-      faName: 'ری'
+      faName: 'ری',
     },
     {
       name: 'Kahrizak',
-      faName: 'کهریزک'
+      faName: 'کهریزک',
     },
     {
       name: 'Tajrish',
-      faName: 'تجریش'
+      faName: 'تجریش',
     },
     {
       name: 'Shemshak',
-      faName: 'شمشک'
+      faName: 'شمشک',
     },
     {
       name: 'Fasham',
-      faName: 'فشم'
+      faName: 'فشم',
     },
     {
       name: 'Lavasan',
-      faName: 'لواسان'
+      faName: 'لواسان',
     },
     {
       name: 'Andisheh',
-      faName: 'اندیشه'
+      faName: 'اندیشه',
     },
     {
       name: 'Baghestan',
-      faName: 'باغستان'
+      faName: 'باغستان',
     },
     {
       name: 'Shahedshahr',
-      faName: 'شاهدشهر'
+      faName: 'شاهدشهر',
     },
     {
       name: 'Shahriar',
-      faName: 'شهریار'
+      faName: 'شهریار',
     },
     {
       name: 'Sabashahr',
-      faName: 'صباشهر'
+      faName: 'صباشهر',
     },
     {
       name: 'Ferdowsieh',
-      faName: 'فردوسیه'
+      faName: 'فردوسیه',
     },
     {
       name: 'Vahidieh',
-      faName: 'وحیدیه'
+      faName: 'وحیدیه',
     },
     {
       name: 'Arjomand',
-      faName: 'ارجمند'
+      faName: 'ارجمند',
     },
     {
       name: 'Firuzkuh',
-      faName: 'فیروزکوه'
+      faName: 'فیروزکوه',
     },
     {
       name: 'Qods',
-      faName: 'قدس'
+      faName: 'قدس',
     },
     {
       name: 'Qarchak',
-      faName: 'قرچک'
+      faName: 'قرچک',
     },
     {
       name: 'Safadasht',
-      faName: 'صفادشت'
+      faName: 'صفادشت',
     },
     {
       name: 'Malard',
-      faName: 'ملارد'
+      faName: 'ملارد',
     },
     {
       name: 'Javadabad',
-      faName: 'جوادآباد'
+      faName: 'جوادآباد',
     },
     {
       name: 'Varamin',
-      faName: 'ورامین'
+      faName: 'ورامین',
     },
     {
       name: 'Ardal',
-      faName: 'اردل'
+      faName: 'اردل',
     },
     {
       name: 'Dashtak',
-      faName: 'دشتک'
+      faName: 'دشتک',
     },
     {
       name: 'Sorkhun',
-      faName: 'سرخون'
+      faName: 'سرخون',
     },
     {
       name: 'Kaj',
-      faName: 'کاج'
+      faName: 'کاج',
     },
     {
       name: 'Borujen',
-      faName: 'بروجن'
+      faName: 'بروجن',
     },
     {
       name: 'Boldaji',
-      faName: 'بلداجی'
+      faName: 'بلداجی',
     },
     {
       name: 'Sefiddasht',
-      faName: 'سفیددشت'
+      faName: 'سفیددشت',
     },
     {
       name: 'Faradonbeh',
-      faName: 'فرادبنه'
+      faName: 'فرادبنه',
     },
     {
       name: 'Gandoman',
-      faName: 'گندمان'
+      faName: 'گندمان',
     },
     {
       name: 'Naqneh',
-      faName: 'نقنه'
+      faName: 'نقنه',
     },
     {
       name: 'Ben',
-      faName: 'بن'
+      faName: 'بن',
     },
     {
       name: 'Vardanjan',
-      faName: 'وردنجان'
+      faName: 'وردنجان',
     },
     {
       name: 'Saman',
-      faName: 'سامان'
+      faName: 'سامان',
     },
     {
       name: 'Sudjan',
-      faName: 'سودجان'
+      faName: 'سودجان',
     },
     {
       name: 'Sureshjan',
-      faName: 'سورشجان'
+      faName: 'سورشجان',
     },
     {
       name: 'Shahr-e Kord',
-      faName: 'شهرکرد'
+      faName: 'شهرکرد',
     },
     {
       name: 'Taqanak',
-      faName: 'طاقانک'
+      faName: 'طاقانک',
     },
     {
       name: 'Farrokh Shahr',
-      faName: 'فرخ شهر'
+      faName: 'فرخ شهر',
     },
     {
       name: 'Kian',
-      faName: 'کیان'
+      faName: 'کیان',
     },
     {
       name: 'Nafech',
-      faName: 'نافچ'
+      faName: 'نافچ',
     },
     {
       name: 'Haruni',
-      faName: 'هارونی'
+      faName: 'هارونی',
     },
     {
       name: 'Hafshejan',
-      faName: 'هفشجان'
+      faName: 'هفشجان',
     },
     {
       name: 'Babaheydar',
-      faName: 'باباحیدر'
+      faName: 'باباحیدر',
     },
     {
       name: 'Pardanjan',
-      faName: 'پردنجان'
+      faName: 'پردنجان',
     },
     {
       name: 'Junqan',
-      faName: 'جونقان'
+      faName: 'جونقان',
     },
     {
       name: 'Cholicheh',
-      faName: 'چلیچه'
+      faName: 'چلیچه',
     },
     {
       name: 'Farsan',
-      faName: 'فارسان'
+      faName: 'فارسان',
     },
     {
       name: 'Gujan',
-      faName: 'گوجان'
+      faName: 'گوجان',
     },
     {
       name: 'Bazoft',
-      faName: 'بازفت'
+      faName: 'بازفت',
     },
     {
       name: 'Chelgard',
-      faName: 'چلگرد'
+      faName: 'چلگرد',
     },
     {
       name: 'Samsami',
-      faName: 'صمصامی'
+      faName: 'صمصامی',
     },
     {
       name: 'Dastana',
-      faName: 'دستنا'
+      faName: 'دستنا',
     },
     {
       name: 'Shalamzar',
-      faName: 'شلمزار'
+      faName: 'شلمزار',
     },
     {
       name: 'Gahru',
-      faName: 'گهرو'
+      faName: 'گهرو',
     },
     {
       name: 'Naghan',
-      faName: 'ناغان'
+      faName: 'ناغان',
     },
     {
       name: 'Aluni',
-      faName: 'آلونی'
+      faName: 'آلونی',
     },
     {
       name: 'Lordegan',
-      faName: 'لردگان'
+      faName: 'لردگان',
     },
     {
       name: 'Mal-e Khalifeh',
-      faName: 'مال خلیفه'
+      faName: 'مال خلیفه',
     },
     {
       name: 'Monj',
-      faName: 'منج'
+      faName: 'منج',
     },
     {
       name: 'Eresk',
-      faName: 'ارسک'
+      faName: 'ارسک',
     },
     {
       name: 'Boshruyeh',
-      faName: 'بشرویه'
+      faName: 'بشرویه',
     },
     {
       name: 'Birjand',
-      faName: 'بیرجند'
+      faName: 'بیرجند',
     },
     {
       name: 'Khusf',
-      faName: 'خوسف'
+      faName: 'خوسف',
     },
     {
       name: 'Asadiyeh',
-      faName: 'اسدیه'
+      faName: 'اسدیه',
     },
     {
       name: 'Tabas-e Masina',
-      faName: 'طبس مسینا'
+      faName: 'طبس مسینا',
     },
     {
       name: 'Qohestan',
-      faName: 'قهستان'
+      faName: 'قهستان',
     },
     {
       name: 'Gazik',
-      faName: 'گزیک'
+      faName: 'گزیک',
     },
     {
       name: 'Hajjiabad',
-      faName: 'حاجی آباد'
+      faName: 'حاجی آباد',
     },
     {
       name: 'Dehkadeh',
-      faName: 'زهان'
+      faName: 'زهان',
     },
     {
       name: 'Ayask',
-      faName: 'آیسک'
+      faName: 'آیسک',
     },
     {
       name: 'Sarayan',
-      faName: 'سرایان'
+      faName: 'سرایان',
     },
     {
       name: 'Seh Qaleh',
-      faName: 'سه قلعه'
+      faName: 'سه قلعه',
     },
     {
       name: 'Sarbisheh',
-      faName: 'سربیشه'
+      faName: 'سربیشه',
     },
     {
       name: 'Mud',
-      faName: 'مود'
+      faName: 'مود',
     },
     {
       name: 'Deyhuk',
-      faName: 'دیهوک'
+      faName: 'دیهوک',
     },
     {
       name: 'Tabas',
-      faName: 'طبس'
+      faName: 'طبس',
     },
     {
       name: 'Eshqabad',
-      faName: 'عشق آباد'
+      faName: 'عشق آباد',
     },
     {
       name: 'Eslamiyeh',
-      faName: 'اسلامیه'
+      faName: 'اسلامیه',
     },
     {
       name: 'Ferdows',
-      faName: 'فردوس'
+      faName: 'فردوس',
     },
     {
       name: 'Arian Shahr',
-      faName: 'آرین شهر'
+      faName: 'آرین شهر',
     },
     {
       name: 'Esfeden',
-      faName: 'اسفدن'
+      faName: 'اسفدن',
     },
     {
       name: 'Khezri Dashtebayaz',
-      faName: 'خضری دشت بیاض'
+      faName: 'خضری دشت بیاض',
     },
     {
       name: 'Qaen',
-      faName: 'قاین'
+      faName: 'قاین',
     },
     {
       name: 'Nimbeluk',
-      faName: 'نیمبلوک'
+      faName: 'نیمبلوک',
     },
     {
       name: 'Shusef',
-      faName: 'شوسف'
+      faName: 'شوسف',
     },
     {
       name: 'Nehbandan',
-      faName: 'نهبندان'
+      faName: 'نهبندان',
     },
     {
       name: 'Bakharz',
-      faName: 'باخرز'
+      faName: 'باخرز',
     },
     {
       name: 'Bajestan',
-      faName: 'بجستان'
+      faName: 'بجستان',
     },
     {
       name: 'Yunesi',
-      faName: 'یونسی'
+      faName: 'یونسی',
     },
     {
       name: 'Anabad',
-      faName: 'انابد'
+      faName: 'انابد',
     },
     {
       name: 'Bardaskan',
-      faName: 'بردسکن'
+      faName: 'بردسکن',
     },
     {
       name: 'Shahrabad',
-      faName: 'شهراباد'
+      faName: 'شهراباد',
     },
     {
       name: 'Shandiz',
-      faName: 'شاندیز'
+      faName: 'شاندیز',
     },
     {
       name: 'Torqabeh',
-      faName: 'طرقبه'
+      faName: 'طرقبه',
     },
     {
       name: 'Taybad',
-      faName: 'تایباد'
+      faName: 'تایباد',
     },
     {
       name: 'Kariz',
-      faName: 'کاریز'
+      faName: 'کاریز',
     },
     {
       name: 'Ahmadabad',
-      faName: 'احمدابادصولت'
+      faName: 'احمدابادصولت',
     },
     {
       name: 'Torbat-e Jam',
-      faName: 'تربت جام'
+      faName: 'تربت جام',
     },
     {
       name: 'Nil Shahr',
-      faName: 'نیل شهر'
+      faName: 'نیل شهر',
     },
     {
       name: 'Bayg',
-      faName: 'بایک'
+      faName: 'بایک',
     },
     {
       name: 'Torbat-e Heydarieh',
-      faName: 'تربت حیدریه'
+      faName: 'تربت حیدریه',
     },
     {
       name: 'Robat-e Sang',
-      faName: 'رباط سنگ'
+      faName: 'رباط سنگ',
     },
     {
       name: 'Kadkan',
-      faName: 'کدکن'
+      faName: 'کدکن',
     },
     {
       name: 'Joghtay',
-      faName: 'جغتای'
+      faName: 'جغتای',
     },
     {
       name: 'Neqab',
-      faName: 'نقاب'
+      faName: 'نقاب',
     },
     {
       name: 'Chenaran',
-      faName: 'چناران'
+      faName: 'چناران',
     },
     {
       name: 'Golbahar',
-      faName: 'گلبهار'
+      faName: 'گلبهار',
     },
     {
       name: 'Golmakan',
-      faName: 'گلمکان'
+      faName: 'گلمکان',
     },
     {
       name: 'Khalilabad',
-      faName: 'خلیل آباد'
+      faName: 'خلیل آباد',
     },
     {
       name: 'Kondor',
-      faName: 'کندر'
+      faName: 'کندر',
     },
     {
       name: 'Khaf',
-      faName: 'خواف'
+      faName: 'خواف',
     },
     {
       name: 'Salami',
-      faName: 'سلامی'
+      faName: 'سلامی',
     },
     {
       name: 'Sangan',
-      faName: 'سنگان'
+      faName: 'سنگان',
     },
     {
       name: 'Qasemabad',
-      faName: 'قاسم آباد'
+      faName: 'قاسم آباد',
     },
     {
       name: 'Nashtifan',
-      faName: 'نشتیفان'
+      faName: 'نشتیفان',
     },
     {
       name: 'Soltanabad',
-      faName: 'سلطان آباد'
+      faName: 'سلطان آباد',
     },
     {
       name: 'Davarzan',
-      faName: 'داورزن'
+      faName: 'داورزن',
     },
     {
       name: 'Chapeshlu',
-      faName: 'چاپشلو'
+      faName: 'چاپشلو',
     },
     {
       name: 'Dargaz',
-      faName: 'درگز'
+      faName: 'درگز',
     },
     {
       name: 'Lotfabad',
-      faName: 'لطف آباد'
+      faName: 'لطف آباد',
     },
     {
       name: 'Nowkhandan',
-      faName: 'نوخندان'
+      faName: 'نوخندان',
     },
     {
       name: 'Jangal',
-      faName: 'جنگل'
+      faName: 'جنگل',
     },
     {
       name: 'Roshtkhvar',
-      faName: 'رشتخوار'
+      faName: 'رشتخوار',
     },
     {
       name: 'Rud Ab',
-      faName: 'روداب'
+      faName: 'روداب',
     },
     {
       name: 'Sabzevar',
-      faName: 'سبزوار'
+      faName: 'سبزوار',
     },
     {
       name: 'Sheshtamad',
-      faName: 'ششتمد'
+      faName: 'ششتمد',
     },
     {
       name: 'Sarakhs',
-      faName: 'سرخس'
+      faName: 'سرخس',
     },
     {
       name: 'Mazdavand',
-      faName: 'مزدآوند'
+      faName: 'مزدآوند',
     },
     {
       name: 'Sefid Sang',
-      faName: 'سفیدسنگ'
+      faName: 'سفیدسنگ',
     },
     {
       name: 'Farhadgerd',
-      faName: 'فرهادگرد'
+      faName: 'فرهادگرد',
     },
     {
       name: 'Fariman',
-      faName: 'فریمان'
+      faName: 'فریمان',
     },
     {
       name: 'Qalandarabad',
-      faName: 'قلندرآباد'
+      faName: 'قلندرآباد',
     },
     {
       name: 'Firuzeh',
-      faName: 'فیروزه'
+      faName: 'فیروزه',
     },
     {
       name: 'Hemmatabad',
-      faName: 'همت آباد'
+      faName: 'همت آباد',
     },
     {
       name: 'Bajgiran',
-      faName: 'باجگیران'
+      faName: 'باجگیران',
     },
     {
       name: 'Quchan',
-      faName: 'قوچان'
+      faName: 'قوچان',
     },
     {
       name: 'Rivash',
-      faName: 'ریوش'
+      faName: 'ریوش',
     },
     {
       name: 'Kashmar',
-      faName: 'کاشمر'
+      faName: 'کاشمر',
     },
     {
       name: 'Shahrezu',
-      faName: 'شهرزو'
+      faName: 'شهرزو',
     },
     {
       name: 'Kalat',
-      faName: 'کلات'
+      faName: 'کلات',
     },
     {
       name: 'Bidokht',
-      faName: 'بیدخت'
+      faName: 'بیدخت',
     },
     {
       name: 'Kakhk',
-      faName: 'کاخک'
+      faName: 'کاخک',
     },
     {
       name: 'Gonabad',
-      faName: 'گناباد'
+      faName: 'گناباد',
     },
     {
       name: 'Razaviyeh',
-      faName: 'رضویه'
+      faName: 'رضویه',
     },
     {
       name: 'Mashhad',
-      faName: 'مشهد'
+      faName: 'مشهد',
     },
     {
       name: 'Mashhad Samen',
-      faName: 'مشهد ثامن'
+      faName: 'مشهد ثامن',
     },
     {
       name: 'Malekabad',
-      faName: 'ملک آباد'
+      faName: 'ملک آباد',
     },
     {
       name: 'Shadmehr',
-      faName: 'شادمهر'
+      faName: 'شادمهر',
     },
     {
       name: 'Feyzabad',
-      faName: 'فیض آباد'
+      faName: 'فیض آباد',
     },
     {
       name: 'Bar',
-      faName: 'بار'
+      faName: 'بار',
     },
     {
       name: 'Chakaneh',
-      faName: 'چکنه'
+      faName: 'چکنه',
     },
     {
       name: 'Kharv',
-      faName: 'خرو'
+      faName: 'خرو',
     },
     {
       name: 'Darrud',
-      faName: 'درود'
+      faName: 'درود',
     },
     {
       name: 'Qadamgah',
-      faName: 'قدمگاه'
+      faName: 'قدمگاه',
     },
     {
       name: 'Nishapur',
-      faName: 'نیشابور'
+      faName: 'نیشابور',
     },
     {
       name: 'Esfarayen',
-      faName: 'اسفراین'
+      faName: 'اسفراین',
     },
     {
       name: 'Safiabad',
-      faName: 'صفی آباد'
+      faName: 'صفی آباد',
     },
     {
       name: 'Bojnord',
-      faName: 'بجنورد'
+      faName: 'بجنورد',
     },
     {
       name: 'Chenaran',
-      faName: 'چناران شهر'
+      faName: 'چناران شهر',
     },
     {
       name: 'Hesar-e Garmkhan',
-      faName: 'حصارگرمخان'
+      faName: 'حصارگرمخان',
     },
     {
       name: 'Jajarm',
-      faName: 'جاجرم'
+      faName: 'جاجرم',
     },
     {
       name: 'Istgah-e Sankhvast',
-      faName: 'سنخواست'
+      faName: 'سنخواست',
     },
     {
       name: 'Showqan',
-      faName: 'شوقان'
+      faName: 'شوقان',
     },
     {
       name: 'Raz',
-      faName: 'راز'
+      faName: 'راز',
     },
     {
       name: 'Ziarat',
-      faName: 'زیارت'
+      faName: 'زیارت',
     },
     {
       name: 'Shirvan',
-      faName: 'شیروان'
+      faName: 'شیروان',
     },
     {
       name: 'Qush Khaneh',
-      faName: 'قوشخانه'
+      faName: 'قوشخانه',
     },
     {
       name: 'Lujali',
-      faName: 'لوجلی'
+      faName: 'لوجلی',
     },
     {
       name: 'Titkanlu',
-      faName: 'تیتکانلو'
+      faName: 'تیتکانلو',
     },
     {
       name: 'Faruj',
-      faName: 'فاروج'
+      faName: 'فاروج',
     },
     {
       name: 'Ayur',
-      faName: 'ایور'
+      faName: 'ایور',
     },
     {
       name: 'Daraq',
-      faName: 'درق'
+      faName: 'درق',
     },
     {
       name: 'Garmeh',
-      faName: 'گرمه'
+      faName: 'گرمه',
     },
     {
       name: 'Ashkhaneh',
-      faName: 'آشخانه'
+      faName: 'آشخانه',
     },
     {
       name: 'Ava',
-      faName: 'آوا'
+      faName: 'آوا',
     },
     {
       name: 'Pish Qaleh',
-      faName: 'پیش قلعه'
+      faName: 'پیش قلعه',
     },
     {
       name: 'Qazi',
-      faName: 'قاضی'
+      faName: 'قاضی',
     },
     {
       name: 'Abadan',
-      faName: 'آبادان'
+      faName: 'آبادان',
     },
     {
       name: 'Arvandkenar',
-      faName: 'اروندکنار'
+      faName: 'اروندکنار',
     },
     {
       name: 'Chavibdeh',
-      faName: 'چویبده'
+      faName: 'چویبده',
     },
     {
       name: 'Aghajari',
-      faName: 'آغاجاری'
+      faName: 'آغاجاری',
     },
     {
       name: 'Omidiyeh',
-      faName: 'امیدیه'
+      faName: 'امیدیه',
     },
     {
       name: 'Jayezan',
-      faName: 'جایزان'
+      faName: 'جایزان',
     },
     {
       name: 'Abozhdan',
-      faName: 'آبژدان'
+      faName: 'آبژدان',
     },
     {
       name: 'Qal`eh Khvajeh',
-      faName: 'قلعه خواجه'
+      faName: 'قلعه خواجه',
     },
     {
       name: 'Azadkhan',
-      faName: 'آزادی'
+      faName: 'آزادی',
     },
     {
       name: 'Andimeshk',
-      faName: 'اندیمشک'
+      faName: 'اندیمشک',
     },
     {
       name: 'Bidrubeh',
-      faName: 'بیدروبه'
+      faName: 'بیدروبه',
     },
     {
       name: 'Cham Golak',
-      faName: 'چم گلک'
+      faName: 'چم گلک',
     },
     {
       name: 'Hoseyniyeh',
-      faName: 'حسینیه'
+      faName: 'حسینیه',
     },
     {
       name: 'Elhayi',
-      faName: 'الهایی'
+      faName: 'الهایی',
     },
     {
       name: 'Ahvaz',
-      faName: 'اهواز'
+      faName: 'اهواز',
     },
     {
       name: 'Izeh',
-      faName: 'ایذه'
+      faName: 'ایذه',
     },
     {
       name: 'Dehdez',
-      faName: 'دهدز'
+      faName: 'دهدز',
     },
     {
       name: 'Bagh-e Malek',
-      faName: 'باغ ملک'
+      faName: 'باغ ملک',
     },
     {
       name: 'Seydun',
-      faName: 'صیدون'
+      faName: 'صیدون',
     },
     {
       name: 'Qal`eh Tol',
-      faName: 'قلعه تل'
+      faName: 'قلعه تل',
     },
     {
       name: 'Meydavud',
-      faName: 'میداود'
+      faName: 'میداود',
     },
     {
       name: 'Sheyban',
-      faName: 'شیبان'
+      faName: 'شیبان',
     },
     {
       name: 'Mollasani',
-      faName: 'ملاثانی'
+      faName: 'ملاثانی',
     },
     {
       name: 'Veys',
-      faName: 'ویس'
+      faName: 'ویس',
     },
     {
       name: 'Bandar Imam Khomeini',
-      faName: 'بندر امام خمینی'
+      faName: 'بندر امام خمینی',
     },
     {
       name: 'Bandar Mahshahr',
-      faName: 'بندرماهشهر'
+      faName: 'بندرماهشهر',
     },
     {
       name: 'Chamran',
-      faName: 'چمران'
+      faName: 'چمران',
     },
     {
       name: 'Behbahan',
-      faName: 'بهبهان'
+      faName: 'بهبهان',
     },
     {
       name: 'Tashan',
-      faName: 'تشان'
+      faName: 'تشان',
     },
     {
       name: 'Mansuriyeh',
-      faName: 'منصوریه'
+      faName: 'منصوریه',
     },
     {
       name: 'Hamidiyeh',
-      faName: 'حمیدیه'
+      faName: 'حمیدیه',
     },
     {
       name: 'Khorramshahr',
-      faName: 'خرمشهر'
+      faName: 'خرمشهر',
     },
     {
       name: 'Moqavemat',
-      faName: 'مقاومت'
+      faName: 'مقاومت',
     },
     {
       name: 'Minushahr',
-      faName: 'مینوشهر'
+      faName: 'مینوشهر',
     },
     {
       name: 'Choghamish',
-      faName: 'چغامیش'
+      faName: 'چغامیش',
     },
     {
       name: 'Hamzeh',
-      faName: 'حمزه'
+      faName: 'حمزه',
     },
     {
       name: 'Dezful',
-      faName: 'دزفول'
+      faName: 'دزفول',
     },
     {
       name: 'Saland',
-      faName: 'سالند'
+      faName: 'سالند',
     },
     {
       name: 'Siah Mansur',
-      faName: 'سیاه منصور'
+      faName: 'سیاه منصور',
     },
     {
       name: 'Shamsabad',
-      faName: 'شمس آباد'
+      faName: 'شمس آباد',
     },
     {
       name: 'Dezab',
-      faName: 'شهر امام'
+      faName: 'شهر امام',
     },
     {
       name: 'Mianrud',
-      faName: 'میانرود'
+      faName: 'میانرود',
     },
     {
       name: 'Abou Homeyzeh',
-      faName: 'ابوحمیظه'
+      faName: 'ابوحمیظه',
     },
     {
       name: 'Bostan',
-      faName: 'بستان'
+      faName: 'بستان',
     },
     {
       name: 'Susangerd',
-      faName: 'سوسنگرد'
+      faName: 'سوسنگرد',
     },
     {
       name: 'Kut-e Seyyed Naim',
-      faName: 'کوت سیدنعیم'
+      faName: 'کوت سیدنعیم',
     },
     {
       name: 'Ramshir',
-      faName: 'رامشیر'
+      faName: 'رامشیر',
     },
     {
       name: 'Moshrageh',
-      faName: 'مشراگه'
+      faName: 'مشراگه',
     },
     {
       name: 'Ramhormoz',
-      faName: 'رامهرمز'
+      faName: 'رامهرمز',
     },
     {
       name: 'Khanafereh',
-      faName: 'خنافره'
+      faName: 'خنافره',
     },
     {
       name: 'Darkhovin',
-      faName: 'دارخوین'
+      faName: 'دارخوین',
     },
     {
       name: 'Shadegan',
-      faName: 'شادگان'
+      faName: 'شادگان',
     },
     {
       name: 'Alvan',
-      faName: 'الوان'
+      faName: 'الوان',
     },
     {
       name: 'Horr',
-      faName: 'حر'
+      faName: 'حر',
     },
     {
       name: 'Seyyed Shavur',
-      faName: 'شاوور'
+      faName: 'شاوور',
     },
     {
       name: 'Shush',
-      faName: 'شوش'
+      faName: 'شوش',
     },
     {
       name: 'Jariyeh Seyyed Karm',
-      faName: 'فتح المبین'
+      faName: 'فتح المبین',
     },
     {
       name: 'Sardaran',
-      faName: 'سرداران'
+      faName: 'سرداران',
     },
     {
       name: 'Sherafat',
-      faName: 'شرافت'
+      faName: 'شرافت',
     },
     {
       name: 'Shushtar',
-      faName: 'شوشتر'
+      faName: 'شوشتر',
     },
     {
       name: 'Guriyeh',
-      faName: 'گوریه'
+      faName: 'گوریه',
     },
     {
       name: 'Kut Abdollah',
-      faName: 'کوت عبداله'
+      faName: 'کوت عبداله',
     },
     {
       name: 'Torkalaki',
-      faName: 'ترکالکی'
+      faName: 'ترکالکی',
     },
     {
       name: 'Jannat Makan',
-      faName: 'جنت مکان'
+      faName: 'جنت مکان',
     },
     {
       name: 'Semaleh',
-      faName: 'سماله'
+      faName: 'سماله',
     },
     {
       name: 'Saleh Shahr',
-      faName: 'صالح شهر'
+      faName: 'صالح شهر',
     },
     {
       name: 'Gotvand',
-      faName: 'گتوند'
+      faName: 'گتوند',
     },
     {
       name: 'Lali',
-      faName: 'لالی'
+      faName: 'لالی',
     },
     {
       name: 'Golgir',
-      faName: 'گلگیر'
+      faName: 'گلگیر',
     },
     {
       name: 'Masjed Soleyman',
-      faName: 'مسجد سلیمان'
+      faName: 'مسجد سلیمان',
     },
     {
       name: 'Haftkel',
-      faName: 'هفتگل'
+      faName: 'هفتگل',
     },
     {
       name: 'Zahreh',
-      faName: 'زهره'
+      faName: 'زهره',
     },
     {
       name: 'Hendijan',
-      faName: 'هندیجان'
+      faName: 'هندیجان',
     },
     {
       name: 'Rafi',
-      faName: 'رفیع'
+      faName: 'رفیع',
     },
     {
       name: 'Hoveyzeh',
-      faName: 'هویزه'
+      faName: 'هویزه',
     },
     {
       name: 'Abhar',
-      faName: 'ابهر'
+      faName: 'ابهر',
     },
     {
       name: 'Sain Qaleh',
-      faName: 'صایین قلعه'
+      faName: 'صایین قلعه',
     },
     {
       name: 'Hidaj',
-      faName: 'هیدج'
+      faName: 'هیدج',
     },
     {
       name: 'Halab',
-      faName: 'حلب'
+      faName: 'حلب',
     },
     {
       name: 'Zarrinabad',
-      faName: 'زرین آباد'
+      faName: 'زرین آباد',
     },
     {
       name: 'Zarrin Rud',
-      faName: 'زرین رود'
+      faName: 'زرین رود',
     },
     {
       name: 'Sojas',
-      faName: 'سجاس'
+      faName: 'سجاس',
     },
     {
       name: 'Sohrevard',
-      faName: 'سهرورد'
+      faName: 'سهرورد',
     },
     {
       name: 'Qeydar',
-      faName: 'قیدار'
+      faName: 'قیدار',
     },
     {
       name: 'Karasf',
-      faName: 'کرسف'
+      faName: 'کرسف',
     },
     {
       name: 'Garmab',
-      faName: 'گرماب'
+      faName: 'گرماب',
     },
     {
       name: 'Nour Abad(Nour Bahar)',
-      faName: 'نوربهار'
+      faName: 'نوربهار',
     },
     {
       name: 'Khorramdarreh',
-      faName: 'خرمدره'
+      faName: 'خرمدره',
     },
     {
       name: 'Armaghankhaneh',
-      faName: 'ارمغانخانه'
+      faName: 'ارمغانخانه',
     },
     {
       name: 'Zanjan',
-      faName: 'زنجان'
+      faName: 'زنجان',
     },
     {
       name: 'Nik Pey',
-      faName: 'نیک پی'
+      faName: 'نیک پی',
     },
     {
       name: 'Soltaniyeh',
-      faName: 'سلطانیه'
+      faName: 'سلطانیه',
     },
     {
       name: 'Abbar',
-      faName: 'آب بر'
+      faName: 'آب بر',
     },
     {
       name: 'Chavarzaq',
-      faName: 'چورزق'
+      faName: 'چورزق',
     },
     {
       name: 'Dandi',
-      faName: 'دندی'
+      faName: 'دندی',
     },
     {
       name: 'Mahneshan',
-      faName: 'ماه نشان'
+      faName: 'ماه نشان',
     },
     {
       name: 'Aradan',
-      faName: 'آرادان'
+      faName: 'آرادان',
     },
     {
       name: 'Kohanabad',
-      faName: 'کهن آباد'
+      faName: 'کهن آباد',
     },
     {
       name: 'Amiriyeh',
-      faName: 'امیریه'
+      faName: 'امیریه',
     },
     {
       name: 'Damghan',
-      faName: 'دامغان'
+      faName: 'دامغان',
     },
     {
       name: 'Dibaj',
-      faName: 'دیباج'
+      faName: 'دیباج',
     },
     {
       name: 'Kalateh',
-      faName: 'کلاته'
+      faName: 'کلاته',
     },
     {
       name: 'Sorkheh',
-      faName: 'سرخه'
+      faName: 'سرخه',
     },
     {
       name: 'Semnan',
-      faName: 'سمنان'
+      faName: 'سمنان',
     },
     {
       name: 'Bastam',
-      faName: 'بسطام'
+      faName: 'بسطام',
     },
     {
       name: 'Beyarjomand',
-      faName: 'بیارجمند'
+      faName: 'بیارجمند',
     },
     {
       name: 'Rudian',
-      faName: 'رودیان'
+      faName: 'رودیان',
     },
     {
       name: 'Shahrud',
-      faName: 'شاهرود'
+      faName: 'شاهرود',
     },
     {
       name: 'Kalateh-ye Khij',
-      faName: 'کلاته خیج'
+      faName: 'کلاته خیج',
     },
     {
       name: 'Mojen',
-      faName: 'مجن'
+      faName: 'مجن',
     },
     {
       name: 'Eyvanki',
-      faName: 'ایوانکی'
+      faName: 'ایوانکی',
     },
     {
       name: 'Garmsar',
-      faName: 'گرمسار'
+      faName: 'گرمسار',
     },
     {
       name: 'Darjazin',
-      faName: 'درجزین'
+      faName: 'درجزین',
     },
     {
       name: 'Shahmirzad',
-      faName: 'شهمیرزاد'
+      faName: 'شهمیرزاد',
     },
     {
       name: 'MehdiShahr',
-      faName: 'مهدی شهر'
+      faName: 'مهدی شهر',
     },
     {
       name: 'Meyami',
-      faName: 'میامی'
+      faName: 'میامی',
     },
     {
       name: 'Iranshahr',
-      faName: 'ایرانشهر'
+      faName: 'ایرانشهر',
     },
     {
       name: 'Bazman',
-      faName: 'بزمان'
+      faName: 'بزمان',
     },
     {
       name: 'Bampur',
-      faName: 'بمپور'
+      faName: 'بمپور',
     },
     {
       name: 'Mohammadan',
-      faName: 'محمدان'
+      faName: 'محمدان',
     },
     {
       name: 'Chabahar',
-      faName: 'چابهار'
+      faName: 'چابهار',
     },
     {
       name: 'Negur',
-      faName: 'نگور'
+      faName: 'نگور',
     },
     {
       name: 'Khash',
-      faName: 'خاش'
+      faName: 'خاش',
     },
     {
       name: 'Nukabad',
-      faName: 'نوک آباد'
+      faName: 'نوک آباد',
     },
     {
       name: 'Golmurti',
-      faName: 'گلمورتی'
+      faName: 'گلمورتی',
     },
     {
       name: 'Bonjar',
-      faName: 'بنجار'
+      faName: 'بنجار',
     },
     {
       name: 'Zabol',
-      faName: 'زابل'
+      faName: 'زابل',
     },
     {
       name: 'Zahedan',
-      faName: 'زاهدان'
+      faName: 'زاهدان',
     },
     {
       name: 'Nosratabad',
-      faName: 'نصرت آباد'
+      faName: 'نصرت آباد',
     },
     {
       name: 'Zehak',
-      faName: 'زهک'
+      faName: 'زهک',
     },
     {
       name: 'Jaleq',
-      faName: 'جالق'
+      faName: 'جالق',
     },
     {
       name: 'Saravan',
-      faName: 'سراوان'
+      faName: 'سراوان',
     },
     {
       name: 'Sirkan',
-      faName: 'سیرکان'
+      faName: 'سیرکان',
     },
     {
       name: 'Gosht',
-      faName: 'گشت'
+      faName: 'گشت',
     },
     {
       name: 'Mohamadi',
-      faName: 'محمدی'
+      faName: 'محمدی',
     },
     {
       name: 'Pishin',
-      faName: 'پیشین'
+      faName: 'پیشین',
     },
     {
       name: 'Rask',
-      faName: 'راسک'
+      faName: 'راسک',
     },
     {
       name: 'Sarbaz',
-      faName: 'سرباز'
+      faName: 'سرباز',
     },
     {
       name: 'Suran',
-      faName: 'سوران'
+      faName: 'سوران',
     },
     {
       name: 'Hiduch',
-      faName: 'هیدوچ'
+      faName: 'هیدوچ',
     },
     {
       name: 'Fanuj',
-      faName: 'فنوج'
+      faName: 'فنوج',
     },
     {
       name: 'Qasr-e Qand',
-      faName: 'قصرقند'
+      faName: 'قصرقند',
     },
     {
       name: 'Konarak',
-      faName: 'کنارک'
+      faName: 'کنارک',
     },
     {
       name: 'Zaboli',
-      faName: 'مهرستان'
+      faName: 'مهرستان',
     },
     {
       name: 'Mirjaveh',
-      faName: 'میرجاوه'
+      faName: 'میرجاوه',
     },
     {
       name: 'Espakeh',
-      faName: 'اسپکه'
+      faName: 'اسپکه',
     },
     {
       name: 'Bent',
-      faName: 'بنت'
+      faName: 'بنت',
     },
     {
       name: 'Nik Shahr',
-      faName: 'نیک شهر'
+      faName: 'نیک شهر',
     },
     {
       name: 'Adimi',
-      faName: 'ادیمی'
+      faName: 'ادیمی',
     },
     {
       name: 'Akbarabad',
-      faName: 'شهرک علی اکبر'
+      faName: 'شهرک علی اکبر',
     },
     {
       name: 'Dust Mohammad',
-      faName: 'دوست محمد'
+      faName: 'دوست محمد',
     },
     {
       name: 'Abadeh',
-      faName: 'آباده'
+      faName: 'آباده',
     },
     {
       name: 'Izadkhast',
-      faName: 'ایزدخواست'
+      faName: 'ایزدخواست',
     },
     {
       name: 'Bahman',
-      faName: 'بهمن'
+      faName: 'بهمن',
     },
     {
       name: 'Surmaq',
-      faName: 'سورمق'
+      faName: 'سورمق',
     },
     {
       name: 'Soghad',
-      faName: 'صغاد'
+      faName: 'صغاد',
     },
     {
       name: 'Arsanjan',
-      faName: 'ارسنجان'
+      faName: 'ارسنجان',
     },
     {
       name: 'Estahban',
-      faName: 'استهبان'
+      faName: 'استهبان',
     },
     {
       name: 'Ij',
-      faName: 'ایج'
+      faName: 'ایج',
     },
     {
       name: 'Runiz ',
-      faName: 'رونیز'
+      faName: 'رونیز',
     },
     {
       name: 'Eqlid',
-      faName: 'اقلید'
+      faName: 'اقلید',
     },
     {
       name: 'Deh-e now',
-      faName: 'دژکرد'
+      faName: 'دژکرد',
     },
     {
       name: 'Sedeh',
-      faName: 'سده'
+      faName: 'سده',
     },
     {
       name: 'Bavanat',
-      faName: 'بوانات'
+      faName: 'بوانات',
     },
     {
       name: 'Hesami',
-      faName: 'حسامی'
+      faName: 'حسامی',
     },
     {
       name: "Korreh'i",
-      faName: 'کره ای'
+      faName: 'کره ای',
     },
     {
       name: 'Mazayjan',
-      faName: 'مزایجان'
+      faName: 'مزایجان',
     },
     {
       name: 'Saadat Shahr',
-      faName: 'سعادت شهر'
+      faName: 'سعادت شهر',
     },
     {
       name: 'Madar-e-Soleyman',
-      faName: 'مادرسلیمان'
+      faName: 'مادرسلیمان',
     },
     {
       name: 'Bab Anar',
-      faName: 'باب انار'
+      faName: 'باب انار',
     },
     {
       name: 'Jahrom',
-      faName: 'جهرم'
+      faName: 'جهرم',
     },
     {
       name: 'Khavaran',
-      faName: 'خاوران'
+      faName: 'خاوران',
     },
     {
       name: 'Duzeh',
-      faName: 'دوزه'
+      faName: 'دوزه',
     },
     {
       name: 'Qotbabad',
-      faName: 'قطب آباد'
+      faName: 'قطب آباد',
     },
     {
       name: 'Kharameh',
-      faName: 'خرامه'
+      faName: 'خرامه',
     },
     {
       name: 'Soltan Shahr',
-      faName: 'سلطان شهر'
+      faName: 'سلطان شهر',
     },
     {
       name: 'Safashahr',
-      faName: 'صفاشهر'
+      faName: 'صفاشهر',
     },
     {
       name: 'Qaderabad',
-      faName: 'قادراباد'
+      faName: 'قادراباد',
     },
     {
       name: 'Khonj',
-      faName: 'خنج'
+      faName: 'خنج',
     },
     {
       name: 'Jannat Shahr',
-      faName: 'جنت شهر'
+      faName: 'جنت شهر',
     },
     {
       name: 'Darab',
-      faName: 'داراب'
+      faName: 'داراب',
     },
     {
       name: 'Doborji',
-      faName: 'دوبرجی'
+      faName: 'دوبرجی',
     },
     {
       name: 'Fadami',
-      faName: 'فدامی'
+      faName: 'فدامی',
     },
     {
       name: 'Kopen',
-      faName: 'کوپن'
+      faName: 'کوپن',
     },
     {
       name: 'Masiri',
-      faName: 'مصیری'
+      faName: 'مصیری',
     },
     {
       name: 'Dobiran',
-      faName: 'دبیران'
+      faName: 'دبیران',
     },
     {
       name: 'Pir City',
-      faName: 'شهرپیر'
+      faName: 'شهرپیر',
     },
     {
       name: 'Ardakan',
-      faName: 'اردکان'
+      faName: 'اردکان',
     },
     {
       name: 'Beyza',
-      faName: 'بیضا'
+      faName: 'بیضا',
     },
     {
       name: 'Hamashahr',
-      faName: 'هماشهر'
+      faName: 'هماشهر',
     },
     {
       name: 'Sarvestan',
-      faName: 'سروستان'
+      faName: 'سروستان',
     },
     {
       name: 'Kuhenjan',
-      faName: 'کوهنجان'
+      faName: 'کوهنجان',
     },
     {
       name: 'Khaneh Zenyan',
-      faName: 'خانه زنیان'
+      faName: 'خانه زنیان',
     },
     {
       name: 'Darian',
-      faName: 'داریان'
+      faName: 'داریان',
     },
     {
       name: 'Zarqan',
-      faName: 'زرقان'
+      faName: 'زرقان',
     },
     {
       name: 'Sadra',
-      faName: 'صدرا'
+      faName: 'صدرا',
     },
     {
       name: 'Shiraz',
-      faName: 'شیراز'
+      faName: 'شیراز',
     },
     {
       name: 'Lapui',
-      faName: 'لپویی'
+      faName: 'لپویی',
     },
     {
       name: 'Dehram',
-      faName: 'دهرم'
+      faName: 'دهرم',
     },
     {
       name: 'Farashband',
-      faName: 'فراشبند'
+      faName: 'فراشبند',
     },
     {
       name: 'Nowjeyn',
-      faName: 'نوجین'
+      faName: 'نوجین',
     },
     {
       name: 'Zahedshahr',
-      faName: 'زاهدشهر'
+      faName: 'زاهدشهر',
     },
     {
       name: 'Sheshdeh',
-      faName: 'ششده'
+      faName: 'ششده',
     },
     {
       name: 'Fasa',
-      faName: 'فسا'
+      faName: 'فسا',
     },
     {
       name: 'Qarah Bolagh',
-      faName: 'قره بلاغ'
+      faName: 'قره بلاغ',
     },
     {
       name: 'Miyanshahr',
-      faName: 'میانشهر'
+      faName: 'میانشهر',
     },
     {
       name: 'No Bandegan',
-      faName: 'نوبندگان'
+      faName: 'نوبندگان',
     },
     {
       name: 'Firuzabad',
-      faName: 'فیروزآباد'
+      faName: 'فیروزآباد',
     },
     {
       name: 'Meymand',
-      faName: 'میمند'
+      faName: 'میمند',
     },
     {
       name: 'Efzar',
-      faName: 'افزر'
+      faName: 'افزر',
     },
     {
       name: 'Emam Shahr',
-      faName: 'امام شهر'
+      faName: 'امام شهر',
     },
     {
       name: 'Qir',
-      faName: 'قیر'
+      faName: 'قیر',
     },
     {
       name: 'Karzin',
-      faName: 'کارزین (فتح آباد)'
+      faName: 'کارزین (فتح آباد)',
     },
     {
       name: 'Mobarakabad',
-      faName: 'مبارک آباددیز'
+      faName: 'مبارک آباددیز',
     },
     {
       name: 'Baladeh',
-      faName: 'بالاده'
+      faName: 'بالاده',
     },
     {
       name: 'Khesht',
-      faName: 'خشت'
+      faName: 'خشت',
     },
     {
       name: 'Qaemiyeh',
-      faName: 'قایمیه'
+      faName: 'قایمیه',
     },
     {
       name: 'Kazerun',
-      faName: 'کازرون'
+      faName: 'کازرون',
     },
     {
       name: 'Konartakhteh',
-      faName: 'کنارتخته'
+      faName: 'کنارتخته',
     },
     {
       name: 'Nowdan',
-      faName: 'نودان'
+      faName: 'نودان',
     },
     {
       name: 'Kavar',
-      faName: 'کوار'
+      faName: 'کوار',
     },
     {
       name: 'Gerash',
-      faName: 'گراش'
+      faName: 'گراش',
     },
     {
       name: 'Owz',
-      faName: 'اوز'
+      faName: 'اوز',
     },
     {
       name: 'Banaruyeh',
-      faName: 'بنارویه'
+      faName: 'بنارویه',
     },
     {
       name: 'Beyram',
-      faName: 'بیرم'
+      faName: 'بیرم',
     },
     {
       name: 'Juyom',
-      faName: 'جویم'
+      faName: 'جویم',
     },
     {
       name: 'Emad Deh',
-      faName: 'عمادده'
+      faName: 'عمادده',
     },
     {
       name: 'Lar',
-      faName: 'لار'
+      faName: 'لار',
     },
     {
       name: 'Latifi',
-      faName: 'لطیفی'
+      faName: 'لطیفی',
     },
     {
       name: 'Ashkanan',
-      faName: 'اشکنان'
+      faName: 'اشکنان',
     },
     {
       name: 'Ahel',
-      faName: 'اهل'
+      faName: 'اهل',
     },
     {
       name: 'Alamarvdasht',
-      faName: 'علامرودشت'
+      faName: 'علامرودشت',
     },
     {
       name: 'Lamerd',
-      faName: 'لامرد'
+      faName: 'لامرد',
     },
     {
       name: 'Khaniman',
-      faName: 'خانیمن'
+      faName: 'خانیمن',
     },
     {
       name: 'Koushkak',
-      faName: 'رامجرد'
+      faName: 'رامجرد',
     },
     {
       name: 'Seydan',
-      faName: 'سیدان'
+      faName: 'سیدان',
     },
     {
       name: 'Kamfiruz',
-      faName: 'کامفیروز'
+      faName: 'کامفیروز',
     },
     {
       name: 'Marvdasht',
-      faName: 'مرودشت'
+      faName: 'مرودشت',
     },
     {
       name: 'Baba Monir',
-      faName: 'بابامنیر'
+      faName: 'بابامنیر',
     },
     {
       name: 'Khumeh Zar',
-      faName: 'خومه زار'
+      faName: 'خومه زار',
     },
     {
       name: 'Nurabad',
-      faName: 'نورآباد'
+      faName: 'نورآباد',
     },
     {
       name: 'Asir',
-      faName: 'اسیر'
+      faName: 'اسیر',
     },
     {
       name: 'Khuzi',
-      faName: 'خوزی'
+      faName: 'خوزی',
     },
     {
       name: 'Galleh Dar',
-      faName: 'گله دار'
+      faName: 'گله دار',
     },
     {
       name: 'Varavi',
-      faName: 'وراوی'
+      faName: 'وراوی',
     },
     {
       name: 'Abadeh Tashk',
-      faName: 'آباده طشک'
+      faName: 'آباده طشک',
     },
     {
       name: 'Qatruyeh',
-      faName: 'قطرویه'
+      faName: 'قطرویه',
     },
     {
       name: 'Meshkan',
-      faName: 'مشکان'
+      faName: 'مشکان',
     },
     {
       name: 'Neyriz',
-      faName: 'نی ریز'
+      faName: 'نی ریز',
     },
     {
       name: 'Abyek',
-      faName: 'آبیک'
+      faName: 'آبیک',
     },
     {
       name: 'Khakali',
-      faName: 'خاکعلی'
+      faName: 'خاکعلی',
     },
     {
       name: 'Abgarm',
-      faName: 'آبگرم'
+      faName: 'آبگرم',
     },
     {
       name: 'Avaj',
-      faName: 'آوج'
+      faName: 'آوج',
     },
     {
       name: 'Alvand',
-      faName: 'الوند'
+      faName: 'الوند',
     },
     {
       name: 'Bidestan',
-      faName: 'بیدستان'
+      faName: 'بیدستان',
     },
     {
       name: 'Sharifiyeh',
-      faName: 'شریفیه'
+      faName: 'شریفیه',
     },
     {
       name: 'Mohammadiyeh',
-      faName: 'محمدیه'
+      faName: 'محمدیه',
     },
     {
       name: 'Ardak',
-      faName: 'ارداق'
+      faName: 'ارداق',
     },
     {
       name: 'Buin Zahra',
-      faName: 'بویین زهرا'
+      faName: 'بویین زهرا',
     },
     {
       name: 'Danesfahan',
-      faName: 'دانسفهان'
+      faName: 'دانسفهان',
     },
     {
       name: 'Sagzabad',
-      faName: 'سگزآباد'
+      faName: 'سگزآباد',
     },
     {
       name: 'Shal',
-      faName: 'شال'
+      faName: 'شال',
     },
     {
       name: 'Asfarvarin',
-      faName: 'اسفرورین'
+      faName: 'اسفرورین',
     },
     {
       name: 'Takestan',
-      faName: 'تاکستان'
+      faName: 'تاکستان',
     },
     {
       name: 'Khorramdasht',
-      faName: 'خرمدشت'
+      faName: 'خرمدشت',
     },
     {
       name: 'Ziaabad',
-      faName: 'ضیاڈآباد'
+      faName: 'ضیاڈآباد',
     },
     {
       name: 'Narjeh',
-      faName: 'نرجه'
+      faName: 'نرجه',
     },
     {
       name: 'Eqbaliyeh',
-      faName: 'اقبالیه'
+      faName: 'اقبالیه',
     },
     {
       name: 'Razmian',
-      faName: 'رازمیان'
+      faName: 'رازمیان',
     },
     {
       name: 'Sirdan',
-      faName: 'سیردان'
+      faName: 'سیردان',
     },
     {
       name: 'Qazvin',
-      faName: 'قزوین'
+      faName: 'قزوین',
     },
     {
       name: 'Kuhin',
-      faName: 'کوهین'
+      faName: 'کوهین',
     },
     {
       name: 'Mahmudabad Nemuneh',
-      faName: 'محمود آباد نمونه'
+      faName: 'محمود آباد نمونه',
     },
     {
       name: 'Moallem Kelayeh',
-      faName: 'معلم کلایه'
+      faName: 'معلم کلایه',
     },
     {
       name: 'Ja`fariyeh',
-      faName: 'جعفریه'
+      faName: 'جعفریه',
     },
     {
       name: 'Dastjerd',
-      faName: 'دستجرد'
+      faName: 'دستجرد',
     },
     {
       name: 'Salafchegan',
-      faName: 'سلفچگان'
+      faName: 'سلفچگان',
     },
     {
       name: 'Qom',
-      faName: 'قم'
+      faName: 'قم',
     },
     {
       name: 'Qanavat',
-      faName: 'قنوات'
+      faName: 'قنوات',
     },
     {
       name: 'Kahak',
-      faName: 'کهک'
+      faName: 'کهک',
     },
     {
       name: 'Armardeh',
-      faName: 'آرمرده'
+      faName: 'آرمرده',
     },
     {
       name: 'Baneh',
-      faName: 'بانه'
+      faName: 'بانه',
     },
     {
       name: 'Boeen-e-Sofla',
-      faName: 'بویین سفلی'
+      faName: 'بویین سفلی',
     },
     {
       name: 'Kani Sur',
-      faName: 'کانی سور'
+      faName: 'کانی سور',
     },
     {
       name: 'Babarashani',
-      faName: 'بابارشانی'
+      faName: 'بابارشانی',
     },
     {
       name: 'Bijar',
-      faName: 'بیجار'
+      faName: 'بیجار',
     },
     {
       name: 'Pir Taj',
-      faName: 'پیرتاج'
+      faName: 'پیرتاج',
     },
     {
       name: 'Tup Aghaj',
-      faName: 'توپ آغاج'
+      faName: 'توپ آغاج',
     },
     {
       name: 'Yasukand',
-      faName: 'یاسوکند'
+      faName: 'یاسوکند',
     },
     {
       name: 'Bolbanabad',
-      faName: 'بلبان آباد'
+      faName: 'بلبان آباد',
     },
     {
       name: 'Dehgolan',
-      faName: 'دهگلان'
+      faName: 'دهگلان',
     },
     {
       name: 'Divandarreh',
-      faName: 'دیواندره'
+      faName: 'دیواندره',
     },
     {
       name: 'Zarrineh',
-      faName: 'زرینه'
+      faName: 'زرینه',
     },
     {
       name: 'Aavraman Takht',
-      faName: 'اورامان تخت'
+      faName: 'اورامان تخت',
     },
     {
       name: 'Sarvabad',
-      faName: 'سروآباد'
+      faName: 'سروآباد',
     },
     {
       name: 'Saqqez',
-      faName: 'سقز'
+      faName: 'سقز',
     },
     {
       name: 'Saheb',
-      faName: 'صاحب'
+      faName: 'صاحب',
     },
     {
       name: 'Sanandaj',
-      faName: 'سنندج'
+      faName: 'سنندج',
     },
     {
       name: 'Shuyesheh',
-      faName: 'شویشه'
+      faName: 'شویشه',
     },
     {
       name: 'Dezej',
-      faName: 'دزج'
+      faName: 'دزج',
     },
     {
       name: 'Delbaran',
-      faName: 'دلبران'
+      faName: 'دلبران',
     },
     {
       name: 'Serishabad',
-      faName: 'سریش آباد'
+      faName: 'سریش آباد',
     },
     {
       name: 'Qorveh',
-      faName: 'قروه'
+      faName: 'قروه',
     },
     {
       name: 'Kamyaran',
-      faName: 'کامیاران'
+      faName: 'کامیاران',
     },
     {
       name: 'Muchesh',
-      faName: 'موچش'
+      faName: 'موچش',
     },
     {
       name: 'Bardeh Rasheh',
-      faName: 'برده رشه'
+      faName: 'برده رشه',
     },
     {
       name: 'Chenareh',
-      faName: 'چناره'
+      faName: 'چناره',
     },
     {
       name: 'Kani Dinar',
-      faName: 'کانی دینار'
+      faName: 'کانی دینار',
     },
     {
       name: 'Marivan',
-      faName: 'مریوان'
+      faName: 'مریوان',
     },
     {
       name: 'Orzueeyeh',
-      faName: 'ارزوییه'
+      faName: 'ارزوییه',
     },
     {
       name: 'AminShahr',
-      faName: 'امین شهر'
+      faName: 'امین شهر',
     },
     {
       name: 'Anar',
-      faName: 'انار'
+      faName: 'انار',
     },
     {
       name: 'Baft',
-      faName: 'بافت'
+      faName: 'بافت',
     },
     {
       name: 'Bezenjan',
-      faName: 'بزنجان'
+      faName: 'بزنجان',
     },
     {
       name: 'Bardsir',
-      faName: 'بردسیر'
+      faName: 'بردسیر',
     },
     {
       name: 'Dashtkar',
-      faName: 'دشتکار'
+      faName: 'دشتکار',
     },
     {
       name: 'Golzar',
-      faName: 'گلزار'
+      faName: 'گلزار',
     },
     {
       name: 'Lalehzar',
-      faName: 'لاله زار'
+      faName: 'لاله زار',
     },
     {
       name: 'Negar',
-      faName: 'نگار'
+      faName: 'نگار',
     },
     {
       name: 'Baravat',
-      faName: 'بروات'
+      faName: 'بروات',
     },
     {
       name: 'Bam',
-      faName: 'بم'
+      faName: 'بم',
     },
     {
       name: 'Boluk',
-      faName: 'بلوک'
+      faName: 'بلوک',
     },
     {
       name: 'Jebalbarez',
-      faName: 'جبالبارز'
+      faName: 'جبالبارز',
     },
     {
       name: 'Jiroft',
-      faName: 'جیرفت'
+      faName: 'جیرفت',
     },
     {
       name: 'Darb-e Behesht',
-      faName: 'درب بهشت'
+      faName: 'درب بهشت',
     },
     {
       name: 'Rabor',
-      faName: 'رابر'
+      faName: 'رابر',
     },
     {
       name: 'Hanza',
-      faName: 'هنزا'
+      faName: 'هنزا',
     },
     {
       name: 'Ravar',
-      faName: 'راور'
+      faName: 'راور',
     },
     {
       name: 'Hojdak',
-      faName: 'هجدک'
+      faName: 'هجدک',
     },
     {
       name: 'Bahreman',
-      faName: 'بهرمان'
+      faName: 'بهرمان',
     },
     {
       name: 'Rafsanjan',
-      faName: 'رفسنجان'
+      faName: 'رفسنجان',
     },
     {
       name: 'Safayyeh',
-      faName: 'صفاییه'
+      faName: 'صفاییه',
     },
     {
       name: 'Koshkoueieh',
-      faName: 'کشکوییه'
+      faName: 'کشکوییه',
     },
     {
       name: 'Mes-e Sarcheshmeh',
-      faName: 'مس سرچشمه'
+      faName: 'مس سرچشمه',
     },
     {
       name: 'Rudbar',
-      faName: 'رودبار'
+      faName: 'رودبار',
     },
     {
       name: 'Zehkalut',
-      faName: 'زهکلوت'
+      faName: 'زهکلوت',
     },
     {
       name: 'Gonbaki',
-      faName: 'گنبکی'
+      faName: 'گنبکی',
     },
     {
       name: 'Khanuk',
-      faName: 'خانوک'
+      faName: 'خانوک',
     },
     {
       name: 'Rijan',
-      faName: 'ریحان'
+      faName: 'ریحان',
     },
     {
       name: 'Zarand',
-      faName: 'زرند'
+      faName: 'زرند',
     },
     {
       name: 'Yazdan Shahr',
-      faName: 'یزدان شهر'
+      faName: 'یزدان شهر',
     },
     {
       name: 'Balvard',
-      faName: 'بلورد'
+      faName: 'بلورد',
     },
     {
       name: 'Pariz',
-      faName: 'پاریز'
+      faName: 'پاریز',
     },
     {
       name: 'Khvaju Shahr',
-      faName: 'خواجو شهر'
+      faName: 'خواجو شهر',
     },
     {
       name: 'Zeydabad',
-      faName: 'زیدآباد'
+      faName: 'زیدآباد',
     },
     {
       name: 'Sirjan',
-      faName: 'سیرجان'
+      faName: 'سیرجان',
     },
     {
       name: 'Najaf Shahr',
-      faName: 'نجف شهر'
+      faName: 'نجف شهر',
     },
     {
       name: 'Jowzam',
-      faName: 'جوزم'
+      faName: 'جوزم',
     },
     {
       name: 'Khatunabad',
-      faName: 'خاتون اباد'
+      faName: 'خاتون اباد',
     },
     {
       name: 'Khursand',
-      faName: 'خورسند'
+      faName: 'خورسند',
     },
     {
       name: 'Dehaj',
-      faName: 'دهج'
+      faName: 'دهج',
     },
     {
       name: 'Shahr-e Babak',
-      faName: 'شهر بابک'
+      faName: 'شهر بابک',
     },
     {
       name: 'Dow Sari',
-      faName: 'دوساری'
+      faName: 'دوساری',
     },
     {
       name: 'Anbarabad',
-      faName: 'عنبرآباد'
+      faName: 'عنبرآباد',
     },
     {
       name: 'Mardehek',
-      faName: 'مردهک'
+      faName: 'مردهک',
     },
     {
       name: 'Faryab',
-      faName: 'فاریاب'
+      faName: 'فاریاب',
     },
     {
       name: 'Fahraj',
-      faName: 'فهرج'
+      faName: 'فهرج',
     },
     {
       name: 'Qaleh Ganj',
-      faName: 'قلعه گنج'
+      faName: 'قلعه گنج',
     },
     {
       name: 'Ekhtiarabad',
-      faName: 'اختیارآباد'
+      faName: 'اختیارآباد',
     },
     {
       name: 'Anduhjerd',
-      faName: 'اندوهجرد'
+      faName: 'اندوهجرد',
     },
     {
       name: 'Baghin',
-      faName: 'باغین'
+      faName: 'باغین',
     },
     {
       name: 'Jupar',
-      faName: 'جوپار'
+      faName: 'جوپار',
     },
     {
       name: 'Chatrud',
-      faName: 'چترود'
+      faName: 'چترود',
     },
     {
       name: 'Rayen',
-      faName: 'راین'
+      faName: 'راین',
     },
     {
       name: 'Zangiabad',
-      faName: 'زنگی آباد'
+      faName: 'زنگی آباد',
     },
     {
       name: 'Shahdad',
-      faName: 'شهداد'
+      faName: 'شهداد',
     },
     {
       name: 'Kazemabad',
-      faName: 'کاظم آباد'
+      faName: 'کاظم آباد',
     },
     {
       name: 'Kerman',
-      faName: 'کرمان'
+      faName: 'کرمان',
     },
     {
       name: 'Golbaf',
-      faName: 'گلباف'
+      faName: 'گلباف',
     },
     {
       name: 'Mahan',
-      faName: 'ماهان'
+      faName: 'ماهان',
     },
     {
       name: 'Mohiabad',
-      faName: 'محی آباد'
+      faName: 'محی آباد',
     },
     {
       name: 'Kuhbanan',
-      faName: 'کوهبنان'
+      faName: 'کوهبنان',
     },
     {
       name: 'Kian Shahr',
-      faName: 'کیانشهر'
+      faName: 'کیانشهر',
     },
     {
       name: 'Kahnuj',
-      faName: 'کهنوج'
+      faName: 'کهنوج',
     },
     {
       name: 'Manujan',
-      faName: 'منوجان'
+      faName: 'منوجان',
     },
     {
       name: 'Nodej',
-      faName: 'نودژ'
+      faName: 'نودژ',
     },
     {
       name: 'Narmashir',
-      faName: 'نرماشیر'
+      faName: 'نرماشیر',
     },
     {
       name: 'Nezamabad',
-      faName: 'نظام شهر'
+      faName: 'نظام شهر',
     },
     {
       name: 'Eslamabad-e Gharb',
-      faName: 'اسلام آبادغرب'
+      faName: 'اسلام آبادغرب',
     },
     {
       name: 'Hamil',
-      faName: 'حمیل'
+      faName: 'حمیل',
     },
     {
       name: 'Banevreh',
-      faName: 'بانوره'
+      faName: 'بانوره',
     },
     {
       name: 'Bayangan',
-      faName: 'باینگان'
+      faName: 'باینگان',
     },
     {
       name: 'Paveh',
-      faName: 'پاوه'
+      faName: 'پاوه',
     },
     {
       name: 'Nowdeshah',
-      faName: 'نودشه'
+      faName: 'نودشه',
     },
     {
       name: 'Nowsud',
-      faName: 'نوسود'
+      faName: 'نوسود',
     },
     {
       name: 'Ozgoleh',
-      faName: 'ازگله'
+      faName: 'ازگله',
     },
     {
       name: 'Tazehabad',
-      faName: 'تازه آباد'
+      faName: 'تازه آباد',
     },
     {
       name: 'Javanrud',
-      faName: 'جوانرود'
+      faName: 'جوانرود',
     },
     {
       name: 'Rijab',
-      faName: 'ریجاب'
+      faName: 'ریجاب',
     },
     {
       name: 'Karand',
-      faName: 'کرند'
+      faName: 'کرند',
     },
     {
       name: 'Gahvareh',
-      faName: 'گهواره'
+      faName: 'گهواره',
     },
     {
       name: 'Ravansar',
-      faName: 'روانسر'
+      faName: 'روانسر',
     },
     {
       name: 'Shahu',
-      faName: 'شاهو'
+      faName: 'شاهو',
     },
     {
       name: 'Sarpol-e Zahab',
-      faName: 'سرپل ذهاب'
+      faName: 'سرپل ذهاب',
     },
     {
       name: 'Satar',
-      faName: 'سطر'
+      faName: 'سطر',
     },
     {
       name: 'Sonqor',
-      faName: 'سنقر'
+      faName: 'سنقر',
     },
     {
       name: 'Sahneh',
-      faName: 'صحنه'
+      faName: 'صحنه',
     },
     {
       name: 'Mian Rahan',
-      faName: 'میان راهان'
+      faName: 'میان راهان',
     },
     {
       name: 'Sumar',
-      faName: 'سومار'
+      faName: 'سومار',
     },
     {
       name: 'Qasr-e Shirin',
-      faName: 'قصرشیرین'
+      faName: 'قصرشیرین',
     },
     {
       name: 'Rabat',
-      faName: 'رباط'
+      faName: 'رباط',
     },
     {
       name: 'Kermanshah',
-      faName: 'کرمانشاه'
+      faName: 'کرمانشاه',
     },
     {
       name: 'Kuzaran',
-      faName: 'کوزران'
+      faName: 'کوزران',
     },
     {
       name: 'Halashi',
-      faName: 'هلشی'
+      faName: 'هلشی',
     },
     {
       name: 'Kangavar',
-      faName: 'کنگاور'
+      faName: 'کنگاور',
     },
     {
       name: 'Gowdin',
-      faName: 'گودین'
+      faName: 'گودین',
     },
     {
       name: 'Sarmast',
-      faName: 'سرمست'
+      faName: 'سرمست',
     },
     {
       name: 'Gilan-e Gharb',
-      faName: 'گیلانغرب'
+      faName: 'گیلانغرب',
     },
     {
       name: 'Bisotun',
-      faName: 'بیستون'
+      faName: 'بیستون',
     },
     {
       name: 'Harsin',
-      faName: 'هرسین'
+      faName: 'هرسین',
     },
     {
       name: 'Basht',
-      faName: 'باشت'
+      faName: 'باشت',
     },
     {
       name: 'Chitab',
-      faName: 'چیتاب'
+      faName: 'چیتاب',
     },
     {
       name: 'Garab-e Sofla',
-      faName: 'گراب سفلی'
+      faName: 'گراب سفلی',
     },
     {
       name: 'Madavan',
-      faName: 'مادوان'
+      faName: 'مادوان',
     },
     {
       name: 'Margown',
-      faName: 'مارگون'
+      faName: 'مارگون',
     },
     {
       name: 'Yasuj',
-      faName: 'یاسوج'
+      faName: 'یاسوج',
     },
     {
       name: 'Likak',
-      faName: 'لیکک'
+      faName: 'لیکک',
     },
     {
       name: 'Charam',
-      faName: 'چرام'
+      faName: 'چرام',
     },
     {
       name: 'Sarfaryab',
-      faName: 'سرفاریاب'
+      faName: 'سرفاریاب',
     },
     {
       name: 'Pataveh',
-      faName: 'پاتاوه'
+      faName: 'پاتاوه',
     },
     {
       name: 'Sisakht',
-      faName: 'سی سخت'
+      faName: 'سی سخت',
     },
     {
       name: 'Dehdasht',
-      faName: 'دهدشت'
+      faName: 'دهدشت',
     },
     {
       name: 'Dishmok',
-      faName: 'دیشموک'
+      faName: 'دیشموک',
     },
     {
       name: 'Suq',
-      faName: 'سوق'
+      faName: 'سوق',
     },
     {
       name: 'Qaleh Raisi',
-      faName: 'قلعه رییسی'
+      faName: 'قلعه رییسی',
     },
     {
       name: 'Dogonbadan',
-      faName: 'دوگنبدان'
+      faName: 'دوگنبدان',
     },
     {
       name: 'Landeh',
-      faName: 'لنده'
+      faName: 'لنده',
     },
     {
       name: 'Azadshahr',
-      faName: 'آزادشهر'
+      faName: 'آزادشهر',
     },
     {
       name: 'Neginshahr',
-      faName: 'نگین شهر'
+      faName: 'نگین شهر',
     },
     {
       name: 'Nowdeh Khanduz',
-      faName: 'نوده خاندوز'
+      faName: 'نوده خاندوز',
     },
     {
       name: 'AqQala',
-      faName: 'آق قلا'
+      faName: 'آق قلا',
     },
     {
       name: 'Anbar Olum',
-      faName: 'انبارآلوم'
+      faName: 'انبارآلوم',
     },
     {
       name: 'Bandar-e Gaz',
-      faName: 'بندرگز'
+      faName: 'بندرگز',
     },
     {
       name: 'Nowkandeh',
-      faName: 'نوکنده'
+      faName: 'نوکنده',
     },
     {
       name: 'Bandar Torkaman',
-      faName: 'بندرترکمن'
+      faName: 'بندرترکمن',
     },
     {
       name: 'Tatar Olia',
-      faName: 'تاتارعلیا'
+      faName: 'تاتارعلیا',
     },
     {
       name: 'Khan Bebin',
-      faName: 'خان ببین'
+      faName: 'خان ببین',
     },
     {
       name: 'Daland',
-      faName: 'دلند'
+      faName: 'دلند',
     },
     {
       name: 'Ramian',
-      faName: 'رامیان'
+      faName: 'رامیان',
     },
     {
       name: 'Sangdevin',
-      faName: 'سنگدوین'
+      faName: 'سنگدوین',
     },
     {
       name: 'Aliabad-e Katul',
-      faName: 'علی ‌آباد کتول'
+      faName: 'علی ‌آباد کتول',
     },
     {
       name: 'Fazelabad',
-      faName: 'فاضل آباد'
+      faName: 'فاضل آباد',
     },
     {
       name: 'Mazraeh',
-      faName: 'مزرعه'
+      faName: 'مزرعه',
     },
     {
       name: 'Kordkuy',
-      faName: 'کردکوی'
+      faName: 'کردکوی',
     },
     {
       name: 'Faraghi',
-      faName: 'فراغی'
+      faName: 'فراغی',
     },
     {
       name: 'Kalaleh',
-      faName: 'کلاله'
+      faName: 'کلاله',
     },
     {
       name: 'Galikash',
-      faName: 'گالیکش'
+      faName: 'گالیکش',
     },
     {
       name: 'Jelin-e Olya',
-      faName: 'جلین'
+      faName: 'جلین',
     },
     {
       name: 'Sarkhon Kalateh',
-      faName: 'سرخنکلاته'
+      faName: 'سرخنکلاته',
     },
     {
       name: 'Gorgan',
-      faName: 'گرگان'
+      faName: 'گرگان',
     },
     {
       name: 'SiminShahr',
-      faName: 'سیمین شهر'
+      faName: 'سیمین شهر',
     },
     {
       name: 'Kumush depe',
-      faName: 'گمیش تپه'
+      faName: 'گمیش تپه',
     },
     {
       name: 'Incheboron',
-      faName: 'اینچه برون'
+      faName: 'اینچه برون',
     },
     {
       name: 'Gonbad Kavus',
-      faName: 'گنبدکاووس'
+      faName: 'گنبدکاووس',
     },
     {
       name: 'Maraveh Tappeh',
-      faName: 'مراوه'
+      faName: 'مراوه',
     },
     {
       name: 'Minudasht',
-      faName: 'مینودشت'
+      faName: 'مینودشت',
     },
     {
       name: 'Astara',
-      faName: 'آستارا'
+      faName: 'آستارا',
     },
     {
       name: 'Lavandevil',
-      faName: 'لوندویل'
+      faName: 'لوندویل',
     },
     {
       name: 'Astaneh-ye Ashrafiyeh',
-      faName: 'آستانه اشرفیه'
+      faName: 'آستانه اشرفیه',
     },
     {
       name: 'Kiashahr',
-      faName: 'کیاشهر'
+      faName: 'کیاشهر',
     },
     {
       name: 'Amlash',
-      faName: 'املش'
+      faName: 'املش',
     },
     {
       name: 'Rankuh',
-      faName: 'رانکوه'
+      faName: 'رانکوه',
     },
     {
       name: 'Bandar-e Anzali',
-      faName: 'بندرانزلی'
+      faName: 'بندرانزلی',
     },
     {
       name: 'Khoshk-e Bijar',
-      faName: 'خشکبیجار'
+      faName: 'خشکبیجار',
     },
     {
       name: 'Khomam',
-      faName: 'خمام'
+      faName: 'خمام',
     },
     {
       name: 'Rasht',
-      faName: 'رشت'
+      faName: 'رشت',
     },
     {
       name: 'Sangar',
-      faName: 'سنگر'
+      faName: 'سنگر',
     },
     {
       name: 'Kuchesfahan',
-      faName: 'کوچصفهان'
+      faName: 'کوچصفهان',
     },
     {
       name: 'Lasht-e Nesha',
-      faName: 'لشت نشاء'
+      faName: 'لشت نشاء',
     },
     {
       name: 'Loleman',
-      faName: 'لولمان'
+      faName: 'لولمان',
     },
     {
       name: 'Pareh Sar',
-      faName: 'پره سر'
+      faName: 'پره سر',
     },
     {
       name: 'Barehsar',
-      faName: 'بره سر'
+      faName: 'بره سر',
     },
     {
       name: 'Tutkabon',
-      faName: 'توتکابن'
+      faName: 'توتکابن',
     },
     {
       name: 'Jirandeh',
-      faName: 'جیرنده'
+      faName: 'جیرنده',
     },
     {
       name: 'Rostamabad',
-      faName: 'رستم آباد'
+      faName: 'رستم آباد',
     },
     {
       name: 'Lowshan',
-      faName: 'لوشان'
+      faName: 'لوشان',
     },
     {
       name: 'Manjil',
-      faName: 'منجیل'
+      faName: 'منجیل',
     },
     {
       name: 'Chaboksar',
-      faName: 'چابکسر'
+      faName: 'چابکسر',
     },
     {
       name: 'Rahimabad',
-      faName: 'رحیم آباد'
+      faName: 'رحیم آباد',
     },
     {
       name: 'Rudsar',
-      faName: 'رودسر'
+      faName: 'رودسر',
     },
     {
       name: 'Kelachay',
-      faName: 'کلاچای'
+      faName: 'کلاچای',
     },
     {
       name: 'Vajargah',
-      faName: 'واجارگاه'
+      faName: 'واجارگاه',
     },
     {
       name: 'Deylaman',
-      faName: 'دیلمان'
+      faName: 'دیلمان',
     },
     {
       name: 'Siahkal',
-      faName: 'سیاهکل'
+      faName: 'سیاهکل',
     },
     {
       name: 'Ahmadsargurab',
-      faName: 'احمدسرگوراب'
+      faName: 'احمدسرگوراب',
     },
     {
       name: 'Sharaft',
-      faName: 'شفت'
+      faName: 'شفت',
     },
     {
       name: "Sowme'eh Sara",
-      faName: 'صومعه سرا'
+      faName: 'صومعه سرا',
     },
     {
       name: 'Gurab Zarmikh',
-      faName: 'گوراب زرمیخ'
+      faName: 'گوراب زرمیخ',
     },
     {
       name: 'Marjaghal',
-      faName: 'مرجقل'
+      faName: 'مرجقل',
     },
     {
       name: 'Asalem',
-      faName: 'اسالم'
+      faName: 'اسالم',
     },
     {
       name: 'Chubar',
-      faName: 'چوبر'
+      faName: 'چوبر',
     },
     {
       name: 'Haviq',
-      faName: 'حویق'
+      faName: 'حویق',
     },
     {
       name: 'Lisar',
-      faName: 'لیسار'
+      faName: 'لیسار',
     },
     {
       name: 'Hashtpar',
-      faName: 'هشتپر'
+      faName: 'هشتپر',
     },
     {
       name: 'Fuman',
-      faName: 'فومن'
+      faName: 'فومن',
     },
     {
       name: 'Masuleh',
-      faName: 'ماسوله'
+      faName: 'ماسوله',
     },
     {
       name: 'Maklavan',
-      faName: 'ماکلوان'
+      faName: 'ماکلوان',
     },
     {
       name: 'Rudboneh',
-      faName: 'رودبنه'
+      faName: 'رودبنه',
     },
     {
       name: 'Lahijan',
-      faName: 'لاهیجان'
+      faName: 'لاهیجان',
     },
     {
       name: 'Otaghvar',
-      faName: 'اطاقور'
+      faName: 'اطاقور',
     },
     {
       name: 'Chaf and Chamkhaleh',
-      faName: 'چاف و چمخاله'
+      faName: 'چاف و چمخاله',
     },
     {
       name: 'Shalman',
-      faName: 'شلمان'
+      faName: 'شلمان',
     },
     {
       name: 'Kumeleh',
-      faName: 'کومله'
+      faName: 'کومله',
     },
     {
       name: 'Langarud',
-      faName: 'لنگرود'
+      faName: 'لنگرود',
     },
     {
       name: 'Bazar Jomeh',
-      faName: 'بازار جمعه'
+      faName: 'بازار جمعه',
     },
     {
       name: 'Masal',
-      faName: 'ماسال'
+      faName: 'ماسال',
     },
     {
       name: 'Azna',
-      faName: 'ازنا'
+      faName: 'ازنا',
     },
     {
       name: 'Momenabad',
-      faName: 'مومن آباد'
+      faName: 'مومن آباد',
     },
     {
       name: 'Aligudarz',
-      faName: 'الیگودرز'
+      faName: 'الیگودرز',
     },
     {
       name: 'Shool Abad',
-      faName: 'شول آباد'
+      faName: 'شول آباد',
     },
     {
       name: 'Oshtorinan',
-      faName: 'اشترینان'
+      faName: 'اشترینان',
     },
     {
       name: 'Borujerd',
-      faName: 'بروجرد'
+      faName: 'بروجرد',
     },
     {
       name: 'Pol Dokhtar',
-      faName: 'پلدختر'
+      faName: 'پلدختر',
     },
     {
       name: 'Mamulan',
-      faName: 'معمولان'
+      faName: 'معمولان',
     },
     {
       name: 'Bayranshahr',
-      faName: 'بیران شهر'
+      faName: 'بیران شهر',
     },
     {
       name: 'Khorramabad',
-      faName: 'خرم آباد'
+      faName: 'خرم آباد',
     },
     {
       name: 'Zagheh',
-      faName: 'زاغه'
+      faName: 'زاغه',
     },
     {
       name: 'Sepiddasht',
-      faName: 'سپیددشت'
+      faName: 'سپیددشت',
     },
     {
       name: 'Haft Cheshmeh',
-      faName: 'هفت چشمه'
+      faName: 'هفت چشمه',
     },
     {
       name: 'Chalanchulan',
-      faName: 'چالانچولان'
+      faName: 'چالانچولان',
     },
     {
       name: 'Dorud',
-      faName: 'دورود'
+      faName: 'دورود',
     },
     {
       name: 'Sarab-e Dowreh',
-      faName: 'سراب دوره'
+      faName: 'سراب دوره',
     },
     {
       name: 'Veysian',
-      faName: 'ویسیان'
+      faName: 'ویسیان',
     },
     {
       name: 'Chaqabol',
-      faName: 'چقابل'
+      faName: 'چقابل',
     },
     {
       name: 'Aleshtar',
-      faName: 'الشتر'
+      faName: 'الشتر',
     },
     {
       name: 'Darb-e Gonbad',
-      faName: 'درب گنبد'
+      faName: 'درب گنبد',
     },
     {
       name: 'Kuhdasht',
-      faName: 'کوهدشت'
+      faName: 'کوهدشت',
     },
     {
       name: 'Kunani',
-      faName: 'کوهنانی'
+      faName: 'کوهنانی',
     },
     {
       name: 'Garab',
-      faName: 'گراب'
+      faName: 'گراب',
     },
     {
       name: 'Amol',
-      faName: 'آمل'
+      faName: 'آمل',
     },
     {
       name: 'Amamzadeh Abdallah',
-      faName: 'امامزاده عبدالله'
+      faName: 'امامزاده عبدالله',
     },
     {
       name: 'Dabudasht',
-      faName: 'دابودشت'
+      faName: 'دابودشت',
     },
     {
       name: 'Rineh',
-      faName: 'رینه'
+      faName: 'رینه',
     },
     {
       name: 'Gazanak',
-      faName: 'گزنک'
+      faName: 'گزنک',
     },
     {
       name: 'Amirkola',
-      faName: 'امیرکلا'
+      faName: 'امیرکلا',
     },
     {
       name: 'Babol',
-      faName: 'بابل'
+      faName: 'بابل',
     },
     {
       name: 'Khush Rudpey',
-      faName: 'خوش رودپی'
+      faName: 'خوش رودپی',
     },
     {
       name: 'Zargarmahalleh',
-      faName: 'زرگرمحله'
+      faName: 'زرگرمحله',
     },
     {
       name: 'Gatab',
-      faName: 'گتاب'
+      faName: 'گتاب',
     },
     {
       name: 'Galugah',
-      faName: 'گلوگاه'
+      faName: 'گلوگاه',
     },
     {
       name: 'Marzikola',
-      faName: 'مرزیکلا'
+      faName: 'مرزیکلا',
     },
     {
       name: 'Babolsar',
-      faName: 'بابلسر'
+      faName: 'بابلسر',
     },
     {
       name: 'Bahnamir',
-      faName: 'بهنمیر'
+      faName: 'بهنمیر',
     },
     {
       name: 'HadiShahr',
-      faName: 'هادی شهر'
+      faName: 'هادی شهر',
     },
     {
       name: 'Behshahr',
-      faName: 'بهشهر'
+      faName: 'بهشهر',
     },
     {
       name: 'Khalil Shahr',
-      faName: 'خلیل شهر'
+      faName: 'خلیل شهر',
     },
     {
       name: 'Rostamkola',
-      faName: 'رستمکلا'
+      faName: 'رستمکلا',
     },
     {
       name: 'Tonekabon',
-      faName: 'تنکابن'
+      faName: 'تنکابن',
     },
     {
       name: 'Shirud',
-      faName: 'شیرود'
+      faName: 'شیرود',
     },
     {
       name: 'Nashtarud',
-      faName: 'نشتارود'
+      faName: 'نشتارود',
     },
     {
       name: 'Juybar',
-      faName: 'جویبار'
+      faName: 'جویبار',
     },
     {
       name: 'Kuhi Kheyl',
-      faName: 'کوهی خیل'
+      faName: 'کوهی خیل',
     },
     {
       name: 'Chalus',
-      faName: 'چالوس'
+      faName: 'چالوس',
     },
     {
       name: 'Marzanabad',
-      faName: 'مرزن آباد'
+      faName: 'مرزن آباد',
     },
     {
       name: 'Hachirud',
-      faName: 'هچیرود'
+      faName: 'هچیرود',
     },
     {
       name: 'Ramsar',
-      faName: 'رامسر'
+      faName: 'رامسر',
     },
     {
       name: 'Katalom',
-      faName: 'کتالم و سادات شهر'
+      faName: 'کتالم و سادات شهر',
     },
     {
       name: 'Paein Hoular',
-      faName: 'پایین هولار'
+      faName: 'پایین هولار',
     },
     {
       name: 'Sari',
-      faName: 'ساری'
+      faName: 'ساری',
     },
     {
       name: 'Farim',
-      faName: 'فریم'
+      faName: 'فریم',
     },
     {
       name: 'Kiasar',
-      faName: 'کیاسر'
+      faName: 'کیاسر',
     },
     {
       name: 'Alasht',
-      faName: 'آلاشت'
+      faName: 'آلاشت',
     },
     {
       name: 'Pol Sefid',
-      faName: 'پل سفید'
+      faName: 'پل سفید',
     },
     {
       name: 'Zirab',
-      faName: 'زیرآب'
+      faName: 'زیرآب',
     },
     {
       name: 'Shirgah',
-      faName: 'شیرگاه'
+      faName: 'شیرگاه',
     },
     {
       name: 'Kia Kola',
-      faName: 'کیاکلا'
+      faName: 'کیاکلا',
     },
     {
       name: 'Salman Shahr',
-      faName: 'سلمان شهر'
+      faName: 'سلمان شهر',
     },
     {
       name: 'Abbasabad',
-      faName: 'عباس اباد'
+      faName: 'عباس اباد',
     },
     {
       name: 'Kelarabad',
-      faName: 'کلارآباد'
+      faName: 'کلارآباد',
     },
     {
       name: 'Fereydunkenar',
-      faName: 'فریدونکنار'
+      faName: 'فریدونکنار',
     },
     {
       name: 'Arateh',
-      faName: 'ارطه'
+      faName: 'ارطه',
     },
     {
       name: 'Qaemshahr',
-      faName: 'قایم شهر'
+      faName: 'قایم شهر',
     },
     {
       name: 'Kelardasht',
-      faName: 'کلاردشت'
+      faName: 'کلاردشت',
     },
     {
       name: 'Sorkhrud',
-      faName: 'سرخرود'
+      faName: 'سرخرود',
     },
     {
       name: 'Surak',
-      faName: 'سورک'
+      faName: 'سورک',
     },
     {
       name: 'Neka',
-      faName: 'نکا'
+      faName: 'نکا',
     },
     {
       name: 'Izadshahr',
-      faName: 'ایزدشهر'
+      faName: 'ایزدشهر',
     },
     {
       name: 'Baladeh',
-      faName: 'بلده'
+      faName: 'بلده',
     },
     {
       name: 'Chamestan',
-      faName: 'چمستان'
+      faName: 'چمستان',
     },
     {
       name: 'Royan',
-      faName: 'رویان'
+      faName: 'رویان',
     },
     {
       name: 'Nur',
-      faName: 'نور'
+      faName: 'نور',
     },
     {
       name: 'Pul',
-      faName: 'پول'
+      faName: 'پول',
     },
     {
       name: 'Kojur',
-      faName: 'کجور'
+      faName: 'کجور',
     },
     {
       name: 'Nowshahr',
-      faName: 'نوشهر'
+      faName: 'نوشهر',
     },
     {
       name: 'Ashtian',
-      faName: 'آشتیان'
+      faName: 'آشتیان',
     },
     {
       name: 'Arak',
-      faName: 'اراک'
+      faName: 'اراک',
     },
     {
       name: 'Davudabad',
-      faName: 'داودآباد'
+      faName: 'داودآباد',
     },
     {
       name: 'Saruq',
-      faName: 'ساروق'
+      faName: 'ساروق',
     },
     {
       name: 'Karchan',
-      faName: 'کارچان'
+      faName: 'کارچان',
     },
     {
       name: 'Tafresh',
-      faName: 'تفرش'
+      faName: 'تفرش',
     },
     {
       name: 'Khomein',
-      faName: 'خمین'
+      faName: 'خمین',
     },
     {
       name: 'Qurchi Bashi',
-      faName: 'قورچی باشی'
+      faName: 'قورچی باشی',
     },
     {
       name: 'Javarseyan',
-      faName: 'جاورسیان'
+      faName: 'جاورسیان',
     },
     {
       name: 'Khondab',
-      faName: 'خنداب'
+      faName: 'خنداب',
     },
     {
       name: 'Delijan',
-      faName: 'دلیجان'
+      faName: 'دلیجان',
     },
     {
       name: 'Naraq',
-      faName: 'نراق'
+      faName: 'نراق',
     },
     {
       name: 'Parandak',
-      faName: 'پرندک'
+      faName: 'پرندک',
     },
     {
       name: 'Khoshkrud',
-      faName: 'خشکرود'
+      faName: 'خشکرود',
     },
     {
       name: 'Razeqan',
-      faName: 'رازقان'
+      faName: 'رازقان',
     },
     {
       name: 'Zaviyeh',
-      faName: 'زاویه'
+      faName: 'زاویه',
     },
     {
       name: 'Mamuniyeh',
-      faName: 'مامونیه'
+      faName: 'مامونیه',
     },
     {
       name: 'Aveh',
-      faName: 'آوه'
+      faName: 'آوه',
     },
     {
       name: 'Saveh',
-      faName: 'ساوه'
+      faName: 'ساوه',
     },
     {
       name: 'Gharqabad',
-      faName: 'غرق آباد'
+      faName: 'غرق آباد',
     },
     {
       name: 'Nowbaran',
-      faName: 'نوبران'
+      faName: 'نوبران',
     },
     {
       name: 'Astaneh',
-      faName: 'آستانه'
+      faName: 'آستانه',
     },
     {
       name: 'Tureh',
-      faName: 'توره'
+      faName: 'توره',
     },
     {
       name: 'Shazand',
-      faName: 'شازند'
+      faName: 'شازند',
     },
     {
       name: 'Shahbaz',
-      faName: 'شهباز'
+      faName: 'شهباز',
     },
     {
       name: 'Mohajeran',
-      faName: 'مهاجران'
+      faName: 'مهاجران',
     },
     {
       name: 'Hendoudar',
-      faName: 'هندودر'
+      faName: 'هندودر',
     },
     {
       name: 'Khenejin',
-      faName: 'خنجین'
+      faName: 'خنجین',
     },
     {
       name: 'Farmahin',
-      faName: 'فرمهین'
+      faName: 'فرمهین',
     },
     {
       name: 'Komijan',
-      faName: 'کمیجان'
+      faName: 'کمیجان',
     },
     {
       name: 'Milajerd',
-      faName: 'میلاجرد'
+      faName: 'میلاجرد',
     },
     {
       name: 'Mahallat',
-      faName: 'محلات'
+      faName: 'محلات',
     },
     {
       name: 'Nimvar',
-      faName: 'نیمور'
+      faName: 'نیمور',
     },
     {
       name: 'Abu Musa',
-      faName: 'ابوموسی'
+      faName: 'ابوموسی',
     },
     {
       name: 'Bastak',
-      faName: 'بستک'
+      faName: 'بستک',
     },
     {
       name: 'Janah',
-      faName: 'جناح'
+      faName: 'جناح',
     },
     {
       name: 'Gowharan',
-      faName: 'گوهران'
+      faName: 'گوهران',
     },
     {
       name: 'Bandar Abbas',
-      faName: 'بندرعباس'
+      faName: 'بندرعباس',
     },
     {
       name: 'Tazian',
-      faName: 'تازیان پایین'
+      faName: 'تازیان پایین',
     },
     {
       name: 'Takht',
-      faName: 'تخت'
+      faName: 'تخت',
     },
     {
       name: 'Fin',
-      faName: 'فین'
+      faName: 'فین',
     },
     {
       name: 'Qaleh Qazi',
-      faName: 'قلعه قاضی'
+      faName: 'قلعه قاضی',
     },
     {
       name: 'Bandar Lengeh',
-      faName: 'بندرلنگه'
+      faName: 'بندرلنگه',
     },
     {
       name: 'Bandar e Charak',
-      faName: 'چارک'
+      faName: 'چارک',
     },
     {
       name: 'Kong',
-      faName: 'کنگ'
+      faName: 'کنگ',
     },
     {
       name: 'Kish',
-      faName: 'کیش'
+      faName: 'کیش',
     },
     {
       name: 'Lamazan',
-      faName: 'لمزان'
+      faName: 'لمزان',
     },
     {
       name: 'Parsian',
-      faName: 'پارسیان'
+      faName: 'پارسیان',
     },
     {
       name: 'Dashti',
-      faName: 'دشتی'
+      faName: 'دشتی',
     },
     {
       name: 'Koshkonar',
-      faName: 'کوشکنار'
+      faName: 'کوشکنار',
     },
     {
       name: 'Bandar-e-Jask',
-      faName: 'بندر جاسک'
+      faName: 'بندر جاسک',
     },
     {
       name: 'Hajjiabad',
-      faName: 'حاجی اباد'
+      faName: 'حاجی اباد',
     },
     {
       name: 'Sargaz',
-      faName: 'سرگز'
+      faName: 'سرگز',
     },
     {
       name: 'Fareghan',
-      faName: 'فارغان'
+      faName: 'فارغان',
     },
     {
       name: 'Khamir',
-      faName: 'خمیر'
+      faName: 'خمیر',
     },
     {
       name: 'Ruydar',
-      faName: 'رویدر'
+      faName: 'رویدر',
     },
     {
       name: 'Bikah',
-      faName: 'بیکاء'
+      faName: 'بیکاء',
     },
     {
       name: 'Dehbarez',
-      faName: 'دهبارز'
+      faName: 'دهبارز',
     },
     {
       name: 'Ziarat-e Ali',
-      faName: 'زیارت علی'
+      faName: 'زیارت علی',
     },
     {
       name: 'Sirik',
-      faName: 'سیریک'
+      faName: 'سیریک',
     },
     {
       name: 'Kouhestak',
-      faName: 'کوهستک'
+      faName: 'کوهستک',
     },
     {
       name: 'Garuk',
-      faName: 'گروک'
+      faName: 'گروک',
     },
     {
       name: 'Dargahan',
-      faName: 'درگهان'
+      faName: 'درگهان',
     },
     {
       name: 'Suza',
-      faName: 'سوزا'
+      faName: 'سوزا',
     },
     {
       name: 'Qeshm',
-      faName: 'قشم'
+      faName: 'قشم',
     },
     {
       name: 'Hormuz',
-      faName: 'هرمز'
+      faName: 'هرمز',
     },
     {
       name: 'Tirur',
-      faName: 'تیرور'
+      faName: 'تیرور',
     },
     {
       name: 'Senderk',
-      faName: 'سندرک'
+      faName: 'سندرک',
     },
     {
       name: 'Minab',
-      faName: 'میناب'
+      faName: 'میناب',
     },
     {
       name: 'Hasht bandi',
-      faName: 'هشتبندی'
+      faName: 'هشتبندی',
     },
     {
       name: 'Ajin',
-      faName: 'آجین'
+      faName: 'آجین',
     },
     {
       name: 'Asadabad',
-      faName: 'اسدآباد'
+      faName: 'اسدآباد',
     },
     {
       name: 'Bahar',
-      faName: 'بهار'
+      faName: 'بهار',
     },
     {
       name: 'Lalejin',
-      faName: 'لالجین'
+      faName: 'لالجین',
     },
     {
       name: 'Tuyserkan',
-      faName: 'تویسرکان'
+      faName: 'تویسرکان',
     },
     {
       name: 'Sarkan',
-      faName: 'سرکان'
+      faName: 'سرکان',
     },
     {
       name: 'Farasfaj',
-      faName: 'فرسفج'
+      faName: 'فرسفج',
     },
     {
       name: 'Damaq',
-      faName: 'دمق'
+      faName: 'دمق',
     },
     {
       name: 'Razan',
-      faName: 'رزن'
+      faName: 'رزن',
     },
     {
       name: 'Qorveh-e Darjazin',
-      faName: 'قروه درجزین'
+      faName: 'قروه درجزین',
     },
     {
       name: 'Famenin',
-      faName: 'فامنین'
+      faName: 'فامنین',
     },
     {
       name: 'Shirin Su',
-      faName: 'شیرین سو'
+      faName: 'شیرین سو',
     },
     {
       name: 'Kabudarahang',
-      faName: 'کبودرآهنگ'
+      faName: 'کبودرآهنگ',
     },
     {
       name: 'Gol Tappeh',
-      faName: 'گل تپه'
+      faName: 'گل تپه',
     },
     {
       name: 'Azandarian',
-      faName: 'ازندریان'
+      faName: 'ازندریان',
     },
     {
       name: 'Jowkar',
-      faName: 'جوکار'
+      faName: 'جوکار',
     },
     {
       name: 'Zangeneh',
-      faName: 'زنگنه'
+      faName: 'زنگنه',
     },
     {
       name: 'Samen',
-      faName: 'سامن'
+      faName: 'سامن',
     },
     {
       name: 'Malayer',
-      faName: 'ملایر'
+      faName: 'ملایر',
     },
     {
       name: 'Barzul',
-      faName: 'برزول'
+      faName: 'برزول',
     },
     {
       name: 'Firuzan',
-      faName: 'فیروزان'
+      faName: 'فیروزان',
     },
     {
       name: 'Giyan',
-      faName: 'گیان'
+      faName: 'گیان',
     },
     {
       name: 'Nahavand',
-      faName: 'نهاوند'
+      faName: 'نهاوند',
     },
     {
       name: 'Juraqan',
-      faName: 'جورقان'
+      faName: 'جورقان',
     },
     {
       name: 'Qahavand',
-      faName: 'قهاوند'
+      faName: 'قهاوند',
     },
     {
       name: 'Maryanaj',
-      faName: 'مریانج'
+      faName: 'مریانج',
     },
     {
       name: 'Hamadan',
-      faName: 'همدان'
+      faName: 'همدان',
     },
     {
       name: 'Abarkuh',
-      faName: 'ابرکوه'
+      faName: 'ابرکوه',
     },
     {
       name: 'Mehrdasht',
-      faName: 'مهردشت'
+      faName: 'مهردشت',
     },
     {
       name: 'Ahmadabad',
-      faName: 'احمدآباد'
+      faName: 'احمدآباد',
     },
     {
       name: 'Aqda',
-      faName: 'عقدا'
+      faName: 'عقدا',
     },
     {
       name: 'Ashkezar',
-      faName: 'اشکذر'
+      faName: 'اشکذر',
     },
     {
       name: 'Khezrabad',
-      faName: 'خضرآباد'
+      faName: 'خضرآباد',
     },
     {
       name: 'Bafq',
-      faName: 'بافق'
+      faName: 'بافق',
     },
     {
       name: 'Behabad',
-      faName: 'بهاباد'
+      faName: 'بهاباد',
     },
     {
       name: 'Taft',
-      faName: 'تفت'
+      faName: 'تفت',
     },
     {
       name: 'Marvast',
-      faName: 'مروست'
+      faName: 'مروست',
     },
     {
       name: 'Herat',
-      faName: 'هرات'
+      faName: 'هرات',
     },
     {
       name: 'Mehriz',
-      faName: 'مهریز'
+      faName: 'مهریز',
     },
     {
       name: 'Bafruiyeh',
-      faName: 'بفروییه'
+      faName: 'بفروییه',
     },
     {
       name: 'Meybod',
-      faName: 'میبد'
+      faName: 'میبد',
     },
     {
       name: 'Nodoushan',
-      faName: 'ندوشن'
+      faName: 'ندوشن',
     },
     {
       name: 'Hamidiya',
-      faName: 'حمیدیا'
+      faName: 'حمیدیا',
     },
     {
       name: 'Zarach',
-      faName: 'زارچ'
+      faName: 'زارچ',
     },
     {
       name: 'Shahedieh',
-      faName: 'شاهدیه'
+      faName: 'شاهدیه',
     },
     {
       name: 'Yazd',
-      faName: 'یزد'
-    }
+      faName: 'یزد',
+    },
   ];
 
   getCity(value: string | null) {
     if (!value) return this.cityList;
-    console.log(this.cityList.filter(city =>
-      city.name.toLowerCase().includes(value.toLowerCase()) ||
-      city.faName.includes(value)
-    ))
-    return this.cityList.filter(city =>
-      city.name.toLowerCase().includes(value.toLowerCase()) ||
-      city.faName.includes(value)
+    console.log(
+      this.cityList.filter(
+        city => city.name.toLowerCase().includes(value.toLowerCase()) || city.faName.includes(value),
+      ),
+    );
+    return this.cityList.filter(
+      city => city.name.toLowerCase().includes(value.toLowerCase()) || city.faName.includes(value),
     );
   }
 }

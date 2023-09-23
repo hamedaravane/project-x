@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
 import imageCompression from 'browser-image-compression';
+import {Injectable} from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ImageCompressionService {
   private readonly DEFAULT_OPTIONS = {
     maxSizeMB: 1,
     maxWidthOrHeight: 1000,
     useWebWorker: true,
-    maxIteration: 15
+    maxIteration: 15,
   };
 
   /**

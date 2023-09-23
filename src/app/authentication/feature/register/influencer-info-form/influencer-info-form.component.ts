@@ -1,19 +1,19 @@
+import {PurpleDate} from '@shared/data-access/models/date.model';
+import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
+import {PurpleDatePickerComponent} from '@shared/ui/purple-date-picker/purple-date-picker.component';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzWaveModule} from 'ng-zorro-antd/core/wave';
+import {NzFormModule} from 'ng-zorro-antd/form';
+import {NzGridModule} from 'ng-zorro-antd/grid';
+import {NzInputModule} from 'ng-zorro-antd/input';
+import {NzSelectModule} from 'ng-zorro-antd/select';
+import {BidiModule} from '@angular/cdk/bidi';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {BidiModule} from "@angular/cdk/bidi";
-import {NzButtonModule} from "ng-zorro-antd/button";
-import {NzFormModule} from "ng-zorro-antd/form";
-import {NzGridModule} from "ng-zorro-antd/grid";
-import {NzInputModule} from "ng-zorro-antd/input";
-import {NzSelectModule} from "ng-zorro-antd/select";
-import {NzWaveModule} from "ng-zorro-antd/core/wave";
-import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {RouterLink} from "@angular/router";
-import {RegisterService} from "../data-access/register.service";
-import {CitiesListService} from "../data-access/cities-list.service";
-import {persianCharValidator} from "@shared/data-access/validators/custom-validators";
-import {PurpleDatePickerComponent} from "@shared/ui/purple-date-picker/purple-date-picker.component";
-import {PurpleDate} from "@shared/data-access/models/date.model";
+import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
+import {CitiesListService} from '../data-access/cities-list.service';
+import {RegisterService} from '../data-access/register.service';
 
 @Component({
   standalone: true,
@@ -32,9 +32,9 @@ import {PurpleDate} from "@shared/data-access/models/date.model";
     NzWaveModule,
     ReactiveFormsModule,
     RouterLink,
-    PurpleDatePickerComponent
+    PurpleDatePickerComponent,
   ],
-  styleUrls: ['./influencer-info-form.component.scss']
+  styleUrls: ['./influencer-info-form.component.scss'],
 })
 export class InfluencerInfoFormComponent {
   private readonly registerService = inject(RegisterService);
@@ -42,7 +42,7 @@ export class InfluencerInfoFormComponent {
   userType = this.registerService.UserTypeState;
   cityList = this.citiesListService.cityList;
 
-  influencerTypeList: { value: any | null, label: string | number | null }[] = [
+  influencerTypeList: {value: any | null; label: string | number | null}[] = [
     {value: 'Restaurant & Cafe', label: 'کافه و رستوران'},
     {value: 'Beauty', label: ' آرایش و زیبایی'},
     {value: 'Fashion', label: 'لباس و مد'},
@@ -60,14 +60,20 @@ export class InfluencerInfoFormComponent {
   influencerInfoForm = new FormGroup({
     persianInfluencerName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
     persianInfluencerLastName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
-    englishInfluencerName: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]),
-    englishInfluencerLastName: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]),
+    englishInfluencerName: new FormControl<string | null>(null, [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z\s]+$/),
+    ]),
+    englishInfluencerLastName: new FormControl<string | null>(null, [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z\s]+$/),
+    ]),
     birthDate: new FormControl<PurpleDate | null>(null, Validators.required),
     influencerType: new FormControl<string | null>(null, Validators.required),
     instagramAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z0-9._]{1,30}$/)),
     twitterAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z_][a-zA-Z0-9_]{0,14}$/)),
     influencerCity: new FormControl<any | null>(null, Validators.required),
-    mobilePhoneNumber: new FormControl<number | null>(null, [Validators.required, Validators.pattern(/^9[0-9]{9}$/)])
+    mobilePhoneNumber: new FormControl<number | null>(null, [Validators.required, Validators.pattern(/^9[0-9]{9}$/)]),
   });
 
   persianInfluencerName = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<string | null>;
@@ -82,6 +88,6 @@ export class InfluencerInfoFormComponent {
   mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
 
   submitForm() {
-    console.log('salam')
+    console.log('salam');
   }
 }

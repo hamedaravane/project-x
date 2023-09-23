@@ -1,18 +1,18 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {NzFormModule} from "ng-zorro-antd/form";
+import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzWaveModule} from 'ng-zorro-antd/core/wave';
+import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzGridModule} from 'ng-zorro-antd/grid';
-import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {NzInputModule} from "ng-zorro-antd/input";
-import {RegisterService} from "../data-access/register.service";
-import {persianCharValidator} from "@shared/data-access/validators/custom-validators";
-import {NzSelectModule} from "ng-zorro-antd/select";
-import {NzSkeletonModule} from "ng-zorro-antd/skeleton";
-import {CitiesListService} from "../data-access/cities-list.service";
+import {NzInputModule} from 'ng-zorro-antd/input';
+import {NzSelectModule} from 'ng-zorro-antd/select';
+import {NzSkeletonModule} from 'ng-zorro-antd/skeleton';
 import {BidiModule} from '@angular/cdk/bidi';
-import {NzButtonModule} from "ng-zorro-antd/button";
-import {NzWaveModule} from "ng-zorro-antd/core/wave";
-import {RouterLink} from "@angular/router";
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {Component, OnInit, inject} from '@angular/core';
+import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
+import {CitiesListService} from '../data-access/cities-list.service';
+import {RegisterService} from '../data-access/register.service';
 
 @Component({
   standalone: true,
@@ -32,9 +32,9 @@ import {RouterLink} from "@angular/router";
     NzSkeletonModule,
     NzButtonModule,
     NzWaveModule,
-    RouterLink
+    RouterLink,
   ],
-  styleUrls: ['./business-info-form.component.scss']
+  styleUrls: ['./business-info-form.component.scss'],
 })
 export class BusinessInfoFormComponent {
   private readonly registerService = inject(RegisterService);
@@ -42,7 +42,7 @@ export class BusinessInfoFormComponent {
   userType = this.registerService.UserTypeState;
   cityList = this.citiesListService.cityList;
 
-  industryList: { value: any | null, label: string | number | null }[] = [
+  industryList: {value: any | null; label: string | number | null}[] = [
     {value: 'Restaurant & Cafe', label: 'کافه و رستوران'},
     {value: 'Beauty', label: ' آرایش و زیبایی'},
     {value: 'Fashion', label: 'لباس و مد'},
@@ -59,13 +59,16 @@ export class BusinessInfoFormComponent {
 
   businessInfoForm = new FormGroup({
     persianBusinessName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
-    englishBusinessName: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]),
+    englishBusinessName: new FormControl<string | null>(null, [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z\s]+$/),
+    ]),
     instagramAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z0-9._]{1,30}$/)),
     twitterAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z_][a-zA-Z0-9_]{0,14}$/)),
     businessIndustry: new FormControl<string | null>(null, Validators.required),
     businessCity: new FormControl<any | null>(null, Validators.required),
     mobilePhoneNumber: new FormControl<number | null>(null, [Validators.required, Validators.pattern(/^9[0-9]{9}$/)]),
-    businessAddress: new FormControl<string | null>(null, persianCharValidator)
+    businessAddress: new FormControl<string | null>(null, persianCharValidator),
   });
 
   persianBusinessName = this.businessInfoForm.get('persianBusinessName') as AbstractControl<string | null>;
@@ -78,6 +81,6 @@ export class BusinessInfoFormComponent {
   businessAddress = this.businessInfoForm.get('businessAddress') as AbstractControl<string | null>;
 
   submitForm() {
-    console.log('businessInfoForm submitted')
+    console.log('businessInfoForm submitted');
   }
 }

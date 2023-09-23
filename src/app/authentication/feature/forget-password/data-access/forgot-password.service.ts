@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ForgotPasswordService {
   private readonly forgottenPassEmail: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);

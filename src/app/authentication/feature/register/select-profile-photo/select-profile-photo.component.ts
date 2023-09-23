@@ -1,26 +1,19 @@
-import {AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild} from '@angular/core';
-import {NzUploadModule} from "ng-zorro-antd/upload";
-import {NzButtonModule} from "ng-zorro-antd/button";
 import Cropper from 'cropperjs';
-import {NzModalModule} from "ng-zorro-antd/modal";
-import {NgClass, NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
-import {ImageCompressionService} from "../data-access/image-compression.service";
-import {CropperService} from "../data-access/cropper.service";
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzModalModule} from 'ng-zorro-antd/modal';
+import {NzUploadModule} from 'ng-zorro-antd/upload';
+import {NgClass, NgIf} from '@angular/common';
+import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, inject} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {CropperService} from '../data-access/cropper.service';
+import {ImageCompressionService} from '../data-access/image-compression.service';
 
 @Component({
   standalone: true,
   selector: 'app-select-profile-photo',
   templateUrl: './select-profile-photo.component.html',
-  imports: [
-    NzUploadModule,
-    NzButtonModule,
-    NzModalModule,
-    NgIf,
-    RouterLink,
-    NgClass
-  ],
-  styleUrls: ['./select-profile-photo.component.scss']
+  imports: [NzUploadModule, NzButtonModule, NzModalModule, NgIf, RouterLink, NgClass],
+  styleUrls: ['./select-profile-photo.component.scss'],
 })
 export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
   private readonly imageCompressionService = inject(ImageCompressionService);
@@ -53,7 +46,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    this.imageCompressionService.compressImage(input.files[0]).then((f) => {
+    this.imageCompressionService.compressImage(input.files[0]).then(f => {
       this.compressedFile = f;
       this.selectedImageSrc = URL.createObjectURL(this.compressedFile);
       this.isCropModalVisible = true;
@@ -71,7 +64,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
       this.cropper.destroy();
     }
 
-    const options = { aspectRatio: 1 };
+    const options = {aspectRatio: 1};
     this.cropper = this.cropperService.initCropper(this.imageElement, options);
   }
 

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import {AuthenticationRoutingModule} from "./authentication-routing.module";
+import {NgModule} from '@angular/core';
+import {AuthenticationRoutingModule} from './authentication-routing.module';
 
 @NgModule({
   declarations: [],
-  imports: [ AuthenticationRoutingModule ]
+  imports: [AuthenticationRoutingModule],
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {}

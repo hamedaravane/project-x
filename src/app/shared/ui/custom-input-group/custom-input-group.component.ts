@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
 import {NzInputModule} from 'ng-zorro-antd/input';
-import {NgIf} from "@angular/common";
+import {NgIf} from '@angular/common';
+import {Component, Input} from '@angular/core';
 
 @Component({
   standalone: true,
@@ -16,7 +16,7 @@ import {NgIf} from "@angular/common";
     <ng-template #SuffixIcon>
       <i *ngIf="suffix" [class]="'fa-solid ' + suffix"></i>
     </ng-template>
-  `
+  `,
 })
 export class CustomInputGroupComponent {
   @Input() prefix?: string | null;

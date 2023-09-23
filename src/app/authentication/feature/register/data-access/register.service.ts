@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {UserType} from "./type";
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {UserType} from './type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegisterService {
   private readonly userType = new BehaviorSubject<UserType | null>(null);
