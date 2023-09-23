@@ -151,31 +151,31 @@
 <ng-template #PasswordCheckComplexityContent>
   <!-- Password Length -->
   <div class="flex items-center gap-2">
-    <i [ngClass]="password.hasError('passwordTooShort') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <i [ngClass]="password.hasError('passwordTooShort') || !password.value ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
     <span>بیشتر از ۸ حرف باشد</span>
   </div>
 
   <!-- Uppercase Characters -->
   <div class="flex items-center gap-2">
-    <i [ngClass]="password.hasError('missingUpperCase') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <i [ngClass]="password.hasError('missingUpperCase') || !password.value ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
     <span>شامل حروف بزرگ باشد</span>
   </div>
 
   <!-- Lowercase Characters -->
   <div class="flex items-center gap-2">
-    <i [ngClass]="password.hasError('missingLowerCase') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <i [ngClass]="password.hasError('missingLowerCase') || !password.value ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
     <span>شامل حروف کوچک باشد</span>
   </div>
 
   <!-- Number Characters -->
   <div class="flex items-center gap-2">
-    <i [ngClass]="password.hasError('missingNumber') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <i [ngClass]="password.hasError('missingNumber') || !password.value ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
     <span>شامل عدد باشد</span>
   </div>
 
   <!-- Special Characters -->
   <div class="flex items-center gap-2">
-    <i [ngClass]="password.hasError('missingSpecialCharacter') ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
+    <i [ngClass]="password.hasError('missingSpecialCharacter') || !password.value ? 'fa-solid fa-xmark text-red-500' : 'fa-solid fa-check text-green-500'"></i>
     <span>شامل کارکترهای ویژه (!@#$%^&*) باشد</span>
   </div>
 </ng-template>

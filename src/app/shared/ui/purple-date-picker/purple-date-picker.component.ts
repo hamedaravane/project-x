@@ -135,7 +135,6 @@ export class PurpleDatePickerComponent implements OnInit, ControlValueAccessor {
           jsDate: new Date(moment(`${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`, 'jYYYY/jM/jD').format('YYYY/M/D'))
         };
         this.updateModel(this.selectedDate)
-        this.showDatePicker = false;
         break
       case !!this.selectedYear && !this.selectedMonth && !this.selectedDay: // if user first select year
         this.viewingYear = this.selectedYear;
