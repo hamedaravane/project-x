@@ -12,11 +12,6 @@ const routes: Routes = [
     loadComponent: () => import('./basic-info/basic-info.component').then(c => c.BasicInfoComponent),
   },
   {
-    path: 'select-profile-photo',
-    loadComponent: () =>
-      import('./select-profile-photo/select-profile-photo.component').then(c => c.SelectProfilePhotoComponent),
-  },
-  {
     path: 'business-info',
     loadComponent: () =>
       import('./business-info-form/business-info-form.component').then(c => c.BusinessInfoFormComponent),
@@ -26,6 +21,11 @@ const routes: Routes = [
     loadComponent: () =>
       import('./influencer-info-form/influencer-info-form.component').then(c => c.InfluencerInfoFormComponent),
   },
+  {
+    path: 'select-profile-photo',
+    loadComponent: () =>
+      import('./select-profile-photo/select-profile-photo.component').then(c => c.SelectProfilePhotoComponent),
+  }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

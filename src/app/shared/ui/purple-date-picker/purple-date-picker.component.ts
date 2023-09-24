@@ -43,7 +43,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
         'closed',
         style({
           opacity: 0,
-          height: '100px',
+          height: 0,
         }),
       ),
       transition('open <=> closed', [animate('300ms cubic-bezier(0.35, 0, 0.25, 1)')]),

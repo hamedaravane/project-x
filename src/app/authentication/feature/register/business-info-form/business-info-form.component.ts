@@ -7,12 +7,12 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzSkeletonModule} from 'ng-zorro-antd/skeleton';
 import {BidiModule} from '@angular/cdk/bidi';
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import {Component, OnInit, inject} from '@angular/core';
+import {NgForOf, NgIf} from '@angular/common';
+import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {CitiesListService} from '../data-access/cities-list.service';
-import {RegisterService} from '../data-access/register.service';
+import {industryCategoryList} from '@shared/data-access/mock/mock';
 
 @Component({
   standalone: true,
@@ -22,7 +22,6 @@ import {RegisterService} from '../data-access/register.service';
     NzFormModule,
     NzGridModule,
     ReactiveFormsModule,
-    AsyncPipe,
     NzInputModule,
     NgIf,
     NzSelectModule,
@@ -37,25 +36,12 @@ import {RegisterService} from '../data-access/register.service';
   styleUrls: ['./business-info-form.component.scss'],
 })
 export class BusinessInfoFormComponent {
-  private readonly registerService = inject(RegisterService);
   private readonly citiesListService = inject(CitiesListService);
-  userType = this.registerService.UserTypeState;
+  private readonly router = inject(Router);
+
   cityList = this.citiesListService.cityList;
 
-  industryList: {value: any | null; label: string | number | null}[] = [
-    {value: 'Restaurant & Cafe', label: 'کافه و رستوران'},
-    {value: 'Beauty', label: ' آرایش و زیبایی'},
-    {value: 'Fashion', label: 'لباس و مد'},
-    {value: 'Gym/Fitness', label: 'ورزشی'},
-    {value: 'Retail', label: 'خرده فروشی'},
-    {value: 'Bookstore', label: 'کتاب فروشی'},
-    {value: 'Grocery', label: 'مواد غذایی'},
-    {value: 'Cinema/Theater', label: 'سینما تئاتر'},
-    {value: 'Jewelry', label: 'طلا و جواهر'},
-    {value: 'Pharmacy', label: 'داروسازی'},
-    {value: 'Flower Shop', label: 'فروشگاه گل'},
-    {value: 'Other', label: 'دیگر'},
-  ];
+  industryList = industryCategoryList;
 
   businessInfoForm = new FormGroup({
     persianBusinessName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
@@ -81,6 +67,6 @@ export class BusinessInfoFormComponent {
   businessAddress = this.businessInfoForm.get('businessAddress') as AbstractControl<string | null>;
 
   submitForm() {
-    console.log('businessInfoForm submitted');
+    this.router.navigateByUrl('/auth/register/select-profile-photo')
   }
 }

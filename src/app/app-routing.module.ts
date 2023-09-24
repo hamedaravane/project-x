@@ -2,6 +2,7 @@ import {PurpleDatePickerComponent} from '@shared/ui/purple-date-picker/purple-da
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {screenSizeGuard} from './core/screen-size.guard';
+import {InfluencersListComponent} from './influencers/influencers-list/influencers-list.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'test',
-    component: PurpleDatePickerComponent,
+    component: InfluencersListComponent,
   },
 ];
 

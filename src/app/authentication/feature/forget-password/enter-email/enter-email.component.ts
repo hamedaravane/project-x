@@ -4,14 +4,14 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {ForgotPasswordService} from '../data-access/forgot-password.service';
 
 @Component({
   standalone: true,
   selector: 'app-enter-email',
   templateUrl: './enter-email.component.html',
-  imports: [NzFormModule, ReactiveFormsModule, NzInputModule, NgIf, NzButtonModule],
+  imports: [NzFormModule, ReactiveFormsModule, NzInputModule, NgIf, NzButtonModule, RouterLink],
   styleUrls: ['./enter-email.component.scss'],
 })
 export class EnterEmailComponent {

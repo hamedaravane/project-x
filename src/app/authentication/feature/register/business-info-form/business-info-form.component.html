@@ -174,8 +174,7 @@
 <form nz-form [nzDisableAutoTips]="true" [formGroup]="businessInfoForm" (ngSubmit)="submitForm()">
   <nz-form-item>
     <nz-input-group [nzPrefix]="InfoIcon">
-      <input type="text" nz-input disabled
-             [placeholder]="(userType | async) === 'influencer' ? 'تولید کننده محتوا' : 'کسب و کار'">
+      <input type="text" nz-input disabled placeholder="کسب و کار">
     </nz-input-group>
   </nz-form-item>
   <nz-form-item>

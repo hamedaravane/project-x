@@ -84,8 +84,7 @@
 <form nz-form [nzDisableAutoTips]="true" [formGroup]="influencerInfoForm" (ngSubmit)="submitForm()">
   <nz-form-item>
     <nz-input-group [nzPrefix]="InfoIcon">
-      <input type="text" nz-input disabled
-             [placeholder]="(userType | async) === 'influencer' ? 'تولید کننده محتوا' : 'کسب و کار'">
+      <input type="text" nz-input disabled placeholder="تولید کننده محتوا">
     </nz-input-group>
   </nz-form-item>
   <nz-form-item>
@@ -167,10 +166,10 @@
     </nz-form-control>
   </nz-form-item>
   <div class="flex justify-between mt-4 gap-4 w-full">
-    <button nz-button class="w-full" nzType="primary" [disabled]="influencerInfoForm.invalid" nzSize="large">
+    <button type="submit" nz-button class="w-full" nzType="primary" [disabled]="influencerInfoForm.invalid" nzSize="large">
       تایید
     </button>
-    <button routerLink="/auth/register/select-profile-photo" nz-button class="w-full" nzType="default" nzSize="large">
+    <button routerLink="/auth/register/basic-info" nz-button class="w-full" nzType="default" nzSize="large">
       بازگشت
     </button>
   </div>

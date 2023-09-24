@@ -8,19 +8,18 @@ import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {BidiModule} from '@angular/cdk/bidi';
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {CitiesListService} from '../data-access/cities-list.service';
-import {RegisterService} from '../data-access/register.service';
+import {influencerCategoryList} from '@shared/data-access/mock/mock';
 
 @Component({
   standalone: true,
   selector: 'app-influencer-info-form',
   templateUrl: './influencer-info-form.component.html',
   imports: [
-    AsyncPipe,
     BidiModule,
     NgForOf,
     NgIf,
@@ -37,25 +36,12 @@ import {RegisterService} from '../data-access/register.service';
   styleUrls: ['./influencer-info-form.component.scss'],
 })
 export class InfluencerInfoFormComponent {
-  private readonly registerService = inject(RegisterService);
   private readonly citiesListService = inject(CitiesListService);
-  userType = this.registerService.UserTypeState;
+  private readonly router = inject(Router);
+
   cityList = this.citiesListService.cityList;
 
-  influencerTypeList: {value: any | null; label: string | number | null}[] = [
-    {value: 'Restaurant & Cafe', label: 'کافه و رستوران'},
-    {value: 'Beauty', label: ' آرایش و زیبایی'},
-    {value: 'Fashion', label: 'لباس و مد'},
-    {value: 'Gym/Fitness', label: 'ورزشی'},
-    {value: 'Retail', label: 'خرده فروشی'},
-    {value: 'Bookstore', label: 'کتاب فروشی'},
-    {value: 'Grocery', label: 'مواد غذایی'},
-    {value: 'Cinema/Theater', label: 'سینما تئاتر'},
-    {value: 'Jewelry', label: 'طلا و جواهر'},
-    {value: 'Pharmacy', label: 'داروسازی'},
-    {value: 'Flower Shop', label: 'فروشگاه گل'},
-    {value: 'Other', label: 'دیگر'},
-  ];
+  influencerTypeList = influencerCategoryList;
 
   influencerInfoForm = new FormGroup({
     persianInfluencerName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
@@ -88,6 +74,6 @@ export class InfluencerInfoFormComponent {
   mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
 
   submitForm() {
-    console.log('salam');
+    this.router.navigateByUrl('/auth/register/select-profile-photo')
   }
 }
