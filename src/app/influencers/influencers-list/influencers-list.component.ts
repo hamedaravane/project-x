@@ -22,7 +22,7 @@ import {FilterSortListComponent} from '../filter-sort-list/filter-sort-list.comp
     BidiModule,
     CategoryToLabelPipe,
     CategoryToIconPipe,
-    FilterSortListComponent
+    FilterSortListComponent,
   ],
   styleUrls: ['./influencers-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

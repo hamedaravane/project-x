@@ -1,23 +1,17 @@
-import {Component} from '@angular/core';
+import {influencerCategoryList} from '@shared/data-access/mock/mock';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NgForOf, NgIf} from '@angular/common';
-import {SelectList, SortOption, SortOrder} from '../data-access/filter-sort.model';
-import {influencerCategoryList} from '@shared/data-access/mock/mock';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {SelectList, SortOption, SortOrder} from '../data-access/filter-sort.model';
 
 @Component({
   standalone: true,
   selector: 'app-filter-sort-list',
   templateUrl: './filter-sort-list.component.html',
-  imports: [
-    NzGridModule,
-    NzSelectModule,
-    NgForOf,
-    FormsModule,
-    NgIf
-  ],
-  styleUrls: ['./filter-sort-list.component.scss']
+  imports: [NzGridModule, NzSelectModule, NgForOf, FormsModule, NgIf],
+  styleUrls: ['./filter-sort-list.component.scss'],
 })
 export class FilterSortListComponent {
   ascending = SortOrder.ascending;
