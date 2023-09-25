@@ -1,4 +1,5 @@
-<ul class="flex flex-col gap-4">
+<app-filter-sort-list></app-filter-sort-list>
+<ul class="flex flex-col gap-4 mt-2">
     <li *ngFor="let influencer of influencersList" dir="ltr" class="rounded-md bg-gray-50 flex gap-4 p-4 shadow">
         <div class="rounded-full flex w-16 h-16 overflow-clip">
             <img class="object-cover aspect-square" [ngSrc]="influencer.profilePhotoSrc" width="70" height="70" alt="profile photo">

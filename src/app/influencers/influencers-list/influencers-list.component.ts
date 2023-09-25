@@ -7,6 +7,7 @@ import {BidiModule} from '@angular/cdk/bidi';
 import {NgForOf, NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {FilterSortListComponent} from '../filter-sort-list/filter-sort-list.component';
 
 @Component({
   standalone: true,
@@ -21,6 +22,7 @@ import {FormsModule} from '@angular/forms';
     BidiModule,
     CategoryToLabelPipe,
     CategoryToIconPipe,
+    FilterSortListComponent
   ],
   styleUrls: ['./influencers-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
