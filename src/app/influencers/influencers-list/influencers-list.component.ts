@@ -1,10 +1,12 @@
-import {Component} from '@angular/core';
 import {influencersList} from '@shared/data-access/mock/mock';
-import {NgForOf, NgOptimizedImage} from '@angular/common';
-import {NzRateModule} from 'ng-zorro-antd/rate';
-import {FormsModule} from '@angular/forms';
+import {CategoryToIconPipe} from '@shared/util/category-to-icon.pipe';
+import {CategoryToLabelPipe} from '@shared/util/category-to-label.pipe';
 import {NzIconModule} from 'ng-zorro-antd/icon';
+import {NzRateModule} from 'ng-zorro-antd/rate';
 import {BidiModule} from '@angular/cdk/bidi';
+import {NgForOf, NgOptimizedImage} from '@angular/common';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   standalone: true,
@@ -16,9 +18,12 @@ import {BidiModule} from '@angular/cdk/bidi';
     NzRateModule,
     FormsModule,
     NzIconModule,
-    BidiModule
+    BidiModule,
+    CategoryToLabelPipe,
+    CategoryToIconPipe,
   ],
-  styleUrls: ['./influencers-list.component.scss']
+  styleUrls: ['./influencers-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfluencersListComponent {
   influencersList = influencersList;

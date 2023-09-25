@@ -10,7 +10,10 @@
                     <i class="fa fa-brands fa-instagram"></i>
                     <span>@{{influencer.instagramId}}</span>
                 </div>
-                <span class="rounded-md text-left text-xs w-fit mt-1">{{influencer.category}}</span>
+                <div class="flex gap-1 items-baseline">
+                  <i [class]="influencer.category | categoryToIcon: 'fa-xs'"></i>
+                  <span class="rounded-md text-left w-fit mt-1 text-xs">{{influencer.category | categoryToLabel}}</span>
+                </div>
             </div>
             <div class="flex justify-between w-full">
                 <div class="flex float-left">
