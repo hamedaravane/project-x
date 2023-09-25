@@ -5,7 +5,8 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzPopoverModule} from 'ng-zorro-antd/popover';
 import {AsyncPipe, NgClass, NgIf} from '@angular/common';
-import {Component, OnInit, inject, DestroyRef} from '@angular/core';
+import {Component, DestroyRef, OnInit, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
 import {
@@ -13,7 +14,6 @@ import {
   strongPasswordValidator,
 } from '../../../../shared/data-access/validators/custom-validators';
 import {RegisterService} from '../data-access/register.service';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   standalone: true,
@@ -61,12 +61,12 @@ export class BasicInfoComponent {
 
   isHidePassword = true;
   submitForm() {
-    this.userType.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((type) => {
+    this.userType.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(type => {
       if (type === 'influencer') {
-        this.router.navigateByUrl('/auth/register/influencer-info')
+        this.router.navigateByUrl('/auth/register/influencer-info');
       } else {
-        this.router.navigateByUrl('/auth/register/business-info')
+        this.router.navigateByUrl('/auth/register/business-info');
       }
-    })
+    });
   }
 }

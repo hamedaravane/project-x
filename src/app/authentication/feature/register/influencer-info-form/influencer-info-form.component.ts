@@ -1,3 +1,4 @@
+import {influencerCategoryList} from '@shared/data-access/mock/mock';
 import {PurpleDate} from '@shared/data-access/models/date.model';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
 import {PurpleDatePickerComponent} from '@shared/ui/purple-date-picker/purple-date-picker.component';
@@ -13,7 +14,6 @@ import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
 import {CitiesListService} from '../data-access/cities-list.service';
-import {influencerCategoryList} from '@shared/data-access/mock/mock';
 
 @Component({
   standalone: true,
@@ -74,6 +74,6 @@ export class InfluencerInfoFormComponent {
   mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
 
   submitForm() {
-    this.router.navigateByUrl('/auth/register/select-profile-photo')
+    this.router.navigateByUrl('/auth/register/select-profile-photo');
   }
 }

@@ -1,6 +1,6 @@
 export interface SelectList {
-  value: IndustryValue | BusinessValue,
-  label: string
+  value: IndustryValue | BusinessValue;
+  label: string;
 }
 
 export enum IndustryValue {
@@ -15,7 +15,7 @@ export enum IndustryValue {
   Jewelry = 'Jewelry',
   Pharmacy = 'Pharmacy',
   Flower = 'Flower',
-  Other = 'Other'
+  Other = 'Other',
 }
 
 export enum BusinessValue {

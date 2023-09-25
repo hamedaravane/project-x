@@ -25,7 +25,7 @@ const routes: Routes = [
     path: 'select-profile-photo',
     loadComponent: () =>
       import('./select-profile-photo/select-profile-photo.component').then(c => c.SelectProfilePhotoComponent),
-  }
+  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

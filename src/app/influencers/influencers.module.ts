@@ -1,10 +1,8 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {InfluencersRoutingModule} from './influencers-routing.module';
-
-
 
 @NgModule({
   declarations: [],
-  imports: [InfluencersRoutingModule]
+  imports: [InfluencersRoutingModule],
 })
-export class InfluencersModule { }
+export class InfluencersModule {}

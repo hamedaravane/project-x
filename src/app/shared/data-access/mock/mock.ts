@@ -12,7 +12,7 @@ export const industryCategoryList: SelectList[] = [
   {value: IndustryValue.Jewelry, label: 'طلا و جواهر'},
   {value: IndustryValue.Pharmacy, label: 'داروسازی'},
   {value: IndustryValue.Flower, label: 'فروشگاه گل'},
-  {value: IndustryValue.Other, label: 'دیگر'}
+  {value: IndustryValue.Other, label: 'دیگر'},
 ];
 
 export const influencerCategoryList: SelectList[] = [
@@ -28,7 +28,7 @@ export const influencerCategoryList: SelectList[] = [
   {value: BusinessValue.Actor, label: 'سینما و بازیگری'},
   {value: BusinessValue.Book, label: 'کتاب'},
   {value: BusinessValue.Jewelry, label: 'طلا و جواهر'},
-  {value: BusinessValue.Other, label: 'دیگر'}
+  {value: BusinessValue.Other, label: 'دیگر'},
 ];
 
 export const influencersList = [
@@ -37,41 +37,41 @@ export const influencersList = [
     instagramId: 'neg.r',
     profilePhotoSrc: 'assets/mock/profile-photos/1.jpg',
     rate: 4,
-    category: IndustryValue.CafeAndRestaurant
+    category: IndustryValue.CafeAndRestaurant,
   },
   {
     nickname: 'Hamed Purple',
     instagramId: 'aboutpurple',
     profilePhotoSrc: 'assets/mock/profile-photos/2.jpg',
     rate: 2.5,
-    category: IndustryValue.Fitness
+    category: IndustryValue.Fitness,
   },
   {
     nickname: 'نگین میرصالحی',
     instagramId: 'neginmirsalehi',
     profilePhotoSrc: 'assets/mock/profile-photos/3.jpg',
     rate: 4,
-    category: IndustryValue.Fashion
+    category: IndustryValue.Fashion,
   },
   {
     nickname: 'آیسان اسلامی',
     instagramId: 'aisan_eslami',
     profilePhotoSrc: 'assets/mock/profile-photos/4.jpg',
     rate: 3.5,
-    category: IndustryValue.Fitness
+    category: IndustryValue.Fitness,
   },
   {
     nickname: 'نیوشا',
     instagramId: 'niusha_sss',
     profilePhotoSrc: 'assets/mock/profile-photos/5.jpg',
     rate: 1,
-    category: IndustryValue.Bookstore
+    category: IndustryValue.Bookstore,
   },
   {
     nickname: 'سپیده اخلاقی',
     instagramId: 'sssepii',
     profilePhotoSrc: 'assets/mock/profile-photos/6.jpg',
     rate: 2.5,
-    category: IndustryValue.Flower
-  }
+    category: IndustryValue.Flower,
+  },
 ];
