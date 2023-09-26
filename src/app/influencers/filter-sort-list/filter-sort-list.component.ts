@@ -28,13 +28,6 @@ export class FilterSortListComponent {
   filterList = influencerCategoryList;
 
   toggleSortOrder() {
-    switch (this.sortOrder) {
-      case SortOrder.ascending:
-        this.sortOrder = SortOrder.descending;
-        break;
-      case SortOrder.descending:
-        this.sortOrder = SortOrder.ascending;
-        break;
-    }
+    this.sortOrder = this.sortOrder === SortOrder.ascending ? SortOrder.descending : SortOrder.ascending;
   }
 }
