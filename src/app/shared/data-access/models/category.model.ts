@@ -1,5 +1,5 @@
 export interface SelectList {
-  value: IndustryValue | BusinessValue;
+  value: string;
   label: string;
 }
 

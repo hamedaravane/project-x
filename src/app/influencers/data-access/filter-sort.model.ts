@@ -1,8 +1,3 @@
-export interface SelectList {
-  value: SortOption;
-  label: string;
-}
-
 export enum SortOption {
   rate = 'Rate',
   category = 'Category',

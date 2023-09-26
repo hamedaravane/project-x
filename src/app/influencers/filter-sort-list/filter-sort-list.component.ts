@@ -1,10 +1,11 @@
 import {influencerCategoryList} from '@shared/data-access/mock/mock';
+import {SelectList} from '@shared/data-access/models/category.model';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {SelectList, SortOption, SortOrder} from '../data-access/filter-sort.model';
+import {SortOption, SortOrder} from '../data-access/filter-sort.model';
 
 @Component({
   standalone: true,
@@ -25,7 +26,7 @@ export class FilterSortListComponent {
     {value: SortOption.fee, label: 'دستمزد'},
   ];
 
-  filterList = influencerCategoryList;
+  filterList: SelectList[] = influencerCategoryList;
 
   toggleSortOrder() {
     this.sortOrder = this.sortOrder === SortOrder.ascending ? SortOrder.descending : SortOrder.ascending;
