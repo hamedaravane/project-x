@@ -2,19 +2,19 @@
   <div class="flex w-full gap-4">
     <div class="flex grow gap-2 items-center">
       <i class="fa-solid fa-xs fa-filter text-gray-600"></i>
-      <nz-select nzPlaceHolder="دسته بندی" class="flex grow" [nzShowArrow]="false">
+      <nz-select [ngModel]="null" (ngModelChange)="selectFilter($event)" nzPlaceHolder="دسته بندی" class="flex grow" [nzShowArrow]="false">
         <nz-option *ngFor="let filter of filterList" [nzValue]="filter.value" [nzLabel]="filter.label"></nz-option>
       </nz-select>
     </div>
     <div class="flex grow gap-2 items-center">
       <i class="fa-solid fa-xs fa-sort text-gray-600"></i>
-      <nz-select nzPlaceHolder="ترتیب" class="flex grow" [nzShowArrow]="false">
+      <nz-select [ngModel]="null" (ngModelChange)="selectSortOption($event)" nzPlaceHolder="ترتیب" class="flex grow" [nzShowArrow]="false">
         <nz-option *ngFor="let sortOption of sortList" [nzValue]="sortOption.value" [nzLabel]="sortOption.label"></nz-option>
       </nz-select>
     </div>
     <div (click)="toggleSortOrder()" class="flex items-center pe-2">
-      <i *ngIf="sortOrder === ascending" class="fa-solid text-gray-600 fa-arrow-up-wide-short"></i>
-      <i *ngIf="sortOrder === descending" class="fa-solid text-gray-600 fa-arrow-down-wide-short"></i>
+      <i *ngIf="selectedSortOrder === ascending" class="fa-solid text-gray-600 fa-arrow-up-wide-short"></i>
+      <i *ngIf="selectedSortOrder === descending" class="fa-solid text-gray-600 fa-arrow-down-wide-short"></i>
     </div>
   </div>
 </div>
