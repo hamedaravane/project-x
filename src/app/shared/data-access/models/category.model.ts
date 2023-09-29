@@ -1,5 +1,5 @@
 export interface SelectList {
-  value: string;
+  value: string | null;
   label: string;
 }
 
