@@ -3,7 +3,10 @@
 }
 
 .custom-shadow {
-  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+  box-shadow:
+    0 3px 6px -4px #0000001f,
+    0 6px 16px #00000014,
+    0 9px 28px 8px #0000000d;
 }
 
 #date-picker-container {
@@ -16,8 +19,8 @@
   display: flex;
   align-items: center;
   border: 1px solid rgb(217, 217, 217);
-  padding: .25rem 11px;
-  border-radius: .25rem;
+  padding: 0.25rem 11px;
+  border-radius: 0.25rem;
   transition: border-color 0.3s;
   width: 100%;
   max-width: 10rem;

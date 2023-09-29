@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "format": "prettier --write src/**/*.ts --ignore-path .prettierignore",
+    "format": "prettier --write . --ignore-path .prettierignore",
     "prepare": "husky install",
     "start": "ng serve",
     "build": "ng build",

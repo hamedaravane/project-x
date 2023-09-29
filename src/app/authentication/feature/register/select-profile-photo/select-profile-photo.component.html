@@ -1,51 +1,53 @@
 <div class="mt-8">
   <div
-    [ngClass]="{ 'border border-gray-400' : croppedImageSrc, 'border-2 border-dashed border-gray-400': !croppedImageSrc }"
+    [ngClass]="{'border border-gray-400': croppedImageSrc, 'border-2 border-dashed border-gray-400': !croppedImageSrc}"
     class="flex justify-center items-center rounded-full mx-auto w-28 h-28 bg-gray-300">
-    <img *ngIf="croppedImageSrc" [src]="croppedImageSrc" class="w-full h-full rounded-full object-cover"
-         alt="profile photo">
+    <img
+      *ngIf="croppedImageSrc"
+      [src]="croppedImageSrc"
+      class="w-full h-full rounded-full object-cover"
+      alt="profile photo" />
     <i *ngIf="!croppedImageSrc" class="fa-solid fa-file-circle-plus text-2xl text-gray-50"></i>
   </div>
 </div>
 
 <div class="my-4">
   <h1 class="whitespace-nowrap text-lg text-center">انتخاب عکس پروفایل</h1>
-  <p class="text-center text-gray-500">برای کسب و کارها پیشنهاد میکنیم که لوگوی کسب و کار رو انتخاب کنین و برای تولید
-    کنندگان محتوا عکس پروفایل شبکه اجتماعی میتونه بهترین گزینه باشه</p>
+  <p class="text-center text-gray-500">
+    برای کسب و کارها پیشنهاد میکنیم که لوگوی کسب و کار رو انتخاب کنین و برای تولید کنندگان محتوا عکس پروفایل شبکه
+    اجتماعی میتونه بهترین گزینه باشه
+  </p>
 </div>
-<input type="file" #fileInput (change)="onFileSelected($event)" class="hidden">
+<input type="file" #fileInput (change)="onFileSelected($event)" class="hidden" />
 <div class="w-full flex justify-center gap-6 mt-16">
   <button nz-button [nzType]="croppedImageSrc ? 'default' : 'primary'" (click)="triggerFileInput()">
-    {{croppedImageSrc ? 'تغییر عکس' : 'انتخاب عکس از گالری'}}
+    {{ croppedImageSrc ? 'تغییر عکس' : 'انتخاب عکس از گالری' }}
   </button>
   <button *ngIf="croppedImageSrc" nz-button nzDanger nzType="link" (click)="clearSelectedImage()">حذف عکس</button>
 </div>
 
 <div class="text-center mt-8 p-4 bg-gray-100 rounded-md border border-gray-200">
-  <p class="text-gray-600">شما میتونین هر عکسی رو با فرمت‌های JPEG یا JPG یا PNG انتخاب کنین. نیازی نیست که راجع به سایز
-    یا ابعاد عکس نگران باشین. ما عکس رو در ابعاد و حجم بهینه میکنیم.</p>
+  <p class="text-gray-600">
+    شما میتونین هر عکسی رو با فرمت‌های JPEG یا JPG یا PNG انتخاب کنین. نیازی نیست که راجع به سایز یا ابعاد عکس نگران
+    باشین. ما عکس رو در ابعاد و حجم بهینه میکنیم.
+  </p>
 </div>
 
 <div class="flex justify-between gap-4 mt-28 w-full">
   <button type="submit" nz-button class="w-full" nzType="primary" [disabled]="!croppedImageSrc" nzSize="large">
     مرحله بعدی
   </button>
-  <button routerLink="/auth/register/user-type" nz-button class="w-full" nzType="default" nzSize="large">
-    بازگشت
-  </button>
+  <button routerLink="/auth/register/user-type" nz-button class="w-full" nzType="default" nzSize="large">بازگشت</button>
 </div>
 
-
-<nz-modal nzCentered
-          [nzClosable]="false"
-          [(nzVisible)]="isCropModalVisible">
+<nz-modal nzCentered [nzClosable]="false" [(nzVisible)]="isCropModalVisible">
   <ng-container *nzModalTitle>
     <i class="fa-solid fa-crop me-3"></i>
     <span>محدوده‌ی عکس را انتخاب کنید</span>
   </ng-container>
   <ng-container *nzModalContent>
     <div class="w-full h-full">
-      <img #image [src]="selectedImageSrc" alt="Crop this image" class="max-w-full max-h-full">
+      <img #image [src]="selectedImageSrc" alt="Crop this image" class="max-w-full max-h-full" />
     </div>
   </ng-container>
   <ng-container *nzModalFooter>
