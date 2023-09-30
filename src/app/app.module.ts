@@ -19,6 +19,7 @@ registerLocaleData(fa);
   providers: [
     {
       provide: NZ_I18N,
+      /* eslint-disable-next-line */
       useFactory: (localId: string) => {
         switch (localId) {
           case 'en':

@@ -28,7 +28,7 @@
         <div class="flex float-left">
           <nz-rate nzDisabled [ngModel]="influencer.rate" nzAllowHalf></nz-rate>
         </div>
-        <div class="flex items-center gap-2 float-right">
+        <div [routerLink]="influencer.id" class="flex items-center gap-2 float-right">
           <span class="text-xs text-gray-700">جزئیات بیشتر</span>
           <i class="fa-solid fa-chevron-right fa-xs text-gray-700"></i>
         </div>
@@ -36,3 +36,4 @@
     </div>
   </li>
 </ul>
+<router-outlet></router-outlet>

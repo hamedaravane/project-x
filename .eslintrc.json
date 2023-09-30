@@ -12,7 +12,7 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
-        "indent": ["error", 2],
+        //"indent": ["error", 2],
         "quotes": ["error", "single", {"allowTemplateLiterals": true}],
         "semi": ["error", "always"],
         "@angular-eslint/directive-selector": [

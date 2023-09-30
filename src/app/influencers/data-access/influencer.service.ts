@@ -7,7 +7,7 @@ import {Injectable} from '@angular/core';
 })
 export class InfluencerService {
   influencersDetailList: InfluencerDetail[] = influencerDetailMock;
-  getInfluencerDetailsById(id: string): InfluencerDetail {
+  getInfluencerDetailsById(id: string | null): InfluencerDetail {
     const influencer: InfluencerDetail | undefined = this.influencersDetailList.find(
       (influencerDetail: InfluencerDetail): boolean => {
         return influencerDetail.id === id;

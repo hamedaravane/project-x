@@ -9,6 +9,7 @@ import {AsyncPipe, NgForOf, NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {FilterSort, InfluencerSummary, SortOption, SortOrder} from '../data-access/filter-sort.model';
 import {FilterSortService} from '../data-access/filter-sort.service';
 import {FilterSortListComponent} from '../filter-sort/filter-sort-list.component';
@@ -28,6 +29,8 @@ import {FilterSortListComponent} from '../filter-sort/filter-sort-list.component
     CategoryToIconPipe,
     FilterSortListComponent,
     AsyncPipe,
+    RouterLink,
+    RouterOutlet,
   ],
   styleUrls: ['./influencers-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
