@@ -28,7 +28,7 @@ export class EnterEmailComponent {
 
   isHidePassword = false;
 
-  submit() {
+  submit(): void {
     this.forgotPasswordService.setForgottenPassEmail(this.email.value);
     this.router.navigate(['/', 'auth', 'forget-password', 'enter-code']);
     console.log('forget pass');

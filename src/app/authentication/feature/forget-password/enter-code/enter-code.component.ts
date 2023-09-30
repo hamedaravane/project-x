@@ -36,7 +36,7 @@ export class EnterCodeComponent implements OnInit {
   code: string | undefined;
   modifiedEmail: string | null | undefined;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.forgetPasswordService.forgottenPasswordEmail
       .pipe(
         map(value => {
@@ -53,14 +53,14 @@ export class EnterCodeComponent implements OnInit {
       });
   }
 
-  onCodeComplete(event: string) {
+  onCodeComplete(event: string): void {
     if (event.length === 6) {
       this.code = event;
       this.submit();
     }
   }
 
-  submit() {
+  submit(): void {
     this.router.navigateByUrl('/auth/forget-password/set-new-password');
   }
 }

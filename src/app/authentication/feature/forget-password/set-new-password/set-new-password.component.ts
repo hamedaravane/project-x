@@ -43,7 +43,7 @@ export class SetNewPasswordComponent {
 
   isHidePassword = true;
 
-  submitForm() {
+  submitForm(): void {
     console.log('salam');
     this.router.navigateByUrl('/auth/login');
   }

@@ -1,4 +1,3 @@
-import {PurpleDatePickerComponent} from '@shared/ui/purple-date-picker/purple-date-picker.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {screenSizeGuard} from './core/screen-size.guard';

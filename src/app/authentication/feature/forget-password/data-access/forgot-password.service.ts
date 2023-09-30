@@ -10,7 +10,7 @@ export class ForgotPasswordService {
   get forgottenPasswordEmail(): Observable<string | null> {
     return this.forgottenPassEmail.asObservable();
   }
-  setForgottenPassEmail(value: string | null) {
+  setForgottenPassEmail(value: string | null): void {
     this.forgottenPassEmail.next(value);
   }
 }
