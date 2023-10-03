@@ -6,11 +6,11 @@ import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzRateModule} from 'ng-zorro-antd/rate';
 import {BidiModule} from '@angular/cdk/bidi';
 import {AsyncPipe, NgForOf, NgOptimizedImage} from '@angular/common';
-import {ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, OnInit, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterOutlet} from '@angular/router';
-import {FilterSort, InfluencerSummary, SortOption, SortOrder} from '../data-access/filter-sort.model';
+import {listAnimation} from '../data-access/animations/animations';
+import {FilterSort, InfluencerSummary} from '../data-access/filter-sort.model';
 import {FilterSortService} from '../data-access/filter-sort.service';
 import {FilterSortListComponent} from '../filter-sort/filter-sort-list.component';
 
@@ -34,6 +34,7 @@ import {FilterSortListComponent} from '../filter-sort/filter-sort-list.component
   ],
   styleUrls: ['./influencers-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [listAnimation],
 })
 export class InfluencersListComponent implements OnInit {
   private readonly filterSortService: FilterSortService = inject(FilterSortService);

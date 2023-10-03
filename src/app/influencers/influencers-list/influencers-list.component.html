@@ -1,39 +1,40 @@
-<app-filter-sort></app-filter-sort>
-<ul class="flex flex-col gap-4 mt-4">
-  <li
-    *ngFor="let influencer of filteredInfluencersList | async"
-    dir="ltr"
-    class="rounded-md bg-gray-50 flex gap-4 p-4 shadow">
-    <div class="rounded-full flex w-16 h-16 overflow-clip">
-      <img
-        class="object-cover aspect-square"
-        [ngSrc]="influencer.profilePhotoSrc"
-        width="70"
-        height="70"
-        alt="profile photo" />
-    </div>
-    <div class="flex flex-col grow gap-4">
-      <div class="flex flex-col">
-        <span class="font-bold text-left">{{ influencer.nickname }}</span>
-        <div class="flex gap-1 items-center">
-          <i class="fa fa-brands fa-instagram"></i>
-          <span>@{{ influencer.instagramId }}</span>
+<div @listAnimation>
+  <app-filter-sort></app-filter-sort>
+  <ul class="flex flex-col gap-4 mt-4">
+    <li
+      *ngFor="let influencer of filteredInfluencersList | async"
+      dir="ltr"
+      class="rounded-md bg-gray-50 flex gap-4 p-4 shadow">
+      <div class="rounded-full flex w-16 h-16 overflow-clip">
+        <img
+          class="object-cover aspect-square"
+          [ngSrc]="influencer.profilePhotoSrc"
+          width="70"
+          height="70"
+          alt="profile photo" />
+      </div>
+      <div class="flex flex-col grow gap-4">
+        <div class="flex flex-col">
+          <span class="font-bold text-left">{{ influencer.nickname }}</span>
+          <div class="flex gap-1 items-center">
+            <i class="fa fa-brands fa-instagram"></i>
+            <span>@{{ influencer.instagramId }}</span>
+          </div>
+          <div class="flex gap-1 items-baseline">
+            <i [class]="influencer.category | categoryToIcon: 'fa-xs'"></i>
+            <span class="rounded-md text-left w-fit mt-1 text-xs">{{ influencer.category | categoryToLabel }}</span>
+          </div>
         </div>
-        <div class="flex gap-1 items-baseline">
-          <i [class]="influencer.category | categoryToIcon: 'fa-xs'"></i>
-          <span class="rounded-md text-left w-fit mt-1 text-xs">{{ influencer.category | categoryToLabel }}</span>
+        <div class="flex justify-between w-full">
+          <div class="flex float-left">
+            <nz-rate nzDisabled [ngModel]="influencer.rate" nzAllowHalf></nz-rate>
+          </div>
+          <div [routerLink]="influencer.id" class="flex items-center gap-2 float-right">
+            <span class="text-xs text-gray-700">جزئیات بیشتر</span>
+            <i class="fa-solid fa-chevron-right fa-xs text-gray-700"></i>
+          </div>
         </div>
       </div>
-      <div class="flex justify-between w-full">
-        <div class="flex float-left">
-          <nz-rate nzDisabled [ngModel]="influencer.rate" nzAllowHalf></nz-rate>
-        </div>
-        <div [routerLink]="influencer.id" class="flex items-center gap-2 float-right">
-          <span class="text-xs text-gray-700">جزئیات بیشتر</span>
-          <i class="fa-solid fa-chevron-right fa-xs text-gray-700"></i>
-        </div>
-      </div>
-    </div>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+    </li>
+  </ul>
+</div>
