@@ -1,0 +1,10 @@
+<ng-container *ngIf="selectedInfluencer$ | async as influencer">
+  <div class="rounded-full w-10 h-10 overflow-clip">
+    <img
+      class="object-cover aspect-square"
+      [ngSrc]="influencer.profilePhotoSrc"
+      width="40"
+      height="40"
+      alt="profile photo" />
+  </div>
+</ng-container>

@@ -72,7 +72,7 @@
       </div>
     </div>
     <!-- Date -->
-    <div class="grid grid-cols-7 grid-rows-6 items-center justify-items-center w-full px-4 gap-2">
+    <div class="grid grid-cols-7 grid-rows-6 items-center justify-items-center w-full px-4 gap-2" @itemsAnimation>
       <div
         [ngClass]="{
           'border border-purple-600': dateItem.isCurrentDay && viewingYear === currentYear,
@@ -94,7 +94,7 @@
   <!-- Month View -->
   <div *ngIf="mode === 'month'" class="my-4">
     <!-- Month -->
-    <div class="grid grid-cols-3 grid-rows-4 w-full px-4">
+    <div class="grid grid-cols-3 grid-rows-4 w-full px-4" @itemsAnimation>
       <div
         *ngFor="let month of monthsOfYear; let i = index"
         (click)="selectMonth(i)"
@@ -114,7 +114,7 @@
   <!-- Year View -->
   <div *ngIf="mode === 'year'" class="my-4">
     <!-- Year -->
-    <div class="grid grid-cols-3 grid-rows-4 w-full px-4">
+    <div class="grid grid-cols-3 grid-rows-4 w-full px-4" @itemsAnimation>
       <div
         *ngFor="let year of yearsRangeView; let i = index"
         (click)="selectYear(year)"

@@ -5,8 +5,8 @@ import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {SortOption, SortOrder} from '../data-access/filter-sort.model';
 import {FilterSortService} from '../data-access/filter-sort.service';
+import {SortOption, SortOrder} from '../data-access/model/filter-sort.model';
 
 @Component({
   standalone: true,

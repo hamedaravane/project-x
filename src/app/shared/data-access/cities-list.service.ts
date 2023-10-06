@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
 
+export interface City {
+  name: string;
+  faName: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class CitiesListService {
-  cityList = [
+  cityList: City[] = [
     {
       name: 'Azarshahr',
       faName: 'آذرشهر',
@@ -4867,15 +4872,18 @@ export class CitiesListService {
     },
   ];
 
-  getCity(value: string | null) {
+  getCity(value: string | null): City[] {
     if (!value) return this.cityList;
-    console.log(
-      this.cityList.filter(
-        city => city.name.toLowerCase().includes(value.toLowerCase()) || city.faName.includes(value),
-      ),
-    );
     return this.cityList.filter(
       city => city.name.toLowerCase().includes(value.toLowerCase()) || city.faName.includes(value),
     );
+  }
+
+  getCityByEnglishName(englishName: string): City {
+    const foundCity = this.cityList.find(city => city.name === englishName);
+    if (foundCity) {
+      return foundCity;
+    }
+    throw new Error('city not found');
   }
 }

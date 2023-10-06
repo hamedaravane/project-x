@@ -45,5 +45,6 @@ registerLocaleData(fa);
     },
   ],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {}

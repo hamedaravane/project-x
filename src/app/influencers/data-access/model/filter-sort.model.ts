@@ -56,5 +56,13 @@ export interface InfluencerDetail {
   description: string;
   city: string;
   contactInfo: ContactInfo;
-  fee: InstagramFee;
+  fee: FeeDetail[];
+  feeNotes: string;
+}
+
+export interface FeeDetail {
+  name: string;
+  value: number;
+  currency: string;
+  description: string;
 }

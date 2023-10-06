@@ -8,27 +8,53 @@
       alt="profile photo" />
   </div>
   <div class="mx-auto w-fit mt-4">
-    <a dir="ltr" class="me-1 text-xl text-gray-700" [href]="'https://instagram.com/' + influencer.instagramId"
-      >@{{ influencer.instagramId }}</a
-    >
-    <i class="fa fa-brands fa-instagram fa-lg ms-1"></i>
+    <a
+      class="font-medium text-xl text-gray-700 me-1"
+      target="_blank"
+      rel="noopener"
+      [href]="'https://instagram.com/' + influencer.instagramId">
+      <span class="font-bold">{{ influencer.persianName }}</span>
+      <span>&nbsp;</span>
+      <span class="font-bold">{{ influencer.persianLastName }}</span>
+    </a>
+  </div>
+  <div class="mt-1 flex items-center justify-center">
+    <span dir="ltr">@{{ influencer.instagramId }}</span>
+    <i class="fa fa-brands fa-instagram ms-1"></i>
   </div>
   <div class="mt-4">
-    <p class="text-center">{{ influencer.description }}</p>
+    <p>{{ influencer.description }}</p>
   </div>
   <div class="mt-4">
-    <div>
-      <span>نام حقیقی: </span>
-      <span>{{ influencer.persianName }} </span>
-      <span>{{ influencer.persianLastName }}</span>
+    <div class="mt-2">
+      <span class="text-gray-500">محل سکونت:</span>
+      <span>&nbsp;</span>
+      <i class="fa-solid fa-location-dot me-2"></i>
+      <span class="font-bold">{{ influencer.city }}</span>
     </div>
-    <div>
-      <span>محل سکونت: </span>
-      <span>{{ influencer.city }}</span>
-    </div>
-    <div>
-      <span>حوزه فعالیت: </span>
-      <span>{{ influencer.category }}</span>
+    <div class="mt-2">
+      <span class="text-gray-500">حوزه فعالیت:</span>
+      <span>&nbsp;</span>
+      <i class="me-2" [class]="influencer.category | categoryToIcon"></i>
+      <span class="font-bold">{{ influencer.category | categoryToLabel }}</span>
     </div>
   </div>
+  <button class="mt-4" nz-button nzType="primary" nzBlock (click)="submitRequest(influencer)">
+    <span>ثبت درخواست همکاری</span>
+  </button>
+  <div class="mt-4 grid grid-cols-2 grid-rows-3 gap-2" @feeDetailAnimation>
+    <div
+      *ngFor="let feeDetail of influencer.fee"
+      id="fee-detail"
+      class="bg-gray-50 border border-gray-100 rounded-md p-2 shadow">
+      <div class="mx-auto mt-2 mb-6 w-fit h-fit">
+        <i [class]="feeDetail.name | typeToIcon: 'fa-xl'"></i>
+      </div>
+      <div class="font-medium text-gray-700 text-center">{{ feeDetail.value | toCurrency }}</div>
+      <div class="text-xs text-gray-500 mt-2 pt-2 border-solid border-t border-gray-300">
+        {{ feeDetail.description }}
+      </div>
+    </div>
+  </div>
+  <nz-alert class="mt-4" nzType="info" [nzMessage]="influencer.feeNotes" nzShowIcon></nz-alert>
 </div>

@@ -10,8 +10,8 @@ import {ChangeDetectionStrategy, Component, OnInit, inject} from '@angular/core'
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {listAnimation} from '../data-access/animations/animations';
-import {FilterSort, InfluencerSummary} from '../data-access/filter-sort.model';
 import {FilterSortService} from '../data-access/filter-sort.service';
+import {FilterSort, InfluencerSummary} from '../data-access/model/filter-sort.model';
 import {FilterSortListComponent} from '../filter-sort/filter-sort-list.component';
 
 @Component({

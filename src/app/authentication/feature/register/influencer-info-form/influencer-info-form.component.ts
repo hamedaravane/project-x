@@ -1,3 +1,4 @@
+import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {influencerCategoryList} from '@shared/data-access/mock/mock';
 import {PurpleDate} from '@shared/data-access/models/date.model';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
@@ -13,7 +14,6 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
-import {CitiesListService} from '../data-access/cities-list.service';
 
 @Component({
   standalone: true,
