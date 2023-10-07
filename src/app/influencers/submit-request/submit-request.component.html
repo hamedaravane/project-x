@@ -1,10 +1,61 @@
 <ng-container *ngIf="selectedInfluencer$ | async as influencer">
-  <div class="rounded-full w-10 h-10 overflow-clip">
-    <img
-      class="object-cover aspect-square"
-      [ngSrc]="influencer.profilePhotoSrc"
-      width="40"
-      height="40"
-      alt="profile photo" />
+  <div class="flex items-center">
+    <div class="rounded-full w-10 h-10 overflow-clip me-4">
+      <img
+        class="object-cover aspect-square"
+        [ngSrc]="influencer.profilePhotoSrc"
+        width="40"
+        height="40"
+        alt="profile photo" />
+    </div>
+    <div>
+      <div>
+        <span class="font-bold">{{ influencer.persianName }}</span>
+        <span>&nbsp;</span>
+        <span class="font-bold">{{ influencer.persianLastName }}</span>
+      </div>
+      <div class="flex gap-1 items-center">
+        <span dir="ltr">@{{ influencer.instagramId }}</span>
+        <i class="fa fa-brands fa-instagram"></i>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4">
+    <p>
+      <span>در حال حاضر میتوانید از آیتم های موجود زیر برای رزرو وقت و همکاری با</span>
+      <span>&nbsp;</span>
+      <span class="font-bold">{{ influencer.persianName }}</span>
+      <span>&nbsp;</span>
+      <span class="font-bold">{{ influencer.persianLastName }}</span>
+      <span>&nbsp;</span>
+      <span>هماهنگ کنید.</span>
+    </p>
+  </div>
+  <!--<div class="mt-4">
+    <i class="fa-solid fa-list fa-lg me-2"></i>
+    <h3 class="inline text-lg">انتخاب آیتم</h3>
+  </div>-->
+  <div class="mt-4">
+    <div
+      *ngFor="let feeDetail of influencer.fee; index as i"
+      (click)="selectItem(feeDetail, i)"
+      [class]="selectedItem[i] ? 'border-purple-500 shadow-md' : ''"
+      class="bg-gray-50 border border-solid border-gray-100 rounded-md p-2 mt-4 shadow">
+      <div class="flex w-full justify-between">
+        <div class="w-fit h-fit">
+          <i [class]="feeDetail.name | typeToIcon: 'fa-lg'"></i>
+        </div>
+        <div class="font-medium text-gray-700 text-center">{{ feeDetail.value | toCurrency }}</div>
+      </div>
+      <div class="text-xs text-gray-500 mt-2 pt-2 border-solid border-t border-gray-300">
+        {{ feeDetail.description }}
+      </div>
+      <div *ngIf="selectedItem[i]" class="mt-4 pt-2 border-solid border-t border-gray-300">
+        <purple-date-picker
+          class="inline-block"
+          placeholder="تاریخ انتشار"
+          [(ngModel)]="selectedDate[i]"></purple-date-picker>
+      </div>
+    </div>
   </div>
 </ng-container>
