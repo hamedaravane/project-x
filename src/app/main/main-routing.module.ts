@@ -1,10 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {MainComponent} from './main.component';
 
-const routes: Routes = [{}];
+const routes: Routes = [
+  {
+    path: '',
+    component: MainComponent,
+    loadChildren: () => import('../influencers/influencers.module').then(m => m.InfluencersModule),
+  },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class MainRoutingModule {}

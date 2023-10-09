@@ -8,6 +8,11 @@ const routes: Routes = [
     component: AuthenticationComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'register',
+        pathMatch: 'full',
+      },
+      {
         path: 'login',
         loadComponent: () => import('./feature/login-form/login-form.component').then(c => c.LoginFormComponent),
       },
