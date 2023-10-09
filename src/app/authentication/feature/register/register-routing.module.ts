@@ -3,6 +3,11 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'user-type',
+    pathMatch: 'full',
+  },
+  {
     path: 'user-type',
     pathMatch: 'full',
     loadComponent: () => import('./user-type/user-type.component').then(c => c.UserTypeComponent),

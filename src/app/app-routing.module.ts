@@ -13,13 +13,12 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    loadComponent: () => import('./shared/ui/device-error/device-error.component').then(c => c.DeviceErrorComponent),
-    canActivate: [screenSizeGuard],
+    loadChildren: () => import('./main/main.module').then(m => m.MainModule),
   },
   {
     path: 'error',
-    pathMatch: 'full',
     loadComponent: () => import('./shared/ui/device-error/device-error.component').then(c => c.DeviceErrorComponent),
+    pathMatch: 'full',
   },
   {
     path: 'auth',
