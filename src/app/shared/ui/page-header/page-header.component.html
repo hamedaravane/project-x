@@ -2,5 +2,5 @@
   <div class="rounded-full w-6 h-6 overflow-clip border-2 border-solid border-gray-300">
     <img [ngSrc]="profilePhoto" width="24" height="24" alt="profile photo" />
   </div>
-  <i class="fa-solid fa-chevron-left" (click)="back()"></i>
+  <i *ngIf="backButtonVisible$ | async" class="fa-solid fa-chevron-left" (click)="back()"></i>
 </div>

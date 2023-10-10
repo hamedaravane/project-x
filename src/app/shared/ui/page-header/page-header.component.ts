@@ -1,24 +1,28 @@
-import {NgOptimizedImage} from '@angular/common';
-import {Component, Input, OnInit, inject} from '@angular/core';
-import {Router} from '@angular/router';
+import {RouteService} from '@shared/data-access/route.service';
+import {AsyncPipe, NgIf, NgOptimizedImage} from '@angular/common';
+import {ChangeDetectionStrategy, Component, Input, OnInit, inject} from '@angular/core';
+import {RouterLink} from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'page-header',
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss'],
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, RouterLink, AsyncPipe, NgIf],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageHeaderComponent implements OnInit {
-  private readonly routerLink: Router = inject(Router);
+  private readonly routeService: RouteService = inject(RouteService);
   @Input() profilePhoto!: string;
-  @Input() link!: string;
+  backButtonVisible$ = this.routeService.isRoot$;
 
   ngOnInit(): void {
     this.profilePhoto = 'assets/mock/profile-photos/business-profile-photo.png';
   }
 
   back(): void {
-    this.routerLink.navigate(['/', this.link]).then();
+    if (!this.routeService.isRoot()) {
+      history.back();
+    }
   }
 }
