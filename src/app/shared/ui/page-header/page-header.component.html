@@ -1,7 +1,7 @@
 <div class="sticky top-0 z-auto">
   <div class="flex justify-between items-center py-4 px-8 w-full shadow backdrop-blur">
     <div (click)="openSideMenu()" class="rounded-full w-6 h-6 overflow-clip border-2 border-solid border-gray-300">
-      <img [ngSrc]="profilePhoto" width="24" height="24" alt="profile photo"/>
+      <img [ngSrc]="profilePhoto" width="24" height="24" alt="profile photo" />
     </div>
     <i *ngIf="backButtonVisible$ | async" class="fa-solid fa-chevron-left" (click)="back()"></i>
   </div>

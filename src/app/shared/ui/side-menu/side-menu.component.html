@@ -1,7 +1,5 @@
 <div *ngIf="isSideMenuOpen$ | async" @sideMenuAnimations class="fixed h-full w-full top-0 overflow-hidden z-20">
-  <div
-    id="side-menu"
-    class="max-menu-width h-full bg-gray-50 pt-8 px-4 pb-4 absolute top-0 right-0 z-40">
+  <div id="side-menu" class="max-menu-width h-full bg-gray-50 pt-8 px-4 pb-4 absolute top-0 right-0 z-40">
     <div class="rounded-full w-16 h-16 overflow-clip mx-auto border-2 border-solid border-gray-300">
       <img [ngSrc]="profilePhoto" width="64" height="64" alt="profile photo" />
     </div>
