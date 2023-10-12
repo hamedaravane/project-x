@@ -1,13 +1,40 @@
-<div
-  *ngIf="isSideMenuOpen$ | async"
-  @transferToRightAnimation
-  class="max-menu-width h-full bg-gray-50 pt-8 px-4 pb-4 absolute top-0 right-0 z-40">
-  <div class="rounded-full w-10 h-10 overflow-clip mx-auto border-2 border-solid border-gray-300">
-    <img [ngSrc]="profilePhoto" width="40" height="40" alt="profile photo" />
+<div *ngIf="isSideMenuOpen$ | async" @sideMenuAnimations class="fixed h-full w-full top-0 overflow-hidden z-20">
+  <div
+    id="side-menu"
+    class="max-menu-width h-full bg-gray-50 pt-8 px-4 pb-4 absolute top-0 right-0 z-40">
+    <div class="rounded-full w-16 h-16 overflow-clip mx-auto border-2 border-solid border-gray-300">
+      <img [ngSrc]="profilePhoto" width="64" height="64" alt="profile photo" />
+    </div>
+    <div class="mt-2 mx-auto w-fit">
+      <span>المیرا</span>
+      <span>&nbsp;</span>
+      <span>ثابتی</span>
+    </div>
+    <div class="mt-12">
+      <div class="mt-8">
+        <i class="fa-solid fa-house me-4"></i>
+        <strong>صفحه اصلی</strong>
+      </div>
+      <div class="mt-8">
+        <i class="fa-solid fa-handshake-simple me-4"></i>
+        <strong>همکاری ها</strong>
+      </div>
+      <div class="mt-8">
+        <i class="fa-solid fa-coins me-4"></i>
+        <strong>پرداخت ها</strong>
+      </div>
+      <div class="mt-8">
+        <i class="fa-solid fa-gear me-4"></i>
+        <strong>تنظیمات</strong>
+      </div>
+      <div class="mt-8">
+        <i class="fa-solid fa-right-from-bracket me-4"></i>
+        <strong>خروج از حساب کاربری</strong>
+      </div>
+    </div>
   </div>
+  <div
+    id="background"
+    (click)="closeMenu()"
+    class="w-full h-full z-30 backdrop-blur-sm bg-zinc-600-transparent absolute top-0 right-0"></div>
 </div>
-<div
-  *ngIf="isSideMenuOpen$ | async"
-  (click)="closeMenu()"
-  @opacityAnimation
-  class="w-full h-full z-30 backdrop-blur-sm bg-zinc-600-transparent absolute top-0 right-0"></div>

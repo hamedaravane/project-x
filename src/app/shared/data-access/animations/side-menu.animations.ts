@@ -1,5 +1,67 @@
-import {AnimationTriggerMetadata, animate, style, transition, trigger} from '@angular/animations';
+import {AnimationTriggerMetadata, animate, group, query, style, transition, trigger} from '@angular/animations';
 
+export const sideMenuAnimations: AnimationTriggerMetadata = trigger('sideMenuAnimations', [
+  transition(':enter', [
+    query('#background', [
+      style({
+        opacity: 0,
+      }),
+    ]),
+    query('#side-menu', [
+      style({
+        transform: 'translateX(16rem)',
+      }),
+    ]),
+    group([
+      query('#background', [
+        animate(
+          '100ms 30ms ease-out',
+          style({
+            opacity: 1,
+          }),
+        ),
+      ]),
+      query('#side-menu', [
+        animate(
+          '100ms 30ms ease-in',
+          style({
+            transform: 'translateX(0px)',
+          }),
+        ),
+      ]),
+    ]),
+  ]),
+  transition(':leave', [
+    query('#background', [
+      style({
+        opacity: 1,
+      }),
+    ]),
+    query('#side-menu', [
+      style({
+        transform: 'translateX(none)',
+      }),
+    ]),
+    group([
+      query('#background', [
+        animate(
+          '100ms 30ms ease-out',
+          style({
+            opacity: 0,
+          }),
+        ),
+      ]),
+      query('#side-menu', [
+        animate(
+          '100ms 30ms ease-out',
+          style({
+            transform: 'translateX(16rem)',
+          }),
+        ),
+      ]),
+    ]),
+  ]),
+]);
 export const opacityAnimation: AnimationTriggerMetadata = trigger('opacityAnimation', [
   transition(':enter', [
     style({
@@ -24,27 +86,26 @@ export const opacityAnimation: AnimationTriggerMetadata = trigger('opacityAnimat
     ),
   ]),
 ]);
-
-export const transferToRightAnimation: AnimationTriggerMetadata = trigger('transferToRightAnimation', [
+export const transformToRightAnimation: AnimationTriggerMetadata = trigger('transformToRightAnimation', [
   transition(':enter', [
     style({
-      transfer: 'translateX(-100%)',
+      transform: 'translateX(-100%)',
     }),
     animate(
-      '50ms 50ms ease-out',
+      '3000ms 1000ms ease-in',
       style({
-        transfer: 'translateX(none)',
+        transform: 'translateX(none)',
       }),
     ),
   ]),
   transition(':leave', [
     style({
-      transfer: 'translateX(none)',
+      transform: 'translateX(none)',
     }),
     animate(
-      '50ms 50ms ease-out',
+      '3000ms 1000ms ease-out',
       style({
-        transfer: 'translateX(-100%)',
+        transform: 'translateX(-100%)',
       }),
     ),
   ]),
