@@ -25,7 +25,7 @@ export const sideMenuAnimations: AnimationTriggerMetadata = trigger('sideMenuAni
         animate(
           '100ms 30ms ease-in',
           style({
-            transform: 'translateX(0px)',
+            transform: 'translateX(0)',
           }),
         ),
       ]),
@@ -39,7 +39,7 @@ export const sideMenuAnimations: AnimationTriggerMetadata = trigger('sideMenuAni
     ]),
     query('#side-menu', [
       style({
-        transform: 'translateX(none)',
+        transform: 'translateX(0)',
       }),
     ]),
     group([

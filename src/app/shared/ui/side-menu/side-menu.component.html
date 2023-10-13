@@ -1,38 +1,48 @@
 <div *ngIf="isSideMenuOpen$ | async" @sideMenuAnimations class="fixed h-full w-full top-0 overflow-hidden z-20">
   <div id="side-menu" class="max-menu-width h-full bg-gray-50 pt-8 px-4 pb-4 absolute top-0 right-0 z-40">
-    <div class="rounded-full w-16 h-16 overflow-clip mx-auto border-2 border-solid border-gray-300">
-      <img [ngSrc]="profilePhoto" width="64" height="64" alt="profile photo" />
-    </div>
-    <div class="mt-2 mx-auto w-fit">
-      <span>المیرا</span>
-      <span>&nbsp;</span>
-      <span>ثابتی</span>
-    </div>
-    <div class="mt-12">
-      <div class="mt-8">
-        <i class="fa-solid fa-house me-4"></i>
-        <strong>صفحه اصلی</strong>
+    <ng-container *ngIf="userData$ | async as userData; else userLoading">
+      <div class="rounded-full w-16 h-16 overflow-clip mx-auto border-2 border-solid border-gray-300">
+        <ng-container *ngIf="userData.profilePhotoSrc as profilePhoto; else emptyPhoto">
+          <img [ngSrc]="profilePhoto" width="64" height="64" alt="profile photo" />
+        </ng-container>
       </div>
-      <div class="mt-8">
-        <i class="fa-solid fa-handshake-simple me-4"></i>
-        <strong>همکاری ها</strong>
+      <div class="mt-2 mx-auto w-fit">
+        <span>{{ userData.firstName }}</span>
+        <span>&nbsp;</span>
+        <span>{{ userData.lastName }}</span>
       </div>
-      <div class="mt-8">
-        <i class="fa-solid fa-coins me-4"></i>
-        <strong>پرداخت ها</strong>
+      <div [ngSwitch]="userData.type" class="mt-12">
+        <ng-container *ngSwitchCase="'influencer'">
+          <div *ngFor="let option of influencerSideMenuOptions" class="mt-8">
+            <i [class]="option.icon" class="fa-solid me-4"></i>
+            <strong>{{ option.title }}</strong>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <div *ngFor="let option of businessSideMenuOptions" class="mt-8">
+            <i [class]="option.icon" class="fa-solid me-4"></i>
+            <strong>{{ option.title }}</strong>
+          </div>
+        </ng-container>
       </div>
-      <div class="mt-8">
-        <i class="fa-solid fa-gear me-4"></i>
-        <strong>تنظیمات</strong>
-      </div>
-      <div class="mt-8">
-        <i class="fa-solid fa-right-from-bracket me-4"></i>
-        <strong>خروج از حساب کاربری</strong>
-      </div>
-    </div>
+    </ng-container>
   </div>
   <div
     id="background"
     (click)="closeMenu()"
     class="w-full h-full z-30 backdrop-blur-sm bg-zinc-600-transparent absolute top-0 right-0"></div>
 </div>
+
+<ng-template #emptyPhoto>
+  <div class="mx-auto w-fit">
+    <i class="fa-solid fa-user text-gray-500"></i>
+  </div>
+</ng-template>
+<ng-template #userLoading>
+  <div class="rounded-full w-16 h-16 overflow-clip mx-auto">
+    <skeleton shape="circle" width="64" height="64"></skeleton>
+  </div>
+  <div class="mt-2 mx-auto w-fit">
+    <skeleton width="90"></skeleton>
+  </div>
+</ng-template>

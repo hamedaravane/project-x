@@ -4,7 +4,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@shared/*": ["src/app/shared/*"]
+      "@authentication/*": ["src/app/authentication/*"],
+      "@influencers/*": ["src/app/influencers/*"],
+      "@main/*": ["src/app/main/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@user/*": ["src/app/user/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

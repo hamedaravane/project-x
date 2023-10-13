@@ -1,3 +1,4 @@
+import {User} from '@user/data-access/model/user.model';
 import {Observable} from 'rxjs';
 import {LayoutService} from '@shared/data-access/layout.service';
 import {RouteService} from '@shared/data-access/route.service';
@@ -13,14 +14,11 @@ import {RouterLink} from '@angular/router';
   imports: [NgOptimizedImage, RouterLink, AsyncPipe, NgIf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PageHeaderComponent implements OnInit {
-  @Input() profilePhoto!: string;
+export class PageHeaderComponent {
+  @Input() userData$!: Observable<User>;
   private readonly routeService: RouteService = inject(RouteService);
   private readonly layoutService: LayoutService = inject(LayoutService);
   backButtonVisible$: Observable<boolean> = this.routeService.isRoot$;
-  ngOnInit(): void {
-    this.profilePhoto = 'assets/mock/profile-photos/business-profile-photo.png';
-  }
   openSideMenu(): void {
     this.layoutService.isSideMenuOpen$ = true;
   }

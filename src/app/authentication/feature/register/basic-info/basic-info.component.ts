@@ -1,3 +1,4 @@
+import {confirmPasswordValidator, strongPasswordValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import {NzWaveModule} from 'ng-zorro-antd/core/wave';
@@ -9,10 +10,6 @@ import {Component, DestroyRef, OnInit, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
-import {
-  confirmPasswordValidator,
-  strongPasswordValidator,
-} from '../../../../shared/data-access/validators/custom-validators';
 import {RegisterService} from '../data-access/register.service';
 
 @Component({

@@ -1,5 +1,5 @@
+import {InfluencerDetail, InfluencerSummary} from '@influencers/data-access/model/filter-sort.model';
 import {BusinessValue, IndustryValue, SelectList} from '@shared/data-access/models/category.model';
-import {InfluencerDetail, InfluencerSummary} from '../../../influencers/data-access/model/filter-sort.model';
 
 export const industryCategoryList: SelectList[] = [
   {value: IndustryValue.CafeAndRestaurant, label: 'کافه و رستوران'},
