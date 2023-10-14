@@ -8,7 +8,7 @@ export interface User {
   englishLastName?: string;
   profilePhotoSrc?: string;
   persianBusinessName: string;
-  englishBusinessName: string;
+  englishBusinessName?: string;
   instagramAccountId: string;
   emailAddress: string;
   businessIndustry: string;

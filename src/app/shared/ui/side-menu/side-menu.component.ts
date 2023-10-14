@@ -14,7 +14,8 @@ import {
   NgSwitchDefault,
   NgTemplateOutlet,
 } from '@angular/common';
-import {Component, Input, OnInit, inject} from '@angular/core';
+import {Component, DestroyRef, Input, OnInit, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   standalone: true,
@@ -35,25 +36,44 @@ import {Component, Input, OnInit, inject} from '@angular/core';
   ],
   animations: [sideMenuAnimations],
 })
-export class SideMenuComponent {
+export class SideMenuComponent implements OnInit {
   @Input() userData$!: Observable<User>;
   private readonly layoutService: LayoutService = inject(LayoutService);
+  private readonly destroyRef: DestroyRef = inject(DestroyRef);
   isSideMenuOpen$: Observable<boolean> = this.layoutService.isSideMenuOpen$;
+  userData!: User;
+  sideMenuOptions!: SideMenuOption[];
 
-  businessSideMenuOptions: SideMenuOption[] = [
-    {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
-    {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
-    {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
-    {title: 'تنظیمات', icon: 'fa-gear', url: ''},
-    {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
-  ];
-  influencerSideMenuOptions: SideMenuOption[] = [
-    {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
-    {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
-    {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
-    {title: 'تنظیمات', icon: 'fa-gear', url: ''},
-    {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
-  ];
+  ngOnInit() {
+    const businessSideMenuOptions: SideMenuOption[] = [
+      {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
+      {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
+      {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
+      {title: 'تنظیمات', icon: 'fa-gear', url: ''},
+      {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
+    ];
+    const influencerSideMenuOptions: SideMenuOption[] = [
+      {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
+      {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
+      {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
+      {title: 'تنظیمات', icon: 'fa-gear', url: ''},
+      {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
+    ];
+    this.userData$
+      .pipe(
+        tap((data: User): void => {
+          if (data.type === 'influencer') {
+            this.sideMenuOptions = influencerSideMenuOptions;
+          } else {
+            this.sideMenuOptions = businessSideMenuOptions;
+          }
+        }),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((data: User) => {
+        this.userData = data;
+      });
+  }
 
   closeMenu(): void {
     this.layoutService.isSideMenuOpen$ = false;

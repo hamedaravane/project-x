@@ -1,1 +1,7 @@
-<p>edit-information works!</p>
+<form nz-form [formGroup]="userInfoForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-input-group [nzPrefix]="InfoIcon">
+      <input type="text" nz-input disabled placeholder="کسب و کار" />
+    </nz-input-group>
+  </nz-form-item>
+</form>

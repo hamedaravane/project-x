@@ -1,6 +1,6 @@
 <div *ngIf="isSideMenuOpen$ | async" @sideMenuAnimations class="fixed h-full w-full top-0 overflow-hidden z-20">
   <div id="side-menu" class="max-menu-width h-full bg-gray-50 pt-8 px-4 pb-4 absolute top-0 right-0 z-40">
-    <ng-container *ngIf="userData$ | async as userData; else userLoading">
+    <ng-container *ngIf="userData; else userLoading">
       <div class="rounded-full w-16 h-16 overflow-clip mx-auto border-2 border-solid border-gray-300">
         <ng-container *ngIf="userData.profilePhotoSrc as profilePhoto; else emptyPhoto">
           <img [ngSrc]="profilePhoto" width="64" height="64" alt="profile photo" />
@@ -11,19 +11,11 @@
         <span>&nbsp;</span>
         <span>{{ userData.lastName }}</span>
       </div>
-      <div [ngSwitch]="userData.type" class="mt-12">
-        <ng-container *ngSwitchCase="'influencer'">
-          <div *ngFor="let option of influencerSideMenuOptions" class="mt-8">
-            <i [class]="option.icon" class="fa-solid me-4"></i>
-            <strong>{{ option.title }}</strong>
-          </div>
-        </ng-container>
-        <ng-container *ngSwitchDefault>
-          <div *ngFor="let option of businessSideMenuOptions" class="mt-8">
-            <i [class]="option.icon" class="fa-solid me-4"></i>
-            <strong>{{ option.title }}</strong>
-          </div>
-        </ng-container>
+      <div class="mt-12">
+        <div *ngFor="let option of sideMenuOptions" class="mt-8">
+          <i [class]="option.icon" class="fa-solid me-4"></i>
+          <strong>{{ option.title }}</strong>
+        </div>
       </div>
     </ng-container>
   </div>

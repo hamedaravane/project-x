@@ -2,14 +2,18 @@ import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
 import {Observable, map} from 'rxjs';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
+import {NzTransitionPatchModule} from 'ng-zorro-antd/core/transition-patch/transition-patch.module';
+import {NzFormModule} from 'ng-zorro-antd/form';
+import {NzInputModule} from 'ng-zorro-antd/input';
 import {Component, OnInit, inject} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   standalone: true,
   selector: 'app-edit-information',
   templateUrl: './edit-information.component.html',
   styleUrls: ['./edit-information.component.scss'],
+  imports: [FormsModule, NzFormModule, ReactiveFormsModule, NzInputModule, NzTransitionPatchModule],
 })
 export class EditInformationComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
@@ -45,7 +49,7 @@ export class EditInformationComponent implements OnInit {
   emailAddress = this.userInfoForm.get('emailAddress') as AbstractControl<string>;
   businessIndustry = this.userInfoForm.get('businessIndustry') as AbstractControl<string | null>;
   businessCity = this.userInfoForm.get('businessCity') as AbstractControl<any | null>;
-  mobilePhoneNumber = this.userInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
+  mobilePhoneNumber = this.userInfoForm.get('mobilePhoneNumber') as AbstractControl<string | null>;
   businessAddress = this.userInfoForm.get('businessAddress') as AbstractControl<string | null>;
 
   ngOnInit(): void {
@@ -54,16 +58,19 @@ export class EditInformationComponent implements OnInit {
         this.firstName.setValue(data.firstName);
         this.lastName.setValue(data.lastName);
         this.persianBusinessName.setValue(data.persianBusinessName);
-        this.englishBusinessName.setValue(data.englishBusinessName);
+        this.englishBusinessName.setValue(data.englishBusinessName || null);
         this.englishFirstName.setValue(data.englishFirstName || null);
         this.englishLastName.setValue(data.englishLastName || null);
-        this.instagramAccountId.setValue();
+        this.instagramAccountId.setValue(data.instagramAccountId);
         this.emailAddress.setValue(data.emailAddress);
-        this.businessIndustry.setValue(data.firstName);
-        this.businessCity.setValue(data.firstName);
-        this.mobilePhoneNumber.setValue(data.firstName);
-        this.businessAddress.setValue(data.firstName);
+        this.businessIndustry.setValue(data.businessIndustry);
+        this.businessCity.setValue(data.businessCity);
+        this.mobilePhoneNumber.setValue(data.mobilePhoneNumber || null);
+        this.businessAddress.setValue(data.businessAddress);
       }),
     );
+  }
+  submitForm(): void {
+    console.log('userInfoForm is submitted');
   }
 }

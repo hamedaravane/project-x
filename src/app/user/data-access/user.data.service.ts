@@ -16,6 +16,14 @@ export class UserDataService {
       englishLastName: 'Saabeti',
       nickName: 'elimiraaa',
       profilePhotoSrc: 'assets/mock/profile-photos/business-profile-photo.png',
+      persianBusinessName: 'گیان',
+      englishBusinessName: 'gian flower',
+      instagramAccountId: 'gianflowerr',
+      emailAddress: 'elmirasaabeti@gmail.com',
+      businessIndustry: '',
+      businessCity: 'Shiraaz',
+      mobilePhoneNumber: '+989017701599',
+      businessAddress: 'خیابان سعدی، کوچه شهید حافظی ۱، پلاک ۱۴۱',
     };
     return of(mockData);
   }
