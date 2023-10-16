@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    loadChildren: () => import('../influencers/influencers.module').then(m => m.InfluencersModule),
+    loadChildren: () => import('@influencers/influencers.module').then(m => m.InfluencersModule),
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('@user/user.module').then(m => m.UserModule),
   },
 ];
 
