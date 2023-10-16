@@ -1,6 +1,7 @@
 import {AsyncPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {Component, DestroyRef, Input, OnInit, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {RouterLink} from '@angular/router';
 import {SideMenuOption, User} from '@user/data-access/model/user.model';
 import {sideMenuAnimations} from '@shared/data-access/animations/side-menu.animations';
 import {LayoutService} from '@shared/data-access/layout.service';
@@ -13,7 +14,7 @@ import {Observable, tap} from 'rxjs';
   selector: 'side-menu',
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss'],
-  imports: [NgOptimizedImage, NgIf, AsyncPipe, NzSkeletonModule, SkeletonComponent, NgForOf],
+  imports: [NgOptimizedImage, NgIf, AsyncPipe, NzSkeletonModule, SkeletonComponent, NgForOf, RouterLink],
   animations: [sideMenuAnimations],
 })
 export class SideMenuComponent implements OnInit {

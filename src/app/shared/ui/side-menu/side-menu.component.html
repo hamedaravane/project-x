@@ -12,7 +12,7 @@
         <span>{{ userData.lastName }}</span>
       </div>
       <div class="mt-12">
-        <div *ngFor="let option of sideMenuOptions" class="mt-8">
+        <div *ngFor="let option of sideMenuOptions" class="mt-8" [routerLink]="option.url">
           <i [class]="option.icon" class="fa-solid me-4"></i>
           <strong>{{ option.title }}</strong>
         </div>
