@@ -1,13 +1,4 @@
-import {
-  AsyncPipe,
-  NgForOf,
-  NgIf,
-  NgOptimizedImage,
-  NgSwitch,
-  NgSwitchCase,
-  NgSwitchDefault,
-  NgTemplateOutlet,
-} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {Component, DestroyRef, Input, OnInit, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {SideMenuOption, User} from '@user/data-access/model/user.model';
@@ -22,18 +13,7 @@ import {Observable, tap} from 'rxjs';
   selector: 'side-menu',
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss'],
-  imports: [
-    NgOptimizedImage,
-    NgIf,
-    AsyncPipe,
-    NzSkeletonModule,
-    SkeletonComponent,
-    NgForOf,
-    NgTemplateOutlet,
-    NgSwitchCase,
-    NgSwitch,
-    NgSwitchDefault,
-  ],
+  imports: [NgOptimizedImage, NgIf, AsyncPipe, NzSkeletonModule, SkeletonComponent, NgForOf],
   animations: [sideMenuAnimations],
 })
 export class SideMenuComponent implements OnInit {
@@ -49,6 +29,7 @@ export class SideMenuComponent implements OnInit {
       {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
       {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
       {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
+      {title: 'ویرایش حساب', icon: 'fa-user', url: 'user'},
       {title: 'تنظیمات', icon: 'fa-gear', url: ''},
       {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
     ];
@@ -56,6 +37,7 @@ export class SideMenuComponent implements OnInit {
       {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
       {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
       {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
+      {title: 'ویرایش حساب', icon: 'fa-user', url: 'user'},
       {title: 'تنظیمات', icon: 'fa-gear', url: ''},
       {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
     ];
