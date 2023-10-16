@@ -1,7 +1,139 @@
 <form nz-form [formGroup]="userInfoForm" (ngSubmit)="submitForm()">
   <nz-form-item>
-    <nz-input-group [nzPrefix]="InfoIcon">
-      <input type="text" nz-input disabled placeholder="کسب و کار" />
-    </nz-input-group>
+    <nz-form-label [nzSpan]="6" nzFor="type">نوع حساب کاربری</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-input-group [nzPrefix]="InfoIcon">
+        <input nz-input disabled [value]="userData.type" type="text" id="type" />
+      </nz-input-group>
+    </nz-form-control>
   </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="persianBusinessName">نام کسب و کار به فارسی</nz-form-label>
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="PersianCharErrorTip">
+      <input nz-input formControlName="persianBusinessName" id="persianBusinessName" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="englishBusinessName">نام کسب و کار به انگلیسی</nz-form-label>
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="EnglishCharErrorTip">
+      <input nz-input formControlName="englishBusinessName" id="englishBusinessName" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="firstName">نام به فارسی</nz-form-label>
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="PersianCharErrorTip">
+      <input nz-input formControlName="firstName" id="firstName" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="lastName">نام خانوادگی به فارسی</nz-form-label>
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="PersianCharErrorTip">
+      <input nz-input formControlName="lastName" id="lastName" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="englishFirstName">نام به انگلیسی</nz-form-label>
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="EnglishCharErrorTip">
+      <input nz-input formControlName="englishFirstName" id="englishFirstName" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="englishLastName">نام خانوادگی به انگلیسی</nz-form-label>
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="EnglishCharErrorTip">
+      <input nz-input formControlName="englishLastName" id="englishLastName" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="instagramAccountId">آیدی حساب کاربری اینستاگرام</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-input-group [nzPrefix]="instagramIcon">
+        <input nz-input formControlName="instagramAccountId" id="instagramAccountId" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="emailAddress">آدرس ایمیل</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input type="email" formControlName="emailAddress" id="emailAddress" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="businessIndustry">نوع کسب و کار</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-select formControlName="businessIndustry" id="businessIndustry">
+        <nz-option
+          *ngFor="let businessIndustry of industryList"
+          [nzValue]="businessIndustry"
+          [nzLabel]="businessIndustry.label"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="businessCity">شهر</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-select nzShowSearch nzAllowClear formControlName="businessCity" id="businessCity">
+        <nz-option *ngFor="let city of cityList" [nzValue]="city.name" [nzLabel]="city.faName"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item dir="ltr">
+    <nz-form-label [nzSpan]="6" nzFor="mobilePhoneNumber">شماره موبایل ایران</nz-form-label>
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="IranianMobilePhoneNumberErrorsTip">
+      <nz-input-group nzAddOnBefore="+98">
+        <input type="number" nz-input placeholder="شماره موبایل (ایران)" formControlName="mobilePhoneNumber" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="businessAddress">آدرس</nz-form-label>
+    <nz-form-control [nzSpan]="14" nzErrorTip="به فارسی وارد شود">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          placeholder="تهران، بلوار نلسون ماندلا، کوچه ایرج، پلاک ۱۱۵"
+          formControlName="businessAddress" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button nzBlock nzType="primary" [disabled]="userInfoForm.invalid">تایید</button>
 </form>
+
+<ng-template #InfoIcon>
+  <i class="fa-solid fa-circle-info"></i>
+</ng-template>
+<ng-template #inputTextIcon>
+  <i class="fa-solid fa-input-text"></i>
+</ng-template>
+<ng-template #instagramIcon>
+  <i class="fa-brands fa-instagram"></i>
+</ng-template>
+<ng-template #twitterIcon>
+  <i class="fa-brands fa-twitter"></i>
+</ng-template>
+<ng-template #PersianCharErrorTip>
+  <ng-container *ngIf="persianBusinessName.errors?.['required']">نام کسب و کار به فارسی الزامی است</ng-container>
+  <ng-container
+    *ngIf="
+      firstName.errors?.['notPersianCharacters'] ||
+      lastName.errors?.['notPersianCharacters'] ||
+      persianBusinessName.errors?.['notPersianCharacters']
+    "
+    >از حروف فارسی استفاده کنید</ng-container
+  >
+</ng-template>
+<ng-template #EnglishCharErrorTip>
+  <ng-container *ngIf="englishBusinessName.errors?.['required']">نام کسب و کار به انگلیسی الزامی است</ng-container>
+  <ng-container
+    *ngIf="
+      englishFirstName.errors?.['pattern'] ||
+      englishLastName.errors?.['pattern'] ||
+      englishBusinessName.errors?.['pattern']
+    "
+    >از حروف انگلیسی استفاده کنید</ng-container
+  >
+</ng-template>
+<ng-template #IranianMobilePhoneNumberErrorsTip>
+  <ng-container *ngIf="mobilePhoneNumber.errors?.['required']">شماره موبایل الزامی است</ng-container>
+  <ng-container *ngIf="mobilePhoneNumber.errors?.['pattern']">فرمت شماره صحیح نیست</ng-container>
+</ng-template>

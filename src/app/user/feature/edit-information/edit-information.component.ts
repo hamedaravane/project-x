@@ -1,11 +1,19 @@
 import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
 import {Observable, map} from 'rxjs';
+import {CitiesListService} from '@shared/data-access/cities-list.service';
+import {industryCategoryList} from '@shared/data-access/mock/mock';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
+import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzTransitionPatchModule} from 'ng-zorro-antd/core/transition-patch/transition-patch.module';
+import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
-import {Component, OnInit, inject} from '@angular/core';
+import {NzSelectModule} from 'ng-zorro-antd/select';
+import {BidiModule} from '@angular/cdk/bidi';
+import {NgForOf, NgIf} from '@angular/common';
+import {Component, DestroyRef, OnInit, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
@@ -13,11 +21,31 @@ import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModul
   selector: 'app-edit-information',
   templateUrl: './edit-information.component.html',
   styleUrls: ['./edit-information.component.scss'],
-  imports: [FormsModule, NzFormModule, ReactiveFormsModule, NzInputModule, NzTransitionPatchModule],
+  imports: [
+    FormsModule,
+    NzFormModule,
+    ReactiveFormsModule,
+    NzInputModule,
+    NzTransitionPatchModule,
+    NgForOf,
+    NzSelectModule,
+    BidiModule,
+    NgIf,
+    NzButtonModule,
+    NzWaveModule,
+  ],
 })
 export class EditInformationComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
+  private readonly citiesListService = inject(CitiesListService);
+  private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly userData$: Observable<User> = this.userService.user$;
+  userData!: User;
+
+  cityList = this.citiesListService.cityList;
+
+  industryList = industryCategoryList;
+
   userInfoForm: FormGroup = new FormGroup({
     firstName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
     lastName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
@@ -53,24 +81,29 @@ export class EditInformationComponent implements OnInit {
   businessAddress = this.userInfoForm.get('businessAddress') as AbstractControl<string | null>;
 
   ngOnInit(): void {
-    this.userData$.pipe(
-      map(data => {
-        this.firstName.setValue(data.firstName);
-        this.lastName.setValue(data.lastName);
-        this.persianBusinessName.setValue(data.persianBusinessName);
-        this.englishBusinessName.setValue(data.englishBusinessName || null);
-        this.englishFirstName.setValue(data.englishFirstName || null);
-        this.englishLastName.setValue(data.englishLastName || null);
-        this.instagramAccountId.setValue(data.instagramAccountId);
-        this.emailAddress.setValue(data.emailAddress);
-        this.businessIndustry.setValue(data.businessIndustry);
-        this.businessCity.setValue(data.businessCity);
-        this.mobilePhoneNumber.setValue(data.mobilePhoneNumber || null);
-        this.businessAddress.setValue(data.businessAddress);
-      }),
-    );
+    this.userData$
+      .pipe(
+        map(data => {
+          this.persianBusinessName.setValue(data.persianBusinessName);
+          this.englishBusinessName.setValue(data.englishBusinessName || null);
+          this.firstName.setValue(data.firstName);
+          this.lastName.setValue(data.lastName);
+          this.englishFirstName.setValue(data.englishFirstName || null);
+          this.englishLastName.setValue(data.englishLastName || null);
+          this.instagramAccountId.setValue(data.instagramAccountId);
+          this.emailAddress.setValue(data.emailAddress);
+          this.businessIndustry.setValue(data.businessIndustry);
+          this.businessCity.setValue(data.businessCity);
+          this.mobilePhoneNumber.setValue(data.mobilePhoneNumber || null);
+          this.businessAddress.setValue(data.businessAddress);
+          return data;
+        }),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe(value => (this.userData = value));
   }
   submitForm(): void {
     console.log('userInfoForm is submitted');
   }
+  protected readonly industryCategoryList = industryCategoryList;
 }
