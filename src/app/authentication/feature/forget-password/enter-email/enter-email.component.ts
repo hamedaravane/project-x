@@ -1,10 +1,10 @@
-import {NzButtonModule} from 'ng-zorro-antd/button';
-import {NzFormModule} from 'ng-zorro-antd/form';
-import {NzInputModule} from 'ng-zorro-antd/input';
 import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzFormModule} from 'ng-zorro-antd/form';
+import {NzInputModule} from 'ng-zorro-antd/input';
 import {ForgotPasswordService} from '../data-access/forgot-password.service';
 
 @Component({

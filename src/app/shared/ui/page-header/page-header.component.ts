@@ -1,10 +1,10 @@
+import {AsyncPipe, NgIf, NgOptimizedImage} from '@angular/common';
+import {ChangeDetectionStrategy, Component, Input, inject} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {User} from '@user/data-access/model/user.model';
-import {Observable} from 'rxjs';
 import {LayoutService} from '@shared/data-access/layout.service';
 import {RouteService} from '@shared/data-access/route.service';
-import {AsyncPipe, NgIf, NgOptimizedImage} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Input, OnInit, inject} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
   standalone: true,

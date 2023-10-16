@@ -1,5 +1,5 @@
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {UserType} from './type';
 
 @Injectable({
@@ -8,7 +8,7 @@ import {UserType} from './type';
 export class RegisterService {
   private readonly userType = new BehaviorSubject<UserType | null>(null);
 
-  selectUserType(type: UserType) {
+  selectUserType(type: UserType): void {
     this.userType.next(type);
   }
 

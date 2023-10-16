@@ -1,6 +1,6 @@
-import {BehaviorSubject, Observable} from 'rxjs';
-import {BusinessValue} from '@shared/data-access/models/category.model';
 import {Injectable} from '@angular/core';
+import {BusinessValue} from '@shared/data-access/models/category.model';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {FilterSort, InfluencerSummary, SortOption, SortOrder} from './model/filter-sort.model';
 
 @Injectable({

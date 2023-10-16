@@ -1,9 +1,9 @@
-import {NzButtonModule} from 'ng-zorro-antd/button';
-import {NzIconModule} from 'ng-zorro-antd/icon';
-import {NzSpinModule} from 'ng-zorro-antd/spin';
 import {NgClass} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzIconModule} from 'ng-zorro-antd/icon';
+import {NzSpinModule} from 'ng-zorro-antd/spin';
 import {RegisterService} from '../data-access/register.service';
 import {UserType} from '../data-access/type';
 
@@ -19,9 +19,9 @@ export class UserTypeComponent {
   private readonly registerService = inject(RegisterService);
 
   userType!: UserType;
-  loading: boolean = false;
+  loading = false;
 
-  selectUserType(type: UserType) {
+  selectUserType(type: UserType): void {
     this.userType = type;
     this.loading = true;
     setTimeout(async () => {

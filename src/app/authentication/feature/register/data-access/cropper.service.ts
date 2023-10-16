@@ -1,5 +1,5 @@
-import Cropper from 'cropperjs';
 import {ElementRef, Injectable} from '@angular/core';
+import Cropper from 'cropperjs';
 
 @Injectable({
   providedIn: 'root',

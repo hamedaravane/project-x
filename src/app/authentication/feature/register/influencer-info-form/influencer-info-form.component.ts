@@ -1,3 +1,8 @@
+import {BidiModule} from '@angular/cdk/bidi';
+import {NgForOf, NgIf} from '@angular/common';
+import {Component, inject} from '@angular/core';
+import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {influencerCategoryList} from '@shared/data-access/mock/mock';
 import {PurpleDate} from '@shared/data-access/models/date.model';
@@ -9,11 +14,6 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
-import {BidiModule} from '@angular/cdk/bidi';
-import {NgForOf, NgIf} from '@angular/common';
-import {Component, inject} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Router, RouterLink} from '@angular/router';
 
 @Component({
   standalone: true,
@@ -73,7 +73,7 @@ export class InfluencerInfoFormComponent {
   influencerCity = this.influencerInfoForm.get('influencerCity') as AbstractControl<any | null>;
   mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
 
-  submitForm() {
+  submitForm(): void {
     this.router.navigateByUrl('/auth/register/select-profile-photo');
   }
 }

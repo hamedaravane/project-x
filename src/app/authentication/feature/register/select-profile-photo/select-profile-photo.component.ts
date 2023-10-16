@@ -1,10 +1,10 @@
-import Cropper from 'cropperjs';
-import {NzButtonModule} from 'ng-zorro-antd/button';
-import {NzModalModule} from 'ng-zorro-antd/modal';
-import {NzUploadModule} from 'ng-zorro-antd/upload';
 import {NgClass, NgIf} from '@angular/common';
 import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzModalModule} from 'ng-zorro-antd/modal';
+import {NzUploadModule} from 'ng-zorro-antd/upload';
+import Cropper from 'cropperjs';
 import {CropperService} from '../data-access/cropper.service';
 import {ImageCompressionService} from '../data-access/image-compression.service';
 
@@ -30,7 +30,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
   /**
    * Programmatically triggers the file input to open the file selection dialog.
    */
-  triggerFileInput() {
+  triggerFileInput(): void {
     this.fileInput.nativeElement.click();
   }
 
@@ -39,7 +39,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
    *
    * @param {Event} event - The file selection event.
    */
-  onFileSelected(event: Event) {
+  onFileSelected(event: Event): void {
     const input: HTMLInputElement = event.target as HTMLInputElement;
 
     if (!input.files || !input.files[0]) {
@@ -59,7 +59,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
   /**
    * Initializes or re-initializes the Cropper instance on the image element.
    */
-  initCropper() {
+  initCropper(): void {
     if (this.cropper) {
       this.cropper.destroy();
     }
@@ -71,7 +71,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
   /**
    * Closes the cropping modal and resets any selected or cropped images.
    */
-  cancelCropModal() {
+  cancelCropModal(): void {
     this.selectedImageSrc = null;
     this.croppedImageSrc = null;
     this.isCropModalVisible = false;
@@ -80,7 +80,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
   /**
    * Confirms the image cropping, generates the data URL of the cropped image, and closes the cropping modal.
    */
-  confirmCrop() {
+  confirmCrop(): void {
     const canvas = this.cropper.getCroppedCanvas();
 
     if (canvas) {
@@ -95,7 +95,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
   /**
    * Clear the selected Image
    */
-  clearSelectedImage() {
+  clearSelectedImage(): void {
     this.selectedImageSrc = null;
     this.croppedImageSrc = null;
   }
@@ -103,7 +103,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
   /**
    * After view initialization, sets up the Cropper if a cropped image is already available.
    */
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     if (this.croppedImageSrc) {
       this.initCropper();
     }
@@ -112,7 +112,7 @@ export class SelectProfilePhotoComponent implements AfterViewInit, OnDestroy {
   /**
    * Cleanup method to destroy the Cropper instance before the component is destroyed.
    */
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.cropper) {
       this.cropper.destroy();
     }

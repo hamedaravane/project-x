@@ -1,3 +1,8 @@
+import {AsyncPipe, NgClass, NgIf} from '@angular/common';
+import {Component, DestroyRef, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
 import {confirmPasswordValidator, strongPasswordValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
@@ -5,11 +10,6 @@ import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzPopoverModule} from 'ng-zorro-antd/popover';
-import {AsyncPipe, NgClass, NgIf} from '@angular/common';
-import {Component, DestroyRef, OnInit, inject} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Router, RouterLink} from '@angular/router';
 import {RegisterService} from '../data-access/register.service';
 
 @Component({
@@ -57,7 +57,7 @@ export class BasicInfoComponent {
   ) as AbstractControl<null | string>;
 
   isHidePassword = true;
-  submitForm() {
+  submitForm(): void {
     this.userType.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(type => {
       if (type === 'influencer') {
         this.router.navigateByUrl('/auth/register/influencer-info');

@@ -1,14 +1,14 @@
-import {NgOtpInputModule} from 'ng-otp-input';
-import {map} from 'rxjs';
-import {NzAlertModule} from 'ng-zorro-antd/alert';
-import {NzButtonModule} from 'ng-zorro-antd/button';
-import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
-import {NzGridModule} from 'ng-zorro-antd/grid';
 import {BidiModule} from '@angular/cdk/bidi';
 import {Component, DestroyRef, OnInit, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
+import {NzAlertModule} from 'ng-zorro-antd/alert';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
+import {NzGridModule} from 'ng-zorro-antd/grid';
+import {NgOtpInputModule} from 'ng-otp-input';
+import {map} from 'rxjs';
 import {ForgotPasswordService} from '../data-access/forgot-password.service';
 
 @Component({

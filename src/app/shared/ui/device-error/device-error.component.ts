@@ -1,7 +1,7 @@
+import {Component} from '@angular/core';
 import {NzEmptyModule} from 'ng-zorro-antd/empty';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzResultModule} from 'ng-zorro-antd/result';
-import {Component} from '@angular/core';
 
 @Component({
   standalone: true,

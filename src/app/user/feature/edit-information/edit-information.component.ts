@@ -1,6 +1,10 @@
+import {BidiModule} from '@angular/cdk/bidi';
+import {NgForOf, NgIf} from '@angular/common';
+import {Component, DestroyRef, OnInit, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
-import {Observable, map} from 'rxjs';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {industryCategoryList} from '@shared/data-access/mock/mock';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
@@ -10,11 +14,7 @@ import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
-import {BidiModule} from '@angular/cdk/bidi';
-import {NgForOf, NgIf} from '@angular/common';
-import {Component, DestroyRef, OnInit, inject} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Observable, tap} from 'rxjs';
 
 @Component({
   standalone: true,
@@ -83,7 +83,7 @@ export class EditInformationComponent implements OnInit {
   ngOnInit(): void {
     this.userData$
       .pipe(
-        map(data => {
+        tap((data: User) => {
           this.persianBusinessName.setValue(data.persianBusinessName);
           this.englishBusinessName.setValue(data.englishBusinessName || null);
           this.firstName.setValue(data.firstName);
@@ -96,14 +96,12 @@ export class EditInformationComponent implements OnInit {
           this.businessCity.setValue(data.businessCity);
           this.mobilePhoneNumber.setValue(data.mobilePhoneNumber || null);
           this.businessAddress.setValue(data.businessAddress);
-          return data;
         }),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe(value => (this.userData = value));
+      .subscribe((value: User) => (this.userData = value));
   }
   submitForm(): void {
     console.log('userInfoForm is submitted');
   }
-  protected readonly industryCategoryList = industryCategoryList;
 }

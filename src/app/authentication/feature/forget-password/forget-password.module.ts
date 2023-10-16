@@ -1,5 +1,5 @@
-import {NgOtpInputModule} from 'ng-otp-input';
 import {NgModule} from '@angular/core';
+import {NgOtpInputModule} from 'ng-otp-input';
 import {ForgetPasswordRoutingModule} from './forget-password-routing.module';
 
 @NgModule({

@@ -1,12 +1,12 @@
+import {NgIf} from '@angular/common';
+import {Component} from '@angular/core';
+import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
-import {NgIf} from '@angular/common';
-import {Component} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
 
 @Component({
   standalone: true,
@@ -37,7 +37,7 @@ export class LoginFormComponent {
 
   isHidePassword = true;
 
-  submitLoginForm() {
+  submitLoginForm(): void {
     console.log('form submitted');
   }
 }

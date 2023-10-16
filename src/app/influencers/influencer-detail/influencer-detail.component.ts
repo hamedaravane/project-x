@@ -1,3 +1,6 @@
+import {NgForOf, NgOptimizedImage} from '@angular/common';
+import {Component, OnInit, inject} from '@angular/core';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {CategoryToIconPipe} from '@shared/util/category-to-icon.pipe';
 import {CategoryToLabelPipe} from '@shared/util/category-to-label.pipe';
@@ -5,9 +8,6 @@ import {PersianDigitPipe} from '@shared/util/persian-digit.pipe';
 import {ToCurrencyPipe} from '@shared/util/to-currency.pipe';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 import {NzButtonModule} from 'ng-zorro-antd/button';
-import {NgForOf, NgOptimizedImage} from '@angular/common';
-import {Component, OnInit, inject} from '@angular/core';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {feeDetailAnimation} from '../data-access/animations/animations';
 import {InfluencerService} from '../data-access/influencer.service';
 import {InfluencerDetail} from '../data-access/model/filter-sort.model';

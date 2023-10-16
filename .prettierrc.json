@@ -11,7 +11,17 @@
   "bracketSpacing": false,
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrderParserPlugins": ["typescript", "decorators-legacy"],
-  "importOrder": ["^@shared/(.*)$", "^ng-zorro-antd/(.*)$", "^@angular/(.*)$", "^[./]"],
+  "importOrder": [
+    "^@angular/(.*)$",
+    "^@main/(.*)$",
+    "^@user/(.*)$",
+    "^@authentication/(.*)$",
+    "^@influencers/(.*)$",
+    "^@shared/(.*)$",
+    "^ng-zorro-antd/(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^[./]"
+  ],
   "importOrderSeparation": false,
   "importOrderSortSpecifiers": true,
   "importOrderGroupNamespaceSpecifiers": true

@@ -1,5 +1,5 @@
-import {BusinessValue, IndustryValue} from '@shared/data-access/models/category.model';
 import {Pipe, PipeTransform} from '@angular/core';
+import {BusinessValue, IndustryValue} from '@shared/data-access/models/category.model';
 
 @Pipe({
   standalone: true,

@@ -1,7 +1,7 @@
+import {Injectable, inject} from '@angular/core';
 import {User} from '@user/data-access/model/user.model';
 import {UserDataService} from '@user/data-access/user.data.service';
-import {BehaviorSubject, Observable, Subject, lastValueFrom} from 'rxjs';
-import {Injectable, inject} from '@angular/core';
+import {BehaviorSubject, Observable, lastValueFrom} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

@@ -1,4 +1,3 @@
-import {NZ_DATE_CONFIG, NZ_I18N, en_US, fa_IR} from 'ng-zorro-antd/i18n';
 import {registerLocaleData} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import en from '@angular/common/locales/en';
@@ -7,6 +6,7 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NZ_DATE_CONFIG, NZ_I18N, en_US, fa_IR} from 'ng-zorro-antd/i18n';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 

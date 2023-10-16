@@ -1,9 +1,3 @@
-import {SideMenuOption, User} from '@user/data-access/model/user.model';
-import {Observable, map, tap} from 'rxjs';
-import {sideMenuAnimations} from '@shared/data-access/animations/side-menu.animations';
-import {LayoutService} from '@shared/data-access/layout.service';
-import {SkeletonComponent} from '@shared/ui/skeleton/skeleton.component';
-import {NzSkeletonModule} from 'ng-zorro-antd/skeleton';
 import {
   AsyncPipe,
   NgForOf,
@@ -16,6 +10,12 @@ import {
 } from '@angular/common';
 import {Component, DestroyRef, Input, OnInit, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {SideMenuOption, User} from '@user/data-access/model/user.model';
+import {sideMenuAnimations} from '@shared/data-access/animations/side-menu.animations';
+import {LayoutService} from '@shared/data-access/layout.service';
+import {SkeletonComponent} from '@shared/ui/skeleton/skeleton.component';
+import {NzSkeletonModule} from 'ng-zorro-antd/skeleton';
+import {Observable, tap} from 'rxjs';
 
 @Component({
   standalone: true,
@@ -44,7 +44,7 @@ export class SideMenuComponent implements OnInit {
   userData!: User;
   sideMenuOptions!: SideMenuOption[];
 
-  ngOnInit() {
+  ngOnInit(): void {
     const businessSideMenuOptions: SideMenuOption[] = [
       {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
       {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},

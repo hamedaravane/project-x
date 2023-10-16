@@ -1,10 +1,10 @@
-import {influencerCategoryList} from '@shared/data-access/mock/mock';
-import {BusinessValue, IndustryValue, SelectList} from '@shared/data-access/models/category.model';
-import {NzGridModule} from 'ng-zorro-antd/grid';
-import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {influencerCategoryList} from '@shared/data-access/mock/mock';
+import {BusinessValue, SelectList} from '@shared/data-access/models/category.model';
+import {NzGridModule} from 'ng-zorro-antd/grid';
+import {NzSelectModule} from 'ng-zorro-antd/select';
 import {FilterSortService} from '../data-access/filter-sort.service';
 import {SortOption, SortOrder} from '../data-access/model/filter-sort.model';
 

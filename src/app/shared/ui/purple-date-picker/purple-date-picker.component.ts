@@ -1,8 +1,3 @@
-import * as moment from 'moment-jalaali';
-import {itemsAnimation, openClose} from '@shared/data-access/animations/date-picker-animations';
-import {Day, PurpleDate} from '@shared/data-access/models/date.model';
-import {PersianDigitPipe} from '@shared/util/persian-digit.pipe';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
 import {
   Component,
@@ -16,6 +11,10 @@ import {
   inject,
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {itemsAnimation, openClose} from '@shared/data-access/animations/date-picker-animations';
+import {Day, PurpleDate} from '@shared/data-access/models/date.model';
+import {PersianDigitPipe} from '@shared/util/persian-digit.pipe';
+import * as moment from 'moment-jalaali';
 
 @Component({
   standalone: true,

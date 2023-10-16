@@ -1,6 +1,6 @@
-import {BehaviorSubject, Observable} from 'rxjs';
-import {influencerDetailMock} from '@shared/data-access/mock/mock';
 import {Injectable} from '@angular/core';
+import {influencerDetailMock} from '@shared/data-access/mock/mock';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {InfluencerDetail} from './model/filter-sort.model';
 
 @Injectable({

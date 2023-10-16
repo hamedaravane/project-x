@@ -1,6 +1,6 @@
-import {Observable, filter, map} from 'rxjs';
 import {Injectable, inject} from '@angular/core';
-import {ActivatedRoute, EventType, Router, Scroll} from '@angular/router';
+import {EventType, Router, Scroll} from '@angular/router';
+import {Observable, filter, map} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

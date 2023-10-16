@@ -1,5 +1,5 @@
-import imageCompression from 'browser-image-compression';
 import {Injectable} from '@angular/core';
+import imageCompression from 'browser-image-compression';
 
 @Injectable({
   providedIn: 'root',

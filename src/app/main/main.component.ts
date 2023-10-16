@@ -1,11 +1,11 @@
+import {NgIf} from '@angular/common';
+import {AfterViewInit, Component, inject} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
-import {Observable} from 'rxjs';
 import {PageHeaderComponent} from '@shared/ui/page-header/page-header.component';
 import {SideMenuComponent} from '@shared/ui/side-menu/side-menu.component';
-import {NgIf} from '@angular/common';
-import {AfterViewInit, Component, OnInit, inject} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
   standalone: true,

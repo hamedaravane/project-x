@@ -1,6 +1,6 @@
-import {NzInputModule} from 'ng-zorro-antd/input';
 import {NgIf} from '@angular/common';
 import {Component, Input} from '@angular/core';
+import {NzInputModule} from 'ng-zorro-antd/input';
 
 @Component({
   standalone: true,
