@@ -3,16 +3,16 @@ import {AsyncPipe, NgForOf, NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, OnInit, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterOutlet} from '@angular/router';
+import {FilterSortListComponent} from '@influencers/feature/filter-sort/filter-sort-list.component';
 import {influencersMockList} from '@shared/data-access/mock/mock';
 import {CategoryToIconPipe} from '@shared/util/category-to-icon.pipe';
 import {CategoryToLabelPipe} from '@shared/util/category-to-label.pipe';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzRateModule} from 'ng-zorro-antd/rate';
 import {Observable, map} from 'rxjs';
-import {listAnimation} from '../data-access/animations/animations';
-import {FilterSortService} from '../data-access/filter-sort.service';
-import {FilterSort, InfluencerSummary} from '../data-access/model/filter-sort.model';
-import {FilterSortListComponent} from '../filter-sort/filter-sort-list.component';
+import {listAnimation} from 'src/app/influencers/data-access/animations/animations';
+import {FilterSortService} from 'src/app/influencers/data-access/filter-sort.service';
+import {FilterSort, InfluencerSummary} from 'src/app/influencers/data-access/model/filter-sort.model';
 
 @Component({
   standalone: true,

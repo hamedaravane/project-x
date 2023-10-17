@@ -8,7 +8,8 @@
       "@influencers/*": ["src/app/influencers/*"],
       "@main/*": ["src/app/main/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@user/*": ["src/app/user/*"]
+      "@user/*": ["src/app/user/*"],
+      "@error/*": ["src/app/error/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

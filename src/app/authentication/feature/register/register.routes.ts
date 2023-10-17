@@ -1,7 +1,6 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {Routes} from '@angular/router';
 
-const routes: Routes = [
+export const registerRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
@@ -31,8 +30,3 @@ const routes: Routes = [
       import('./select-profile-photo/select-profile-photo.component').then(c => c.SelectProfilePhotoComponent),
   },
 ];
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class RegisterRoutingModule {}

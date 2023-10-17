@@ -5,8 +5,8 @@ import {influencerCategoryList} from '@shared/data-access/mock/mock';
 import {BusinessValue, SelectList} from '@shared/data-access/models/category.model';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzSelectModule} from 'ng-zorro-antd/select';
-import {FilterSortService} from '../data-access/filter-sort.service';
-import {SortOption, SortOrder} from '../data-access/model/filter-sort.model';
+import {FilterSortService} from 'src/app/influencers/data-access/filter-sort.service';
+import {SortOption, SortOrder} from 'src/app/influencers/data-access/model/filter-sort.model';
 
 @Component({
   standalone: true,

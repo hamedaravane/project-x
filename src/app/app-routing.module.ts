@@ -9,15 +9,15 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./main/main.module').then(m => m.MainModule),
+    loadChildren: () => import('@main/main.routes').then(r => r.mainRoutes),
   },
   {
     path: 'error',
-    loadComponent: () => import('./shared/ui/device-error/device-error.component').then(c => c.DeviceErrorComponent),
+    loadChildren: () => import('@error/error.routes').then(r => r.errorRoutes),
   },
   {
     path: 'auth',
-    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
+    loadChildren: () => import('@authentication/authentication.routes').then(r => r.authenticationRoutes),
   },
 ];
 

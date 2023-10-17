@@ -107,10 +107,11 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <label class="mb-2">آخرین کلمه عبوری که یادتون میاد رو وارد کنید.</label>
+    <label class="mb-2" for="last-password">آخرین کلمه عبوری که یادتون میاد رو وارد کنید.</label>
     <nz-form-control>
       <nz-input-group [nzPrefix]="LockIcon" [nzSuffix]="isHidePassword ? EyeIcon : CloseEyeIcon">
         <input
+          id="last-password"
           [type]="isHidePassword ? 'password' : 'text'"
           nz-input
           formControlName="lastRememberedPass"

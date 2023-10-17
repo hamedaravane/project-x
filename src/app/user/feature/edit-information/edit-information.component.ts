@@ -9,7 +9,6 @@ import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {industryCategoryList} from '@shared/data-access/mock/mock';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
-import {NzTransitionPatchModule} from 'ng-zorro-antd/core/transition-patch/transition-patch.module';
 import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
@@ -26,7 +25,6 @@ import {Observable, tap} from 'rxjs';
     NzFormModule,
     ReactiveFormsModule,
     NzInputModule,
-    NzTransitionPatchModule,
     NgForOf,
     NzSelectModule,
     BidiModule,

@@ -8,10 +8,10 @@ import {PersianDigitPipe} from '@shared/util/persian-digit.pipe';
 import {ToCurrencyPipe} from '@shared/util/to-currency.pipe';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 import {NzButtonModule} from 'ng-zorro-antd/button';
-import {feeDetailAnimation} from '../data-access/animations/animations';
-import {InfluencerService} from '../data-access/influencer.service';
-import {InfluencerDetail} from '../data-access/model/filter-sort.model';
-import {TypeToIconPipe} from '../data-access/util/type-to-icon.pipe';
+import {feeDetailAnimation} from 'src/app/influencers/data-access/animations/animations';
+import {InfluencerService} from 'src/app/influencers/data-access/influencer.service';
+import {InfluencerDetail} from 'src/app/influencers/data-access/model/filter-sort.model';
+import {TypeToIconPipe} from 'src/app/influencers/data-access/util/type-to-icon.pipe';
 
 @Component({
   standalone: true,

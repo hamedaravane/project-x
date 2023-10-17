@@ -95,12 +95,14 @@
   </nz-form-item>
   <div nz-row class="mt-6">
     <div nz-col [nzSpan]="12">
-      <label nz-checkbox formControlName="rememberMe">
+      <label for="remember-me" nz-checkbox formControlName="rememberMe">
         <span>من را به خاطر بسپار</span>
       </label>
     </div>
     <div nz-col [nzSpan]="12">
-      <a routerLink="/auth/forget-password/enter-email" class="text-indigo-600 float-left">فراموشی رمز عبور</a>
+      <a id="remember-me" routerLink="/auth/forget-password/enter-email" class="text-indigo-600 float-left">
+        فراموشی رمز عبور
+      </a>
     </div>
   </div>
   <button

@@ -6,9 +6,9 @@ import {PurpleDatePickerComponent} from '@shared/ui/purple-date-picker/purple-da
 import {ToCurrencyPipe} from '@shared/util/to-currency.pipe';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 import {Observable} from 'rxjs';
-import {InfluencerService} from '../data-access/influencer.service';
-import {FeeDetail, InfluencerDetail} from '../data-access/model/filter-sort.model';
-import {TypeToIconPipe} from '../data-access/util/type-to-icon.pipe';
+import {InfluencerService} from 'src/app/influencers/data-access/influencer.service';
+import {FeeDetail, InfluencerDetail} from 'src/app/influencers/data-access/model/filter-sort.model';
+import {TypeToIconPipe} from 'src/app/influencers/data-access/util/type-to-icon.pipe';
 
 @Component({
   standalone: true,
