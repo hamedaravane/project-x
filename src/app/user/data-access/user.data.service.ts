@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from '@user/data-access/model/user.model';
+import {User, UserDto, userDtoToDomain} from '@user/data-access/model/user.model';
 import {Observable, of} from 'rxjs';
 
 @Injectable({
@@ -7,24 +7,24 @@ import {Observable, of} from 'rxjs';
 })
 export class UserDataService {
   getMockUserInfo(): Observable<User> {
-    const mockData: User = {
+    const mockData: UserDto = {
       id: 1226574,
       type: 'business',
-      firstName: 'المیرا',
-      lastName: 'ثابتی',
-      englishFirstName: 'elmira',
-      englishLastName: 'Saabeti',
-      nickName: 'elimiraaa',
-      profilePhotoSrc: 'assets/mock/profile-photos/business-profile-photo.png',
-      persianBusinessName: 'گیان',
-      englishBusinessName: 'gian flower',
-      instagramAccountId: 'gianflowerr',
-      emailAddress: 'elmirasaabeti@gmail.com',
-      businessIndustry: '',
-      businessCity: 'Shiraaz',
-      mobilePhoneNumber: '+989017701599',
-      businessAddress: 'خیابان سعدی، کوچه شهید حافظی ۱، پلاک ۱۴۱',
+      first_name: 'المیرا',
+      last_name: 'ثابتی',
+      nick_name: 'elmira',
+      english_first_name: 'Saabeti',
+      english_last_name: 'elimiraaa',
+      profile_photo_src: 'assets/mock/profile-photos/business-profile-photo.png',
+      persian_business_name: 'گیان',
+      english_business_name: 'gian flower',
+      instagram_id: 'gianflowerr',
+      email_address: 'elmirasaabeti@gmail.com',
+      business_industry: 'Cinema',
+      business_city: 'Shiraz',
+      mobile_phone_number: '9017701599',
+      business_address: 'خیابان سعدی، کوچه شهید حافظی ۱، پلاک ۱۴۱',
     };
-    return of(mockData);
+    return of(userDtoToDomain(mockData));
   }
 }

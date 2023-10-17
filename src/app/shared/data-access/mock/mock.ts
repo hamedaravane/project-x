@@ -3,7 +3,7 @@ import {BusinessValue, IndustryValue, SelectList} from '@shared/data-access/mode
 
 export const industryCategoryList: SelectList[] = [
   {value: IndustryValue.CafeAndRestaurant, label: 'کافه و رستوران'},
-  {value: IndustryValue.Beauty, label: ' آرایش و زیبایی'},
+  {value: IndustryValue.Beauty, label: 'آرایش و زیبایی'},
   {value: IndustryValue.Fashion, label: 'لباس و مد'},
   {value: IndustryValue.Fitness, label: 'ورزشی'},
   {value: IndustryValue.Retail, label: 'خرده فروشی'},

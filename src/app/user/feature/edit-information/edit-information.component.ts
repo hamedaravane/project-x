@@ -79,6 +79,7 @@ export class EditInformationComponent implements OnInit {
   businessAddress = this.userInfoForm.get('businessAddress') as AbstractControl<string | null>;
 
   ngOnInit(): void {
+    this.businessCity.valueChanges.subscribe(x => console.log('bc', x));
     this.userData$
       .pipe(
         tap((data: User) => {

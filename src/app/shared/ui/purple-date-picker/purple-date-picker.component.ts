@@ -122,7 +122,7 @@ export class PurpleDatePickerComponent implements OnInit, ControlValueAccessor {
         this.updateView();
         this.selectedDate = {
           jalaliDate: `${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`,
-          jsDate: new Date(
+          gregorianDate: new Date(
             moment(`${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`, 'jYYYY/jM/jD').format(
               'YYYY/M/D',
             ),
@@ -169,7 +169,7 @@ export class PurpleDatePickerComponent implements OnInit, ControlValueAccessor {
     this.selectedDay = this.currentDay;
     this.selectedDate = {
       jalaliDate: `${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`,
-      jsDate: new Date(
+      gregorianDate: new Date(
         moment(`${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`, 'jYYYY/jM/jD').format('YYYY/M/D'),
       ),
     };

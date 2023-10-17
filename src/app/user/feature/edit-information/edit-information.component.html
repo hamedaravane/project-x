@@ -1,94 +1,101 @@
 <form nz-form [formGroup]="userInfoForm" (ngSubmit)="submitForm()">
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="type">نوع حساب کاربری</nz-form-label>
-    <nz-form-control [nzSpan]="14">
+    <label class="my-1" for="type">نوع حساب کاربری</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12">
       <nz-input-group [nzPrefix]="InfoIcon">
         <input nz-input disabled [value]="userData.type" type="text" id="type" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="persianBusinessName">نام کسب و کار به فارسی</nz-form-label>
-    <nz-form-control [nzSpan]="14" [nzErrorTip]="PersianCharErrorTip">
+    <label class="my-1" for="persianBusinessName">نام کسب و کار به فارسی</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12" [nzErrorTip]="PersianCharErrorTip">
       <input nz-input formControlName="persianBusinessName" id="persianBusinessName" />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="englishBusinessName">نام کسب و کار به انگلیسی</nz-form-label>
-    <nz-form-control [nzSpan]="14" [nzErrorTip]="EnglishCharErrorTip">
-      <input nz-input formControlName="englishBusinessName" id="englishBusinessName" />
+    <label class="my-1" for="englishBusinessName">نام کسب و کار به انگلیسی</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12" [nzErrorTip]="EnglishCharErrorTip">
+      <input nz-input dir="ltr" formControlName="englishBusinessName" id="englishBusinessName" />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="firstName">نام به فارسی</nz-form-label>
-    <nz-form-control [nzSpan]="14" [nzErrorTip]="PersianCharErrorTip">
+    <label class="my-1" for="firstName">نام به فارسی</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12" [nzErrorTip]="PersianCharErrorTip">
       <input nz-input formControlName="firstName" id="firstName" />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="lastName">نام خانوادگی به فارسی</nz-form-label>
-    <nz-form-control [nzSpan]="14" [nzErrorTip]="PersianCharErrorTip">
+    <label class="my-1" for="lastName">نام خانوادگی به فارسی</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12" [nzErrorTip]="PersianCharErrorTip">
       <input nz-input formControlName="lastName" id="lastName" />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="englishFirstName">نام به انگلیسی</nz-form-label>
-    <nz-form-control [nzSpan]="14" [nzErrorTip]="EnglishCharErrorTip">
-      <input nz-input formControlName="englishFirstName" id="englishFirstName" />
+    <label class="my-1" for="englishFirstName">نام به انگلیسی</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12" [nzErrorTip]="EnglishCharErrorTip">
+      <input nz-input dir="ltr" formControlName="englishFirstName" id="englishFirstName" />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="englishLastName">نام خانوادگی به انگلیسی</nz-form-label>
-    <nz-form-control [nzSpan]="14" [nzErrorTip]="EnglishCharErrorTip">
-      <input nz-input formControlName="englishLastName" id="englishLastName" />
+    <label class="my-1" for="englishLastName">نام خانوادگی به انگلیسی</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12" [nzErrorTip]="EnglishCharErrorTip">
+      <input nz-input dir="ltr" formControlName="englishLastName" id="englishLastName" />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="instagramAccountId">آیدی حساب کاربری اینستاگرام</nz-form-label>
-    <nz-form-control [nzSpan]="14">
+    <label class="my-1" for="instagramAccountId">آیدی حساب کاربری اینستاگرام</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12">
       <nz-input-group [nzPrefix]="instagramIcon">
-        <input nz-input formControlName="instagramAccountId" id="instagramAccountId" />
+        <input nz-input dir="ltr" formControlName="instagramAccountId" id="instagramAccountId" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="emailAddress">آدرس ایمیل</nz-form-label>
-    <nz-form-control [nzSpan]="14">
-      <input nz-input type="email" formControlName="emailAddress" id="emailAddress" />
+    <label class="my-1" for="emailAddress">آدرس ایمیل</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12">
+      <input nz-input dir="ltr" type="email" formControlName="emailAddress" id="emailAddress" />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="businessIndustry">نوع کسب و کار</nz-form-label>
-    <nz-form-control [nzSpan]="14">
+    <label class="my-1" for="businessIndustry">نوع کسب و کار</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12">
       <nz-select formControlName="businessIndustry" id="businessIndustry">
         <nz-option
           *ngFor="let businessIndustry of industryList"
-          [nzValue]="businessIndustry"
+          [nzValue]="businessIndustry.value"
           [nzLabel]="businessIndustry.label"></nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="businessCity">شهر</nz-form-label>
-    <nz-form-control [nzSpan]="14">
+    <label class="my-1" for="businessCity">شهر</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12">
       <nz-select nzShowSearch nzAllowClear formControlName="businessCity" id="businessCity">
         <nz-option *ngFor="let city of cityList" [nzValue]="city.name" [nzLabel]="city.faName"></nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item dir="ltr">
-    <nz-form-label [nzSpan]="6" nzFor="mobilePhoneNumber">شماره موبایل ایران</nz-form-label>
-    <nz-form-control [nzSpan]="14" [nzErrorTip]="IranianMobilePhoneNumberErrorsTip">
-      <nz-input-group nzAddOnBefore="+98">
-        <input type="number" nz-input placeholder="شماره موبایل (ایران)" formControlName="mobilePhoneNumber" />
+  <nz-form-item>
+    <label class="my-1" for="mobilePhoneNumber">شماره موبایل ایران</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12" [nzErrorTip]="IranianMobilePhoneNumberErrorsTip">
+      <nz-input-group nzAddOnBefore="+98" dir="ltr">
+        <input
+          type="number"
+          dir="ltr"
+          id="mobilePhoneNumber"
+          nz-input
+          placeholder="شماره موبایل (ایران)"
+          formControlName="mobilePhoneNumber" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="6" nzFor="businessAddress">آدرس</nz-form-label>
-    <nz-form-control [nzSpan]="14" nzErrorTip="به فارسی وارد شود">
+    <label class="my-1" for="businessAddress">آدرس</label>
+    <nz-form-control [nzSpan]="14" [nzXs]="12" nzErrorTip="به فارسی وارد شود">
       <nz-input-group>
         <input
+          id="businessAddress"
           type="text"
           nz-input
           placeholder="تهران، بلوار نلسون ماندلا، کوچه ایرج، پلاک ۱۱۵"

@@ -7,5 +7,5 @@ export interface Day {
 
 export interface PurpleDate {
   jalaliDate: string;
-  jsDate: Date;
+  gregorianDate: Date;
 }
