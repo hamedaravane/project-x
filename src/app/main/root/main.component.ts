@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {AfterViewInit, Component, inject} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
@@ -14,11 +14,11 @@ import {Observable} from 'rxjs';
   styleUrls: ['./main.component.scss'],
   imports: [RouterOutlet, PageHeaderComponent, SideMenuComponent, NgIf],
 })
-export class MainComponent implements AfterViewInit {
+export class MainComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
   userData$: Observable<User> = this.userService.user$;
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.userService.getUserData().then();
   }
 }

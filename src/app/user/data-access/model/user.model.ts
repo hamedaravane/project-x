@@ -1,33 +1,8 @@
-export interface User {
-  id: number;
-  type: userType;
-  firstName: string;
-  lastName: string;
-  nickName?: string;
-  englishFirstName?: string;
-  englishLastName?: string;
-  profilePhotoSrc?: string;
-  persianBusinessName: string;
-  englishBusinessName?: string;
-  instagramAccountId: string;
-  emailAddress: string;
-  businessIndustry: string;
-  businessCity: string;
-  mobilePhoneNumber: string;
-  businessAddress: string;
-}
-
 type userType = 'influencer' | 'business';
-
-export interface SideMenuOption {
-  title: string;
-  icon: string;
-  url: string;
-}
 
 export interface UserDto {
   id: number;
-  type: userType;
+  type: string;
   first_name: string;
   last_name: string;
   nick_name: string | null;
@@ -44,10 +19,51 @@ export interface UserDto {
   business_address: string;
 }
 
+export interface User {
+  id: number;
+  type: UserTypeDetail;
+  firstName: string;
+  lastName: string;
+  nickName?: string;
+  englishFirstName?: string;
+  englishLastName?: string;
+  profilePhotoSrc?: string;
+  persianBusinessName: string;
+  englishBusinessName?: string;
+  instagramAccountId: string;
+  emailAddress: string;
+  businessIndustry: string;
+  businessCity: string;
+  mobilePhoneNumber: string;
+  businessAddress: string;
+}
+
+export interface SideMenuOption {
+  title: string;
+  icon: string;
+  url: string;
+}
+
+export interface UserTypeDetail {
+  value: userType;
+  label: string;
+}
+
+function addUserTypeDetail(value: string): UserTypeDetail {
+  if (!value) {
+    throw new Error('User type is not fetched or undefined');
+  }
+  const labels: Record<string, string> = {
+    business: 'کسب و کار',
+    influencer: 'تولید کننده محتوا',
+  };
+  return {value, label: labels[value]} as UserTypeDetail;
+}
+
 export function userDtoToDomain(value: UserDto): User {
   return {
     id: value.id,
-    type: value.type,
+    type: addUserTypeDetail(value.type),
     firstName: value.first_name,
     lastName: value.last_name,
     nickName: value.nick_name || undefined,

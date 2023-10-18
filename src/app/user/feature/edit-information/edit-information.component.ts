@@ -1,5 +1,5 @@
 import {BidiModule} from '@angular/cdk/bidi';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {Component, DestroyRef, OnInit, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -31,6 +31,7 @@ import {Observable, tap} from 'rxjs';
     NgIf,
     NzButtonModule,
     NzWaveModule,
+    NgOptimizedImage,
   ],
 })
 export class EditInformationComponent implements OnInit {
@@ -79,7 +80,6 @@ export class EditInformationComponent implements OnInit {
   businessAddress = this.userInfoForm.get('businessAddress') as AbstractControl<string | null>;
 
   ngOnInit(): void {
-    this.businessCity.valueChanges.subscribe(x => console.log('bc', x));
     this.userData$
       .pipe(
         tap((data: User) => {

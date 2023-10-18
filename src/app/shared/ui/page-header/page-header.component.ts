@@ -15,7 +15,7 @@ import {Observable} from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageHeaderComponent {
-  @Input() userData$!: Observable<User>;
+  @Input() user$!: Observable<User>;
   private readonly routeService: RouteService = inject(RouteService);
   private readonly layoutService: LayoutService = inject(LayoutService);
   backButtonVisible$: Observable<boolean> = this.routeService.isRoot$;

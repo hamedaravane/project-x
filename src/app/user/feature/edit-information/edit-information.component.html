@@ -1,9 +1,23 @@
+<div class="rounded-full w-24 h-24 overflow-clip mb-8 mx-auto">
+  <img
+    *ngIf="userData.profilePhotoSrc as profilePhotoSrc; else emptyPhoto"
+    class="object-cover aspect-square"
+    [ngSrc]="profilePhotoSrc"
+    width="96"
+    height="96"
+    alt="profile photo" />
+  <ng-template #emptyPhoto>
+    <div class="mx-auto w-fit">
+      <i class="fa-solid fa-user fa-xl text-gray-500"></i>
+    </div>
+  </ng-template>
+</div>
 <form nz-form [formGroup]="userInfoForm" (ngSubmit)="submitForm()">
   <nz-form-item>
     <label class="my-1" for="type">نوع حساب کاربری</label>
     <nz-form-control [nzSpan]="14" [nzXs]="12">
       <nz-input-group [nzPrefix]="InfoIcon">
-        <input nz-input disabled [value]="userData.type" type="text" id="type" />
+        <input nz-input disabled [value]="userData.type.label" type="text" id="type" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
