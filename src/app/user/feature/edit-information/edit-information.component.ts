@@ -1,19 +1,20 @@
 import {BidiModule} from '@angular/cdk/bidi';
-import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
-import {Component, DestroyRef, OnInit, inject} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {NgClass, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
+import {Component, DestroyRef, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {industryCategoryList} from '@shared/data-access/mock/mock';
+import {PhotoComponent} from '@shared/data-access/photo.component';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
+import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzSelectModule} from 'ng-zorro-antd/select';
-import {Observable, tap} from 'rxjs';
+import {Observable, firstValueFrom} from 'rxjs';
 
 @Component({
   standalone: true,
@@ -32,13 +33,17 @@ import {Observable, tap} from 'rxjs';
     NzButtonModule,
     NzWaveModule,
     NgOptimizedImage,
+    NzModalModule,
+    NgClass,
   ],
 })
-export class EditInformationComponent implements OnInit {
+export class EditInformationComponent extends PhotoComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
   private readonly citiesListService = inject(CitiesListService);
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly userData$: Observable<User> = this.userService.user$;
+  @ViewChild('fileInput') override fileInput!: ElementRef;
+  @ViewChild('image') override imageElement!: ElementRef;
   userData!: User;
 
   cityList = this.citiesListService.cityList;
@@ -80,25 +85,23 @@ export class EditInformationComponent implements OnInit {
   businessAddress = this.userInfoForm.get('businessAddress') as AbstractControl<string | null>;
 
   ngOnInit(): void {
-    this.userData$
-      .pipe(
-        tap((data: User) => {
-          this.persianBusinessName.setValue(data.persianBusinessName);
-          this.englishBusinessName.setValue(data.englishBusinessName || null);
-          this.firstName.setValue(data.firstName);
-          this.lastName.setValue(data.lastName);
-          this.englishFirstName.setValue(data.englishFirstName || null);
-          this.englishLastName.setValue(data.englishLastName || null);
-          this.instagramAccountId.setValue(data.instagramAccountId);
-          this.emailAddress.setValue(data.emailAddress);
-          this.businessIndustry.setValue(data.businessIndustry);
-          this.businessCity.setValue(data.businessCity);
-          this.mobilePhoneNumber.setValue(data.mobilePhoneNumber || null);
-          this.businessAddress.setValue(data.businessAddress);
-        }),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe((value: User) => (this.userData = value));
+    this.loadUserData().then();
+  }
+  async loadUserData(): Promise<void> {
+    this.userData = await firstValueFrom(this.userData$);
+    this.croppedImageSrc = this.userData.profilePhotoSrc || null;
+    this.persianBusinessName.setValue(this.userData.persianBusinessName);
+    this.englishBusinessName.setValue(this.userData.englishBusinessName || null);
+    this.firstName.setValue(this.userData.firstName);
+    this.lastName.setValue(this.userData.lastName);
+    this.englishFirstName.setValue(this.userData.englishFirstName || null);
+    this.englishLastName.setValue(this.userData.englishLastName || null);
+    this.instagramAccountId.setValue(this.userData.instagramAccountId);
+    this.emailAddress.setValue(this.userData.emailAddress);
+    this.businessIndustry.setValue(this.userData.businessIndustry);
+    this.businessCity.setValue(this.userData.businessCity);
+    this.mobilePhoneNumber.setValue(this.userData.mobilePhoneNumber || null);
+    this.businessAddress.setValue(this.userData.businessAddress);
   }
   submitForm(): void {
     console.log('userInfoForm is submitted');

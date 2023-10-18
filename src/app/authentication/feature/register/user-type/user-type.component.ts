@@ -4,8 +4,8 @@ import {Router, RouterLink} from '@angular/router';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzSpinModule} from 'ng-zorro-antd/spin';
-import {RegisterService} from '../data-access/register.service';
-import {UserType} from '../data-access/type';
+import {UserType} from '../../../data-access/model/type';
+import {RegisterService} from '../../../data-access/register.service';
 
 @Component({
   standalone: true,

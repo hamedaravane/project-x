@@ -5,7 +5,7 @@ import {Router, RouterLink} from '@angular/router';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
-import {ForgotPasswordService} from '../data-access/forgot-password.service';
+import {ForgotPasswordService} from '../../../data-access/forgot-password.service';
 
 @Component({
   standalone: true,

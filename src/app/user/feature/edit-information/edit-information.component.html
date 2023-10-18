@@ -1,18 +1,26 @@
 <div class="rounded-full w-24 h-24 overflow-clip mb-8 mx-auto">
-  <img
-    *ngIf="userData.profilePhotoSrc as profilePhotoSrc; else emptyPhoto"
-    class="object-cover aspect-square"
-    [ngSrc]="profilePhotoSrc"
-    width="96"
-    height="96"
-    alt="profile photo" />
+  <div class="relative">
+    <div class="absolute bottom-0 w-24 h-1/4 bg-neutral-600-transparent-90 cursor-pointer" (click)="triggerFileInput()">
+      <i
+        [ngClass]="{'fa-edit': croppedImageSrc, 'fa-file-circle-plus': !croppedImageSrc}"
+        class="fa-solid fa-md text-gray-50 text-center mx-auto block mt-1"></i>
+    </div>
+    <input type="file" #fileInput (change)="onFileSelected($event)" class="hidden" />
+    <img
+      *ngIf="croppedImageSrc; else emptyPhoto"
+      class="object-cover aspect-square"
+      [src]="croppedImageSrc"
+      width="96"
+      height="96"
+      alt="profile photo" />
+  </div>
   <ng-template #emptyPhoto>
     <div class="mx-auto w-fit">
-      <i class="fa-solid fa-user fa-xl text-gray-500"></i>
+      <i class="fa-solid fa-file-circle-plus text-2xl text-gray-50"></i>
     </div>
   </ng-template>
 </div>
-<form nz-form [formGroup]="userInfoForm" (ngSubmit)="submitForm()">
+<form nz-form *ngIf="userData" [formGroup]="userInfoForm" (ngSubmit)="submitForm()">
   <nz-form-item>
     <label class="my-1" for="type">نوع حساب کاربری</label>
     <nz-form-control [nzSpan]="14" [nzXs]="12">
@@ -107,7 +115,7 @@
   <nz-form-item>
     <label class="my-1" for="businessAddress">آدرس</label>
     <nz-form-control [nzSpan]="14" [nzXs]="12" nzErrorTip="به فارسی وارد شود">
-      <nz-input-group>
+      <nz-input-group [nzPrefix]="locationIcon">
         <input
           id="businessAddress"
           type="text"
@@ -123,8 +131,8 @@
 <ng-template #InfoIcon>
   <i class="fa-solid fa-circle-info"></i>
 </ng-template>
-<ng-template #inputTextIcon>
-  <i class="fa-solid fa-input-text"></i>
+<ng-template #locationIcon>
+  <i class="fa-solid fa-location-dot"></i>
 </ng-template>
 <ng-template #instagramIcon>
   <i class="fa-brands fa-instagram"></i>
@@ -158,3 +166,21 @@
   <ng-container *ngIf="mobilePhoneNumber.errors?.['required']">شماره موبایل الزامی است</ng-container>
   <ng-container *ngIf="mobilePhoneNumber.errors?.['pattern']">فرمت شماره صحیح نیست</ng-container>
 </ng-template>
+
+<nz-modal nzCentered [nzClosable]="false" [(nzVisible)]="isCropModalVisible">
+  <ng-container *nzModalTitle>
+    <i class="fa-solid fa-crop me-3"></i>
+    <span>محدوده‌ی عکس را انتخاب کنید</span>
+  </ng-container>
+  <ng-container *nzModalContent>
+    <div class="w-full h-full">
+      <img #image [src]="selectedImageSrc" alt="Crop this image" class="max-w-full max-h-full" />
+    </div>
+  </ng-container>
+  <ng-container *nzModalFooter>
+    <div class="text-right">
+      <button nz-button nzSize="large" nzType="primary" class="w-1/3" (click)="confirmCrop()">تایید</button>
+      <button nz-button nzSize="large" nzType="default" class="w-1/3" (click)="cancelCropModal()">لغو</button>
+    </div>
+  </ng-container>
+</nz-modal>

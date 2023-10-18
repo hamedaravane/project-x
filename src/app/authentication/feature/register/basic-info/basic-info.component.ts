@@ -10,7 +10,7 @@ import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzPopoverModule} from 'ng-zorro-antd/popover';
-import {RegisterService} from '../data-access/register.service';
+import {RegisterService} from '../../../data-access/register.service';
 
 @Component({
   standalone: true,

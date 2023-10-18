@@ -9,7 +9,7 @@ import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NgOtpInputModule} from 'ng-otp-input';
 import {map} from 'rxjs';
-import {ForgotPasswordService} from '../data-access/forgot-password.service';
+import {ForgotPasswordService} from '../../../data-access/forgot-password.service';
 
 @Component({
   standalone: true,
