@@ -9,7 +9,7 @@
     <img
       *ngIf="croppedImageSrc; else emptyPhoto"
       class="object-cover aspect-square"
-      [src]="croppedImageSrc"
+      [ngSrc]="croppedImageSrc"
       width="96"
       height="96"
       alt="profile photo" />
