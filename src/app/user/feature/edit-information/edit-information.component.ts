@@ -1,6 +1,6 @@
 import {BidiModule} from '@angular/cdk/bidi';
 import {NgClass, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
-import {Component, DestroyRef, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
@@ -40,7 +40,6 @@ import {Observable, firstValueFrom} from 'rxjs';
 export class EditInformationComponent extends PhotoComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
   private readonly citiesListService = inject(CitiesListService);
-  private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly userData$: Observable<User> = this.userService.user$;
   @ViewChild('fileInput') override fileInput!: ElementRef;
   @ViewChild('image') override imageElement!: ElementRef;

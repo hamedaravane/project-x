@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {PurpleDate} from '@shared/data-access/models/date.model';
 import {PurpleDatePickerComponent} from '@shared/ui/purple-date-picker/purple-date-picker.component';
-import {ToCurrencyPipe} from '@shared/util/to-currency.pipe';
+import {ToCurrencyPipe} from '@shared/util/pipes/to-currency.pipe';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 import {Observable} from 'rxjs';
 import {InfluencerService} from 'src/app/influencers/data-access/influencer.service';

@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
+import {CollaborationsService} from '@user/data-access/collaborations.service';
 
 @Component({
   standalone: true,
@@ -8,4 +9,10 @@ import {RouterOutlet} from '@angular/router';
   styleUrls: ['./root.component.scss'],
   imports: [RouterOutlet],
 })
-export class RootComponent {}
+export class RootComponent implements OnInit {
+  private readonly collaborationsService: CollaborationsService = inject(CollaborationsService);
+
+  ngOnInit(): void {
+    this.collaborationsService.getCollaborationsData().then();
+  }
+}

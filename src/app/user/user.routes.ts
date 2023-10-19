@@ -15,6 +15,11 @@ export const userRoutes: Routes = [
         loadComponent: () =>
           import('./feature/edit-information/edit-information.component').then(c => c.EditInformationComponent),
       },
+      {
+        path: 'collaborations',
+        loadComponent: () =>
+          import('./feature/collaborations/collaborations.component').then(c => c.CollaborationsComponent),
+      },
     ],
   },
 ];

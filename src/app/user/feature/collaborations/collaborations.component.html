@@ -1,0 +1,37 @@
+<ng-container *ngIf="collaborationsData$ | async as collaborationsData">
+  <ng-container *ngFor="let data of collaborationsData">
+    <div class="rounded-md bg-gray-50 shadow my-4 p-2">
+      <div class="flex justify-between items-center">
+        <span
+          *ngIf="data.profilePhotoSrc as profilePhotoSrc; else emptyPhoto"
+          class="rounded-full overflow-clip w-10 h-10">
+          <img
+            [ngSrc]="profilePhotoSrc"
+            width="40"
+            height="40"
+            class="aspect-square object-cover"
+            alt="profile photo" />
+        </span>
+        <span>
+          <i [class]="data.collaborationItem.icon" class="fa fa-solid fa-lg"></i>
+        </span>
+      </div>
+      <div>
+        <span>{{ data.firstName }}</span>
+        <span>&nbsp;</span>
+        <span>{{ data.lastName }}</span>
+      </div>
+      <div>
+        <span>{{ data.collaborationItem.description }}</span>
+      </div>
+      <div>
+        <span>{{ data.chargeDetail.readableValue }}</span>
+        <span>&nbsp;</span>
+        <span>{{ data.chargeDetail.currency }}</span>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+<ng-template #emptyPhoto>
+  <i class="fa-solid fa-file-circle-plus text-2xl text-gray-50"></i>
+</ng-template>

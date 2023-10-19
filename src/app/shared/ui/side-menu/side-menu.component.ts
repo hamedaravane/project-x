@@ -26,10 +26,9 @@ export class SideMenuComponent implements OnInit {
   sideMenuOptions!: SideMenuOption[];
 
   ngOnInit(): void {
-    console.log('SideMenuComponent, ngOnInit invoked');
     const businessSideMenuOptions: SideMenuOption[] = [
       {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
-      {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
+      {title: 'همکاری ها', icon: 'fa-handshake-simple', url: 'user/collaborations'},
       {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
       {title: 'ویرایش حساب', icon: 'fa-user', url: 'user'},
       {title: 'تنظیمات', icon: 'fa-gear', url: ''},
