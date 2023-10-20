@@ -193,7 +193,9 @@
   </nz-form-item>
   <div class="py-4">
     <span>با ثبت نام اولیه با</span>
-    <a class="text-indigo-700"> شرایط و قوانین </a>
+    <span>&nbsp;</span>
+    <a class="text-indigo-700">شرایط و قوانین</a>
+    <span>&nbsp;</span>
     <span>این اپلیکیشن موافقت میکنید</span>
   </div>
   <div class="flex justify-between gap-4 w-full">
@@ -202,7 +204,7 @@
       nz-button
       class="w-full"
       nzType="primary"
-      [disabled]="!basicRegisterInfoForm.valid"
+      [disabled]="basicRegisterInfoForm.invalid"
       nzSize="large">
       ثبت نام اولیه
     </button>

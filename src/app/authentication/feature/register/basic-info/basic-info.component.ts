@@ -48,13 +48,9 @@ export class BasicInfoComponent {
     {validators: confirmPasswordValidator},
   );
 
-  email: AbstractControl<null | string> = this.basicRegisterInfoForm.get('email') as AbstractControl<null | string>;
-  password: AbstractControl<null | string> = this.basicRegisterInfoForm.get('password') as AbstractControl<
-    null | string
-  >;
-  confirmPassword: AbstractControl<null | string> = this.basicRegisterInfoForm.get(
-    'confirmPassword',
-  ) as AbstractControl<null | string>;
+  email = this.basicRegisterInfoForm.get('email') as AbstractControl<null | string>;
+  password = this.basicRegisterInfoForm.get('password') as AbstractControl<null | string>;
+  confirmPassword = this.basicRegisterInfoForm.get('confirmPassword') as AbstractControl<null | string>;
 
   isHidePassword = true;
   submitForm(): void {
