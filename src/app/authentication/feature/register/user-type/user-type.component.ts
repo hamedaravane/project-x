@@ -1,11 +1,11 @@
 import {NgClass} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
+import {UserType} from '@user/data-access/model/user.model';
+import {RegisterService} from '@authentication/data-access/register.service';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzSpinModule} from 'ng-zorro-antd/spin';
-import {UserType} from '../../../data-access/model/type';
-import {RegisterService} from '../../../data-access/register.service';
 
 @Component({
   standalone: true,
@@ -15,19 +15,19 @@ import {RegisterService} from '../../../data-access/register.service';
   styleUrls: ['./user-type.component.scss'],
 })
 export class UserTypeComponent {
-  private readonly router = inject(Router);
-  private readonly registerService = inject(RegisterService);
+  private readonly router: Router = inject(Router);
+  private readonly registerService: RegisterService = inject(RegisterService);
 
-  userType!: UserType;
-  loading = false;
+  selectedUserType!: UserType;
+  spinnerLoading = false;
 
   selectUserType(type: UserType): void {
-    this.userType = type;
-    this.loading = true;
-    setTimeout(async () => {
+    this.selectedUserType = type;
+    this.spinnerLoading = true;
+    setTimeout(() => {
       this.registerService.selectUserType(type);
-      this.router.navigate(['/', 'auth', 'register', 'basic-info']);
-      this.loading = false;
+      this.router.navigateByUrl('/auth/register/basic-info').then();
+      this.spinnerLoading = false;
     }, 1000);
   }
 }

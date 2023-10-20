@@ -1,4 +1,4 @@
-type userType = 'influencer' | 'business';
+export type UserType = 'influencer' | 'business';
 
 export interface UserDto {
   id: number;
@@ -45,7 +45,7 @@ export interface SideMenuOption {
 }
 
 export interface UserTypeDetail {
-  value: userType;
+  value: UserType;
   label: string;
 }
 

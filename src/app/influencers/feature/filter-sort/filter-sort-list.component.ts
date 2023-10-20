@@ -1,12 +1,12 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {FilterSortService} from '@influencers/data-access/filter-sort.service';
+import {SortOption, SortOrder} from '@influencers/data-access/model/filter-sort.model';
 import {influencerCategoryList} from '@shared/data-access/mock/mock';
 import {BusinessValue, SelectList} from '@shared/data-access/models/category.model';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzSelectModule} from 'ng-zorro-antd/select';
-import {FilterSortService} from 'src/app/influencers/data-access/filter-sort.service';
-import {SortOption, SortOrder} from 'src/app/influencers/data-access/model/filter-sort.model';
 
 @Component({
   standalone: true,
