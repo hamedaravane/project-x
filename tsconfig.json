@@ -5,8 +5,10 @@
     "baseUrl": "./",
     "paths": {
       "@authentication/*": ["src/app/authentication/*"],
+      "@date/*": ["src/app/date/*"],
       "@influencers/*": ["src/app/influencers/*"],
       "@main/*": ["src/app/main/*"],
+      "@settings/*": ["src/app/settings/*"],
       "@shared/*": ["src/app/shared/*"],
       "@user/*": ["src/app/user/*"],
       "@error/*": ["src/app/error/*"]

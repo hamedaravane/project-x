@@ -1,10 +1,10 @@
 import {AsyncPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {PurpleDate} from '@shared/data-access/models/date.model';
-import {PurpleDatePickerComponent} from '@shared/ui/purple-date-picker/purple-date-picker.component';
 import {ToCurrencyPipe} from '@shared/util/pipes/to-currency.pipe';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
+import {PurpleDate} from '@date/data-access/model/date.model';
+import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date-picker.component';
 import {Observable} from 'rxjs';
 import {InfluencerService} from 'src/app/influencers/data-access/influencer.service';
 import {FeeDetail, InfluencerDetail} from 'src/app/influencers/data-access/model/filter-sort.model';

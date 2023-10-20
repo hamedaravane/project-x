@@ -1,5 +1,7 @@
 import {currencyHelper} from '@shared/util/utility-functions/currency-helper';
 import {readableNumbers} from '@shared/util/utility-functions/readable-numbers';
+import {CustomDateForm} from '@date/data-access/model/date.model';
+import {extractTimeFromIsoString, gregorianDateIsoStringToJalaliDate, isoStringToDate} from '@date/util/date-coverter';
 
 export interface CollaborationDto {
   collaboration_id: number;
@@ -21,8 +23,8 @@ export interface CollaborationModel {
   collaborationId: number;
   collaborationItem: CollaborationItem;
   chargeDetail: ChargeDetail;
-  status: string;
-  collaborationDate: string;
+  status: StatusDetail;
+  collaborationDate: CustomDateForm;
   yourRate: number | null;
   profilePhotoSrc: string | null;
   firstName: string;
@@ -69,6 +71,39 @@ export interface ChargeDetail {
   currency: string;
 }
 
+export type StatusType = 'done' | 'to_do' | 'pending' | 'canceled';
+export type StatusText = 'انجام شده' | 'در حال انجام' | 'در حال بررسی' | 'لغو شده' | 'تعریف نشده';
+
+export interface StatusDetail {
+  status: StatusType | null;
+  statusText: StatusText;
+  style: string;
+}
+
+export function generateCollaborationStatusDetail(value: string): StatusDetail {
+  if (!value) {
+    return {status: null, statusText: 'تعریف نشده', style: 'bg-gray-300 border-gray-500'};
+  }
+  const status = value as StatusType;
+  const detail: Record<StatusType, StatusText> = {
+    done: 'انجام شده',
+    to_do: 'در حال انجام',
+    pending: 'در حال بررسی',
+    canceled: 'لغو شده',
+  };
+  const style: Record<StatusType, string> = {
+    done: 'bg-emerald-200 border-emerald-400',
+    to_do: 'bg-amber-200 border-amber-400',
+    pending: 'bg-sky-200 border-sky-400',
+    canceled: 'bg-red-200 border-red-400',
+  };
+  return {
+    status,
+    statusText: detail[status],
+    style: style[status],
+  };
+}
+
 export function generateCollaborationItem(value: CollaborationItemName): CollaborationItem {
   const description: Record<CollaborationItemName, CollaborationItemDescription> = {
     ready_story: 'معرفی با استوری آماده',
@@ -98,13 +133,22 @@ export function toChargeDetail(value: number, isoCodeCurrency: string): ChargeDe
   };
 }
 
+export function toDateDetail(isoStringDate: string): CustomDateForm {
+  return {
+    isoDate: isoStringDate,
+    jsDate: isoStringToDate(isoStringDate),
+    persianDate: gregorianDateIsoStringToJalaliDate(isoStringDate),
+    time: extractTimeFromIsoString(isoStringDate),
+  };
+}
+
 export function collaborationItemDtoToDomain(value: CollaborationDto): CollaborationModel {
   return {
     collaborationId: value.collaboration_id,
     collaborationItem: generateCollaborationItem(value.collaboration_item as CollaborationItemName),
     chargeDetail: toChargeDetail(value.charge_value, value.charge_iso_code_currency),
-    status: value.status,
-    collaborationDate: value.collaboration_date,
+    status: generateCollaborationStatusDetail(value.status),
+    collaborationDate: toDateDetail(value.collaboration_date),
     yourRate: value.your_rate,
     profilePhotoSrc: value.profile_photo_src,
     firstName: value.first_name,

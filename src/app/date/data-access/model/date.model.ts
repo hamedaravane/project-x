@@ -9,3 +9,10 @@ export interface PurpleDate {
   jalaliDate: string;
   gregorianDate: Date;
 }
+
+export interface CustomDateForm {
+  isoDate: string;
+  jsDate: Date;
+  persianDate: string;
+  time: string;
+}

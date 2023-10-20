@@ -11,10 +11,10 @@ import {
   inject,
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {itemsAnimation, openClose} from '@shared/data-access/animations/date-picker-animations';
-import {Day, PurpleDate} from '@shared/data-access/models/date.model';
+import {itemsAnimation, openClose} from '@shared/data-access/animations/animations';
 import {PersianDigitPipe} from '@shared/util/pipes/persian-digit.pipe';
 import * as moment from 'moment-jalaali';
+import {Day, PurpleDate} from '@date/data-access/model/date.model';
 
 @Component({
   standalone: true,

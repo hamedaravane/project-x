@@ -1,0 +1,50 @@
+<div class="rounded-md bg-gray-50 shadow my-4 p-2">
+  <div class="flex justify-between items-center mb-4">
+    <div class="flex gap-4 items-center">
+      <span class="rounded-full overflow-clip w-10 h-10">
+        <img
+          *ngIf="collaboratorData.profilePhotoSrc as profilePhotoSrc; else emptyPhoto"
+          [ngSrc]="profilePhotoSrc"
+          width="40"
+          height="40"
+          class="aspect-square object-cover"
+          alt="profile photo" />
+      </span>
+      <div>
+        <strong>{{ collaboratorData.firstName }}</strong>
+        <span>&nbsp;</span>
+        <strong>{{ collaboratorData.lastName }}</strong>
+      </div>
+    </div>
+    <span
+      [class]="collaboratorData.status.style"
+      class="py-1 px-2 rounded-lg text-gray-800 text-xs border border-solid">
+      {{ collaboratorData.status.statusText }}
+    </span>
+  </div>
+  <div class="mb-2 pb-2 border-b border-solid border-gray-400">
+    <i [class]="collaboratorData.collaborationItem.icon" class="fa fa-solid me-2"></i>
+    <span>{{ collaboratorData.collaborationItem.description }}</span>
+  </div>
+  <div class="flex justify-between">
+    <div>
+      <span>{{ collaboratorData.chargeDetail.readableValue }}</span>
+      <span>&nbsp;</span>
+      <span>{{ collaboratorData.chargeDetail.currency }}</span>
+      <br />
+      <span>
+        <nz-rate [disabled]="!!collaboratorData.yourRate" [ngModel]="collaboratorData.yourRate" nzAllowHalf></nz-rate>
+      </span>
+    </div>
+    <div dir="ltr">
+      <i class="fa-solid fa-calendar me-1"></i>
+      <span>{{ collaboratorData.collaborationDate.persianDate }}</span>
+      <br />
+      <i class="fa-solid fa-clock me-1"></i>
+      <span>{{ collaboratorData.collaborationDate.time }}</span>
+    </div>
+  </div>
+</div>
+<ng-template #emptyPhoto>
+  <i class="fa-solid fa-file-circle-plus text-2xl text-gray-50"></i>
+</ng-template>

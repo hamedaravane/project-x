@@ -5,15 +5,15 @@ import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators
 import {Router, RouterLink} from '@angular/router';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {influencerCategoryList} from '@shared/data-access/mock/mock';
-import {PurpleDate} from '@shared/data-access/models/date.model';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
-import {PurpleDatePickerComponent} from '@shared/ui/purple-date-picker/purple-date-picker.component';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
+import {PurpleDate} from '@date/data-access/model/date.model';
+import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date-picker.component';
 
 @Component({
   standalone: true,
