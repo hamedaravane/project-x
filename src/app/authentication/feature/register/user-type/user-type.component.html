@@ -6,8 +6,8 @@
     <div>
       <div class="flex w-full gap-2">
         <div
-          [ngClass]="{'drop-shadow-lg border-indigo-600': selectedUserType === 'influencer'}"
-          (click)="selectUserType('influencer')"
+          [ngClass]="{'drop-shadow-lg border-indigo-600': selectedUserType === influencer}"
+          (click)="selectUserType(influencer)"
           class="bg-gray-50 p-4 border border-gray-200 rounded w-full">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 625.66998 608.84679">
             <path
@@ -187,13 +187,13 @@
               transform="translate(-287.16501 -145.57661)"
               fill="#e6e6e6" />
           </svg>
-          <span class="mt-2 w-full text-center" [class.text-indigo-700]="selectedUserType === 'influencer'">
+          <span class="mt-2 w-full text-center" [class.text-indigo-700]="selectedUserType === influencer">
             تولید کننده محتوا
           </span>
         </div>
         <div
-          [ngClass]="{'drop-shadow-lg border-indigo-600': selectedUserType === 'business'}"
-          (click)="selectUserType('business')"
+          [ngClass]="{'drop-shadow-lg border-indigo-600': selectedUserType === business}"
+          (click)="selectUserType(business)"
           class="bg-gray-50 p-4 border border-gray-200 rounded w-full">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="117 0 625.66998 608.84679">
             <path
@@ -308,7 +308,7 @@
               transform="translate(-181 -130.99812)"
               fill="#6c63ff" />
           </svg>
-          <span class="mt-2 w-full text-center" [class.text-indigo-700]="selectedUserType === 'business'">
+          <span class="mt-2 w-full text-center" [class.text-indigo-700]="selectedUserType === business">
             کسب و کار
           </span>
         </div>

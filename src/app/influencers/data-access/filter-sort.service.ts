@@ -1,4 +1,5 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
+import {InfluencerService} from '@influencers/data-access/influencer.service';
 import {BusinessValue} from '@shared/data-access/models/category.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {FilterSort, InfluencerSummary, SortOption, SortOrder} from './model/filter-sort.model';
@@ -12,6 +13,13 @@ export class FilterSortService {
     sortOrder: SortOrder.descending,
     filterCategory: null,
   });
+  /* TODO: injecting a service in another service... is it a good idea? */
+  private readonly influencerService: InfluencerService = inject(InfluencerService);
+  private readonly filteredInfluencerListSubject = new BehaviorSubject([] as InfluencerSummary[]);
+
+  get influencerSummaryList$(): Observable<InfluencerSummary[]> {
+    return this.influencerService.getInfluencerSummaryList();
+  }
 
   get filterSortState$(): Observable<FilterSort> {
     return this.filterSortSubject.asObservable();

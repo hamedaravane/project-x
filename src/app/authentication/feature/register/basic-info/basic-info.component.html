@@ -146,13 +146,9 @@
   <h1 class="whitespace-nowrap text-lg">اطلاعات اولیه</h1>
 </div>
 <form nz-form [nzDisableAutoTips]="true" [formGroup]="basicRegisterInfoForm" (ngSubmit)="submitForm()">
-  <nz-form-item>
+  <nz-form-item *ngIf="userType$ | async as userType">
     <nz-input-group [nzPrefix]="InfoIcon">
-      <input
-        type="text"
-        nz-input
-        disabled
-        [placeholder]="(userType | async) === 'influencer' ? 'تولید کننده محتوا' : 'کسب و کار'" />
+      <input type="text" nz-input disabled [placeholder]="userType.label" />
     </nz-input-group>
   </nz-form-item>
   <nz-form-item>

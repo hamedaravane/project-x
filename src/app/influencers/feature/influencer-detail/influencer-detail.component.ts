@@ -49,7 +49,7 @@ export class InfluencerDetailComponent implements OnInit {
   }
 
   submitRequest(selectedInfluencer: InfluencerDetail): void {
-    this.influencerService.selectInfluencer(selectedInfluencer);
+    this.influencerService.selectedInfluencer$ = selectedInfluencer;
     this.router.navigate(['home', this.influencerId, 'request']).then();
   }
 }

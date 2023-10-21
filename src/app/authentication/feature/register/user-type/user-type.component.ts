@@ -1,7 +1,7 @@
 import {NgClass} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
-import {UserType} from '@user/data-access/model/user.model';
+import {UserTypeDetail} from '@user/data-access/model/user.model';
 import {RegisterService} from '@authentication/data-access/register.service';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzIconModule} from 'ng-zorro-antd/icon';
@@ -18,14 +18,16 @@ export class UserTypeComponent {
   private readonly router: Router = inject(Router);
   private readonly registerService: RegisterService = inject(RegisterService);
 
-  selectedUserType!: UserType;
+  selectedUserType!: UserTypeDetail;
   spinnerLoading = false;
+  influencer: UserTypeDetail = {value: 'influencer', label: 'تولید کننده محتوا'};
+  business: UserTypeDetail = {value: 'business', label: 'کسب و کار'};
 
-  selectUserType(type: UserType): void {
-    this.selectedUserType = type;
+  selectUserType(userType: UserTypeDetail): void {
+    this.selectedUserType = userType;
     this.spinnerLoading = true;
     setTimeout(() => {
-      this.registerService.selectUserType(type);
+      this.registerService.userType$ = userType;
       this.router.navigateByUrl('/auth/register/basic-info').then();
       this.spinnerLoading = false;
     }, 1000);

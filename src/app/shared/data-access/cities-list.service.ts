@@ -4880,7 +4880,7 @@ export class CitiesListService {
   }
 
   getCityByEnglishName(englishName: string): City {
-    const foundCity = this.cityList.find(city => city.name === englishName);
+    const foundCity: City | undefined = this.cityList.find(city => city.name === englishName);
     if (foundCity) {
       return foundCity;
     }

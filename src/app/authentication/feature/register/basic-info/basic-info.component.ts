@@ -3,6 +3,7 @@ import {Component, DestroyRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
+import {UserTypeDetail} from '@user/data-access/model/user.model';
 import {confirmPasswordValidator, strongPasswordValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
@@ -10,6 +11,7 @@ import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzPopoverModule} from 'ng-zorro-antd/popover';
+import {Observable} from 'rxjs';
 import {RegisterService} from '../../../data-access/register.service';
 
 @Component({
@@ -37,7 +39,7 @@ export class BasicInfoComponent {
   private readonly registerService = inject(RegisterService);
   private readonly destroyRef = inject(DestroyRef);
 
-  userType = this.registerService.UserTypeState;
+  userType$: Observable<UserTypeDetail> = this.registerService.userType$;
 
   basicRegisterInfoForm = new FormGroup(
     {
@@ -54,11 +56,11 @@ export class BasicInfoComponent {
 
   isHidePassword = true;
   submitForm(): void {
-    this.userType.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(type => {
-      if (type === 'influencer') {
-        this.router.navigateByUrl('/auth/register/influencer-info');
+    this.userType$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(type => {
+      if (type.value === 'influencer') {
+        this.router.navigateByUrl('/auth/register/influencer-info').then();
       } else {
-        this.router.navigateByUrl('/auth/register/business-info');
+        this.router.navigateByUrl('/auth/register/business-info').then();
       }
     });
   }

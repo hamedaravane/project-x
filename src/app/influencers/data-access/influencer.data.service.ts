@@ -7,7 +7,7 @@ import {Observable, of} from 'rxjs';
   providedIn: 'root',
 })
 export class InfluencerDataService {
-  getMockInfluencersList(): Observable<InfluencerSummary[]> {
+  getMockInfluencerSummaryList(): Observable<InfluencerSummary[]> {
     const mockData: InfluencerSummary[] = [
       {
         id: '1',
