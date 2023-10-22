@@ -35,11 +35,11 @@ export class FilterSortListComponent {
   filterList: SelectList[] = [{value: null, label: 'همه'}, ...influencerCategoryList];
 
   setState(): void {
-    this.filterSortService.setFilterSort({
+    this.filterSortService.filterSortState$ = {
       sortOrder: this.selectedSortOrder,
       sortOption: this.selectedSortOption,
       filterCategory: this.selectedFilter,
-    });
+    };
   }
   selectFilter(event: BusinessValue): void {
     this.selectedFilter = event;

@@ -1,5 +1,4 @@
-import {Injectable, inject} from '@angular/core';
-import {InfluencerService} from '@influencers/data-access/influencer.service';
+import {Injectable} from '@angular/core';
 import {BusinessValue} from '@shared/data-access/models/category.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {FilterSort, InfluencerSummary, SortOption, SortOrder} from './model/filter-sort.model';
@@ -13,23 +12,27 @@ export class FilterSortService {
     sortOrder: SortOrder.descending,
     filterCategory: null,
   });
-  /* TODO: injecting a service in another service... is it a good idea? */
-  private readonly influencerService: InfluencerService = inject(InfluencerService);
-  private readonly filteredInfluencerListSubject = new BehaviorSubject([] as InfluencerSummary[]);
+  private filteredInfluencerSummaryListSubject = new BehaviorSubject<InfluencerSummary[]>([] as InfluencerSummary[]);
 
-  get influencerSummaryList$(): Observable<InfluencerSummary[]> {
-    return this.influencerService.getInfluencerSummaryList();
+  get filteredInfluencerSummaryList$(): Observable<InfluencerSummary[]> {
+    return this.filteredInfluencerSummaryListSubject.asObservable();
   }
-
+  set filteredInfluencerSummaryList$(value: InfluencerSummary[]) {
+    this.filteredInfluencerSummaryListSubject.next(value);
+  }
   get filterSortState$(): Observable<FilterSort> {
     return this.filterSortSubject.asObservable();
   }
-
-  setFilterSort(state: FilterSort): void {
+  set filterSortState$(state: FilterSort) {
     this.filterSortSubject.next(state);
   }
 
-  filterInfluencersList(originalList: InfluencerSummary[], filter: BusinessValue | null): InfluencerSummary[] {
+  filterSort(originalList: InfluencerSummary[], option: FilterSort): void {
+    const filteredList: InfluencerSummary[] = this.filterInfluencersList(originalList, option.filterCategory);
+    this.filteredInfluencerSummaryList$ = this.categorizeInfluencersList(filteredList, option);
+  }
+
+  private filterInfluencersList(originalList: InfluencerSummary[], filter: BusinessValue | null): InfluencerSummary[] {
     return originalList.filter((item: InfluencerSummary): boolean => {
       if (filter) {
         return item.category === filter;
@@ -38,7 +41,10 @@ export class FilterSortService {
     });
   }
 
-  categorizeInfluencersList(originalList: InfluencerSummary[], category: FilterSort | null): InfluencerSummary[] {
+  private categorizeInfluencersList(
+    originalList: InfluencerSummary[],
+    category: FilterSort | null,
+  ): InfluencerSummary[] {
     const collator: Intl.Collator = new Intl.Collator(undefined, {
       numeric: true,
       sensitivity: 'base',
@@ -71,10 +77,5 @@ export class FilterSortService {
       });
     }
     return originalList;
-  }
-
-  filterSort(originalList: InfluencerSummary[], option: FilterSort): InfluencerSummary[] {
-    const filteredList: InfluencerSummary[] = this.filterInfluencersList(originalList, option.filterCategory);
-    return this.categorizeInfluencersList(filteredList, option);
   }
 }

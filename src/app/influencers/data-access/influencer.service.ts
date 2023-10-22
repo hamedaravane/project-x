@@ -1,25 +1,26 @@
 import {Injectable, inject} from '@angular/core';
 import {InfluencerDataService} from '@influencers/data-access/influencer.data.service';
-import {influencerDetailMock} from '@shared/data-access/mock/mock';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {InfluencerDetail, InfluencerSummary} from './model/filter-sort.model';
+import {InfluencerDetail, InfluencerSummary} from '@influencers/data-access/model/filter-sort.model';
+import {BehaviorSubject, Observable, firstValueFrom} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InfluencerService {
-  influencersDetailList: InfluencerDetail[] = influencerDetailMock;
   private readonly influencerDataService: InfluencerDataService = inject(InfluencerDataService);
-  private readonly selectedInfluencerSubject$: BehaviorSubject<InfluencerDetail | null> =
-    new BehaviorSubject<InfluencerDetail | null>(null);
+  private readonly influencerSummaryListSubject = new BehaviorSubject([] as InfluencerSummary[]);
+  private readonly selectedInfluencerSubject$ = new BehaviorSubject<InfluencerDetail>({} as InfluencerDetail);
+  get influencerSummaryList$(): Observable<InfluencerSummary[]> {
+    return this.influencerSummaryListSubject.asObservable();
+  }
+  set influencerSummaryList$(value: InfluencerSummary[]) {
+    this.influencerSummaryListSubject.next(value);
+  }
+  getInfluencerSummaryList(): void {
+    this._getInfluencerSummaryList().then();
+  }
   getInfluencerDetailsById(id: string | null): InfluencerDetail {
-    const influencer: InfluencerDetail | undefined = this.influencersDetailList.find(
-      (influencerDetail: InfluencerDetail): boolean => {
-        return influencerDetail.id === id;
-      },
-    );
-    if (influencer) return influencer;
-    throw new Error('influencer doesnt find');
+    return this.influencerDataService.getMockInfluencerDetailDetailsById(id);
   }
   get selectedInfluencer$(): Observable<InfluencerDetail | null> {
     return this.selectedInfluencerSubject$.asObservable();
@@ -27,7 +28,8 @@ export class InfluencerService {
   set selectedInfluencer$(value: InfluencerDetail) {
     this.selectedInfluencerSubject$.next(value);
   }
-  getInfluencerSummaryList(): Observable<InfluencerSummary[]> {
-    return this.influencerDataService.getMockInfluencerSummaryList();
+  private async _getInfluencerSummaryList(): Promise<void> {
+    const response = await firstValueFrom(this.influencerDataService.getMockInfluencerSummaryList());
+    this.influencerSummaryListSubject.next(response);
   }
 }

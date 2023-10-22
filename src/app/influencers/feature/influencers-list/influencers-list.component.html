@@ -1,8 +1,8 @@
 <div @listAnimation>
-  <app-filter-sort></app-filter-sort>
+  <!-- <app-filter-sort></app-filter-sort> -->
   <ul class="flex flex-col gap-4 mt-4">
     <li
-      *ngFor="let influencer of filteredInfluencerList$ | async"
+      *ngFor="let influencer of influencerSummaryList$ | async"
       dir="ltr"
       class="rounded-md bg-gray-50 flex gap-4 p-4 shadow">
       <div class="rounded-full flex w-16 h-16 overflow-clip">

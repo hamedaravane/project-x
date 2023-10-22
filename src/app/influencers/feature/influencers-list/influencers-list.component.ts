@@ -1,9 +1,10 @@
 import {BidiModule} from '@angular/cdk/bidi';
 import {AsyncPipe, NgForOf, NgOptimizedImage} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {InfluencerService} from '@influencers/data-access/influencer.service';
+import {InfluencerSummary} from '@influencers/data-access/model/filter-sort.model';
 import {FilterSortListComponent} from '@influencers/feature/filter-sort/filter-sort-list.component';
 import {listAnimation} from '@shared/data-access/animations/animations';
 import {CategoryToIconPipe} from '@shared/util/pipes/category-to-icon.pipe';
@@ -11,8 +12,6 @@ import {CategoryToLabelPipe} from '@shared/util/pipes/category-to-label.pipe';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzRateModule} from 'ng-zorro-antd/rate';
 import {Observable} from 'rxjs';
-import {FilterSortService} from 'src/app/influencers/data-access/filter-sort.service';
-import {InfluencerSummary} from 'src/app/influencers/data-access/model/filter-sort.model';
 
 @Component({
   standalone: true,
@@ -36,18 +35,11 @@ import {InfluencerSummary} from 'src/app/influencers/data-access/model/filter-so
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [listAnimation],
 })
-export class InfluencersListComponent {
-  private readonly filterSortService: FilterSortService = inject(FilterSortService);
+export class InfluencersListComponent implements OnInit {
   private readonly influencerService: InfluencerService = inject(InfluencerService);
+  influencerSummaryList$: Observable<InfluencerSummary[]> = this.influencerService.influencerSummaryList$;
 
-  influencerSummary$: Observable<InfluencerSummary[]> = this.influencerService.getInfluencerSummaryList();
-  filteredInfluencerList$!: Observable<InfluencerSummary[]>;
-
-  /*ngOnInit(): void {
-    this.filteredInfluencerList$ = this.filterSortService.filterSortState$.pipe(
-      map((filterSort: FilterSort) => {
-        return this.filterSortService.filterSort(this.influencerSummary$, filterSort);
-      }),
-    );
-  }*/
+  ngOnInit(): void {
+    this.influencerService.getInfluencerSummaryList();
+  }
 }

@@ -4,6 +4,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
 import {UserTypeDetail} from '@user/data-access/model/user.model';
+import {RegisterService} from '@authentication/data-access/register.service';
 import {confirmPasswordValidator, strongPasswordValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
@@ -12,7 +13,6 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzPopoverModule} from 'ng-zorro-antd/popover';
 import {Observable} from 'rxjs';
-import {RegisterService} from '../../../data-access/register.service';
 
 @Component({
   standalone: true,
