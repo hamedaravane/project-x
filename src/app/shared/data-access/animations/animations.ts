@@ -210,28 +210,3 @@ export const transformToRightAnimation: AnimationTriggerMetadata = trigger('tran
     ),
   ]),
 ]);
-
-export const pullFeedback: AnimationTriggerMetadata = trigger('pullFeedback', [
-  transition(':enter', [
-    style({
-      height: '0px',
-    }),
-    animate(
-      '1ms 1ms ease-in',
-      style({
-        height: '*',
-      }),
-    ),
-  ]),
-  transition(':leave', [
-    style({
-      height: '*',
-    }),
-    animate(
-      '300ms 100ms ease-out',
-      style({
-        height: '0px',
-      }),
-    ),
-  ]),
-]);

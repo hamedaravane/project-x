@@ -1,5 +1,5 @@
-<div>
-  <div class="loading-indicator mx-auto" *ngIf="isLoading" @pullFeedback>
+<div [style.height.px]="distance" [class.panel]="!distance">
+  <div class="loading-indicator mx-auto">
     <div class="spinner"></div>
   </div>
 </div>

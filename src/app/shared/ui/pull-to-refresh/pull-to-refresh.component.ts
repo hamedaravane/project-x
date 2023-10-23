@@ -1,6 +1,14 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
-import {pullFeedback} from '@shared/data-access/animations/animations';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+  inject,
+} from '@angular/core';
 
 @Component({
   standalone: true,
@@ -9,25 +17,29 @@ import {pullFeedback} from '@shared/data-access/animations/animations';
   styleUrls: ['./pull-to-refresh.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf],
-  animations: [pullFeedback],
 })
 export class PullToRefreshComponent {
+  private readonly ref: ChangeDetectorRef = inject(ChangeDetectorRef);
   @Output() refresh = new EventEmitter<void>();
-  @Input() isLoading = false;
+  @Input() set isLoading(value: boolean) {
+    this._isLoading = value;
+    if (!value) {
+      this.distance = 0;
+    }
+  }
+  _isLoading = false;
   startY = 0;
-  threshold = 350;
+  threshold = 150;
   distance = 0;
 
-  @HostListener('document:touchstart', ['$event'])
+  @HostListener('body:touchstart', ['$event'])
   onTouchStart(event: TouchEvent): void {
-    console.log('onTouchStart: ', event.touches[0].clientY);
     this.startY = event.touches[0].clientY;
   }
 
-  @HostListener('document:touchmove', ['$event'])
+  @HostListener('body:touchmove', ['$event'])
   onTouchMove(event: TouchEvent): void {
     this.distance = event.touches[0].clientY - this.startY;
-    console.log('onTouchMove: ', this.distance);
     if (this.distance > this.threshold) {
       this.refresh.emit();
     }
