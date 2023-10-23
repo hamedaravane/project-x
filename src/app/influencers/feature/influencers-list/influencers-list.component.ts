@@ -7,6 +7,7 @@ import {InfluencerService} from '@influencers/data-access/influencer.service';
 import {InfluencerSummary} from '@influencers/data-access/model/filter-sort.model';
 import {FilterSortListComponent} from '@influencers/feature/filter-sort/filter-sort-list.component';
 import {listAnimation} from '@shared/data-access/animations/animations';
+import {PullToRefreshComponent} from '@shared/ui/pull-to-refresh/pull-to-refresh.component';
 import {CategoryToIconPipe} from '@shared/util/pipes/category-to-icon.pipe';
 import {CategoryToLabelPipe} from '@shared/util/pipes/category-to-label.pipe';
 import {NzIconModule} from 'ng-zorro-antd/icon';
@@ -30,6 +31,7 @@ import {Observable} from 'rxjs';
     AsyncPipe,
     RouterLink,
     RouterOutlet,
+    PullToRefreshComponent,
   ],
   styleUrls: ['./influencers-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,8 +40,13 @@ import {Observable} from 'rxjs';
 export class InfluencersListComponent implements OnInit {
   private readonly influencerService: InfluencerService = inject(InfluencerService);
   influencerSummaryList$: Observable<InfluencerSummary[]> = this.influencerService.influencerSummaryList$;
+  influencerSummaryListLoading$: Observable<boolean> = this.influencerService.influencerSummaryListLoading$;
 
   ngOnInit(): void {
+    this.influencerService.getInfluencerSummaryList();
+  }
+
+  fetchData(): void {
     this.influencerService.getInfluencerSummaryList();
   }
 }

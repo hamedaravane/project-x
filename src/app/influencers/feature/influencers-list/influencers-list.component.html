@@ -1,3 +1,4 @@
+<pull-to-refresh (refresh)="fetchData()" [isLoading]="!!(influencerSummaryListLoading$ | async)"></pull-to-refresh>
 <div @listAnimation>
   <!-- <app-filter-sort></app-filter-sort> -->
   <ul class="flex flex-col gap-4 mt-4">

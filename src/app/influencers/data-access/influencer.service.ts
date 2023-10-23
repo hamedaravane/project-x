@@ -9,6 +9,7 @@ import {BehaviorSubject, Observable, firstValueFrom} from 'rxjs';
 export class InfluencerService {
   private readonly influencerDataService: InfluencerDataService = inject(InfluencerDataService);
   private readonly influencerSummaryListSubject = new BehaviorSubject([] as InfluencerSummary[]);
+  private readonly influencerSummaryListLoadingSubject = new BehaviorSubject<boolean>(false);
   private readonly selectedInfluencerSubject$ = new BehaviorSubject<InfluencerDetail>({} as InfluencerDetail);
   get influencerSummaryList$(): Observable<InfluencerSummary[]> {
     return this.influencerSummaryListSubject.asObservable();
@@ -28,8 +29,18 @@ export class InfluencerService {
   set selectedInfluencer$(value: InfluencerDetail) {
     this.selectedInfluencerSubject$.next(value);
   }
+  get influencerSummaryListLoading$(): Observable<boolean> {
+    return this.influencerSummaryListLoadingSubject.asObservable();
+  }
+  set influencerSummaryListLoading$(value: boolean) {
+    this.influencerSummaryListLoadingSubject.next(value);
+  }
   private async _getInfluencerSummaryList(): Promise<void> {
+    this.influencerSummaryListLoading$ = true;
     const response = await firstValueFrom(this.influencerDataService.getMockInfluencerSummaryList());
+    setTimeout(() => {
+      this.influencerSummaryListLoading$ = false;
+    }, 3000);
     this.influencerSummaryListSubject.next(response);
   }
 }
