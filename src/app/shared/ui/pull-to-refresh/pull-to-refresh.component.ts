@@ -1,14 +1,5 @@
 import {NgIf} from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  Output,
-  inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
 
 @Component({
   standalone: true,
@@ -19,7 +10,6 @@ import {
   imports: [NgIf],
 })
 export class PullToRefreshComponent {
-  private readonly ref: ChangeDetectorRef = inject(ChangeDetectorRef);
   @Output() refresh = new EventEmitter<void>();
   @Input() set isLoading(value: boolean) {
     this._isLoading = value;

@@ -2,6 +2,7 @@ import {Injectable, inject} from '@angular/core';
 import {InfluencerDataService} from '@influencers/data-access/influencer.data.service';
 import {InfluencerDetail, InfluencerSummary} from '@influencers/data-access/model/filter-sort.model';
 import {BehaviorSubject, Observable, firstValueFrom} from 'rxjs';
+import {CacheService} from 'src/app/cache/cache.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +12,9 @@ export class InfluencerService {
   private readonly influencerSummaryListSubject = new BehaviorSubject([] as InfluencerSummary[]);
   private readonly influencerSummaryListLoadingSubject = new BehaviorSubject<boolean>(false);
   private readonly selectedInfluencerSubject$ = new BehaviorSubject<InfluencerDetail>({} as InfluencerDetail);
+  private readonly cacheService: CacheService = inject(CacheService);
   get influencerSummaryList$(): Observable<InfluencerSummary[]> {
     return this.influencerSummaryListSubject.asObservable();
-  }
-  set influencerSummaryList$(value: InfluencerSummary[]) {
-    this.influencerSummaryListSubject.next(value);
   }
   getInfluencerSummaryList(): void {
     this._getInfluencerSummaryList().then();
@@ -36,11 +35,17 @@ export class InfluencerService {
     this.influencerSummaryListLoadingSubject.next(value);
   }
   private async _getInfluencerSummaryList(): Promise<void> {
-    this.influencerSummaryListLoading$ = true;
-    const response = await firstValueFrom(this.influencerDataService.getMockInfluencerSummaryList());
-    setTimeout(() => {
-      this.influencerSummaryListLoading$ = false;
-    }, 3000);
+    let response!: InfluencerSummary[];
+    if (this.cacheService.has('InfluencerSummaryList')) {
+      response = this.cacheService.get('InfluencerSummaryList') as InfluencerSummary[];
+    } else {
+      this.influencerSummaryListLoading$ = true;
+      response = await firstValueFrom(this.influencerDataService.getMockInfluencerSummaryList());
+      this.cacheService.set<InfluencerSummary[]>('InfluencerSummaryList', response);
+      setTimeout(() => {
+        this.influencerSummaryListLoading$ = false;
+      }, 3000);
+    }
     this.influencerSummaryListSubject.next(response);
   }
 }

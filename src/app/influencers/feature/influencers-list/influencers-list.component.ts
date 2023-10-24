@@ -1,5 +1,5 @@
 import {BidiModule} from '@angular/cdk/bidi';
-import {AsyncPipe, NgForOf, NgOptimizedImage} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, OnInit, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterOutlet} from '@angular/router';
@@ -8,6 +8,7 @@ import {InfluencerSummary} from '@influencers/data-access/model/filter-sort.mode
 import {FilterSortListComponent} from '@influencers/feature/filter-sort/filter-sort-list.component';
 import {listAnimation} from '@shared/data-access/animations/animations';
 import {PullToRefreshComponent} from '@shared/ui/pull-to-refresh/pull-to-refresh.component';
+import {SkeletonComponent} from '@shared/ui/skeleton/skeleton.component';
 import {CategoryToIconPipe} from '@shared/util/pipes/category-to-icon.pipe';
 import {CategoryToLabelPipe} from '@shared/util/pipes/category-to-label.pipe';
 import {NzIconModule} from 'ng-zorro-antd/icon';
@@ -32,6 +33,8 @@ import {Observable} from 'rxjs';
     RouterLink,
     RouterOutlet,
     PullToRefreshComponent,
+    NgIf,
+    SkeletonComponent,
   ],
   styleUrls: ['./influencers-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

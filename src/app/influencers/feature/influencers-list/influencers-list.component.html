@@ -1,7 +1,9 @@
 <pull-to-refresh (refresh)="fetchData()" [isLoading]="!!(influencerSummaryListLoading$ | async)"></pull-to-refresh>
 <div @listAnimation>
   <!-- <app-filter-sort></app-filter-sort> -->
-  <ul class="flex flex-col gap-4 mt-4">
+  <ul
+    class="flex flex-col gap-4 mt-4"
+    *ngIf="(influencerSummaryListLoading$ | async) === false as isLoading; else loadingTemplate">
     <li
       *ngFor="let influencer of influencerSummaryList$ | async"
       dir="ltr"
@@ -38,4 +40,34 @@
       </div>
     </li>
   </ul>
+  <ng-template #loadingTemplate>
+    <ul class="flex flex-col gap-4 mt-4">
+      <li *ngFor="let _ of [].constructor(3)" dir="ltr" class="rounded-md bg-gray-50 flex gap-4 p-4 shadow">
+        <div class="rounded-full flex w-16 h-16 overflow-clip">
+          <skeleton shape="circle" width="70" height="70"></skeleton>
+        </div>
+        <div class="flex flex-col grow gap-4">
+          <div class="flex flex-col">
+            <skeleton class="me-auto" height="14" width="100"></skeleton>
+            <div class="flex gap-1 items-center">
+              <skeleton shape="circle" width="12" height="12"></skeleton>
+              <skeleton height="12"></skeleton>
+            </div>
+            <div class="flex gap-1 items-baseline">
+              <skeleton shape="circle" width="12" height="12"></skeleton>
+              <skeleton height="12"></skeleton>
+            </div>
+          </div>
+          <div class="flex justify-between w-full">
+            <div class="flex float-left">
+              <skeleton height="14" width="120"></skeleton>
+            </div>
+            <div class="flex items-center gap-2 float-right">
+              <skeleton height="12"></skeleton>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ng-template>
 </div>
