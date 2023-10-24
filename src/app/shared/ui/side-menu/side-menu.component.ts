@@ -30,7 +30,7 @@ export class SideMenuComponent implements OnInit {
       {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
       {title: 'همکاری ها', icon: 'fa-handshake-simple', url: 'user/collaborations'},
       {title: 'ویرایش حساب', icon: 'fa-user', url: 'user'},
-      {title: 'تنظیمات', icon: 'fa-gear', url: 'settings'},
+      {title: 'تنظیمات', icon: 'fa-gear', url: '/settings'},
       {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
     ];
     const influencerSideMenuOptions: SideMenuOption[] = [
@@ -38,7 +38,7 @@ export class SideMenuComponent implements OnInit {
       {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
       {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
       {title: 'ویرایش حساب', icon: 'fa-user', url: 'user'},
-      {title: 'تنظیمات', icon: 'fa-gear', url: 'settings'},
+      {title: 'تنظیمات', icon: 'fa-gear', url: '/settings'},
       {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
     ];
     this.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((data: User) => {

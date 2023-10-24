@@ -1,8 +1,8 @@
 import {Injectable, inject} from '@angular/core';
 import {InfluencerDataService} from '@influencers/data-access/influencer.data.service';
 import {InfluencerDetail, InfluencerSummary} from '@influencers/data-access/model/filter-sort.model';
+import {CacheService} from '@cache/cache.service';
 import {BehaviorSubject, Observable, firstValueFrom} from 'rxjs';
-import {CacheService} from 'src/app/cache/cache.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +16,8 @@ export class InfluencerService {
   get influencerSummaryList$(): Observable<InfluencerSummary[]> {
     return this.influencerSummaryListSubject.asObservable();
   }
-  getInfluencerSummaryList(): void {
-    this._getInfluencerSummaryList().then();
+  getInfluencerSummaryList(cache = false): void {
+    this._getInfluencerSummaryList(cache).then();
   }
   getInfluencerDetailsById(id: string | null): InfluencerDetail {
     return this.influencerDataService.getMockInfluencerDetailDetailsById(id);
@@ -34,9 +34,9 @@ export class InfluencerService {
   set influencerSummaryListLoading$(value: boolean) {
     this.influencerSummaryListLoadingSubject.next(value);
   }
-  private async _getInfluencerSummaryList(): Promise<void> {
+  private async _getInfluencerSummaryList(cache: boolean): Promise<void> {
     let response!: InfluencerSummary[];
-    if (this.cacheService.has('InfluencerSummaryList')) {
+    if (this.cacheService.get('InfluencerSummaryList') && cache) {
       response = this.cacheService.get('InfluencerSummaryList') as InfluencerSummary[];
     } else {
       this.influencerSummaryListLoading$ = true;

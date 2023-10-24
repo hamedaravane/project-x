@@ -1,5 +1,5 @@
-<div [style.height.px]="distance" [class.panel]="!distance">
-  <div class="loading-indicator mx-auto">
+<div [style.height.px]="distance" class="max-h-20" [class.panel]="!distance">
+  <div class="loading-indicator mx-auto" *ngIf="distance > 30">
     <div class="spinner"></div>
   </div>
 </div>

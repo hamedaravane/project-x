@@ -4,8 +4,8 @@
 
 .panel {
   height: 0;
-  overflow: hidden;
-  transition: height 400ms ease-out;
+  overflow-y: hidden;
+  transition: height 300ms ease-out;
 }
 
 .loading-indicator {

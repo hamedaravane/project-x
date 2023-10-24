@@ -46,10 +46,10 @@ export class InfluencersListComponent implements OnInit {
   influencerSummaryListLoading$: Observable<boolean> = this.influencerService.influencerSummaryListLoading$;
 
   ngOnInit(): void {
-    this.influencerService.getInfluencerSummaryList();
+    this.influencerService.getInfluencerSummaryList(true);
   }
 
   fetchData(): void {
-    this.influencerService.getInfluencerSummaryList();
+    this.influencerService.getInfluencerSummaryList(false);
   }
 }

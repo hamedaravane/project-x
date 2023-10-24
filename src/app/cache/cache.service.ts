@@ -80,6 +80,7 @@ export class CacheService {
   }
 
   /**
+   * @deprecated
    * Checks if an item exists in the cache by its key.
    *
    * @param {string} key - Key to check in the cache.
