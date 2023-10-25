@@ -1,1 +1,59 @@
-<p>main works!</p>
+<form nz-form>
+  <div class="flex gap-2 items-baseline mb-4">
+    <i class="fa-solid fa-paint-roller"></i>
+    <h5>ظاهر</h5>
+    <span class="h-px w-full border-b border-solid border-b-gray-200"></span>
+  </div>
+  <nz-form-item>
+    <div nz-col nzFlex="4" class="flex gap-2 items-baseline">
+      <i class="fa-solid fa-droplet"></i>
+      <label for="theme">تم رنگی</label>
+    </div>
+    <nz-form-control nzFlex="2" dir="ltr">
+      <nz-segmented id="theme" [nzOptions]="themes"></nz-segmented>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <div nz-col nzFlex="6" class="flex gap-2 items-baseline">
+      <i class="fa-solid fa-language"></i>
+      <label for="lang">زبان</label>
+    </div>
+    <nz-form-control nzFlex="4">
+      <nz-select id="lang">
+        <nz-option *ngFor="let lang of languages" [nzValue]="lang.key" [nzLabel]="lang.label"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <div class="flex gap-2 items-baseline mb-4">
+    <i class="fa-solid fa-bell"></i>
+    <h5>اعلانات</h5>
+    <span class="h-px w-full border-b border-solid border-b-gray-200"></span>
+  </div>
+  <nz-form-item>
+    <div nz-col nzFlex="4" class="flex gap-2 items-baseline">
+      <i class="fa-solid fa-envelope"></i>
+      <label for="email-notification">اعلانات ایمیل</label>
+    </div>
+    <nz-form-control dir="ltr" nzFlex="2">
+      <nz-switch id="email-notification"></nz-switch>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <div nz-col nzFlex="4" class="flex gap-2 items-baseline">
+      <i class="fa-solid fa-mobile-screen-button"></i>
+      <label for="in-app-notification">اعلانات داخل اپلیکیشن</label>
+    </div>
+    <nz-form-control dir="ltr" nzFlex="2">
+      <nz-switch id="in-app-notification"></nz-switch>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <div nz-col nzFlex="4" class="flex gap-2 items-baseline">
+      <i class="fa-solid fa-message-sms"></i>
+      <label for="sms-notification">اعلانات پیامکی</label>
+    </div>
+    <nz-form-control dir="ltr" nzFlex="2">
+      <nz-switch id="sms-notification"></nz-switch>
+    </nz-form-control>
+  </nz-form-item>
+</form>

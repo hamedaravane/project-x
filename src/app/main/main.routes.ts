@@ -7,6 +7,10 @@ export const mainRoutes: Routes = [
     component: MainComponent,
     children: [
       {
+        path: 'settings',
+        loadChildren: () => import('@settings/settings.routes').then(r => r.settingsRoutes),
+      },
+      {
         path: 'user',
         loadChildren: () => import('@user/user.routes').then(r => r.userRoutes),
       },
