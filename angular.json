@@ -32,7 +32,7 @@
                 "output": "/assets/"
               }
             ],
-            "styles": ["src/styles.scss", "src/styles.less"],
+            "styles": ["src/styles/styles.scss", "src/styles/styles.less"],
             "scripts": []
           },
           "configurations": {

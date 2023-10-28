@@ -4,6 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        seasalt: 'var(--seasalt)',
+        'anti-flash-white': 'var(--anti-flash-white)',
+        'french-gray': 'var(--french-gray)',
+        'cadet-gray': 'var(--cadet-gray)',
+        'slate-gray': 'var(--slate-gray)',
+        'rich-black': 'var(--rich-black)',
+        'gray-700': 'var(--charcoal)',
+        gunmetal: 'var(--gunmetal)',
         'neutral-600': {
           transparent: {
             10: 'rgba(82, 82, 82, 0.1)',

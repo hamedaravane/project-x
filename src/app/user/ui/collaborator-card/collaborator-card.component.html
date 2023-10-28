@@ -1,4 +1,4 @@
-<div class="rounded-md bg-gray-50 shadow my-4 p-2">
+<div class="rounded-md bg-seasalt shadow my-4 p-2">
   <div class="flex justify-between items-center mb-4">
     <div class="flex gap-4 items-center">
       <span class="rounded-full overflow-clip w-10 h-10">
@@ -18,11 +18,11 @@
     </div>
     <span
       [class]="collaboratorData.status.style"
-      class="py-1 px-2 rounded-lg text-gray-800 text-xs border border-solid">
+      class="py-1 px-2 rounded-lg text-gunmetal text-xs border border-solid">
       {{ collaboratorData.status.statusText }}
     </span>
   </div>
-  <div class="mb-2 pb-2 border-b border-solid border-gray-400">
+  <div class="mb-2 pb-2 border-b border-solid border-cadet-gray">
     <i [class]="collaboratorData.collaborationItem.icon" class="fa fa-solid me-2"></i>
     <span>{{ collaboratorData.collaborationItem.description }}</span>
   </div>
@@ -46,5 +46,5 @@
   </div>
 </div>
 <ng-template #emptyPhoto>
-  <i class="fa-solid fa-file-circle-plus text-2xl text-gray-50"></i>
+  <i class="fa-solid fa-file-circle-plus text-2xl text-seasalt"></i>
 </ng-template>

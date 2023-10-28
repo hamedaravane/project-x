@@ -40,17 +40,17 @@
       *ngFor="let feeDetail of influencer.fee; index as i"
       (click)="selectItem(feeDetail, i)"
       [class]="selectedItem[i] ? 'border-purple-500 shadow-md' : ''"
-      class="bg-gray-50 border border-solid border-gray-100 rounded-md p-2 mt-4 shadow">
+      class="bg-seasalt border border-solid border-gray-100 rounded-md p-2 mt-4 shadow">
       <div class="flex w-full justify-between">
         <div class="w-fit h-fit">
           <i [class]="feeDetail.name | typeToIcon: 'fa-lg'"></i>
         </div>
         <div class="font-medium text-gray-700 text-center">{{ feeDetail.value | toCurrency }}</div>
       </div>
-      <div class="text-xs text-gray-500 mt-2 pt-2 border-solid border-t border-gray-300">
+      <div class="text-xs text-slate-gray mt-2 pt-2 border-solid border-t border-french-gray">
         {{ feeDetail.description }}
       </div>
-      <div *ngIf="selectedItem[i]" class="mt-4 pt-2 border-solid border-t border-gray-300">
+      <div *ngIf="selectedItem[i]" class="mt-4 pt-2 border-solid border-t border-french-gray">
         <purple-date-picker
           class="inline-block"
           placeholder="تاریخ انتشار"

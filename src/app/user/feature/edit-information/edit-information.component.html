@@ -3,7 +3,7 @@
     <div class="absolute bottom-0 w-24 h-1/4 bg-neutral-600-transparent-90 cursor-pointer" (click)="triggerFileInput()">
       <i
         [ngClass]="{'fa-edit': croppedImageSrc, 'fa-file-circle-plus': !croppedImageSrc}"
-        class="fa-solid fa-md text-gray-50 text-center mx-auto block mt-1"></i>
+        class="fa-solid fa-md text-seasalt text-center mx-auto block mt-1"></i>
     </div>
     <input type="file" #fileInput (change)="onFileSelected($event)" class="hidden" />
     <img
@@ -16,7 +16,7 @@
   </div>
   <ng-template #emptyPhoto>
     <div class="mx-auto w-fit">
-      <i class="fa-solid fa-file-circle-plus text-2xl text-gray-50"></i>
+      <i class="fa-solid fa-file-circle-plus text-2xl text-seasalt"></i>
     </div>
   </ng-template>
 </div>

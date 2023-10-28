@@ -1,7 +1,7 @@
 /* Font Awesome */
-@import './assets/fontawesome/css/fontawesome.css';
-@import './assets/fontawesome/css/solid.css';
-@import './assets/fontawesome/css/brands.css';
+@import '../assets/fontawesome/css/fontawesome.css';
+@import '../assets/fontawesome/css/solid.css';
+@import '../assets/fontawesome/css/brands.css';
 
 /* Tailwind */
 @tailwind base;
@@ -170,6 +170,7 @@ h6 {
 .ltr-element {
   direction: ltr !important;
 }
+@import "variables";
 
 $text-color: #EFEFEF;
 $body-background-color: #1A1A1A;
@@ -179,13 +180,29 @@ $body-background-color-light: #F5F5F5;
 $component-background-color-light: #FAFAFA;
 
 [data-theme="dark"] {
-  --text-color: #{$text-color};
-  --body-background-color: #{$body-background-color};
-  --component-background-color: #{$component-background-color};
+  --text-color: #{$seasalt};
+  --body-background-color: #{$rich-black};
+  --component-background-color: #{$gunmetal};
+  --seasalt: #{$gunmetal};
+  --anti-flash-white: #{$slate-gray};
+  --french-gray: #{$cadet-gray};
+  --cadet-gray: #{$french-gray};
+  --slate-gray: #{$anti-flash-white};
+  --charcoal: #{$anti-flash-white};
+  --gunmetal: #{$seasalt};
+  --rich-black: #{$seasalt};
 }
 
 [data-theme="light"] {
-  --text-color: #{$text-color-light};
-  --body-background-color: #{$body-background-color-light};
-  --component-background-color: #{$component-background-color-light};
+  --text-color: #{$rich-black};
+  --body-background-color: #{$seasalt};
+  --component-background-color: #{$anti-flash-white};
+  --seasalt: #{$seasalt};
+  --anti-flash-white: #{$anti-flash-white};
+  --french-gray: #{$french-gray};
+  --cadet-gray: #{$cadet-gray};
+  --slate-gray: #{$slate-gray};
+  --charcoal: #{$charcoal};
+  --gunmetal: #{$gunmetal};
+  --rich-black: #{$rich-black};
 }

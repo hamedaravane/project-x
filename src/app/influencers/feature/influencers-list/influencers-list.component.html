@@ -7,7 +7,7 @@
     <li
       *ngFor="let influencer of influencerSummaryList$ | async"
       dir="ltr"
-      class="rounded-md bg-gray-50 flex gap-4 p-4 shadow">
+      class="rounded-md bg-seasalt flex gap-4 p-4 shadow">
       <div class="rounded-full flex w-16 h-16 overflow-clip">
         <img
           class="object-cover aspect-square"
@@ -42,7 +42,7 @@
   </ul>
   <ng-template #loadingTemplate>
     <ul class="flex flex-col gap-4 mt-4">
-      <li *ngFor="let _ of [].constructor(3)" dir="ltr" class="rounded-md bg-gray-50 flex gap-4 p-4 shadow">
+      <li *ngFor="let _ of [].constructor(3)" dir="ltr" class="rounded-md bg-seasalt flex gap-4 p-4 shadow">
         <div class="rounded-full flex w-16 h-16 overflow-clip">
           <skeleton shape="circle" width="70" height="70"></skeleton>
         </div>

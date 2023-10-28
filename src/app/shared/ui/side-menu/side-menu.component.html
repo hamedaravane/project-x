@@ -1,7 +1,7 @@
 <div *ngIf="isSideMenuOpen$ | async" @sideMenuAnimations class="fixed h-full w-full top-0 overflow-hidden z-20">
-  <div id="side-menu" class="max-menu-width h-full bg-gray-50 pt-8 px-4 pb-4 absolute top-0 right-0 z-40">
+  <div id="side-menu" class="max-menu-width h-full bg-seasalt pt-8 px-4 pb-4 absolute top-0 right-0 z-40">
     <ng-container *ngIf="userData; else userLoading">
-      <div class="rounded-full w-16 h-16 overflow-clip mx-auto border-2 border-solid border-gray-300">
+      <div class="rounded-full w-16 h-16 overflow-clip mx-auto border-2 border-solid border-french-gray">
         <ng-container *ngIf="userData.profilePhotoSrc as profilePhoto; else emptyPhoto">
           <img [ngSrc]="profilePhoto" width="64" height="64" alt="profile photo" />
         </ng-container>
@@ -27,7 +27,7 @@
 
 <ng-template #emptyPhoto>
   <div class="mx-auto w-fit">
-    <i class="fa-solid fa-user text-gray-500"></i>
+    <i class="fa-solid fa-user text-slate-gray"></i>
   </div>
 </ng-template>
 <ng-template #userLoading>
