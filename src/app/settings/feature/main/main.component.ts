@@ -4,7 +4,7 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzSegmentedModule} from 'ng-zorro-antd/segmented';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzSwitchModule} from 'ng-zorro-antd/switch';
-import {KeyValue, Language} from '@settings/data-access/model/settings';
+import {KeyValue, Language} from '@settings/data-access/model/settings.model';
 
 @Component({
   standalone: true,

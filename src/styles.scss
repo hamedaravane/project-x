@@ -1,3 +1,13 @@
+/* Font Awesome */
+@import './assets/fontawesome/css/fontawesome.css';
+@import './assets/fontawesome/css/solid.css';
+@import './assets/fontawesome/css/brands.css';
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* CSS Resets */
 html,
 body,
@@ -117,16 +127,6 @@ span {
   display: inline-block;
 }
 
-/* Font Awesome */
-@import './assets/fontawesome/css/fontawesome.css';
-@import './assets/fontawesome/css/solid.css';
-@import './assets/fontawesome/css/brands.css';
-
-/* Tailwind */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 h1 {
   font-size: 2.5rem;
 }
@@ -169,4 +169,23 @@ h6 {
 
 .ltr-element {
   direction: ltr !important;
+}
+
+$text-color: #EFEFEF;
+$body-background-color: #1A1A1A;
+$component-background-color: #242424;
+$text-color-light: #1A1A1A;
+$body-background-color-light: #F5F5F5;
+$component-background-color-light: #FAFAFA;
+
+[data-theme="dark"] {
+  --text-color: #{$text-color};
+  --body-background-color: #{$body-background-color};
+  --component-background-color: #{$component-background-color};
+}
+
+[data-theme="light"] {
+  --text-color: #{$text-color-light};
+  --body-background-color: #{$body-background-color-light};
+  --component-background-color: #{$component-background-color-light};
 }
