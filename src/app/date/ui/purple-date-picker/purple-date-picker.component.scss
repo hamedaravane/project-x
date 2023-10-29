@@ -18,7 +18,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: 1px solid rgb(217, 217, 217);
+  border: 1px solid var(--gray-300);
   padding: 0.25rem 11px;
   border-radius: 0.25rem;
   transition: border-color 0.3s;
@@ -26,7 +26,7 @@
   max-width: 10rem;
 
   &:hover {
-    border-color: #7c3aed;
+    border-color: var(--primary-color);
   }
 
   input {
@@ -40,7 +40,7 @@
     }
 
     &::placeholder {
-      color: #bfbfbf;
+      color: var(--gray-900);
       user-select: none;
     }
   }
@@ -48,11 +48,11 @@
   i {
     position: absolute;
     left: 10px;
-    color: #777;
+    color: var(--gray-900);
     cursor: pointer;
 
     &:hover {
-      color: #555;
+      color: var(--gray-800);
     }
   }
 }

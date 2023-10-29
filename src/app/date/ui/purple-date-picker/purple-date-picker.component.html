@@ -10,7 +10,7 @@
 <div
   [@openClose]="showDatePicker ? 'open' : 'closed'"
   id="date-picker-container"
-  class="h-fit w-64 custom-shadow rounded-md overflow-clip bg-white"
+  class="h-fit w-64 custom-shadow rounded-md overflow-clip bg-gray-50"
   (click)="$event.stopPropagation()">
   <!-- Header -->
   <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-gray-200">
@@ -103,7 +103,7 @@
           class="text-center text-sm w-15 px-2 hover:bg-gray-100 rounded-sm"
           [ngClass]="{
             'border border-purple-600': i === currentMonth && viewingYear === currentYear,
-            'bg-purple-600 text-white hover:!bg-purple-600': i === selectedMonth && viewingYear === selectedYear
+            'bg-purple-600 text-gray-50 hover:!bg-purple-600': i === selectedMonth && viewingYear === selectedYear
           }"
           >{{ month }}</span
         >
