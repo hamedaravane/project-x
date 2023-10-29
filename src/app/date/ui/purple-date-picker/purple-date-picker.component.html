@@ -13,11 +13,11 @@
   class="h-fit w-64 custom-shadow rounded-md overflow-clip bg-white"
   (click)="$event.stopPropagation()">
   <!-- Header -->
-  <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-anti-flash-white">
+  <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-gray-200">
     <ng-container [ngSwitch]="mode">
       <ng-container *ngSwitchCase="'month'">
         <div class="flex gap-2">
-          <i class="fa-solid fa-angles-right text-french-gray" (click)="previousYear()"></i>
+          <i class="fa-solid fa-angles-right text-gray-300" (click)="previousYear()"></i>
         </div>
         <div class="flex gap-4 items-baseline">
           <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('year')">{{
@@ -25,12 +25,12 @@
           }}</strong>
         </div>
         <div class="flex gap-2">
-          <i class="fa-solid fa-angles-left text-french-gray" (click)="nextYear()"></i>
+          <i class="fa-solid fa-angles-left text-gray-300" (click)="nextYear()"></i>
         </div>
       </ng-container>
       <ng-container *ngSwitchCase="'year'">
         <div class="flex gap-2">
-          <i class="fa-solid fa-angles-right text-french-gray" (click)="previousDecade()"></i>
+          <i class="fa-solid fa-angles-right text-gray-300" (click)="previousDecade()"></i>
         </div>
         <div class="flex gap-4 items-baseline">
           <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('month')">
@@ -39,13 +39,13 @@
           </strong>
         </div>
         <div class="flex gap-2">
-          <i class="fa-solid fa-angles-left text-french-gray" (click)="nextDecade()"></i>
+          <i class="fa-solid fa-angles-left text-gray-300" (click)="nextDecade()"></i>
         </div>
       </ng-container>
       <ng-container *ngSwitchDefault>
         <div class="flex gap-2">
-          <i class="fa-solid fa-angles-right text-french-gray" (click)="previousYear()"></i>
-          <i class="fa-solid fa-angle-right text-french-gray" (click)="previousMonth()"></i>
+          <i class="fa-solid fa-angles-right text-gray-300" (click)="previousYear()"></i>
+          <i class="fa-solid fa-angle-right text-gray-300" (click)="previousMonth()"></i>
         </div>
         <div class="flex gap-4 items-baseline">
           <strong class="hover:text-purple-600 cursor-pointer" (click)="changeMode('month')">{{
@@ -56,8 +56,8 @@
           }}</strong>
         </div>
         <div class="flex gap-2">
-          <i class="fa-solid fa-angle-left text-french-gray" (click)="nextMonth()"></i>
-          <i class="fa-solid fa-angles-left text-french-gray" (click)="nextYear()"></i>
+          <i class="fa-solid fa-angle-left text-gray-300" (click)="nextMonth()"></i>
+          <i class="fa-solid fa-angles-left text-gray-300" (click)="nextYear()"></i>
         </div>
       </ng-container>
     </ng-container>
@@ -82,8 +82,8 @@
             viewingYear === selectedYear &&
             dateItem.isCurrentMonth
         }"
-        class="text-center leading-unset h-6 w-6 text-sm rounded-sm hover:bg-zinc-100"
-        [class.text-cadet-gray]="!dateItem.isCurrentMonth"
+        class="text-center leading-unset h-6 w-6 text-sm rounded-sm hover:bg-gray-100"
+        [class.text-gray-400]="!dateItem.isCurrentMonth"
         (click)="selectDay(dateItem)"
         *ngFor="let dateItem of daysOfMonth">
         {{ dateItem.date | persianDigit }}
@@ -100,7 +100,7 @@
         (click)="selectMonth(i)"
         class="h-16 w-22 rounded-sm cursor-pointer flex justify-center items-center">
         <span
-          class="text-center text-sm w-15 px-2 hover:bg-zinc-100 rounded-sm"
+          class="text-center text-sm w-15 px-2 hover:bg-gray-100 rounded-sm"
           [ngClass]="{
             'border border-purple-600': i === currentMonth && viewingYear === currentYear,
             'bg-purple-600 text-white hover:!bg-purple-600': i === selectedMonth && viewingYear === selectedYear
@@ -120,9 +120,9 @@
         (click)="selectYear(year)"
         class="h-16 w-22 rounded-sm cursor-pointer flex justify-center items-center">
         <span
-          class="text-center text-sm w-15 px-2 hover:bg-zinc-100 rounded-sm"
+          class="text-center text-sm w-15 px-2 hover:bg-gray-100 rounded-sm"
           [ngClass]="{
-            'text-french-gray cursor-default': i === 0 || i === yearsRangeView.length - 1,
+            'text-gray-300 cursor-default': i === 0 || i === yearsRangeView.length - 1,
             'border border-purple-600': year === currentYear
           }">
           {{ year | persianDigit }}
@@ -134,7 +134,7 @@
   <button
     *ngIf="showToday && !mode"
     (click)="today()"
-    class="w-full h-11 border-t border-b-anti-flash-white text-purple-600 cursor-pointer">
+    class="w-full h-11 border-t border-b-gray-200 text-purple-600 cursor-pointer">
     امروز
   </button>
 </div>

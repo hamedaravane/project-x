@@ -1,12 +1,12 @@
 <div class="sticky top-0 z-10">
   <div class="flex justify-between items-center py-4 px-8 w-full shadow backdrop-blur">
-    <div (click)="openSideMenu()" class="rounded-full w-6 h-6 overflow-clip border-2 border-solid border-french-gray">
+    <div (click)="openSideMenu()" class="rounded-full w-6 h-6 overflow-clip border-2 border-solid border-gray-300">
       <ng-container *ngIf="(user$ | async)?.profilePhotoSrc as profilePhoto; else emptyPhoto">
         <img [ngSrc]="profilePhoto" width="24" height="24" alt="profile photo" />
       </ng-container>
       <ng-template #emptyPhoto>
         <div class="mx-auto w-fit">
-          <i class="fa-solid fa-user text-slate-gray"></i>
+          <i class="fa-solid fa-user text-gray-500"></i>
         </div>
       </ng-template>
     </div>

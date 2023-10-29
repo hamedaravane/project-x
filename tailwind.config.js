@@ -4,14 +4,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        seasalt: 'var(--seasalt)',
-        'anti-flash-white': 'var(--anti-flash-white)',
-        'french-gray': 'var(--french-gray)',
-        'cadet-gray': 'var(--cadet-gray)',
-        'slate-gray': 'var(--slate-gray)',
-        'rich-black': 'var(--rich-black)',
-        'gray-700': 'var(--charcoal)',
-        gunmetal: 'var(--gunmetal)',
+        gray: {
+          50: 'var(--gray-50)',
+          100: 'var(--gray-100)',
+          200: 'var(--gray-200)',
+          300: 'var(--gray-300)',
+          400: 'var(--gray-400)',
+          500: 'var(--gray-500)',
+          700: 'var(--gray-700)',
+          800: 'var(--gray-800)',
+          900: 'var(--gray-900)',
+          950: 'var(--gray-950)',
+        },
         'neutral-600': {
           transparent: {
             10: 'rgba(82, 82, 82, 0.1)',

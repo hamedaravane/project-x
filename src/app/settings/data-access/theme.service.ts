@@ -23,10 +23,10 @@ export class ThemeService {
   }
 
   public getCurrentTheme(): string {
-    const tokenTheme = localStorage.getItem('theme');
-    if (tokenTheme) this.currentTheme = tokenTheme as Theme;
     const dataTheme = document.documentElement.getAttribute('data-theme');
     if (dataTheme) this.currentTheme = dataTheme as Theme;
+    const tokenTheme = localStorage.getItem('theme');
+    if (tokenTheme) this.currentTheme = tokenTheme as Theme;
     return this.currentTheme;
   }
 

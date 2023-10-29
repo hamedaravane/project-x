@@ -1,4 +1,4 @@
-<div class="rounded-md bg-seasalt shadow px-2 py-4">
+<div class="rounded-md bg-gray-100 shadow px-2 py-4">
   <div class="flex w-full gap-4">
     <div class="flex grow gap-2 items-center">
       <i class="fa-solid fa-xs fa-filter text-gray-600"></i>
@@ -28,11 +28,11 @@
     <div (click)="toggleSortOrder()" class="flex items-center pe-2">
       <i
         *ngIf="selectedSortOrder === ascending"
-        [class.text-anti-flash-white]="!selectedSortOption"
+        [class.text-gray-200]="!selectedSortOption"
         class="fa-solid text-gray-600 fa-arrow-up-wide-short"></i>
       <i
         *ngIf="selectedSortOrder === descending"
-        [class.text-anti-flash-white]="!selectedSortOption"
+        [class.text-gray-200]="!selectedSortOption"
         class="fa-solid text-gray-600 fa-arrow-down-wide-short"></i>
     </div>
   </div>

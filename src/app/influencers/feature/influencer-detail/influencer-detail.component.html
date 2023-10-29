@@ -27,13 +27,13 @@
   </div>
   <div class="mt-4">
     <div class="mt-2">
-      <span class="text-slate-gray">محل سکونت:</span>
+      <span class="text-gray-500">محل سکونت:</span>
       <span>&nbsp;</span>
       <i class="fa-solid fa-location-dot me-2"></i>
       <span class="font-bold">{{ influencer.city }}</span>
     </div>
     <div class="mt-2">
-      <span class="text-slate-gray">حوزه فعالیت:</span>
+      <span class="text-gray-500">حوزه فعالیت:</span>
       <span>&nbsp;</span>
       <i class="me-2" [class]="influencer.category | categoryToIcon"></i>
       <span class="font-bold">{{ influencer.category | categoryToLabel }}</span>
@@ -46,12 +46,12 @@
     <div
       *ngFor="let feeDetail of influencer.fee"
       id="fee-detail"
-      class="bg-seasalt border border-gray-100 rounded-md p-2 shadow">
+      class="bg-gray-100 border border-gray-100 rounded-md p-2 shadow">
       <div class="mx-auto mt-2 mb-6 w-fit h-fit">
         <i [class]="feeDetail.name | typeToIcon: 'fa-xl'"></i>
       </div>
       <div class="font-medium text-gray-700 text-center">{{ feeDetail.value | toCurrency }}</div>
-      <div class="text-xs text-slate-gray mt-2 pt-2 border-solid border-t border-french-gray">
+      <div class="text-xs text-gray-500 mt-2 pt-2 border-solid border-t border-gray-300">
         {{ feeDetail.description }}
       </div>
     </div>

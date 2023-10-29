@@ -1,8 +1,8 @@
-<form nz-form>
+<form nz-form [formGroup]="settingsForm">
   <div class="flex gap-2 items-baseline mb-4">
     <i class="fa-solid fa-paint-roller"></i>
     <h5>ظاهر</h5>
-    <span class="h-px w-full border-b border-solid border-b-anti-flash-white"></span>
+    <span class="h-px w-full border-b border-solid border-b-gray-200"></span>
   </div>
   <nz-form-item>
     <div nz-col nzFlex="4" class="flex gap-2 items-baseline">
@@ -10,7 +10,7 @@
       <label for="theme">تم رنگی</label>
     </div>
     <nz-form-control nzFlex="2" dir="ltr">
-      <nz-segmented id="theme" [nzOptions]="themes"></nz-segmented>
+      <nz-segmented id="theme" [nzOptions]="themes" formControlName="theme"></nz-segmented>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
@@ -19,7 +19,7 @@
       <label for="lang">زبان</label>
     </div>
     <nz-form-control nzFlex="4">
-      <nz-select id="lang">
+      <nz-select id="lang" formControlName="lang">
         <nz-option *ngFor="let lang of languages" [nzValue]="lang.key" [nzLabel]="lang.label"></nz-option>
       </nz-select>
     </nz-form-control>
@@ -27,7 +27,7 @@
   <div class="flex gap-2 items-baseline mb-4">
     <i class="fa-solid fa-bell"></i>
     <h5>اعلانات</h5>
-    <span class="h-px w-full border-b border-solid border-b-anti-flash-white"></span>
+    <span class="h-px w-full border-b border-solid border-b-gray-200"></span>
   </div>
   <nz-form-item>
     <div nz-col nzFlex="4" class="flex gap-2 items-baseline">
@@ -35,7 +35,7 @@
       <label for="email-notification">اعلانات ایمیل</label>
     </div>
     <nz-form-control dir="ltr" nzFlex="2">
-      <nz-switch id="email-notification"></nz-switch>
+      <nz-switch id="email-notification" formControlName="emailNotification"></nz-switch>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
@@ -44,7 +44,7 @@
       <label for="in-app-notification">اعلانات داخل اپلیکیشن</label>
     </div>
     <nz-form-control dir="ltr" nzFlex="2">
-      <nz-switch id="in-app-notification"></nz-switch>
+      <nz-switch id="in-app-notification" formControlName="inAppNotification"></nz-switch>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
@@ -53,7 +53,7 @@
       <label for="sms-notification">اعلانات پیامکی</label>
     </div>
     <nz-form-control dir="ltr" nzFlex="2">
-      <nz-switch id="sms-notification"></nz-switch>
+      <nz-switch id="sms-notification" formControlName="smsNotification"></nz-switch>
     </nz-form-control>
   </nz-form-item>
 </form>

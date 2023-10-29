@@ -1,6 +1,8 @@
 $black: rgb(0 0 0);
 $white: rgb(255 255 255);
-/*$gray-50: rgb(249 250 251);
+$ghost-white: rgb(249 251 255);
+$rich-black: rgb(3 5 12);
+$gray-50: rgb(249 250 251);
 $gray-100: rgb(243 244 246);
 $gray-200: rgb(229 231 235);
 $gray-300: rgb(209 213 219);
@@ -10,24 +12,6 @@ $gray-600: rgb(75 85 99);
 $gray-700: rgb(55 65 81);
 $gray-800: rgb(31 41 55);
 $gray-900: rgb(17 24 39);
-$gray-950: rgb(3 7 18);*/
-/*$zinc-50: rgb(250 250 250);
-$zinc-100: rgb(244 244 245);
-$zinc-200: rgb(228 228 231);
-$zinc-300: rgb(212 212 216);
-$zinc-400: rgb(161 161 170);
-$zinc-500: rgb(113 113 122);
-$zinc-600: rgb(82 82 91);
-$zinc-700: rgb(63 63 70);
-$zinc-800: rgb(39 39 42);
-$zinc-900: rgb(24 24 27);
-$zinc-950: rgb(9 9 11);*/
-
-$seasalt: rgb(249 250 251); /* $gray-50: rgb(249 250 251); */
-$anti-flash-white: rgb(229 231 235); /* $gray-200: rgb(229 231 235); */
-$french-gray: rgb(209 213 219); /* $gray-300: rgb(209 213 219); */
-$cadet-gray: rgb(156 163 175); /* $gray-400: rgb(156 163 175); */
-$slate-gray: rgb(107 114 128); /* $gray-500: rgb(107 114 128); */
-$charcoal: rgb(55 65 81); /* $gray-700: rgb(55 65 81); */
-$gunmetal: rgb(31 41 55); /* $gray-800: rgb(31 41 55); */
-$rich-black: rgb(3 7 18) /* $gray-950: rgb(3 7 18); */
+$gray-950: rgb(6 15 23);
+$amber-300: rgb(252 211 77);
+$purple-400: rgb(192 132 252);

@@ -2,6 +2,7 @@
 
 @primary-color: rgb(124 58 237);
 @text-color: var(--text-color);
+@heading-color: var(--heading-color);
 @font-family:
   'Vazirmatn',
   -apple-system,
@@ -18,10 +19,32 @@
   'Noto Color Emoji';
 
 @border-radius-base: 4px;
+
+@body-background: var(--body-background);
+@component-background: var(--gray-200);
+@border-color-base: var(--gray-100);
+@background-color-base: @component-background;
+
+
+// Rate
+// ---
+@rate-star-color: var(--rate-star-color);
+@rate-star-bg: var(--gray-300);
 @rate-star-size: 14px;
 
-@body-background: var(--body-background-color);
-@component-background: var(--component-background-color);
+// Switch
+// ---
+@switch-disabled-opacity: 0.3;
+@switch-bg: var(--gray-200);
+
+// Segmented
+// ---
+@segmented-bg: var(--gray-200);
+@segmented-hover-bg: var(--gray-300);
+@segmented-selected-bg: var(--gray-100);
+@segmented-label-color: var(--gray-900);
+@segmented-label-hover-color: var(--gray-900);
+
 
 /* Customization for Result Component */
 @import '~node_modules/ng-zorro-antd/result/style/index.less';
