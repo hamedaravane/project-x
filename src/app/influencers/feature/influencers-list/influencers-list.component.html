@@ -4,10 +4,7 @@
   <ul
     class="flex flex-col gap-4 mt-4"
     *ngIf="(influencerSummaryListLoading$ | async) === false as isLoading; else loadingTemplate">
-    <li
-      *ngFor="let influencer of influencerSummaryList$ | async"
-      dir="ltr"
-      class="rounded-md bg-gray-100 flex gap-4 p-4 shadow">
+    <card *ngFor="let influencer of influencerSummaryList$ | async" dir="ltr" class="flex gap-4 p-4">
       <div class="rounded-full flex w-16 h-16 overflow-clip">
         <img
           class="object-cover aspect-square"
@@ -38,11 +35,11 @@
           </div>
         </div>
       </div>
-    </li>
+    </card>
   </ul>
   <ng-template #loadingTemplate>
     <ul class="flex flex-col gap-4 mt-4">
-      <li *ngFor="let _ of [].constructor(3)" dir="ltr" class="rounded-md bg-gray-100 flex gap-4 p-4 shadow">
+      <li *ngFor="let _ of [].constructor(3)" dir="ltr" class="rounded-md bg-gray-200 flex gap-4 p-4 shadow">
         <div class="rounded-full flex w-16 h-16 overflow-clip">
           <skeleton shape="circle" width="70" height="70"></skeleton>
         </div>

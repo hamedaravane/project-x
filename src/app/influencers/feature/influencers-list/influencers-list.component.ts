@@ -7,6 +7,7 @@ import {InfluencerService} from '@influencers/data-access/influencer.service';
 import {InfluencerSummary} from '@influencers/data-access/model/filter-sort.model';
 import {FilterSortListComponent} from '@influencers/feature/filter-sort/filter-sort-list.component';
 import {listAnimation} from '@shared/data-access/animations/animations';
+import {CardComponent} from '@shared/ui/card/card.component';
 import {PullToRefreshComponent} from '@shared/ui/pull-to-refresh/pull-to-refresh.component';
 import {SkeletonComponent} from '@shared/ui/skeleton/skeleton.component';
 import {CategoryToIconPipe} from '@shared/util/pipes/category-to-icon.pipe';
@@ -35,6 +36,7 @@ import {Observable} from 'rxjs';
     PullToRefreshComponent,
     NgIf,
     SkeletonComponent,
+    CardComponent,
   ],
   styleUrls: ['./influencers-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

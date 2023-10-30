@@ -82,7 +82,7 @@
             viewingYear === selectedYear &&
             dateItem.isCurrentMonth
         }"
-        class="text-center leading-unset h-6 w-6 text-sm rounded-sm hover:bg-gray-100"
+        class="text-center leading-unset h-6 w-6 text-sm rounded-sm hover:bg-gray-200"
         [class.text-gray-400]="!dateItem.isCurrentMonth"
         (click)="selectDay(dateItem)"
         *ngFor="let dateItem of daysOfMonth">
@@ -100,7 +100,7 @@
         (click)="selectMonth(i)"
         class="h-16 w-22 rounded-sm cursor-pointer flex justify-center items-center">
         <span
-          class="text-center text-sm w-15 px-2 hover:bg-gray-100 rounded-sm"
+          class="text-center text-sm w-15 px-2 hover:bg-gray-200 rounded-sm"
           [ngClass]="{
             'border border-purple-600': i === currentMonth && viewingYear === currentYear,
             'bg-purple-600 text-gray-50 hover:!bg-purple-600': i === selectedMonth && viewingYear === selectedYear
@@ -120,7 +120,7 @@
         (click)="selectYear(year)"
         class="h-16 w-22 rounded-sm cursor-pointer flex justify-center items-center">
         <span
-          class="text-center text-sm w-15 px-2 hover:bg-gray-100 rounded-sm"
+          class="text-center text-sm w-15 px-2 hover:bg-gray-200 rounded-sm"
           [ngClass]="{
             'text-gray-300 cursor-default': i === 0 || i === yearsRangeView.length - 1,
             'border border-purple-600': year === currentYear
