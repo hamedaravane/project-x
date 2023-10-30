@@ -4,7 +4,7 @@ import {CollaborationsService} from '@user/data-access/collaborations.service';
 
 @Component({
   standalone: true,
-  selector: 'app-root',
+  selector: 'user-root',
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.scss'],
   imports: [RouterOutlet],

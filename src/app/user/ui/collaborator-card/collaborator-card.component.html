@@ -1,4 +1,4 @@
-<div class="rounded-md bg-gray-200 shadow my-4 p-2">
+<card class="block my-4 p-4">
   <div class="flex justify-between items-center mb-4">
     <div class="flex gap-4 items-center">
       <span class="rounded-full overflow-clip w-10 h-10">
@@ -18,7 +18,7 @@
     </div>
     <span
       [class]="collaboratorData.status.style"
-      class="py-1 px-2 rounded-lg text-gray-800 text-xs border border-solid">
+      class="py-1 px-2 rounded-lg text-zinc-800 text-xs border border-solid">
       {{ collaboratorData.status.statusText }}
     </span>
   </div>
@@ -44,7 +44,7 @@
       <span>{{ collaboratorData.collaborationDate.time }}</span>
     </div>
   </div>
-</div>
+</card>
 <ng-template #emptyPhoto>
   <i class="fa-solid fa-file-circle-plus text-2xl text-gray-100"></i>
 </ng-template>

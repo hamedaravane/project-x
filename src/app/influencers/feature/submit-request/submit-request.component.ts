@@ -1,6 +1,7 @@
 import {AsyncPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {CardComponent} from '@shared/ui/card/card.component';
 import {ToCurrencyPipe} from '@shared/util/pipes/to-currency.pipe';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 import {PurpleDate} from '@date/data-access/model/date.model';
@@ -25,6 +26,7 @@ import {TypeToIconPipe} from 'src/app/influencers/data-access/util/type-to-icon.
     TypeToIconPipe,
     FormsModule,
     PurpleDatePickerComponent,
+    CardComponent,
   ],
 })
 export class SubmitRequestComponent {

@@ -30,63 +30,38 @@
 /** border color of most components */
 @border-color-base: var(--border-color-base);
 
-// Rate
-// ---
+/* Rate */
 @rate-star-color: var(--rate-star-color);
 @rate-star-bg: var(--gray-300);
 @rate-star-size: 14px;
 
-// Switch
-// ---
+/* Switch */
 @switch-disabled-opacity: 0.3;
 @switch-bg: var(--ghost-white);
+@switch-shadow-color: var(--shadow);
 
-// Segmented
-// ---
+/* Segmented */
 @segmented-bg: var(--gray-200);
 @segmented-hover-bg: var(--gray-300);
 @segmented-selected-bg: var(--gray-100);
 @segmented-label-color: var(--gray-900);
 @segmented-label-hover-color: var(--gray-900);
 
-// Select
-// ---
-@select-item-selected-bg: var(--gray-100);
-@select-item-active-bg: var(--gray-100);
-@select-selection-item-border-color: var(--gray-400);
-@select-multiple-disabled-background: var(--gray-200);
-@select-multiple-item-disabled-color: var(--gray-300);
-@select-multiple-item-disabled-border-color: var(--gray-200);
+/* Select */
+@select-item-selected-bg: var(--gray-300);
+@select-item-active-bg: @select-item-selected-bg;
+@select-selection-item-border-color: @border-color-base;
+@select-multiple-item-disabled-border-color: var(--disabled-border-color);
+@select-multiple-item-disabled-color: var(--disabled-background);
 
-// Select
-// ---
-@select-item-selected-bg: @primary-1;
-@select-item-active-bg: @item-hover-bg;
-@select-dropdown-vertical-padding: @dropdown-vertical-padding;
-@select-dropdown-font-size: @dropdown-font-size;
-@select-dropdown-line-height: @dropdown-line-height;
-@select-dropdown-height: 32px;
-@select-selection-item-border-color: @border-color-split;
-@select-single-item-height-lg: 40px;
-@select-multiple-item-height: @input-height-base - @input-padding-vertical-base * 2; // Normal 24px
-@select-multiple-item-height-lg: 32px;
-@select-multiple-item-spacing-half: ceil((@input-padding-vertical-base / 2));
-@select-multiple-disabled-background: @input-disabled-bg;
-@select-multiple-item-disabled-color: #bfbfbf;
-@select-multiple-item-disabled-border-color: @select-border-color;
+/* Input */
+@input-addon-bg: @component-background;
+@input-disabled-bg: var(--disabled-background);
+@input-disabled-color: var(--disabled-color);
 
-// Input
-// ---
-@input-placeholder-color: hsv(0, 0, 75%);
-@input-hover-border-color: @primary-5;
-@input-number-hover-border-color: @input-hover-border-color;
-@input-number-handler-active-bg: #f4f4f4;
-@input-number-handler-hover-bg: @primary-5;
-@input-addon-bg: @background-color-light;
-@input-disabled-bg: @disabled-bg;
-@input-icon-hover-color: fade(@black, 85%);
-@input-disabled-color: @disabled-color;
-
+/* Alert */
+@alert-message-color: var(--text-color-dark);
+@alert-text-color: var(--heading-color-dark);
 
 /* Customization for Result Component */
 @import '~node_modules/ng-zorro-antd/result/style/index.less';

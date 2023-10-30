@@ -147,9 +147,29 @@ h6 {
 }
 
 /* CropperJs */
-@import '~cropperjs/dist/cropper.css';
+@import '~node_modules/cropperjs/dist/cropper.css';
 
-:host {
+.cropper-view-box {
+  outline: rgba(124, 58, 237, 0.75) solid 1px;
+}
+
+.cropper-point {
+  background-color: var(--primary-color);
+  border-radius: 100%;
+}
+
+.cropper-point.point-se {
+  bottom: -10px;
+  right: -10px;
+}
+
+.cropper-line {
+  background-color: var(--primary-color);
+}
+
+@import "variables";
+
+:root {
   font-family:
     'Vazirmatn',
     -apple-system,
@@ -165,28 +185,28 @@ h6 {
     'Segoe UI Symbol',
     'Noto Color Emoji';
   box-sizing: border-box;
-}
-
-.ltr-element {
-  direction: ltr !important;
-}
-@import "variables";
-
-:root {
   --gray-500: #{$gray-500};
   --rate-star-color: #{$amber-300};
   --primary-color: #{$violet-600};
   --ghost-white: #{$body-background-light};
   --border-radius-base: .25rem;
-  --shadow: 0 1px 3px 0 rgba(0 0 0 0.1), 0 1px 2px -1px rgba(0 0 0 0.1);
+  --border-radius-sm: calc(var(--border-radius-base) * .5);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --dark-transparent: rgba(0, 0, 0, 0.6);
+  --text-color-dark: #{$text-color-light};
+  --heading-color-dark: #{$heading-color-light};
 }
 
 [data-theme="dark"] {
   --text-color: #{$text-color-dark};
   --heading-color: #{$heading-color-dark};
+  --disabled-color: #{$disable-color-dark};
   --body-background: #{$body-background-dark};
   --component-background: #{$component-background-dark};
+  --disabled-background: #{$disable-background-dark};
+  --disabled-border-color: #{$disabled-border-color-dark};
   --border-color-base: #{$border-color-base-dark};
+  --header-background: #{$header-background-color-dark};
   --gray-50: #{$gray-950};
   --gray-100: #{$gray-900};
   --gray-200: #{$gray-800};
@@ -202,9 +222,13 @@ h6 {
 [data-theme="light"] {
   --text-color: #{$text-color-light};
   --heading-color: #{$heading-color-light};
+  --disabled-color: #{$disable-color-light};
   --body-background: #{$body-background-light};
   --component-background: #{$component-background-light};
+  --disabled-background: #{$disable-background-light};
+  --disabled-border-color: #{$disabled-border-color-light};
   --border-color-base: #{$border-color-base-light};
+  --header-background: #{$header-background-color-light};
   --gray-50: #{$gray-50};
   --gray-100: #{$gray-100};
   --gray-200: #{$gray-200};

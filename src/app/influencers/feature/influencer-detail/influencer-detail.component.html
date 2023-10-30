@@ -43,10 +43,7 @@
     <span>ثبت درخواست همکاری</span>
   </button>
   <div class="mt-4 grid grid-cols-2 grid-rows-3 gap-2" @feeDetailAnimation>
-    <div
-      *ngFor="let feeDetail of influencer.fee"
-      id="fee-detail"
-      class="bg-gray-200 border border-gray-100 rounded-md p-2 shadow">
+    <card *ngFor="let feeDetail of influencer.fee" id="fee-detail" class="p-2">
       <div class="mx-auto mt-2 mb-6 w-fit h-fit">
         <i [class]="feeDetail.name | typeToIcon: 'fa-xl'"></i>
       </div>
@@ -54,7 +51,7 @@
       <div class="text-xs text-gray-500 mt-2 pt-2 border-solid border-t border-gray-300">
         {{ feeDetail.description }}
       </div>
-    </div>
+    </card>
   </div>
   <nz-alert class="mt-4" nzType="info" [nzMessage]="influencer.feeNotes" nzShowIcon></nz-alert>
 </div>

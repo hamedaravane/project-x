@@ -1,9 +1,9 @@
 <div class="rounded-full w-24 h-24 overflow-clip mb-8 mx-auto">
   <div class="relative">
-    <div class="absolute bottom-0 w-24 h-1/4 bg-neutral-600-transparent-90 cursor-pointer" (click)="triggerFileInput()">
+    <div class="absolute bottom-0 w-24 h-1/4 bg-dark-transparent cursor-pointer" (click)="triggerFileInput()">
       <i
         [ngClass]="{'fa-edit': croppedImageSrc, 'fa-file-circle-plus': !croppedImageSrc}"
-        class="fa-solid fa-md text-gray-100 text-center mx-auto block mt-1"></i>
+        class="fa-solid fa-md text-zinc-100 text-center mx-auto block mt-1"></i>
     </div>
     <input type="file" #fileInput (change)="onFileSelected($event)" class="hidden" />
     <img

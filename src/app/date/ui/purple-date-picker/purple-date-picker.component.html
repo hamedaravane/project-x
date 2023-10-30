@@ -10,10 +10,10 @@
 <div
   [@openClose]="showDatePicker ? 'open' : 'closed'"
   id="date-picker-container"
-  class="h-fit w-64 custom-shadow rounded-md overflow-clip bg-gray-50"
+  class="h-fit w-64 custom-shadow rounded-md overflow-clip bg-component"
   (click)="$event.stopPropagation()">
   <!-- Header -->
-  <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-gray-200">
+  <div class="w-full max-h-11 flex py-2 px-4 items-center justify-between border-b border-base-br">
     <ng-container [ngSwitch]="mode">
       <ng-container *ngSwitchCase="'month'">
         <div class="flex gap-2">
@@ -134,7 +134,7 @@
   <button
     *ngIf="showToday && !mode"
     (click)="today()"
-    class="w-full h-11 border-t border-b-gray-200 text-purple-600 cursor-pointer">
+    class="w-full h-11 border-t border-base-br text-purple-600 cursor-pointer">
     امروز
   </button>
 </div>

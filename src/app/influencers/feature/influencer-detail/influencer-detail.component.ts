@@ -3,6 +3,7 @@ import {Component, OnInit, inject} from '@angular/core';
 import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {feeDetailAnimation} from '@shared/data-access/animations/animations';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
+import {CardComponent} from '@shared/ui/card/card.component';
 import {CategoryToIconPipe} from '@shared/util/pipes/category-to-icon.pipe';
 import {CategoryToLabelPipe} from '@shared/util/pipes/category-to-label.pipe';
 import {PersianDigitPipe} from '@shared/util/pipes/persian-digit.pipe';
@@ -29,6 +30,7 @@ import {TypeToIconPipe} from 'src/app/influencers/data-access/util/type-to-icon.
     TypeToIconPipe,
     NzAlertModule,
     NzButtonModule,
+    CardComponent,
   ],
   animations: [feeDetailAnimation],
 })
