@@ -20,6 +20,10 @@
       </div>
     </div>
   </div>
+  <card class="p-4 mt-4 flex justify-between">
+    <h6>مجموع هزینه‌ی همکاری</h6>
+    <span>{{ sumFee | toCurrency }}</span>
+  </card>
   <div class="mt-4">
     <p>
       <span class="inline">در حال حاضر میتوانید از آیتم های موجود زیر برای رزرو وقت و همکاری با</span>
@@ -39,7 +43,7 @@
     <card
       *ngFor="let feeDetail of influencer.fee; index as i"
       (click)="selectItem(feeDetail, i)"
-      [class]="selectedItem[i] ? 'border border-solid border-purple-500 !shadow-md' : ''"
+      [class]="selectedItem[i] ? 'border border-solid border-primary !shadow-md' : ''"
       class="p-2 mt-4 block">
       <div class="flex w-full justify-between">
         <div class="w-fit h-fit">
@@ -50,11 +54,16 @@
       <div class="text-xs text-gray-500 mt-2 pt-2 border-solid border-t border-gray-300">
         {{ feeDetail.description }}
       </div>
-      <div *ngIf="selectedItem[i]" class="mt-4 pt-2 border-solid border-t border-gray-300">
+      <div
+        *ngIf="selectedItem[i]"
+        class="mt-4 pt-2 flex justify-between items-center border-solid border-t border-gray-300">
         <purple-date-picker
           class="inline-block"
           placeholder="تاریخ انتشار"
           [(ngModel)]="selectedDate[i]"></purple-date-picker>
+        <button nz-button nzType="text" nzDanger="true" nzSize="small" (click)="removeItem(feeDetail, i, $event)">
+          لغو
+        </button>
       </div>
     </card>
   </div>

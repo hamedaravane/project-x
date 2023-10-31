@@ -26,6 +26,7 @@ module.exports = {
         'disabled-br': 'var(--disabled-border-color)',
         'base-br': 'var(--border-color-base)',
         'header-background': 'var(--header-background)',
+        primary: 'var(--primary-color)',
       },
       lineHeight: {
         unset: 'unset',
