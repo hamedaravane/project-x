@@ -1,0 +1,47 @@
+<h6>همکاری های پیش رو</h6>
+<ng-container *ngIf="collaborationsData$ | async as collaborationsData">
+  <ng-container *ngFor="let collaboratorData of collaborationsData">
+    <card class="block p-4 my-4">
+      <div class="flex justify-between items-center mb-4">
+        <div class="flex gap-4 items-center">
+          <span class="rounded-full overflow-clip w-10 h-10">
+            <img
+              *ngIf="collaboratorData.profilePhotoSrc as profilePhotoSrc; else emptyPhoto"
+              [ngSrc]="profilePhotoSrc"
+              width="40"
+              height="40"
+              class="aspect-square object-cover"
+              alt="profile photo" />
+          </span>
+          <div>
+            <strong>{{ collaboratorData.firstName }}</strong>
+            <span>&nbsp;</span>
+            <strong>{{ collaboratorData.lastName }}</strong>
+          </div>
+        </div>
+        <div dir="ltr">
+          <i class="fa-solid fa-calendar me-1"></i>
+          <span>{{ collaboratorData.collaborationDate.persianDate }}</span>
+        </div>
+      </div>
+      <div class="mb-4 pb-2 border-b border-solid border-gray-400">
+        <i [class]="collaboratorData.collaborationItem.icon" class="fa fa-solid me-2"></i>
+        <span>{{ collaboratorData.collaborationItem.description }}</span>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-chevron-right fa-xs text-gray-700"></i>
+          <span class="text-xs text-gray-700">جزئیات بیشتر</span>
+        </div>
+        <div>
+          <strong>{{ collaboratorData.chargeDetail.readableValue }}</strong>
+          <span>&nbsp;</span>
+          <strong>{{ collaboratorData.chargeDetail.currency }}</strong>
+        </div>
+      </div>
+    </card>
+  </ng-container>
+</ng-container>
+<ng-template #emptyPhoto>
+  <i class="fa-solid fa-file-circle-plus text-2xl text-gray-100"></i>
+</ng-template>

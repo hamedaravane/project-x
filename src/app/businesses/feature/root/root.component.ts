@@ -3,7 +3,7 @@ import {RouterOutlet} from '@angular/router';
 
 @Component({
   standalone: true,
-  selector: 'user-root',
+  selector: 'businesses-root',
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.scss'],
   imports: [RouterOutlet],
