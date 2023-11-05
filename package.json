@@ -7,7 +7,7 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --output-path docs --base-href /project-x/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "cypress open"
