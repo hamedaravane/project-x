@@ -8,7 +8,7 @@ export const mainRoutes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'businesses',
+        redirectTo: 'influencers',
       },
       {
         path: 'influencers',
