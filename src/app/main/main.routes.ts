@@ -8,10 +8,10 @@ export const mainRoutes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'influencers',
+        redirectTo: '',
       },
       {
-        path: 'influencers',
+        path: '',
         loadChildren: () => import('@influencers/influencers.routes').then(r => r.influencersRoutes),
       },
       {
