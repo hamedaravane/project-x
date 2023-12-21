@@ -38,7 +38,7 @@ export class BasicInfoComponent {
   private readonly router = inject(Router);
   private readonly registerService = inject(RegisterService);
   private readonly destroyRef = inject(DestroyRef);
-
+  isHidePassword = true;
   userType$: Observable<UserTypeDetail> = this.registerService.userType$;
 
   basicRegisterInfoForm = new FormGroup(
@@ -50,12 +50,14 @@ export class BasicInfoComponent {
     {validators: confirmPasswordValidator},
   );
 
-  email = this.basicRegisterInfoForm.get('email') as AbstractControl<null | string>;
-  password = this.basicRegisterInfoForm.get('password') as AbstractControl<null | string>;
-  confirmPassword = this.basicRegisterInfoForm.get('confirmPassword') as AbstractControl<null | string>;
+  emailControl = this.basicRegisterInfoForm.get('email') as AbstractControl<null | string>;
+  passwordControl = this.basicRegisterInfoForm.get('password') as AbstractControl<null | string>;
+  confirmPasswordControl = this.basicRegisterInfoForm.get('confirmPassword') as AbstractControl<null | string>;
 
-  isHidePassword = true;
   submitForm(): void {
+    if (this.emailControl.value && this.passwordControl.value) {
+      this.registerService.userBasicInfo$ = {email: this.emailControl.value, password: this.passwordControl.value};
+    }
     this.userType$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(type => {
       if (type.value === 'influencer') {
         this.router.navigateByUrl('/auth/register/influencer-info').then();

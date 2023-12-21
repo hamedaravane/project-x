@@ -1,4 +1,94 @@
-export type UserType = 'influencer' | 'business';
+export interface UserBasicInfo {
+  email: string;
+  password: string;
+}
+export interface InfluencerDetailInfo {
+  persianName: string;
+  persianLastName: string;
+  name: string;
+  lastName: string;
+  birthDate: string;
+  gender: Gender;
+  type: string;
+  instagramAccount: string;
+  twitterAccount: string;
+  country?: string;
+  state?: string;
+  city: string;
+  mobilePhoneNumber: string;
+  homePhoneNumber?: string;
+}
+export interface UserEntity {
+  uuid: string;
+  email: string;
+  password: string;
+  type: UserType;
+  firstName: string;
+  lastName: string;
+  persianFirstName: string;
+  persianLastName: string;
+  nationalIdNumber: string;
+  nationalRegistrationCode: string;
+  birthDate: Date;
+  instagramUsername: string;
+  twitterUsername: string;
+  gender: Gender;
+  maritalStatus: MaritalStatus;
+  mobilePhoneNumber: string;
+  homePhoneNumber: string;
+  countryResidence: string;
+  stateResidence: string;
+  cityResidence: string;
+  addressResidence: string;
+  postalCode: string;
+  businessName: string;
+  businessInstagramUsername: string;
+  businessTwitterUsername: string;
+}
+
+export interface UserEntityDto {
+  uuid: string;
+  email: string;
+  password: string;
+  user_type: UserType;
+  first_name: string;
+  last_name: string;
+  persian_first_name: string;
+  persian_last_name: string;
+  national_id_number: string;
+  national_registration_code: string;
+  date_of_birth: Date;
+  instagram_username: string;
+  twitter_username: string;
+  gender: Gender;
+  marital_status: MaritalStatus;
+  mobile_phone_number: string;
+  country_of_residence: string;
+  state_of_residence: string;
+  city_of_residence: string;
+  address_of_residence: string;
+  postal_code: string;
+  business_name: string;
+  business_instagram_username: string;
+  business_twitter_username: string;
+}
+
+export enum UserType {
+  BUSINESS = 'business',
+  INFLUENCER = 'influencer',
+}
+
+export enum Gender {
+  MALE = 'male',
+  FEMALE = 'female',
+}
+
+export enum MaritalStatus {
+  MARRIED = 'married',
+  SINGLE = 'single',
+  DIVORCED = 'divorced',
+  WIDOWED = 'widowed',
+}
 
 export interface UserDto {
   id: number;
