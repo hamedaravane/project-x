@@ -52,6 +52,6 @@ export class InfluencerDetailComponent implements OnInit {
 
   submitRequest(selectedInfluencer: InfluencerDetail): void {
     this.influencerService.selectedInfluencer$ = selectedInfluencer;
-    this.router.navigate(['home', this.influencerId, 'request']).then();
+    this.router.navigate(['home', 'influencers', this.influencerId, 'request']).then();
   }
 }
