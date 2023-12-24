@@ -7,7 +7,7 @@ export interface InfluencerDetailInfo {
   persianLastName: string;
   name: string;
   lastName: string;
-  birthDate: string;
+  birthDate: Date;
   gender: Gender;
   type: string;
   instagramAccount: string;
