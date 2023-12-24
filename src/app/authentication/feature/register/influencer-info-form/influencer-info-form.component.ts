@@ -1,8 +1,10 @@
 import {BidiModule} from '@angular/cdk/bidi';
 import {NgForOf, NgIf} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, DestroyRef, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
+import {UserTypeDetail} from '@user/data-access/model/user.model';
+import {RegisterService} from '@authentication/data-access/register.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {influencerCategoryList} from '@shared/data-access/mock/mock';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
@@ -14,6 +16,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {PurpleDate} from '@date/data-access/model/date.model';
 import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date-picker.component';
+import {Observable} from 'rxjs';
 
 @Component({
   standalone: true,
@@ -38,6 +41,9 @@ import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date
 export class InfluencerInfoFormComponent {
   private readonly citiesListService = inject(CitiesListService);
   private readonly router = inject(Router);
+  private readonly registerService = inject(RegisterService);
+  private readonly destroyRef = inject(DestroyRef);
+  userType$: Observable<UserTypeDetail> = this.registerService.userType$;
 
   cityList = this.citiesListService.cityList;
 
@@ -74,6 +80,8 @@ export class InfluencerInfoFormComponent {
   mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
 
   submitForm(): void {
+    const formValue = this.influencerInfoForm.getRawValue();
+    console.log(formValue);
     this.router.navigateByUrl('/auth/register/select-profile-photo');
   }
 }

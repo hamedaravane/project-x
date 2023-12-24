@@ -38,9 +38,11 @@
 
 <div class="flex justify-between gap-4 mt-28 w-full">
   <button type="submit" nz-button class="w-full" nzType="primary" [disabled]="!croppedImageSrc" nzSize="large">
-    مرحله بعدی
+    تکمیل ثبت‌نام
   </button>
-  <button routerLink="/auth/register/user-type" nz-button class="w-full" nzType="default" nzSize="large">بازگشت</button>
+  <button routerLink="/auth/register/basic-info" nz-button class="w-full" nzType="default" nzSize="large">
+    بازگشت
+  </button>
 </div>
 
 <nz-modal nzCentered [nzClosable]="false" [(nzVisible)]="isCropModalVisible">

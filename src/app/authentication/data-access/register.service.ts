@@ -56,4 +56,6 @@ export class RegisterService {
   set influencerDetailInfo$(info: InfluencerDetailInfo) {
     this.influencerDetailInfoSubject.next(info);
   }
+
+  // registerInfluencerDetailInfoForm(form);
 }

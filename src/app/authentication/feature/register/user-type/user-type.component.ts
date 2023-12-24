@@ -1,7 +1,7 @@
 import {NgClass} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
-import {UserTypeDetail} from '@user/data-access/model/user.model';
+import {UserType, UserTypeDetail} from '@user/data-access/model/user.model';
 import {RegisterService} from '@authentication/data-access/register.service';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzIconModule} from 'ng-zorro-antd/icon';
@@ -20,8 +20,8 @@ export class UserTypeComponent {
 
   selectedUserType!: UserTypeDetail;
   spinnerLoading = false;
-  influencer: UserTypeDetail = {value: 'influencer', label: 'تولید کننده محتوا'};
-  business: UserTypeDetail = {value: 'business', label: 'کسب و کار'};
+  influencer: UserTypeDetail = {value: UserType.INFLUENCER, label: 'تولید کننده محتوا'};
+  business: UserTypeDetail = {value: UserType.BUSINESS, label: 'کسب و کار'};
 
   selectUserType(userType: UserTypeDetail): void {
     this.selectedUserType = userType;
