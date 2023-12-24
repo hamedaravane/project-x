@@ -1,3 +1,5 @@
+import {PurpleDate} from '@date/data-access/model/date.model';
+
 export interface UserBasicInfo {
   email: string;
   password: string;
@@ -17,6 +19,36 @@ export interface InfluencerDetailInfo {
   city: string;
   mobilePhoneNumber: string;
   homePhoneNumber?: string;
+}
+export interface influencerFormValue {
+  persianInfluencerName: string | null;
+  persianInfluencerLastName: string | null;
+  englishInfluencerName: string | null;
+  englishInfluencerLastName: string | null;
+  birthDate: PurpleDate | null;
+  influencerType: string | null;
+  instagramAccount: string | null;
+  twitterAccount: string | null;
+  influencerCity: any | null;
+  mobilePhoneNumber: string | null;
+}
+export function influencerFormValueToInfluencerDetailInfo(data: influencerFormValue): InfluencerDetailInfo {
+  return {
+    persianName: data.persianInfluencerName as string,
+    persianLastName: data.persianInfluencerLastName as string,
+    name: data.englishInfluencerName as string,
+    lastName: data.englishInfluencerLastName as string,
+    birthDate: data.birthDate?.gregorianDate as Date,
+    gender: Gender.FEMALE,
+    type: data.influencerType as string,
+    instagramAccount: data.instagramAccount as string,
+    twitterAccount: data.twitterAccount as string,
+    country: undefined,
+    state: undefined,
+    city: data.influencerCity,
+    mobilePhoneNumber: data.mobilePhoneNumber as string,
+    homePhoneNumber: undefined,
+  };
 }
 export interface UserEntity {
   uuid: string;

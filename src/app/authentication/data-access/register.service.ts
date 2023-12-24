@@ -1,5 +1,10 @@
 import {Injectable} from '@angular/core';
-import {InfluencerDetailInfo, UserBasicInfo, UserTypeDetail} from '@user/data-access/model/user.model';
+import {
+  InfluencerDetailInfo,
+  UserBasicInfo,
+  UserTypeDetail,
+  influencerFormValue,
+} from '@user/data-access/model/user.model';
 import {BehaviorSubject, Observable, filter} from 'rxjs';
 
 @Injectable({
@@ -7,7 +12,8 @@ import {BehaviorSubject, Observable, filter} from 'rxjs';
 })
 /**
  * @Injectable({ providedIn: 'root' })
- * @description This service class is responsible for handling the registration process. It manages user types, basic user information, and influencer detail information.
+ * @description This service class is responsible for handling the registration process. It manages user types, basic
+ *   user information, and influencer detail information.
  */
 export class RegisterService {
   private readonly userTypeSubject = new BehaviorSubject<UserTypeDetail | null>(null);
@@ -57,5 +63,9 @@ export class RegisterService {
     this.influencerDetailInfoSubject.next(info);
   }
 
-  // registerInfluencerDetailInfoForm(form);
+  registerInfluencerDetailInfoForm(formValue: influencerFormValue): void {
+    for (const [key, val] of Object.entries(formValue)) {
+      console.log(`${key}: ${val}`);
+    }
+  }
 }

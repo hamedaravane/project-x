@@ -81,7 +81,7 @@ export class InfluencerInfoFormComponent {
 
   submitForm(): void {
     const formValue = this.influencerInfoForm.getRawValue();
-    console.log(formValue);
+    this.registerService.registerInfluencerDetailInfoForm(formValue);
     this.router.navigateByUrl('/auth/register/select-profile-photo');
   }
 }
