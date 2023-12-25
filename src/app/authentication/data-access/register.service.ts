@@ -4,6 +4,7 @@ import {
   UserBasicInfo,
   UserTypeDetail,
   influencerFormValue,
+  influencerFormValueToInfluencerDetailInfo,
 } from '@user/data-access/model/user.model';
 import {BehaviorSubject, Observable, filter} from 'rxjs';
 
@@ -49,7 +50,7 @@ export class RegisterService {
     this.userBasicInfoSubject.next(info);
   }
   /**
-   * Returns an observable for the InfluencerDetailInfo. The observable filters out null values.
+   * @description Returns an observable for the InfluencerDetailInfo. The observable filters out null values.
    * @returns {Observable<InfluencerDetailInfo>} An observable stream of influencer detail information.
    */
   get influencerDetailInfo$(): Observable<UserBasicInfo> {
@@ -63,9 +64,13 @@ export class RegisterService {
     this.influencerDetailInfoSubject.next(info);
   }
 
-  registerInfluencerDetailInfoForm(formValue: influencerFormValue): void {
-    for (const [key, val] of Object.entries(formValue)) {
-      console.log(`${key}: ${val}`);
-    }
+  /**
+   * @description set data into influencerDetailInfo$ state from formRawData
+   * @param formValue {influencerFormValue}
+   */
+  setFormValueIntoInfluencerDetailInfo(formValue: influencerFormValue): void {
+    this.influencerDetailInfo$ = influencerFormValueToInfluencerDetailInfo(formValue);
   }
+
+  submitInfluencerData(): void {}
 }

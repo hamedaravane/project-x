@@ -113,6 +113,7 @@ export enum UserType {
 export enum Gender {
   MALE = 'male',
   FEMALE = 'female',
+  NON_BINARY = 'nonBinary',
 }
 
 export enum MaritalStatus {
