@@ -1,9 +1,9 @@
 import {BidiModule} from '@angular/cdk/bidi';
 import {NgForOf, NgIf} from '@angular/common';
-import {Component, DestroyRef, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
-import {UserTypeDetail} from '@user/data-access/model/user.model';
+import {Gender, UserTypeDetail} from '@user/data-access/model/user.model';
 import {RegisterService} from '@authentication/data-access/register.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {influencerCategoryList} from '@shared/data-access/mock/mock';
@@ -42,7 +42,6 @@ export class InfluencerInfoFormComponent {
   private readonly citiesListService = inject(CitiesListService);
   private readonly router = inject(Router);
   private readonly registerService = inject(RegisterService);
-  private readonly destroyRef = inject(DestroyRef);
   userType$: Observable<UserTypeDetail> = this.registerService.userType$;
 
   cityList = this.citiesListService.cityList;
@@ -61,11 +60,12 @@ export class InfluencerInfoFormComponent {
       Validators.pattern(/^[a-zA-Z\s]+$/),
     ]),
     birthDate: new FormControl<PurpleDate | null>(null, Validators.required),
+    gender: new FormControl<Gender>(Gender.MALE, Validators.required),
     influencerType: new FormControl<string | null>(null, Validators.required),
     instagramAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z0-9._]{1,30}$/)),
     twitterAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z_][a-zA-Z0-9_]{0,14}$/)),
     influencerCity: new FormControl<any | null>(null, Validators.required),
-    mobilePhoneNumber: new FormControl<number | null>(null, [Validators.required, Validators.pattern(/^9[0-9]{9}$/)]),
+    mobilePhoneNumber: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^9[0-9]{9}$/)]),
   });
 
   persianInfluencerName = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<string | null>;
@@ -73,15 +73,15 @@ export class InfluencerInfoFormComponent {
   englishInfluencerName = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string | null>;
   englishInfluencerLastName = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string | null>;
   birthDate = this.influencerInfoForm.get('birthDate') as AbstractControl<PurpleDate | null>;
+  genderControl = this.influencerInfoForm.get('gender') as AbstractControl<Gender>;
   influencerType = this.influencerInfoForm.get('influencerType') as AbstractControl<string | null>;
   instagramAccount = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
   twitterAccount = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
   influencerCity = this.influencerInfoForm.get('influencerCity') as AbstractControl<any | null>;
-  mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
+  mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<string | null>;
 
   submitForm(): void {
-    const formValue = this.influencerInfoForm.getRawValue();
-    this.registerService.registerInfluencerDetailInfoForm(formValue);
+    this.registerService.setFormValueIntoInfluencerDetailInfo(this.influencerInfoForm.getRawValue());
     this.router.navigateByUrl('/auth/register/select-profile-photo');
   }
 }
