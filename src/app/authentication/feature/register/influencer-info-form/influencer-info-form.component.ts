@@ -3,7 +3,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
-import {Gender, UserTypeDetail} from '@user/data-access/model/user.model';
+import {Gender, UserType, UserTypeDetail} from '@user/data-access/model/user.model';
 import {RegisterService} from '@authentication/data-access/register.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {influencerCategoryList} from '@shared/data-access/mock/mock';
@@ -16,7 +16,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {PurpleDate} from '@date/data-access/model/date.model';
 import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date-picker.component';
-import {Observable} from 'rxjs';
+import {Observable, firstValueFrom} from 'rxjs';
 
 @Component({
   standalone: true,
@@ -81,7 +81,11 @@ export class InfluencerInfoFormComponent {
   mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<string | null>;
 
   submitForm(): void {
-    this.registerService.setFormValueIntoInfluencerDetailInfo(this.influencerInfoForm.getRawValue());
+    firstValueFrom(this.userType$).then(type => {
+      if (type.value === UserType.INFLUENCER) {
+        this.registerService.setFormValueIntoInfluencerDetailInfo(this.influencerInfoForm.getRawValue());
+      }
+    });
     this.router.navigateByUrl('/auth/register/select-profile-photo');
   }
 }

@@ -5,7 +5,6 @@ import {
   UserBasicInfo,
   UserTypeDetail,
   influencerFormValueToInfluencerDetailInfo,
-  influencerFormValueToInfluencerDetailInfo,
 } from '@user/data-access/model/user.model';
 import {BehaviorSubject, Observable, filter} from 'rxjs';
 
@@ -67,9 +66,9 @@ export class RegisterService {
 
   /**
    * @description set data into influencerDetailInfo$ state from formRawData
-   * @param formValue {influencerFormValue}
+   * @param formValue {InfluencerFormValue}
    */
-  setFormValueIntoInfluencerDetailInfo(formValue: influencerFormValue): void {
+  setFormValueIntoInfluencerDetailInfo(formValue: InfluencerFormValue): void {
     this.influencerDetailInfo$ = influencerFormValueToInfluencerDetailInfo(formValue);
   }
 

@@ -1,4 +1,4 @@
-@use "./font-faces";
+@use './font-faces';
 
 /* Font Awesome */
 @import '../assets/fontawesome/css/fontawesome.css';
@@ -169,7 +169,7 @@ h6 {
   background-color: var(--primary-color);
 }
 
-@import "variables";
+@import 'variables';
 
 :root {
   font-family:
@@ -191,15 +191,15 @@ h6 {
   --rate-star-color: #{$amber-300};
   --primary-color: #{$violet-600};
   --ghost-white: #{$body-background-light};
-  --border-radius-base: .25rem;
-  --border-radius-sm: calc(var(--border-radius-base) * .5);
+  --border-radius-base: 0.25rem;
+  --border-radius-sm: calc(var(--border-radius-base) * 0.5);
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
   --dark-transparent: rgba(0, 0, 0, 0.6);
   --text-color-dark: #{$text-color-light};
   --heading-color-dark: #{$heading-color-light};
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --text-color: #{$text-color-dark};
   --heading-color: #{$heading-color-dark};
   --disabled-color: #{$disable-color-dark};
@@ -221,7 +221,7 @@ h6 {
   --gray-950: #{$gray-50};
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   --text-color: #{$text-color-light};
   --heading-color: #{$heading-color-light};
   --disabled-color: #{$disable-color-light};
