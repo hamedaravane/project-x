@@ -20,26 +20,27 @@ export interface InfluencerDetailInfo {
   mobilePhoneNumber: string;
   homePhoneNumber?: string;
 }
-export interface influencerFormValue {
+export interface InfluencerFormValue {
   persianInfluencerName: string | null;
   persianInfluencerLastName: string | null;
   englishInfluencerName: string | null;
   englishInfluencerLastName: string | null;
   birthDate: PurpleDate | null;
+  gender: Gender | null;
   influencerType: string | null;
   instagramAccount: string | null;
   twitterAccount: string | null;
   influencerCity: any | null;
   mobilePhoneNumber: string | null;
 }
-export function influencerFormValueToInfluencerDetailInfo(data: influencerFormValue): InfluencerDetailInfo {
+export function influencerFormValueToInfluencerDetailInfo(data: InfluencerFormValue): InfluencerDetailInfo {
   return {
     persianName: data.persianInfluencerName as string,
     persianLastName: data.persianInfluencerLastName as string,
     name: data.englishInfluencerName as string,
     lastName: data.englishInfluencerLastName as string,
     birthDate: data.birthDate?.gregorianDate as Date,
-    gender: Gender.FEMALE,
+    gender: data.gender as Gender,
     type: data.influencerType as string,
     instagramAccount: data.instagramAccount as string,
     twitterAccount: data.twitterAccount as string,
