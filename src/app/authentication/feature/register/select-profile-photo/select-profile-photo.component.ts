@@ -16,4 +16,6 @@ import {NzUploadModule} from 'ng-zorro-antd/upload';
 export class SelectProfilePhotoComponent extends PhotoComponent {
   @ViewChild('fileInput') override fileInput!: ElementRef;
   @ViewChild('image') override imageElement!: ElementRef;
+
+  submitRegistration(): void {}
 }

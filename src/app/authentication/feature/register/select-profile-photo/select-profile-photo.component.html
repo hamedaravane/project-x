@@ -37,7 +37,14 @@
 </div>
 
 <div class="flex justify-between gap-4 mt-28 w-full">
-  <button type="submit" nz-button class="w-full" nzType="primary" [disabled]="!croppedImageSrc" nzSize="large">
+  <button
+    type="submit"
+    nz-button
+    class="w-full"
+    nzType="primary"
+    (click)="submitRegistration()"
+    [disabled]="!croppedImageSrc"
+    nzSize="large">
     تکمیل ثبت‌نام
   </button>
   <button routerLink="/auth/register/basic-info" nz-button class="w-full" nzType="default" nzSize="large">
