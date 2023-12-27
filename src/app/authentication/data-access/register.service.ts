@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {
   InfluencerDetailInfo,
+  InfluencerFormValue,
   UserBasicInfo,
   UserTypeDetail,
-  influencerFormValue,
+  influencerFormValueToInfluencerDetailInfo,
   influencerFormValueToInfluencerDetailInfo,
 } from '@user/data-access/model/user.model';
 import {BehaviorSubject, Observable, filter} from 'rxjs';

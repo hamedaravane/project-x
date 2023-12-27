@@ -229,24 +229,30 @@
   <i class="fa-brands fa-twitter"></i>
 </ng-template>
 <ng-template #PersianInfluencerNameErrorTip>
-  <ng-container *ngIf="persianInfluencerName.errors?.['required']">نام به فارسی الزامی است</ng-container>
-  <ng-container *ngIf="persianInfluencerName.errors?.['notPersianCharacters']">از حروف فارسی استفاده کنید</ng-container>
+  <ng-container *ngIf="persianInfluencerNameControl.errors?.['required']">نام به فارسی الزامی است</ng-container>
+  <ng-container *ngIf="persianInfluencerNameControl.errors?.['notPersianCharacters']"
+    >از حروف فارسی استفاده کنید</ng-container
+  >
 </ng-template>
 <ng-template #PersianInfluencerLastNameErrorTip>
-  <ng-container *ngIf="persianInfluencerLastName.errors?.['required']">نام خانوادگی به فارسی الزامی است</ng-container>
-  <ng-container *ngIf="persianInfluencerLastName.errors?.['notPersianCharacters']"
+  <ng-container *ngIf="persianInfluencerLastNameControl.errors?.['required']"
+    >نام خانوادگی به فارسی الزامی است</ng-container
+  >
+  <ng-container *ngIf="persianInfluencerLastNameControl.errors?.['notPersianCharacters']"
     >از حروف فارسی استفاده کنید
   </ng-container>
 </ng-template>
 <ng-template #EnglishInfluencerNameErrorTip>
-  <ng-container *ngIf="englishInfluencerName.errors?.['required']">نام به انگلیسی الزامی است</ng-container>
-  <ng-container *ngIf="englishInfluencerName.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
+  <ng-container *ngIf="englishInfluencerNameControl.errors?.['required']">نام به انگلیسی الزامی است</ng-container>
+  <ng-container *ngIf="englishInfluencerNameControl.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
 </ng-template>
 <ng-template #EnglishInfluencerLastNameErrorTip>
-  <ng-container *ngIf="englishInfluencerLastName.errors?.['required']">نام خانوادگی به انگلیسی الزامی است</ng-container>
-  <ng-container *ngIf="englishInfluencerLastName.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
+  <ng-container *ngIf="englishInfluencerLastNameControl.errors?.['required']"
+    >نام خانوادگی به انگلیسی الزامی است</ng-container
+  >
+  <ng-container *ngIf="englishInfluencerLastNameControl.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
 </ng-template>
 <ng-template #IranianMobilePhoneNumberErrorsTip>
-  <ng-container *ngIf="mobilePhoneNumber.errors?.['required']">شماره موبایل الزامی است</ng-container>
-  <ng-container *ngIf="mobilePhoneNumber.errors?.['pattern']">فرمت شماره صحیح نیست</ng-container>
+  <ng-container *ngIf="mobilePhoneNumberControl.errors?.['required']">شماره موبایل الزامی است</ng-container>
+  <ng-container *ngIf="mobilePhoneNumberControl.errors?.['pattern']">فرمت شماره صحیح نیست</ng-container>
 </ng-template>
