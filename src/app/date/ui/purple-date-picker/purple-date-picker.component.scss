@@ -59,7 +59,7 @@
 }
 
 .on-focus {
-  &[data-theme="light"] {
+  &[data-theme='light'] {
     box-shadow: 0 0 5pt 1pt rgb(233 213 255);
   }
   outline-width: 0;

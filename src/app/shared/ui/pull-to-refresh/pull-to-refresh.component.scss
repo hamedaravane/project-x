@@ -18,9 +18,11 @@
 }
 
 .spinner {
-  border: .25rem solid transparent;
+  border: 0.25rem solid transparent;
   border-radius: 50%;
-  box-shadow: 0 1px 3px 0 var(--text-color), 0 1px 2px -1px var(--text-color);
+  box-shadow:
+    0 1px 3px 0 var(--text-color),
+    0 1px 2px -1px var(--text-color);
   width: 24px;
   height: 24px;
   animation: spin 1s linear infinite;
