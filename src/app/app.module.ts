@@ -7,6 +7,7 @@ import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NZ_DATE_CONFIG, NZ_I18N, en_US, fa_IR} from 'ng-zorro-antd/i18n';
+import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
@@ -17,6 +18,10 @@ registerLocaleData(fa);
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [
+    {
+      provide: 'API_URL',
+      useValue: environment.apiUrl,
+    },
     {
       provide: NZ_I18N,
       /* eslint-disable-next-line */
