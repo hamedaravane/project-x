@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {
   InfluencerDetailInfo,
   InfluencerFormValue,
@@ -6,6 +6,7 @@ import {
   UserTypeDetail,
   influencerFormValueToInfluencerDetailInfo,
 } from '@user/data-access/model/user.model';
+import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject, Observable, filter} from 'rxjs';
 
 @Injectable({
@@ -20,6 +21,7 @@ export class RegisterService {
   private readonly userTypeSubject = new BehaviorSubject<UserTypeDetail | null>(null);
   private readonly userBasicInfoSubject = new BehaviorSubject<UserBasicInfo | null>(null);
   private readonly influencerDetailInfoSubject = new BehaviorSubject<InfluencerDetailInfo | null>(null);
+  private readonly authInfra = inject(AuthInfra);
 
   /**
    * Returns an observable for the UserTypeDetail. The observable filters out null values.
