@@ -1,4 +1,5 @@
 import {PurpleDate} from '@date/data-access/model/date.model';
+import {Observable, of} from 'rxjs';
 
 /**
  * @description user and password of user
@@ -82,7 +83,7 @@ export interface UserEntity {
   nationalRegistrationCode?: string;
   birthDate: Date;
   instagramUsername: string;
-  twitterUsername: string;
+  twitterUsername?: string;
   gender: Gender;
   maritalStatus?: MaritalStatus;
   mobilePhoneNumber: string;
@@ -156,6 +157,36 @@ export function combineInfluencerInfo(
     businessInstagramUsername: undefined,
     businessTwitterUsername: undefined,
   };
+}
+
+export function randomizeUserEntityMock(): Observable<UserEntity> {
+  return of({
+    uuid: crypto.randomUUID(),
+    email: 'hamedaravane@gmail.com',
+    password: '11559933Aa!',
+    type: UserType.INFLUENCER,
+    firstName: 'Hamed',
+    lastName: 'Arghavan',
+    persianFirstName: 'حامد',
+    persianLastName: 'ارغوان',
+    nationalIdNumber: undefined,
+    nationalRegistrationCode: undefined,
+    birthDate: new Date(),
+    instagramUsername: 'aboutpurple',
+    twitterUsername: undefined,
+    gender: Gender.MALE,
+    maritalStatus: undefined,
+    mobilePhoneNumber: '9017701599',
+    homePhoneNumber: undefined,
+    countryResidence: undefined,
+    stateResidence: undefined,
+    cityResidence: 'Mashhad',
+    addressResidence: undefined,
+    postalCode: undefined,
+    businessName: undefined,
+    businessInstagramUsername: undefined,
+    businessTwitterUsername: undefined,
+  });
 }
 
 export enum UserType {
