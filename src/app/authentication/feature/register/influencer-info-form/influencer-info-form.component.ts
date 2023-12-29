@@ -68,17 +68,21 @@ export class InfluencerInfoFormComponent {
     mobilePhoneNumber: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^9[0-9]{9}$/)]),
   });
 
-  persianInfluencerName = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<string | null>;
-  persianInfluencerLastName = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<string | null>;
-  englishInfluencerName = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string | null>;
-  englishInfluencerLastName = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string | null>;
-  birthDate = this.influencerInfoForm.get('birthDate') as AbstractControl<PurpleDate | null>;
+  persianInfluencerNameControl = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<string | null>;
+  persianInfluencerLastNameControl = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<
+    string | null
+  >;
+  englishInfluencerNameControl = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string | null>;
+  englishInfluencerLastNameControl = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<
+    string | null
+  >;
+  birthDateControl = this.influencerInfoForm.get('birthDate') as AbstractControl<PurpleDate | null>;
   genderControl = this.influencerInfoForm.get('gender') as AbstractControl<Gender>;
-  influencerType = this.influencerInfoForm.get('influencerType') as AbstractControl<string | null>;
-  instagramAccount = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
-  twitterAccount = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
-  influencerCity = this.influencerInfoForm.get('influencerCity') as AbstractControl<any | null>;
-  mobilePhoneNumber = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<string | null>;
+  influencerTypeControl = this.influencerInfoForm.get('influencerType') as AbstractControl<string | null>;
+  instagramAccountControl = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
+  twitterAccountControl = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
+  influencerCityControl = this.influencerInfoForm.get('influencerCity') as AbstractControl<any | null>;
+  mobilePhoneNumberControl = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<string | null>;
 
   submitForm(): void {
     firstValueFrom(this.userType$).then(type => {

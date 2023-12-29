@@ -1,10 +1,18 @@
 import {PurpleDate} from '@date/data-access/model/date.model';
 
+/**
+ * @description user and password of user
+ * @author Hamed Arghavan
+ */
 export interface UserBasicInfo {
   email: string;
   password: string;
 }
-export interface InfluencerDetailInfo {
+/**
+ * @description used for more complete user info
+ * @author Hamed Arghavan
+ */
+export interface InfluencerRegistrationForm {
   persianName: string;
   persianLastName: string;
   name: string;
@@ -20,6 +28,10 @@ export interface InfluencerDetailInfo {
   mobilePhoneNumber: string;
   homePhoneNumber?: string;
 }
+/**
+ * @description raw value of form group for influencer form
+ * @author Hamed Arghavan
+ */
 export interface InfluencerFormValue {
   persianInfluencerName: string | null;
   persianInfluencerLastName: string | null;
@@ -33,7 +45,13 @@ export interface InfluencerFormValue {
   influencerCity: any | null;
   mobilePhoneNumber: string | null;
 }
-export function influencerFormValueToInfluencerDetailInfo(data: InfluencerFormValue): InfluencerDetailInfo {
+/**
+ * @convert influencer form controls into registration form
+ * @param {InfluencerFormValue} data
+ * @return {InfluencerRegistrationForm}
+ * @author Hamed Arghavan
+ */
+export function influencerFormValueToInfluencerDetailInfo(data: InfluencerFormValue): InfluencerRegistrationForm {
   return {
     persianName: data.persianInfluencerName as string,
     persianLastName: data.persianInfluencerLastName as string,
@@ -60,23 +78,23 @@ export interface UserEntity {
   lastName: string;
   persianFirstName: string;
   persianLastName: string;
-  nationalIdNumber: string;
-  nationalRegistrationCode: string;
+  nationalIdNumber?: string;
+  nationalRegistrationCode?: string;
   birthDate: Date;
   instagramUsername: string;
   twitterUsername: string;
   gender: Gender;
-  maritalStatus: MaritalStatus;
+  maritalStatus?: MaritalStatus;
   mobilePhoneNumber: string;
-  homePhoneNumber: string;
-  countryResidence: string;
-  stateResidence: string;
+  homePhoneNumber?: string;
+  countryResidence?: string;
+  stateResidence?: string;
   cityResidence: string;
-  addressResidence: string;
-  postalCode: string;
-  businessName: string;
-  businessInstagramUsername: string;
-  businessTwitterUsername: string;
+  addressResidence?: string;
+  postalCode?: string;
+  businessName?: string;
+  businessInstagramUsername?: string;
+  businessTwitterUsername?: string;
 }
 
 export interface UserEntityDto {
@@ -104,6 +122,40 @@ export interface UserEntityDto {
   business_name: string;
   business_instagram_username: string;
   business_twitter_username: string;
+}
+
+export function combineInfluencerInfo(
+  userType: UserTypeDetail,
+  userBasicInfo: UserBasicInfo,
+  influencerDetailInfo: InfluencerRegistrationForm,
+): UserEntity {
+  return {
+    uuid: crypto.randomUUID(),
+    email: userBasicInfo.email,
+    password: userBasicInfo.password,
+    type: userType.value,
+    firstName: influencerDetailInfo.name,
+    lastName: influencerDetailInfo.lastName,
+    persianFirstName: influencerDetailInfo.persianName,
+    persianLastName: influencerDetailInfo.persianLastName,
+    nationalIdNumber: undefined,
+    nationalRegistrationCode: undefined,
+    birthDate: influencerDetailInfo.birthDate,
+    instagramUsername: influencerDetailInfo.instagramAccount,
+    twitterUsername: influencerDetailInfo.twitterAccount,
+    gender: influencerDetailInfo.gender,
+    maritalStatus: undefined,
+    mobilePhoneNumber: influencerDetailInfo.mobilePhoneNumber,
+    homePhoneNumber: undefined,
+    countryResidence: undefined,
+    stateResidence: influencerDetailInfo.state,
+    cityResidence: influencerDetailInfo.city,
+    addressResidence: undefined,
+    postalCode: undefined,
+    businessName: undefined,
+    businessInstagramUsername: undefined,
+    businessTwitterUsername: undefined,
+  };
 }
 
 export enum UserType {
