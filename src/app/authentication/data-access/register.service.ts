@@ -4,11 +4,11 @@ import {
   InfluencerRegistrationForm,
   UserBasicInfo,
   UserTypeDetail,
-  combineInfluencerInfo,
   influencerFormValueToInfluencerDetailInfo,
+  randomizeUserEntityMock,
 } from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
-import {BehaviorSubject, Observable, combineLatest, filter, firstValueFrom, map} from 'rxjs';
+import {BehaviorSubject, Observable, filter, firstValueFrom} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -81,14 +81,18 @@ export class RegisterService {
 
   private async _submitInfluencerData(): Promise<void> {
     console.log('async operation...');
-    const combinedValues = await firstValueFrom(
+    /*const combinedValues = await firstValueFrom(
       combineLatest([this.userType$, this.userBasicInfo$, this.influencerDetailInfo$]).pipe(
         map(([userType, userBasicInfo, influencerDetailInfo]) => {
           return combineInfluencerInfo(userType, userBasicInfo, influencerDetailInfo);
         }),
       ),
-    );
+    );*/
+    const combinedValues = await firstValueFrom(randomizeUserEntityMock());
     console.log('user entity model created...');
-    this.authInfra.register(combinedValues);
+    const response = await firstValueFrom(this.authInfra.register(combinedValues));
+    if (response.isSuccess) {
+      console.log('sent');
+    }
   }
 }
