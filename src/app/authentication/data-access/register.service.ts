@@ -1,13 +1,14 @@
 import {Injectable, inject} from '@angular/core';
 import {
-  InfluencerDetailInfo,
   InfluencerFormValue,
+  InfluencerRegistrationForm,
   UserBasicInfo,
   UserTypeDetail,
+  combineInfluencerInfo,
   influencerFormValueToInfluencerDetailInfo,
 } from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
-import {BehaviorSubject, Observable, filter} from 'rxjs';
+import {BehaviorSubject, Observable, combineLatest, filter, firstValueFrom, map} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,7 @@ import {BehaviorSubject, Observable, filter} from 'rxjs';
 export class RegisterService {
   private readonly userTypeSubject = new BehaviorSubject<UserTypeDetail | null>(null);
   private readonly userBasicInfoSubject = new BehaviorSubject<UserBasicInfo | null>(null);
-  private readonly influencerDetailInfoSubject = new BehaviorSubject<InfluencerDetailInfo | null>(null);
+  private readonly influencerDetailInfoSubject = new BehaviorSubject<InfluencerRegistrationForm | null>(null);
   private readonly authInfra = inject(AuthInfra);
 
   /**
@@ -53,16 +54,16 @@ export class RegisterService {
   }
   /**
    * @description Returns an observable for the InfluencerDetailInfo. The observable filters out null values.
-   * @returns {Observable<InfluencerDetailInfo>} An observable stream of influencer detail information.
+   * @returns {Observable<InfluencerRegistrationForm>} An observable stream of influencer detail information.
    */
-  get influencerDetailInfo$(): Observable<UserBasicInfo> {
-    return this.userBasicInfoSubject.asObservable().pipe(filter(Boolean));
+  get influencerDetailInfo$(): Observable<InfluencerRegistrationForm> {
+    return this.influencerDetailInfoSubject.asObservable().pipe(filter(Boolean));
   }
   /**
    * Updates the InfluencerDetailInfo and notifies all subscribers.
-   * @param {InfluencerDetailInfo} info The new influencer detail information to be set.
+   * @param {InfluencerRegistrationForm} info The new influencer detail information to be set.
    */
-  set influencerDetailInfo$(info: InfluencerDetailInfo) {
+  set influencerDetailInfo$(info: InfluencerRegistrationForm) {
     this.influencerDetailInfoSubject.next(info);
   }
 
@@ -74,5 +75,20 @@ export class RegisterService {
     this.influencerDetailInfo$ = influencerFormValueToInfluencerDetailInfo(formValue);
   }
 
-  submitInfluencerData(): void {}
+  submitInfluencerData(): void {
+    this._submitInfluencerData().then();
+  }
+
+  private async _submitInfluencerData(): Promise<void> {
+    console.log('async operation...');
+    const combinedValues = await firstValueFrom(
+      combineLatest([this.userType$, this.userBasicInfo$, this.influencerDetailInfo$]).pipe(
+        map(([userType, userBasicInfo, influencerDetailInfo]) => {
+          return combineInfluencerInfo(userType, userBasicInfo, influencerDetailInfo);
+        }),
+      ),
+    );
+    console.log('user entity model created...');
+    this.authInfra.register(combinedValues);
+  }
 }

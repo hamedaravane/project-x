@@ -1,6 +1,7 @@
 import {NgClass, NgIf} from '@angular/common';
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
+import {RegisterService} from '@authentication/data-access/register.service';
 import {PhotoComponent} from '@shared/data-access/photo.component';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzModalModule} from 'ng-zorro-antd/modal';
@@ -16,6 +17,10 @@ import {NzUploadModule} from 'ng-zorro-antd/upload';
 export class SelectProfilePhotoComponent extends PhotoComponent {
   @ViewChild('fileInput') override fileInput!: ElementRef;
   @ViewChild('image') override imageElement!: ElementRef;
+  private readonly registerService = inject(RegisterService);
 
-  submitRegistration(): void {}
+  submitRegistration(): void {
+    console.log('submitting...');
+    this.registerService.submitInfluencerData();
+  }
 }
