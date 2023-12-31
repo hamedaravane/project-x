@@ -1,14 +1,17 @@
 import {Injectable, inject} from '@angular/core';
 import {
+  Gender,
   InfluencerFormValue,
   InfluencerRegistrationForm,
   UserBasicInfo,
+  UserType,
   UserTypeDetail,
+  combineInfluencerInfo,
+  combinedFormDataToCreateUserDto,
   influencerFormValueToInfluencerDetailInfo,
-  randomizeUserEntityMock,
 } from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
-import {BehaviorSubject, Observable, filter, firstValueFrom} from 'rxjs';
+import {BehaviorSubject, Observable, combineLatest, filter, firstValueFrom, map} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -80,17 +83,37 @@ export class RegisterService {
   }
 
   private async _submitInfluencerData(): Promise<void> {
+    console.log('fill up the values of registration steps...');
+    this.userType$ = {value: UserType.INFLUENCER, label: 'بلاگر'};
+    this.userBasicInfo$ = {email: 'hamedaravane@gmail.com', password: '11559933Aa!'};
+    this.influencerDetailInfo$ = {
+      persianName: 'حامد',
+      persianLastName: 'ارغوان',
+      name: 'Hamed',
+      lastName: 'Arghavan',
+      birthDate: new Date(),
+      gender: Gender.MALE,
+      type: 'Sport',
+      instagramAccount: 'aboutpurple',
+      twitterAccount: null,
+      country: null,
+      state: null,
+      city: 'Mashhad',
+      mobilePhoneNumber: '+989017701599',
+      homePhoneNumber: null,
+    };
     console.log('async operation...');
-    /*const combinedValues = await firstValueFrom(
+    const combinedValues = await firstValueFrom(
       combineLatest([this.userType$, this.userBasicInfo$, this.influencerDetailInfo$]).pipe(
         map(([userType, userBasicInfo, influencerDetailInfo]) => {
           return combineInfluencerInfo(userType, userBasicInfo, influencerDetailInfo);
         }),
       ),
-    );*/
-    const combinedValues = await firstValueFrom(randomizeUserEntityMock());
-    console.log('user entity model created...');
-    const response = await firstValueFrom(this.authInfra.register(combinedValues));
+    );
+    console.log('user models combined...');
+    const createUserDto = combinedFormDataToCreateUserDto(combinedValues);
+    console.log('convert to create user DTO format...');
+    const response = await firstValueFrom(this.authInfra.register(createUserDto));
     if (response.isSuccess) {
       console.log('sent');
     }
