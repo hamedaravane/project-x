@@ -1,14 +1,15 @@
 import {Injectable, inject} from '@angular/core';
 import {
   Gender,
-  InfluencerFormValue,
+  InfluencerFormRawValue,
   InfluencerRegistrationForm,
-  UserBasicInfo,
+  UserAuthInfo,
   UserType,
   UserTypeDetail,
+  UserTypeLabel,
   combineInfluencerInfo,
   combinedFormDataToCreateUserDto,
-  influencerFormValueToInfluencerDetailInfo,
+  influencerFormRawValueToInfluencerDetailInfo,
 } from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject, Observable, combineLatest, filter, firstValueFrom, map} from 'rxjs';
@@ -23,7 +24,7 @@ import {BehaviorSubject, Observable, combineLatest, filter, firstValueFrom, map}
  */
 export class RegisterService {
   private readonly userTypeSubject = new BehaviorSubject<UserTypeDetail | null>(null);
-  private readonly userBasicInfoSubject = new BehaviorSubject<UserBasicInfo | null>(null);
+  private readonly userBasicInfoSubject = new BehaviorSubject<UserAuthInfo | null>(null);
   private readonly influencerDetailInfoSubject = new BehaviorSubject<InfluencerRegistrationForm | null>(null);
   private readonly authInfra = inject(AuthInfra);
 
@@ -43,16 +44,16 @@ export class RegisterService {
   }
   /**
    * Returns an observable for the UserBasicInfo. The observable filters out null values.
-   * @returns {Observable<UserBasicInfo>} An observable stream of user basic information.
+   * @returns {Observable<UserAuthInfo>} An observable stream of user basic information.
    */
-  get userBasicInfo$(): Observable<UserBasicInfo> {
+  get userBasicInfo$(): Observable<UserAuthInfo> {
     return this.userBasicInfoSubject.asObservable().pipe(filter(Boolean));
   }
   /**
    * Updates the UserBasicInfo and notifies all subscribers.
-   * @param {UserBasicInfo} info The new user basic information to be set.
+   * @param {UserAuthInfo} info The new user basic information to be set.
    */
-  set userBasicInfo$(info: UserBasicInfo) {
+  set userBasicInfo$(info: UserAuthInfo) {
     this.userBasicInfoSubject.next(info);
   }
   /**
@@ -72,10 +73,10 @@ export class RegisterService {
 
   /**
    * @description set data into influencerDetailInfo$ state from formRawData
-   * @param formValue {InfluencerFormValue}
+   * @param formValue {InfluencerFormRawValue}
    */
-  setFormValueIntoInfluencerDetailInfo(formValue: InfluencerFormValue): void {
-    this.influencerDetailInfo$ = influencerFormValueToInfluencerDetailInfo(formValue);
+  setFormValueIntoInfluencerDetailInfo(formValue: InfluencerFormRawValue): void {
+    this.influencerDetailInfo$ = influencerFormRawValueToInfluencerDetailInfo(formValue);
   }
 
   submitInfluencerData(): void {
@@ -84,16 +85,16 @@ export class RegisterService {
 
   private async _submitInfluencerData(): Promise<void> {
     console.log('fill up the values of registration steps...');
-    this.userType$ = {value: UserType.INFLUENCER, label: 'بلاگر'};
+    this.userType$ = {value: UserType.INFLUENCER, label: UserTypeLabel.INFLUENCER};
     this.userBasicInfo$ = {email: 'hamedaravane@gmail.com', password: '11559933Aa!'};
     this.influencerDetailInfo$ = {
       persianName: 'حامد',
       persianLastName: 'ارغوان',
-      name: 'Hamed',
-      lastName: 'Arghavan',
+      name: 'hamed',
+      lastName: 'arghavan',
       birthDate: new Date(),
       gender: Gender.MALE,
-      type: 'Sport',
+      influencerType: 'Sport',
       instagramAccount: 'aboutpurple',
       twitterAccount: null,
       country: null,

@@ -5,6 +5,11 @@ export enum UserType {
   INFLUENCER = 'influencer',
 }
 
+export enum UserTypeLabel {
+  BUSINESS = 'کسب و کار',
+  INFLUENCER = 'تولید کننده محتوا',
+}
+
 export enum Gender {
   MALE = 'male',
   FEMALE = 'female',
@@ -19,10 +24,10 @@ export enum MaritalStatus {
 }
 
 /**
- * @description user and password of user
+ * @description username and password of user
  * @author Hamed Arghavan
  */
-export interface UserBasicInfo {
+export interface UserAuthInfo {
   email: string;
   password: string;
 }
@@ -31,13 +36,13 @@ export interface UserBasicInfo {
  * @author Hamed Arghavan
  */
 export interface InfluencerRegistrationForm {
-  persianName: string;
-  persianLastName: string;
   name: string;
   lastName: string;
+  persianName: string;
+  persianLastName: string;
   birthDate: Date;
   gender: Gender;
-  type: string;
+  influencerType: string;
   instagramAccount: string;
   twitterAccount: string | null;
   country: string | null;
@@ -50,7 +55,7 @@ export interface InfluencerRegistrationForm {
  * @description raw value of form group for influencer form
  * @author Hamed Arghavan
  */
-export interface InfluencerFormValue {
+export interface InfluencerFormRawValue {
   persianInfluencerName: string | null;
   persianInfluencerLastName: string | null;
   englishInfluencerName: string | null;
@@ -65,32 +70,34 @@ export interface InfluencerFormValue {
 }
 /**
  * @convert influencer form controls into registration form
- * @param {InfluencerFormValue} data
+ * @param {InfluencerFormRawValue} rawValue
  * @return {InfluencerRegistrationForm}
  * @author Hamed Arghavan
  */
-export function influencerFormValueToInfluencerDetailInfo(data: InfluencerFormValue): InfluencerRegistrationForm {
+export function influencerFormRawValueToInfluencerDetailInfo(
+  rawValue: InfluencerFormRawValue,
+): InfluencerRegistrationForm {
   return {
-    persianName: data.persianInfluencerName as string,
-    persianLastName: data.persianInfluencerLastName as string,
-    name: data.englishInfluencerName as string,
-    lastName: data.englishInfluencerLastName as string,
-    birthDate: data.birthDate?.gregorianDate as Date,
-    gender: data.gender as Gender,
-    type: data.influencerType as string,
-    instagramAccount: data.instagramAccount as string,
-    twitterAccount: data.twitterAccount as string,
+    persianName: rawValue.persianInfluencerName as string,
+    persianLastName: rawValue.persianInfluencerLastName as string,
+    name: rawValue.englishInfluencerName as string,
+    lastName: rawValue.englishInfluencerLastName as string,
+    birthDate: rawValue.birthDate?.gregorianDate as Date,
+    gender: rawValue.gender as Gender,
+    influencerType: rawValue.influencerType as string,
+    instagramAccount: rawValue.instagramAccount as string,
+    twitterAccount: rawValue.twitterAccount as string,
     country: null,
     state: null,
-    city: data.influencerCity,
-    mobilePhoneNumber: data.mobilePhoneNumber as string,
+    city: rawValue.influencerCity,
+    mobilePhoneNumber: rawValue.mobilePhoneNumber as string,
     homePhoneNumber: null,
   };
 }
 export interface CombinedRegistrationForms {
   email: string;
   password: string;
-  type: UserType;
+  userType: UserType;
   firstName: string;
   lastName: string;
   persianFirstName: string;
@@ -143,29 +150,29 @@ export interface UserEntityDto {
 
 export function combineInfluencerInfo(
   userType: UserTypeDetail,
-  userBasicInfo: UserBasicInfo,
-  influencerDetailInfo: InfluencerRegistrationForm,
+  authInfo: UserAuthInfo,
+  registrationForm: InfluencerRegistrationForm,
 ): CombinedRegistrationForms {
   return {
-    email: userBasicInfo.email,
-    password: userBasicInfo.password,
-    type: userType.value,
-    firstName: influencerDetailInfo.name,
-    lastName: influencerDetailInfo.lastName,
-    persianFirstName: influencerDetailInfo.persianName,
-    persianLastName: influencerDetailInfo.persianLastName,
+    email: authInfo.email,
+    password: authInfo.password,
+    userType: userType.value,
+    firstName: registrationForm.name,
+    lastName: registrationForm.lastName,
+    persianFirstName: registrationForm.persianName,
+    persianLastName: registrationForm.persianLastName,
     nationalIdNumber: null,
     nationalRegistrationCode: null,
-    birthDate: influencerDetailInfo.birthDate,
-    instagramUsername: influencerDetailInfo.instagramAccount,
-    twitterUsername: influencerDetailInfo.twitterAccount || null,
-    gender: influencerDetailInfo.gender,
+    birthDate: registrationForm.birthDate,
+    instagramUsername: registrationForm.instagramAccount,
+    twitterUsername: registrationForm.twitterAccount || null,
+    gender: registrationForm.gender,
     maritalStatus: null,
-    mobilePhoneNumber: influencerDetailInfo.mobilePhoneNumber,
+    mobilePhoneNumber: registrationForm.mobilePhoneNumber,
     homePhoneNumber: null,
     countryResidence: null,
-    stateResidence: influencerDetailInfo.state,
-    cityResidence: influencerDetailInfo.city,
+    stateResidence: registrationForm.state,
+    cityResidence: registrationForm.city,
     addressResidence: null,
     postalCode: null,
     businessName: null,
@@ -178,7 +185,7 @@ export function combinedFormDataToCreateUserDto(data: CombinedRegistrationForms)
   return {
     email: data.email,
     password: data.password,
-    type: data.type,
+    type: data.userType,
     first_name: data.firstName,
     last_name: data.lastName,
     persian_first_name: data.persianFirstName,
@@ -274,7 +281,7 @@ export interface SideMenuOption {
 
 export interface UserTypeDetail {
   value: UserType;
-  label: string;
+  label: UserTypeLabel;
 }
 
 function addUserTypeDetail(value: string): UserTypeDetail {
@@ -282,8 +289,8 @@ function addUserTypeDetail(value: string): UserTypeDetail {
     throw new Error('User type is not fetched or undefined');
   }
   const labels: Record<string, string> = {
-    business: 'کسب و کار',
-    influencer: 'تولید کننده محتوا',
+    business: UserTypeLabel.BUSINESS,
+    influencer: UserTypeLabel.INFLUENCER,
   };
   return {value, label: labels[value]} as UserTypeDetail;
 }
