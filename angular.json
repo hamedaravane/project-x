@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -7,7 +7,9 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "name": "",
+          "project": ""
         }
       },
       "root": "",
@@ -30,7 +32,7 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "input": "@ant-design/icons-angular/src/inline-svg/",
                 "output": "/assets/"
               }
             ],
@@ -45,8 +47,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1.5mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",

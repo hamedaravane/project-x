@@ -1,6 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 package-lock.json
 yarn.lock
+.yarn
+.pnp.cjs
+.pnp.loader.mjs
 
 # Compiled output
 /dist
