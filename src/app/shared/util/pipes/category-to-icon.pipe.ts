@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {BusinessValue, IndustryValue} from '@shared/data-access/models/category.model';
+import {ProfessionEnum, IndustryEnum} from '@shared/data-access/models/category.model';
 
 @Pipe({
   standalone: true,
@@ -7,28 +7,28 @@ import {BusinessValue, IndustryValue} from '@shared/data-access/models/category.
 })
 export class CategoryToIconPipe implements PipeTransform {
   private categoryIcons: Record<string, string> = {
-    [BusinessValue.Food]: 'fa-utensils',
-    [BusinessValue.Beauty]: 'fa-lips',
-    [BusinessValue.Fashion]: 'fa-shirt',
-    [BusinessValue.Society]: 'fa-person',
-    [BusinessValue.Art]: 'fa-palette',
-    [BusinessValue.Musician]: 'fa-music',
-    [BusinessValue.Fitness]: 'fa-dumbbell',
-    [BusinessValue.Medical]: 'fa-stethoscope',
-    [BusinessValue.Reporter]: 'fa-newspaper',
-    [BusinessValue.Jewelry]: 'fa-gem',
-    [BusinessValue.Actor]: 'fa-masks-theater',
-    [BusinessValue.Book]: 'fa-book',
-    [IndustryValue.CafeAndRestaurant]: 'fa-utensils',
-    [IndustryValue.Retail]: 'fa-store',
-    [IndustryValue.Bookstore]: 'fa-book',
-    [IndustryValue.Grocery]: 'fa-cart-shopping',
-    [IndustryValue.Cinema]: 'fa-masks-theater',
-    [IndustryValue.Pharmacy]: 'fa-pills',
-    [IndustryValue.Flower]: 'fa-flower',
+    [ProfessionEnum.Food]: 'fa-utensils',
+    [ProfessionEnum.Beauty]: 'fa-lips',
+    [ProfessionEnum.Fashion]: 'fa-shirt',
+    [ProfessionEnum.Society]: 'fa-person',
+    [ProfessionEnum.Art]: 'fa-palette',
+    [ProfessionEnum.Musician]: 'fa-music',
+    [ProfessionEnum.Fitness]: 'fa-dumbbell',
+    [ProfessionEnum.Medical]: 'fa-stethoscope',
+    [ProfessionEnum.Reporter]: 'fa-newspaper',
+    [ProfessionEnum.Jewelry]: 'fa-gem',
+    [ProfessionEnum.Actor]: 'fa-masks-theater',
+    [ProfessionEnum.Book]: 'fa-book',
+    [IndustryEnum.CafeAndRestaurant]: 'fa-utensils',
+    [IndustryEnum.Retail]: 'fa-store',
+    [IndustryEnum.Bookstore]: 'fa-book',
+    [IndustryEnum.Grocery]: 'fa-cart-shopping',
+    [IndustryEnum.Cinema]: 'fa-masks-theater',
+    [IndustryEnum.Pharmacy]: 'fa-pills',
+    [IndustryEnum.Flower]: 'fa-flower',
   };
 
-  transform(value: IndustryValue | BusinessValue, arg?: string): string {
+  transform(value: IndustryEnum | ProfessionEnum, arg?: string): string {
     const iconStyle = 'fa fa-solid ';
     const icon = iconStyle + (this.categoryIcons[value] || 'fa-circle') + (arg ? ' ' : '');
     return icon + (arg ?? '');

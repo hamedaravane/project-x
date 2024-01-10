@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {BusinessValue, IndustryValue} from '@shared/data-access/models/category.model';
+import {ProfessionEnum, IndustryEnum} from '@shared/data-access/models/category.model';
 
 @Pipe({
   standalone: true,
@@ -7,28 +7,28 @@ import {BusinessValue, IndustryValue} from '@shared/data-access/models/category.
 })
 export class CategoryToLabelPipe implements PipeTransform {
   private categoryLabels: Record<string, string> = {
-    [BusinessValue.Food]: 'غذا',
-    [BusinessValue.Beauty]: 'آرایش و زیبایی',
-    [BusinessValue.Fashion]: 'لباس و مد',
-    [BusinessValue.Society]: 'اجتماعی',
-    [BusinessValue.Art]: 'هنری',
-    [BusinessValue.Musician]: 'موسیقی',
-    [BusinessValue.Fitness]: 'ورزشی',
-    [BusinessValue.Medical]: 'پزشکی و دارویی',
-    [BusinessValue.Reporter]: 'خبری',
-    [BusinessValue.Actor]: 'سینما و بازیگری',
-    [BusinessValue.Book]: 'کتاب',
-    [BusinessValue.Jewelry]: 'طلا و جواهر',
-    [IndustryValue.CafeAndRestaurant]: 'کافه و رستوران',
-    [IndustryValue.Retail]: 'خرده فروشی',
-    [IndustryValue.Bookstore]: 'کتاب فروشی',
-    [IndustryValue.Grocery]: 'مواد غذایی',
-    [IndustryValue.Cinema]: 'سینما تئاتر',
-    [IndustryValue.Pharmacy]: 'داروسازی',
-    [IndustryValue.Flower]: 'فروشگاه گل',
+    [ProfessionEnum.Food]: 'غذا',
+    [ProfessionEnum.Beauty]: 'آرایش و زیبایی',
+    [ProfessionEnum.Fashion]: 'لباس و مد',
+    [ProfessionEnum.Society]: 'اجتماعی',
+    [ProfessionEnum.Art]: 'هنری',
+    [ProfessionEnum.Musician]: 'موسیقی',
+    [ProfessionEnum.Fitness]: 'ورزشی',
+    [ProfessionEnum.Medical]: 'پزشکی و دارویی',
+    [ProfessionEnum.Reporter]: 'خبری',
+    [ProfessionEnum.Actor]: 'سینما و بازیگری',
+    [ProfessionEnum.Book]: 'کتاب',
+    [ProfessionEnum.Jewelry]: 'طلا و جواهر',
+    [IndustryEnum.CafeAndRestaurant]: 'کافه و رستوران',
+    [IndustryEnum.Retail]: 'خرده فروشی',
+    [IndustryEnum.Bookstore]: 'کتاب فروشی',
+    [IndustryEnum.Grocery]: 'مواد غذایی',
+    [IndustryEnum.Cinema]: 'سینما تئاتر',
+    [IndustryEnum.Pharmacy]: 'داروسازی',
+    [IndustryEnum.Flower]: 'فروشگاه گل',
   };
 
-  transform(value: IndustryValue | BusinessValue): string {
+  transform(value: IndustryEnum | ProfessionEnum): string {
     return this.categoryLabels[value] || 'دیگر';
   }
 }

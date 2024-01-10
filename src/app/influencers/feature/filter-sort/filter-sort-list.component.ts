@@ -3,8 +3,8 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {FilterSortService} from '@influencers/data-access/filter-sort.service';
 import {SortOption, SortOrder} from '@influencers/data-access/model/filter-sort.model';
-import {influencerCategoryList} from '@shared/data-access/mock/mock';
-import {BusinessValue, SelectList} from '@shared/data-access/models/category.model';
+import {influencerCategoryList} from '@shared/data-access/models/category.model';
+import {ProfessionEnum, IndustryEnum, LabelValue} from '@shared/data-access/models/category.model';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 
@@ -22,9 +22,9 @@ export class FilterSortListComponent {
 
   selectedSortOrder: SortOrder = this.descending;
   selectedSortOption: SortOption | null = null;
-  selectedFilter: BusinessValue | null = null;
+  selectedFilter: ProfessionEnum | null = null;
 
-  sortList: SelectList[] = [
+  sortList: LabelValue<SortOption>[] = [
     {value: null, label: 'همه'},
     {value: SortOption.name, label: 'نام'},
     {value: SortOption.category, label: 'دسته بندی'},
@@ -32,7 +32,7 @@ export class FilterSortListComponent {
     {value: SortOption.fee, label: 'دستمزد'},
   ];
 
-  filterList: SelectList[] = [{value: null, label: 'همه'}, ...influencerCategoryList];
+  filterList: LabelValue<ProfessionEnum>[] = [{value: null, label: 'همه'}, ...influencerCategoryList];
 
   setState(): void {
     this.filterSortService.filterSortState$ = {
@@ -41,7 +41,7 @@ export class FilterSortListComponent {
       filterCategory: this.selectedFilter,
     };
   }
-  selectFilter(event: BusinessValue): void {
+  selectFilter(event: ProfessionEnum): void {
     this.selectedFilter = event;
     this.setState();
   }

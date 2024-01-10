@@ -5,7 +5,7 @@ import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModul
 import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
-import {industryCategoryList} from '@shared/data-access/mock/mock';
+import {industryCategoryList} from '@shared/data-access/models/category.model';
 import {PhotoComponent} from '@shared/data-access/photo.component';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
