@@ -15,13 +15,13 @@ Follow these simple steps to get the Purple Project up and running on your local
 
 2. **Install Dependencies:**
    Navigate to the project directory and run the following command to install the project dependencies using Yarn:
-   ```
+   ```bash
    yarn install
    ```
 
 3. **Start the Application:**
    Once the dependencies are installed, run the following command to start the development server:
-   ```
+   ```bash
    yarn run start
    ```
 
