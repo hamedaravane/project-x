@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {InfluencerDetail, InfluencerSummary} from '@influencers/data-access/model/filter-sort.model';
-import {BusinessValue} from '@shared/data-access/models/category.model';
+import {ProfessionEnum} from '@shared/data-access/models/category.model';
 import {Observable, of} from 'rxjs';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class InfluencerDataService {
         instagramId: 'neg.r',
         profilePhotoSrc: 'assets/mock/profile-photos/1.jpg',
         rate: 4,
-        category: BusinessValue.Food,
+        category: ProfessionEnum.Food,
       },
       {
         id: '2',
@@ -23,7 +23,7 @@ export class InfluencerDataService {
         instagramId: 'aboutpurple',
         profilePhotoSrc: 'assets/mock/profile-photos/2.jpg',
         rate: 2.5,
-        category: BusinessValue.Fitness,
+        category: ProfessionEnum.Fitness,
       },
       {
         id: '3',
@@ -31,7 +31,7 @@ export class InfluencerDataService {
         instagramId: 'neginmirsalehi',
         profilePhotoSrc: 'assets/mock/profile-photos/3.jpg',
         rate: 4,
-        category: BusinessValue.Fashion,
+        category: ProfessionEnum.Fashion,
       },
       {
         id: '4',
@@ -39,7 +39,7 @@ export class InfluencerDataService {
         instagramId: 'aisan_eslami',
         profilePhotoSrc: 'assets/mock/profile-photos/4.jpg',
         rate: 3.5,
-        category: BusinessValue.Fitness,
+        category: ProfessionEnum.Fitness,
       },
       {
         id: '5',
@@ -47,7 +47,7 @@ export class InfluencerDataService {
         instagramId: 'niusha_sss',
         profilePhotoSrc: 'assets/mock/profile-photos/5.jpg',
         rate: 1,
-        category: BusinessValue.Book,
+        category: ProfessionEnum.Book,
       },
       {
         id: '6',
@@ -55,7 +55,7 @@ export class InfluencerDataService {
         instagramId: 'sssepii',
         profilePhotoSrc: 'assets/mock/profile-photos/6.jpg',
         rate: 2.5,
-        category: BusinessValue.Beauty,
+        category: ProfessionEnum.Beauty,
       },
     ];
     console.log('getting getMockInfluencerSummaryList from backend...');
@@ -77,7 +77,7 @@ export class InfluencerDataService {
         instagramId: 'neg.r',
         profilePhotoSrc: 'assets/mock/profile-photos/1.jpg',
         rate: 4,
-        category: BusinessValue.Food,
+        category: ProfessionEnum.Food,
         fee: [
           {name: 'ready_story', value: 800000, currency: 'IRT', description: 'معرفی با استوری آماده'},
           {
@@ -116,7 +116,7 @@ export class InfluencerDataService {
         instagramId: 'aboutpurple',
         profilePhotoSrc: 'assets/mock/profile-photos/2.jpg',
         rate: 2.5,
-        category: BusinessValue.Fitness,
+        category: ProfessionEnum.Fitness,
         fee: [
           {name: 'ready_story', value: 800000, currency: 'IRT', description: 'معرفی با استوری آماده'},
           {
@@ -155,7 +155,7 @@ export class InfluencerDataService {
         instagramId: 'neginmirsalehi',
         profilePhotoSrc: 'assets/mock/profile-photos/3.jpg',
         rate: 4,
-        category: BusinessValue.Fashion,
+        category: ProfessionEnum.Fashion,
         fee: [
           {name: 'ready_story', value: 800000, currency: 'IRT', description: 'معرفی با استوری آماده'},
           {
@@ -194,7 +194,7 @@ export class InfluencerDataService {
         instagramId: 'aisan_eslami',
         profilePhotoSrc: 'assets/mock/profile-photos/4.jpg',
         rate: 3.5,
-        category: BusinessValue.Fitness,
+        category: ProfessionEnum.Fitness,
         fee: [
           {name: 'ready_story', value: 800000, currency: 'IRT', description: 'معرفی با استوری آماده'},
           {
@@ -233,7 +233,7 @@ export class InfluencerDataService {
         instagramId: 'niusha_sss',
         profilePhotoSrc: 'assets/mock/profile-photos/5.jpg',
         rate: 1,
-        category: BusinessValue.Book,
+        category: ProfessionEnum.Book,
         fee: [
           {name: 'ready_story', value: 800000, currency: 'IRT', description: 'معرفی با استوری آماده'},
           {
@@ -272,7 +272,7 @@ export class InfluencerDataService {
         instagramId: 'sssepii',
         profilePhotoSrc: 'assets/mock/profile-photos/6.jpg',
         rate: 2.5,
-        category: BusinessValue.Beauty,
+        category: ProfessionEnum.Beauty,
         fee: [
           {name: 'ready_story', value: 800000, currency: 'IRT', description: 'معرفی با استوری آماده'},
           {

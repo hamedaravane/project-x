@@ -123,28 +123,28 @@
   <nz-form-item>
     <nz-form-control [nzErrorTip]="PersianInfluencerNameErrorTip">
       <nz-input-group [nzPrefix]="inputTextIcon">
-        <input type="text" nz-input placeholder="نام به فارسی" formControlName="persianInfluencerName" />
+        <input type="text" nz-input pattern="[\u0600-\u06FF\s]+" placeholder="نام به فارسی" formControlName="persianInfluencerName" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="PersianInfluencerLastNameErrorTip">
       <nz-input-group [nzPrefix]="inputTextIcon">
-        <input type="text" nz-input placeholder="نام خانوادگی به فارسی" formControlName="persianInfluencerLastName" />
+        <input type="text" nz-input pattern="[\u0600-\u06FF\s]+" placeholder="نام خانوادگی به فارسی" formControlName="persianInfluencerLastName" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="EnglishInfluencerNameErrorTip">
       <nz-input-group [nzPrefix]="inputTextIcon">
-        <input type="text" nz-input placeholder="نام به انگلیسی" formControlName="englishInfluencerName" />
+        <input type="text" nz-input pattern="[A-Za-z]+" autocomplete="off" placeholder="نام به انگلیسی" formControlName="englishInfluencerName" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="EnglishInfluencerLastNameErrorTip">
       <nz-input-group [nzPrefix]="inputTextIcon">
-        <input type="text" nz-input placeholder="نام خانوادگی به انگلیسی" formControlName="englishInfluencerLastName" />
+        <input type="text" nz-input pattern="[A-Za-z]+" autocomplete="off" placeholder="نام خانوادگی به انگلیسی" formControlName="englishInfluencerLastName" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
@@ -193,7 +193,7 @@
       </nz-select>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item dir="ltr">
+  <nz-form-item>
     <nz-form-control [nzErrorTip]="IranianMobilePhoneNumberErrorsTip">
       <nz-input-group nzAddOnBefore="+98">
         <input type="number" nz-input placeholder="شماره موبایل (ایران)" formControlName="mobilePhoneNumber" />

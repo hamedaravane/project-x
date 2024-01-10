@@ -1,4 +1,5 @@
 import {PurpleDate} from '@date/data-access/model/date.model';
+import {IndustryEnum, ProfessionEnum} from '@shared/data-access/models/category.model';
 
 export enum UserType {
   BUSINESS = 'business',
@@ -42,7 +43,7 @@ export interface InfluencerRegistrationForm {
   persianLastName: string;
   birthDate: Date;
   gender: Gender;
-  influencerType: string;
+  influencerType: ProfessionEnum;
   instagramAccount: string;
   twitterAccount: string | null;
   country: string | null;
@@ -62,7 +63,7 @@ export interface InfluencerFormRawValue {
   englishInfluencerLastName: string | null;
   birthDate: PurpleDate | null;
   gender: Gender | null;
-  influencerType: string | null;
+  influencerType: ProfessionEnum | null;
   instagramAccount: string | null;
   twitterAccount: string | null;
   influencerCity: any | null;
@@ -84,7 +85,7 @@ export function influencerFormRawValueToInfluencerDetailInfo(
     lastName: rawValue.englishInfluencerLastName as string,
     birthDate: rawValue.birthDate?.gregorianDate as Date,
     gender: rawValue.gender as Gender,
-    influencerType: rawValue.influencerType as string,
+    influencerType: rawValue.influencerType as ProfessionEnum,
     instagramAccount: rawValue.instagramAccount as string,
     twitterAccount: rawValue.twitterAccount as string,
     country: null,
@@ -98,6 +99,8 @@ export interface CombinedRegistrationForms {
   email: string;
   password: string;
   userType: UserType;
+  influencerType: ProfessionEnum | null;
+  businessType: IndustryEnum | null;
   firstName: string;
   lastName: string;
   persianFirstName: string;
@@ -157,6 +160,7 @@ export function combineInfluencerInfo(
     email: authInfo.email,
     password: authInfo.password,
     userType: userType.value,
+    influencerType: registrationForm.influencerType,
     firstName: registrationForm.name,
     lastName: registrationForm.lastName,
     persianFirstName: registrationForm.persianName,

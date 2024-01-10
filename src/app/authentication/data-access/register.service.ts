@@ -1,18 +1,8 @@
-import {Injectable, inject} from '@angular/core';
-import {
-  Gender,
-  InfluencerFormRawValue,
-  InfluencerRegistrationForm,
-  UserAuthInfo,
-  UserType,
-  UserTypeDetail,
-  UserTypeLabel,
-  combineInfluencerInfo,
-  combinedFormDataToCreateUserDto,
-  influencerFormRawValueToInfluencerDetailInfo,
-} from '@user/data-access/model/user.model';
+import {inject, Injectable} from '@angular/core';
+import {combinedFormDataToCreateUserDto, combineInfluencerInfo, Gender, InfluencerFormRawValue, influencerFormRawValueToInfluencerDetailInfo, InfluencerRegistrationForm, UserAuthInfo, UserType, UserTypeDetail, UserTypeLabel} from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
-import {BehaviorSubject, Observable, combineLatest, filter, firstValueFrom, map} from 'rxjs';
+import {BehaviorSubject, combineLatest, filter, firstValueFrom, map, Observable} from 'rxjs';
+import {ProfessionEnum} from '@shared/data-access/models/category.model';
 
 @Injectable({
   providedIn: 'root',
@@ -94,7 +84,7 @@ export class RegisterService {
       lastName: 'arghavan',
       birthDate: new Date(),
       gender: Gender.MALE,
-      influencerType: 'Sport',
+      influencerType: ProfessionEnum.Actor,
       instagramAccount: 'aboutpurple',
       twitterAccount: null,
       country: null,
@@ -103,7 +93,6 @@ export class RegisterService {
       mobilePhoneNumber: '+989017701599',
       homePhoneNumber: null,
     };
-    console.log('async operation...');
     const combinedValues = await firstValueFrom(
       combineLatest([this.userType$, this.userBasicInfo$, this.influencerDetailInfo$]).pipe(
         map(([userType, userBasicInfo, influencerDetailInfo]) => {
@@ -111,9 +100,7 @@ export class RegisterService {
         }),
       ),
     );
-    console.log('user models combined...');
     const createUserDto = combinedFormDataToCreateUserDto(combinedValues);
-    console.log('convert to create user DTO format...');
     const response = await firstValueFrom(this.authInfra.register(createUserDto));
     if (response.isSuccess) {
       console.log('sent');

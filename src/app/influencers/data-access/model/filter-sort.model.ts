@@ -1,4 +1,4 @@
-import {BusinessValue} from '@shared/data-access/models/category.model';
+import {ProfessionEnum} from '@shared/data-access/models/category.model';
 
 export enum SortOption {
   rate = 'Rate',
@@ -15,7 +15,7 @@ export enum SortOrder {
 export interface FilterSort {
   sortOption: SortOption | null;
   sortOrder: SortOrder;
-  filterCategory: BusinessValue | null;
+  filterCategory: ProfessionEnum | null;
 }
 
 export interface InfluencerSummary {
@@ -24,7 +24,7 @@ export interface InfluencerSummary {
   instagramId: string;
   profilePhotoSrc: string;
   rate: number;
-  category: BusinessValue;
+  category: ProfessionEnum;
 }
 
 export interface ContactInfo {
@@ -52,7 +52,7 @@ export interface InfluencerDetail {
   instagramId: string;
   profilePhotoSrc: string;
   rate: number;
-  category: BusinessValue;
+  category: ProfessionEnum;
   description: string;
   city: string;
   contactInfo: ContactInfo;

@@ -6,7 +6,7 @@ import {Router, RouterLink} from '@angular/router';
 import {Gender, UserType, UserTypeDetail} from '@user/data-access/model/user.model';
 import {RegisterService} from '@authentication/data-access/register.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
-import {influencerCategoryList} from '@shared/data-access/mock/mock';
+import {influencerCategoryList} from '@shared/data-access/models/category.model';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzWaveModule} from 'ng-zorro-antd/core/wave';
@@ -17,6 +17,7 @@ import {NzSelectModule} from 'ng-zorro-antd/select';
 import {PurpleDate} from '@date/data-access/model/date.model';
 import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date-picker.component';
 import {Observable, firstValueFrom} from 'rxjs';
+import {ProfessionEnum} from '@shared/data-access/models/category.model';
 
 @Component({
   standalone: true,
@@ -61,7 +62,7 @@ export class InfluencerInfoFormComponent {
     ]),
     birthDate: new FormControl<PurpleDate | null>(null, Validators.required),
     gender: new FormControl<Gender>(Gender.MALE, Validators.required),
-    influencerType: new FormControl<string | null>(null, Validators.required),
+    influencerType: new FormControl<ProfessionEnum | null>(null, Validators.required),
     instagramAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z0-9._]{1,30}$/)),
     twitterAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z_][a-zA-Z0-9_]{0,14}$/)),
     influencerCity: new FormControl<any | null>(null, Validators.required),
@@ -78,7 +79,7 @@ export class InfluencerInfoFormComponent {
   >;
   birthDateControl = this.influencerInfoForm.get('birthDate') as AbstractControl<PurpleDate | null>;
   genderControl = this.influencerInfoForm.get('gender') as AbstractControl<Gender>;
-  influencerTypeControl = this.influencerInfoForm.get('influencerType') as AbstractControl<string | null>;
+  influencerTypeControl = this.influencerInfoForm.get('influencerType') as AbstractControl<ProfessionEnum | null>;
   instagramAccountControl = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
   twitterAccountControl = this.influencerInfoForm.get('instagramAccount') as AbstractControl<string | null>;
   influencerCityControl = this.influencerInfoForm.get('influencerCity') as AbstractControl<any | null>;
