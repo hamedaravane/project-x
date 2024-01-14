@@ -13,6 +13,7 @@ import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzSkeletonModule} from 'ng-zorro-antd/skeleton';
+import {UserType} from '@user/data-access/model/user.model';
 
 @Component({
   standalone: true,
@@ -44,6 +45,7 @@ export class BusinessInfoFormComponent {
   industryList = industryCategoryList;
 
   businessInfoForm = new FormGroup({
+    userType: new FormControl<UserType>(UserType.BUSINESS),
     persianBusinessName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
     englishBusinessName: new FormControl<string | null>(null, [
       Validators.required,

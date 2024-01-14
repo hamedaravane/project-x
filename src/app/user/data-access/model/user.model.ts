@@ -35,19 +35,19 @@ export interface UserAuthInfo {
 interface CommonRegistrationDetailForm {
   instagramAccount: string;
   mobilePhoneNumber: string;
-  address: string;
+  address: string | null;
   city: string;
 }
 
 interface OptionalRegistrationDetailForm {
-  nationalIdNumber: string | null;
-  nationalRegistrationCode: string | null;
-  twitterAccount: string | null;
-  maritalStatus: MaritalStatus | null;
-  country: string | null;
-  state: string | null;
-  homePhoneNumber: string | null;
-  postalCode: string | null;
+  nationalIdNumber?: string;
+  nationalRegistrationCode?: string;
+  twitterAccount?: string;
+  maritalStatus?: MaritalStatus;
+  country?: string;
+  state?: string;
+  homePhoneNumber?: string;
+  postalCode?: string;
 }
 
 interface BusinessRegistrationDetailForm {
@@ -74,23 +74,6 @@ export type DetailRegistrationForm =
   CommonRegistrationDetailForm
   & OptionalRegistrationDetailForm
   & SpecialDetailRegistrationProperty;
-
-export function mergeUserTypeIntoDetailRegistrationForm(userType: UserTypeDetail, form: Extract<DetailRegistrationForm, 'userType'>): DetailRegistrationForm {
-  const rawType = userType.value;
-  switch (rawType) {
-    case UserType.INFLUENCER:
-      return {
-        ...form,
-        userType: UserType.INFLUENCER,
-      };
-    case UserType.BUSINESS:
-      return {
-        ...form,
-        userType: UserType.BUSINESS,
-      };
-  }
-
-}
 
 export type CombinedRegistrationForm =
   UserAuthInfo
@@ -182,19 +165,19 @@ export function combineRegistrationProperties (
 interface CommonCreateUserDtoProperties {
   instagram_account: string;
   mobile_phone_number: string;
-  address: string;
+  address: string | null;
   city: string;
 }
 
 interface OptionalCreateUserDtoProperties {
-  national_id_number: string | null;
-  national_registration_code: string | null;
-  twitter_account: string | null;
-  marital_status: MaritalStatus | null;
-  country: string | null;
-  state: string | null;
-  home_phone_number: string | null;
-  postal_code: string | null;
+  national_id_number?: string;
+  national_registration_code?: string;
+  twitter_account?: string;
+  marital_status?: MaritalStatus;
+  country?: string;
+  state?: string;
+  home_phone_number?: string;
+  postal_code?: string;
 }
 
 interface BusinessCreateUserDtoProperties {

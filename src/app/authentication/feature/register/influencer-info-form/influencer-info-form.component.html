@@ -117,34 +117,38 @@
 <form nz-form [nzDisableAutoTips]="true" [formGroup]="influencerInfoForm" (ngSubmit)="submitForm()">
   <nz-form-item>
     <nz-input-group [nzPrefix]="InfoIcon">
-      <input type="text" nz-input disabled placeholder="تولید کننده محتوا" />
+      <input type="text" nz-input disabled value="تولید کننده محتوا" />
     </nz-input-group>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="PersianInfluencerNameErrorTip">
       <nz-input-group [nzPrefix]="inputTextIcon">
-        <input type="text" nz-input pattern="[\u0600-\u06FF\s]+" placeholder="نام به فارسی" formControlName="persianInfluencerName" />
+        <input nz-input pattern="[\u0600-\u06FF\s]+" placeholder="نام به فارسی"
+               formControlName="persianInfluencerName" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="PersianInfluencerLastNameErrorTip">
       <nz-input-group [nzPrefix]="inputTextIcon">
-        <input type="text" nz-input pattern="[\u0600-\u06FF\s]+" placeholder="نام خانوادگی به فارسی" formControlName="persianInfluencerLastName" />
+        <input type="text" nz-input pattern="[\u0600-\u06FF\s]+" placeholder="نام خانوادگی به فارسی"
+               formControlName="persianInfluencerLastName" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="EnglishInfluencerNameErrorTip">
       <nz-input-group [nzPrefix]="inputTextIcon">
-        <input type="text" nz-input pattern="[A-Za-z]+" autocomplete="off" placeholder="نام به انگلیسی" formControlName="englishInfluencerName" />
+        <input type="text" nz-input pattern="[A-Za-z]+" autocomplete="off" placeholder="نام به انگلیسی"
+               formControlName="englishInfluencerName" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="EnglishInfluencerLastNameErrorTip">
       <nz-input-group [nzPrefix]="inputTextIcon">
-        <input type="text" nz-input pattern="[A-Za-z]+" autocomplete="off" placeholder="نام خانوادگی به انگلیسی" formControlName="englishInfluencerLastName" />
+        <input type="text" nz-input pattern="[A-Za-z]+" autocomplete="off" placeholder="نام خانوادگی به انگلیسی"
+               formControlName="englishInfluencerLastName" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
@@ -168,7 +172,7 @@
   <nz-form-item>
     <nz-form-control>
       <nz-select nzPlaceHolder="نوع بلاگر" formControlName="influencerType">
-        <nz-option *ngFor="let type of influencerTypeList" [nzValue]="type" [nzLabel]="type.label"></nz-option>
+        <nz-option *ngFor="let type of influencerTypeList" [nzValue]="type.value" [nzLabel]="type.label"></nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>
@@ -188,14 +192,14 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
-      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="انتخاب شهر" formControlName="influencerCity">
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="انتخاب شهر" formControlName="city">
         <nz-option *ngFor="let city of cityList" [nzValue]="city.name" [nzLabel]="city.faName"></nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzErrorTip]="IranianMobilePhoneNumberErrorsTip">
-      <nz-input-group nzAddOnBefore="+98">
+      <nz-input-group [nzAddOnBefore]="beforePhoneNumber">
         <input type="number" nz-input placeholder="شماره موبایل (ایران)" formControlName="mobilePhoneNumber" />
       </nz-input-group>
     </nz-form-control>
@@ -231,15 +235,17 @@
 <ng-template #PersianInfluencerNameErrorTip>
   <ng-container *ngIf="persianInfluencerNameControl.errors?.['required']">نام به فارسی الزامی است</ng-container>
   <ng-container *ngIf="persianInfluencerNameControl.errors?.['notPersianCharacters']"
-    >از حروف فارسی استفاده کنید</ng-container
+  >از حروف فارسی استفاده کنید
+  </ng-container
   >
 </ng-template>
 <ng-template #PersianInfluencerLastNameErrorTip>
   <ng-container *ngIf="persianInfluencerLastNameControl.errors?.['required']"
-    >نام خانوادگی به فارسی الزامی است</ng-container
+  >نام خانوادگی به فارسی الزامی است
+  </ng-container
   >
   <ng-container *ngIf="persianInfluencerLastNameControl.errors?.['notPersianCharacters']"
-    >از حروف فارسی استفاده کنید
+  >از حروف فارسی استفاده کنید
   </ng-container>
 </ng-template>
 <ng-template #EnglishInfluencerNameErrorTip>
@@ -248,11 +254,15 @@
 </ng-template>
 <ng-template #EnglishInfluencerLastNameErrorTip>
   <ng-container *ngIf="englishInfluencerLastNameControl.errors?.['required']"
-    >نام خانوادگی به انگلیسی الزامی است</ng-container
+  >نام خانوادگی به انگلیسی الزامی است
+  </ng-container
   >
   <ng-container *ngIf="englishInfluencerLastNameControl.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
 </ng-template>
 <ng-template #IranianMobilePhoneNumberErrorsTip>
   <ng-container *ngIf="mobilePhoneNumberControl.errors?.['required']">شماره موبایل الزامی است</ng-container>
   <ng-container *ngIf="mobilePhoneNumberControl.errors?.['pattern']">فرمت شماره صحیح نیست</ng-container>
+</ng-template>
+<ng-template #beforePhoneNumber>
+  <bdi>+98</bdi>
 </ng-template>

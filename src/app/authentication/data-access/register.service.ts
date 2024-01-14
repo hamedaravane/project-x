@@ -1,11 +1,12 @@
 import {inject, Injectable} from '@angular/core';
 import {
   combinedFormDataToCreateUserDto,
+  combineRegistrationProperties,
+  DetailRegistrationForm,
   Gender,
   UserAuthInfo,
   UserType,
-  DetailRegistrationForm,
-  UserTypeDetail, combineRegistrationProperties,
+  UserTypeDetail,
 } from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject, filter, firstValueFrom, Observable} from 'rxjs';
@@ -86,27 +87,26 @@ export class RegisterService {
   private async _submitInfluencerData(): Promise<void> {
     this.userAuthInfo$ = {email: 'hamedaravane@gmail.com', password: '11559933Aa!'};
     this.detailRegistrationProperties$ = {
-      persianName: 'حامد',
-      persianLastName: 'ارغوان',
-      name: 'hamed',
-      lastName: 'arghavan',
-      birthDate: new Date(),
+      userType: UserType.INFLUENCER,
+      persianInfluencerName: 'حامد',
+      persianInfluencerLastName: 'ارغوان',
+      englishInfluencerName: 'hamed',
+      englishInfluencerLastName: 'arghavan',
       gender: Gender.MALE,
-      influencerType: ProfessionEnum.Actor,
-      instagramAccount: 'aboutpurple',
-      twitterAccount: null,
-      country: null,
-      state: null,
+      influencerType: ProfessionEnum.Fashion,
+      birthDate: new Date('1995-08-15'),
+      address: null,
       city: 'Mashhad',
+      instagramAccount: 'aboutpurple',
       mobilePhoneNumber: '+989017701599',
-      homePhoneNumber: null,
     };
     const userAuthInfo = await firstValueFrom(this.userAuthInfo$);
     const detailRegistrationProperties = await firstValueFrom(this.detailRegistrationProperties$);
 
     const combinedRegistrationForm = combineRegistrationProperties(userAuthInfo, detailRegistrationProperties);
-
+    console.log(combinedRegistrationForm);
     const createUserDto = combinedFormDataToCreateUserDto(combinedRegistrationForm);
+    console.log(createUserDto);
     const response = await firstValueFrom(this.authInfra.register(createUserDto));
     if (response.isSuccess) {
       console.log('sent');
