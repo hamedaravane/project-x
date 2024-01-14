@@ -27,7 +27,7 @@ export enum MaritalStatus {
  * @description username and password of user
  * @author Hamed Arghavan
  */
-export interface UserAuthProperties {
+export interface UserAuthInfo {
   email: string;
   password: string;
 }
@@ -70,13 +70,30 @@ interface InfluencerRegistrationDetailForm {
 
 type SpecialDetailRegistrationProperty = BusinessRegistrationDetailForm | InfluencerRegistrationDetailForm;
 
-type DetailRegistrationForm =
+export type DetailRegistrationForm =
   CommonRegistrationDetailForm
   & OptionalRegistrationDetailForm
   & SpecialDetailRegistrationProperty;
 
+export function mergeUserTypeIntoDetailRegistrationForm(userType: UserTypeDetail, form: Extract<DetailRegistrationForm, 'userType'>): DetailRegistrationForm {
+  const rawType = userType.value;
+  switch (rawType) {
+    case UserType.INFLUENCER:
+      return {
+        ...form,
+        userType: UserType.INFLUENCER,
+      };
+    case UserType.BUSINESS:
+      return {
+        ...form,
+        userType: UserType.BUSINESS,
+      };
+  }
+
+}
+
 export type CombinedRegistrationForm =
-  UserAuthProperties
+  UserAuthInfo
   & CommonRegistrationDetailForm
   & OptionalRegistrationDetailForm
   & SpecialDetailRegistrationProperty;
@@ -108,8 +125,8 @@ export interface UserEntityDto {
   business_twitter_username: string;
 }
 
-export function combineRegistrationForm (
-  authInfo: UserAuthProperties,
+export function combineRegistrationProperties (
+  authInfo: UserAuthInfo,
   detailedInfoRegistration: DetailRegistrationForm,
 ): CombinedRegistrationForm {
   switch (detailedInfoRegistration.userType) {
@@ -213,7 +230,7 @@ interface InfluencerCreateUserDtoProperties {
 type SpecialCreateUserDtoProperty = BusinessCreateUserDtoProperties | InfluencerCreateUserDtoProperties;
 
 export type CreateUserDto =
-  UserAuthProperties
+  UserAuthInfo
   & CommonCreateUserDtoProperties
   & OptionalCreateUserDtoProperties
   & SpecialCreateUserDtoProperty;

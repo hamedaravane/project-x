@@ -2,13 +2,13 @@ import {inject, Injectable} from '@angular/core';
 import {
   combinedFormDataToCreateUserDto,
   Gender,
-  UserAuthProperties,
+  UserAuthInfo,
   UserType,
-  UserTypeDetail,
-  UserTypeLabel,
+  DetailRegistrationForm,
+  UserTypeDetail, combineRegistrationProperties,
 } from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
-import {BehaviorSubject, combineLatest, filter, firstValueFrom, map, Observable} from 'rxjs';
+import {BehaviorSubject, filter, firstValueFrom, Observable} from 'rxjs';
 import {ProfessionEnum} from '@shared/data-access/models/category.model';
 
 @Injectable({
@@ -21,8 +21,8 @@ import {ProfessionEnum} from '@shared/data-access/models/category.model';
  */
 export class RegisterService {
   private readonly userTypeSubject = new BehaviorSubject<UserTypeDetail | null>(null);
-  private readonly userAuthInfoSubject = new BehaviorSubject<UserAuthProperties | null>(null);
-  private readonly detailRegistrationInfoSubject = new BehaviorSubject<DetailedInfoRegistration | null>(null);
+  private readonly userAuthInfoSubject = new BehaviorSubject<UserAuthInfo | null>(null);
+  private readonly detailRegistrationInfoSubject = new BehaviorSubject<DetailRegistrationForm | null>(null);
   private readonly authInfra = inject(AuthInfra);
 
   /**
@@ -43,37 +43,37 @@ export class RegisterService {
 
   /**
    * Returns an observable for the UserAuthInfo. The observable filters out null values.
-   * @returns {Observable<UserAuthProperties>} An observable stream of username & password.
+   * @returns {Observable<UserAuthInfo>} An observable stream of username & password.
    */
-  get userAuthInfo$(): Observable<UserAuthProperties> {
+  get userAuthInfo$(): Observable<UserAuthInfo> {
     return this.userAuthInfoSubject.asObservable().pipe(filter(Boolean));
   }
 
   /**
    * Updates the UserBasicInfo and notifies all subscribers.
-   * @param {UserAuthProperties} info The new user basic information to be set.
+   * @param {UserAuthInfo} info The new user basic information to be set.
    */
-  set userAuthInfo$(info: UserAuthProperties) {
+  set userAuthInfo$(info: UserAuthInfo) {
     this.userAuthInfoSubject.next(info);
   }
 
   /**
    * @description Returns an observable for the InfluencerDetailInfo. The observable filters out null values.
-   * @returns {Observable<DetailedInfoRegistration>} An observable stream of influencer detail information.
+   * @returns {Observable<DetailRegistrationForm>} An observable stream of influencer detail information.
    */
-  get detailInfoRegistration$(): Observable<DetailedInfoRegistration> {
+  get detailRegistrationProperties$(): Observable<DetailRegistrationForm> {
     return this.detailRegistrationInfoSubject.asObservable().pipe(filter(Boolean));
   }
 
   /**
    * Updates the InfluencerDetailInfo and notifies all subscribers.
-   * @param {DetailedInfoRegistration} info The new influencer detail information to be set.
+   * @param {DetailRegistrationForm} info The new influencer detail information to be set.
    */
-  set detailInfoRegistration$(info: DetailedInfoRegistration) {
+  set detailRegistrationProperties$(info: DetailRegistrationForm) {
     this.detailRegistrationInfoSubject.next(info);
   }
 
-  private async _combineBasicInfo(): Promise<UserAuthProperties & UserType> {
+  private async _combineBasicInfo(): Promise<UserAuthInfo & UserType> {
     const authInfo = await firstValueFrom(this.userAuthInfo$);
     const userType = await firstValueFrom(this.userType$);
     return new Promise(() => ({...authInfo, ...userType}));
@@ -84,9 +84,8 @@ export class RegisterService {
   }
 
   private async _submitInfluencerData(): Promise<void> {
-    this.userType$ = {value: UserType.INFLUENCER, label: UserTypeLabel.INFLUENCER};
     this.userAuthInfo$ = {email: 'hamedaravane@gmail.com', password: '11559933Aa!'};
-    this.detailInfoRegistration$ = {
+    this.detailRegistrationProperties$ = {
       persianName: 'حامد',
       persianLastName: 'ارغوان',
       name: 'hamed',
@@ -102,14 +101,12 @@ export class RegisterService {
       mobilePhoneNumber: '+989017701599',
       homePhoneNumber: null,
     };
-    const combinedValues = await firstValueFrom(
-      combineLatest([this.userType$, this.userAuthInfo$, this.detailInfoRegistration$]).pipe(
-        map(([userType, userBasicInfo, influencerDetailInfo]) => {
-          return combineRegistrationData(userType, userBasicInfo, influencerDetailInfo);
-        }),
-      ),
-    );
-    const createUserDto = combinedFormDataToCreateUserDto(combinedValues);
+    const userAuthInfo = await firstValueFrom(this.userAuthInfo$);
+    const detailRegistrationProperties = await firstValueFrom(this.detailRegistrationProperties$);
+
+    const combinedRegistrationForm = combineRegistrationProperties(userAuthInfo, detailRegistrationProperties);
+
+    const createUserDto = combinedFormDataToCreateUserDto(combinedRegistrationForm);
     const response = await firstValueFrom(this.authInfra.register(createUserDto));
     if (response.isSuccess) {
       console.log('sent');

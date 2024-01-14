@@ -3,8 +3,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
-import {DetailedInfoRegistration, Gender, UserType, UserTypeDetail} from '@user/data-access/model/user.model';
-import {RegisterService} from '@authentication/data-access/register.service';
+import {Gender} from '@user/data-access/model/user.model';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {influencerCategoryList} from '@shared/data-access/models/category.model';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
@@ -16,7 +15,6 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {PurpleDate} from '@date/data-access/model/date.model';
 import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date-picker.component';
-import {Observable, firstValueFrom} from 'rxjs';
 import {ProfessionEnum} from '@shared/data-access/models/category.model';
 
 @Component({
@@ -42,8 +40,6 @@ import {ProfessionEnum} from '@shared/data-access/models/category.model';
 export class InfluencerInfoFormComponent {
   private readonly citiesListService = inject(CitiesListService);
   private readonly router = inject(Router);
-  private readonly registerService = inject(RegisterService);
-  userType$: Observable<UserTypeDetail> = this.registerService.userType$;
 
   cityList = this.citiesListService.cityList;
 
@@ -87,12 +83,7 @@ export class InfluencerInfoFormComponent {
   mobilePhoneNumberControl = this.influencerInfoForm.get('mobilePhoneNumber') as AbstractControl<string | null>;
 
   submitForm(): void {
-    const formValue: DetailedInfoRegistration = this.influencerInfoForm.value;
-    firstValueFrom(this.userType$).then(type => {
-      if (type.value === UserType.INFLUENCER) {
-        this.registerService.setFormValueIntoInfluencerDetailInfo(formValue);
-      }
-    });
+
     this.router.navigateByUrl('/auth/register/select-profile-photo');
   }
 }
