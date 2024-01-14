@@ -1,27 +1,49 @@
-# ProjectX
+# Purple Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+## Overview
 
-## Development server
+Purple Project is a web application generated using Angular CLI and recently updated to the latest version of Angular. This project utilizes Yarn with PnP (Plug 'n' Play) Berry for efficient package management.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Getting Started
 
-## Code scaffolding
+Follow these simple steps to get the Purple Project up and running on your local machine:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/hamedaravane/project-x.git
+   ```
 
-## Build
+2. **Install Dependencies:**
+   Navigate to the project directory and run the following command to install the project dependencies using Yarn:
+   ```bash
+   yarn install
+   ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. **Yarn Tools for project:**
+   Good practice to check these for better experience with yarn:
+   ```bash
+   yarn dlx @yarnpkg/doctor
+   yarn dlx @yarnpkg/sdks base
+   ```
 
-## Running unit tests
+4. **Start the Application:**
+   Once the dependencies are installed, run the following command to start the development server:
+   ```bash
+   yarn run start
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   The application will be accessible at `http://localhost:4200/` in your web browser.
 
-## Running end-to-end tests
+## Author
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Purple Project is proudly authored by Hamed Arghavan.
 
-## Further help
+## Additional Information
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For more information on Angular CLI, visit [Angular CLI Documentation](https://angular.io/cli).
+
+For details on Yarn and PnP Berry, refer to [Yarn PnP Documentation](https://yarnpkg.com/features/pnp).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). Feel free to customize and use it as a foundation for your own projects.

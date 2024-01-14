@@ -1,8 +1,13 @@
-import {PurpleDate} from '@date/data-access/model/date.model';
+import {IndustryEnum, ProfessionEnum} from '@shared/data-access/models/category.model';
 
 export enum UserType {
   BUSINESS = 'business',
   INFLUENCER = 'influencer',
+}
+
+export enum UserTypeLabel {
+  BUSINESS = 'کسب و کار',
+  INFLUENCER = 'تولید کننده محتوا',
 }
 
 export enum Gender {
@@ -19,100 +24,62 @@ export enum MaritalStatus {
 }
 
 /**
- * @description user and password of user
+ * @description username and password of user
  * @author Hamed Arghavan
  */
-export interface UserBasicInfo {
+export interface UserAuthInfo {
   email: string;
   password: string;
 }
-/**
- * @description used for more complete user info
- * @author Hamed Arghavan
- */
-export interface InfluencerRegistrationForm {
-  persianName: string;
-  persianLastName: string;
-  name: string;
-  lastName: string;
-  birthDate: Date;
-  gender: Gender;
-  type: string;
+
+interface CommonRegistrationDetailForm {
   instagramAccount: string;
-  twitterAccount: string | null;
-  country: string | null;
-  state: string | null;
+  mobilePhoneNumber: string;
+  address: string | null;
   city: string;
-  mobilePhoneNumber: string;
-  homePhoneNumber: string | null;
 }
-/**
- * @description raw value of form group for influencer form
- * @author Hamed Arghavan
- */
-export interface InfluencerFormValue {
-  persianInfluencerName: string | null;
-  persianInfluencerLastName: string | null;
-  englishInfluencerName: string | null;
-  englishInfluencerLastName: string | null;
-  birthDate: PurpleDate | null;
-  gender: Gender | null;
-  influencerType: string | null;
-  instagramAccount: string | null;
-  twitterAccount: string | null;
-  influencerCity: any | null;
-  mobilePhoneNumber: string | null;
+
+interface OptionalRegistrationDetailForm {
+  nationalIdNumber?: string;
+  nationalRegistrationCode?: string;
+  twitterAccount?: string;
+  maritalStatus?: MaritalStatus;
+  country?: string;
+  state?: string;
+  homePhoneNumber?: string;
+  postalCode?: string;
 }
-/**
- * @convert influencer form controls into registration form
- * @param {InfluencerFormValue} data
- * @return {InfluencerRegistrationForm}
- * @author Hamed Arghavan
- */
-export function influencerFormValueToInfluencerDetailInfo(data: InfluencerFormValue): InfluencerRegistrationForm {
-  return {
-    persianName: data.persianInfluencerName as string,
-    persianLastName: data.persianInfluencerLastName as string,
-    name: data.englishInfluencerName as string,
-    lastName: data.englishInfluencerLastName as string,
-    birthDate: data.birthDate?.gregorianDate as Date,
-    gender: data.gender as Gender,
-    type: data.influencerType as string,
-    instagramAccount: data.instagramAccount as string,
-    twitterAccount: data.twitterAccount as string,
-    country: null,
-    state: null,
-    city: data.influencerCity,
-    mobilePhoneNumber: data.mobilePhoneNumber as string,
-    homePhoneNumber: null,
-  };
+
+interface BusinessRegistrationDetailForm {
+  userType: UserType.BUSINESS;
+  persianBusinessName: string;
+  englishBusinessName: string;
+  businessIndustry: IndustryEnum;
 }
-export interface CombinedRegistrationForms {
-  email: string;
-  password: string;
-  type: UserType;
-  firstName: string;
-  lastName: string;
-  persianFirstName: string;
-  persianLastName: string;
-  nationalIdNumber: string | null;
-  nationalRegistrationCode: string | null;
+
+interface InfluencerRegistrationDetailForm {
+  userType: UserType.INFLUENCER;
+  persianInfluencerName: string;
+  persianInfluencerLastName: string;
+  englishInfluencerName: string;
+  englishInfluencerLastName: string;
   birthDate: Date;
-  instagramUsername: string;
-  twitterUsername: string | null;
   gender: Gender;
-  maritalStatus: MaritalStatus | null;
-  mobilePhoneNumber: string;
-  homePhoneNumber: string | null;
-  countryResidence: string | null;
-  stateResidence: string | null;
-  cityResidence: string;
-  addressResidence: string | null;
-  postalCode: string | null;
-  businessName: string | null;
-  businessInstagramUsername: string | null;
-  businessTwitterUsername: string | null;
+  influencerType: ProfessionEnum;
 }
+
+type SpecialDetailRegistrationProperty = BusinessRegistrationDetailForm | InfluencerRegistrationDetailForm;
+
+export type DetailRegistrationForm =
+  CommonRegistrationDetailForm
+  & OptionalRegistrationDetailForm
+  & SpecialDetailRegistrationProperty;
+
+export type CombinedRegistrationForm =
+  UserAuthInfo
+  & CommonRegistrationDetailForm
+  & OptionalRegistrationDetailForm
+  & SpecialDetailRegistrationProperty;
 
 export interface UserEntityDto {
   uuid: string;
@@ -141,91 +108,175 @@ export interface UserEntityDto {
   business_twitter_username: string;
 }
 
-export function combineInfluencerInfo(
-  userType: UserTypeDetail,
-  userBasicInfo: UserBasicInfo,
-  influencerDetailInfo: InfluencerRegistrationForm,
-): CombinedRegistrationForms {
-  return {
-    email: userBasicInfo.email,
-    password: userBasicInfo.password,
-    type: userType.value,
-    firstName: influencerDetailInfo.name,
-    lastName: influencerDetailInfo.lastName,
-    persianFirstName: influencerDetailInfo.persianName,
-    persianLastName: influencerDetailInfo.persianLastName,
-    nationalIdNumber: null,
-    nationalRegistrationCode: null,
-    birthDate: influencerDetailInfo.birthDate,
-    instagramUsername: influencerDetailInfo.instagramAccount,
-    twitterUsername: influencerDetailInfo.twitterAccount || null,
-    gender: influencerDetailInfo.gender,
-    maritalStatus: null,
-    mobilePhoneNumber: influencerDetailInfo.mobilePhoneNumber,
-    homePhoneNumber: null,
-    countryResidence: null,
-    stateResidence: influencerDetailInfo.state,
-    cityResidence: influencerDetailInfo.city,
-    addressResidence: null,
-    postalCode: null,
-    businessName: null,
-    businessInstagramUsername: null,
-    businessTwitterUsername: null,
-  };
+export function combineRegistrationProperties (
+  authInfo: UserAuthInfo,
+  detailedInfoRegistration: DetailRegistrationForm,
+): CombinedRegistrationForm {
+  switch (detailedInfoRegistration.userType) {
+    case UserType.INFLUENCER:
+      return {
+        userType: UserType.INFLUENCER,
+        email: authInfo.email,
+        password: authInfo.password,
+        persianInfluencerName: detailedInfoRegistration.persianInfluencerName,
+        persianInfluencerLastName: detailedInfoRegistration.persianInfluencerLastName,
+        englishInfluencerName: detailedInfoRegistration.englishInfluencerName,
+        englishInfluencerLastName: detailedInfoRegistration.englishInfluencerLastName,
+        birthDate: detailedInfoRegistration.birthDate,
+        gender: detailedInfoRegistration.gender,
+        instagramAccount: detailedInfoRegistration.instagramAccount,
+        twitterAccount: detailedInfoRegistration.twitterAccount,
+        influencerType: detailedInfoRegistration.influencerType,
+        nationalIdNumber: detailedInfoRegistration.nationalIdNumber,
+        nationalRegistrationCode: detailedInfoRegistration.nationalRegistrationCode,
+        maritalStatus: detailedInfoRegistration.maritalStatus,
+        country: detailedInfoRegistration.country,
+        state: detailedInfoRegistration.state,
+        city: detailedInfoRegistration.city,
+        mobilePhoneNumber: detailedInfoRegistration.mobilePhoneNumber,
+        homePhoneNumber: detailedInfoRegistration.homePhoneNumber,
+        address: detailedInfoRegistration.address,
+        postalCode: detailedInfoRegistration.postalCode,
+      };
+    case UserType.BUSINESS:
+      return {
+        userType: UserType.BUSINESS,
+        email: authInfo.email,
+        password: authInfo.password,
+        persianBusinessName: detailedInfoRegistration.persianBusinessName,
+        englishBusinessName: detailedInfoRegistration.englishBusinessName,
+        businessIndustry: detailedInfoRegistration.businessIndustry,
+        instagramAccount: detailedInfoRegistration.instagramAccount,
+        twitterAccount: detailedInfoRegistration.twitterAccount,
+        nationalIdNumber: detailedInfoRegistration.nationalIdNumber,
+        nationalRegistrationCode: detailedInfoRegistration.nationalRegistrationCode,
+        country: detailedInfoRegistration.country,
+        state: detailedInfoRegistration.state,
+        city: detailedInfoRegistration.city,
+        address: detailedInfoRegistration.address,
+        maritalStatus: detailedInfoRegistration.maritalStatus,
+        mobilePhoneNumber: detailedInfoRegistration.mobilePhoneNumber,
+        homePhoneNumber: detailedInfoRegistration.homePhoneNumber,
+        postalCode: detailedInfoRegistration.postalCode,
+      };
+  }
 }
 
-export function combinedFormDataToCreateUserDto(data: CombinedRegistrationForms): CreateUserDto {
-  return {
-    email: data.email,
-    password: data.password,
-    type: data.type,
-    first_name: data.firstName,
-    last_name: data.lastName,
-    persian_first_name: data.persianFirstName,
-    persian_last_name: data.persianLastName,
-    national_id_number: data.nationalIdNumber,
-    national_registration_code: data.nationalRegistrationCode,
-    date_of_birth: data.birthDate,
-    instagram_username: data.instagramUsername,
-    twitter_username: data.businessTwitterUsername,
-    gender: data.gender,
-    marital_status: data.maritalStatus,
-    mobile_phone_number: data.mobilePhoneNumber,
-    country_of_residence: data.countryResidence,
-    state_of_residence: data.stateResidence,
-    city_of_residence: data.cityResidence,
-    address_of_residence: data.addressResidence,
-    postal_code: data.postalCode,
-    business_name: data.businessName,
-    business_instagram_username: data.businessInstagramUsername,
-    business_twitter_username: data.businessTwitterUsername,
-  };
-}
-
-export interface CreateUserDto {
-  email: string;
-  password: string;
-  type: UserType;
-  first_name: string;
-  last_name: string;
-  persian_first_name: string;
-  persian_last_name: string;
-  national_id_number: string | null;
-  national_registration_code: string | null;
-  date_of_birth: Date;
-  instagram_username: string;
-  twitter_username: string | null;
-  gender: Gender;
-  marital_status: MaritalStatus | null;
+interface CommonCreateUserDtoProperties {
+  instagram_account: string;
   mobile_phone_number: string;
-  country_of_residence: string | null;
-  state_of_residence: string | null;
-  city_of_residence: string;
-  address_of_residence: string | null;
-  postal_code: string | null;
-  business_name: string | null;
-  business_instagram_username: string | null;
-  business_twitter_username: string | null;
+  address: string | null;
+  city: string;
+}
+
+interface OptionalCreateUserDtoProperties {
+  national_id_number?: string;
+  national_registration_code?: string;
+  twitter_account?: string;
+  marital_status?: MaritalStatus;
+  country?: string;
+  state?: string;
+  home_phone_number?: string;
+  postal_code?: string;
+}
+
+interface BusinessCreateUserDtoProperties {
+  user_type: UserType.BUSINESS;
+  persian_business_name: string;
+  english_business_name: string;
+  business_industry: IndustryEnum;
+
+  persian_name: null;
+  persian_last_name: null;
+  name: null;
+  last_name: null;
+  birth_date: null;
+  gender: null;
+  influencer_type: null;
+}
+
+interface InfluencerCreateUserDtoProperties {
+  user_type: UserType.INFLUENCER;
+  persian_name: string;
+  persian_last_name: string;
+  name: string;
+  last_name: string;
+  birth_date: Date;
+  gender: Gender;
+  influencer_type: ProfessionEnum;
+
+  persian_business_name: null;
+  english_business_name: null;
+  business_industry: null;
+}
+
+type SpecialCreateUserDtoProperty = BusinessCreateUserDtoProperties | InfluencerCreateUserDtoProperties;
+
+export type CreateUserDto =
+  UserAuthInfo
+  & CommonCreateUserDtoProperties
+  & OptionalCreateUserDtoProperties
+  & SpecialCreateUserDtoProperty;
+
+export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegistrationForm): CreateUserDto {
+  switch (registrationForm.userType) {
+    case UserType.INFLUENCER:
+      return {
+        email: registrationForm.email,
+        password: registrationForm.password,
+        user_type: UserType.INFLUENCER,
+        instagram_account: registrationForm.instagramAccount,
+        mobile_phone_number: registrationForm.mobilePhoneNumber,
+        address: registrationForm.address,
+        city: registrationForm.city,
+        national_id_number: registrationForm.nationalIdNumber,
+        national_registration_code: registrationForm.nationalRegistrationCode,
+        twitter_account: registrationForm.twitterAccount,
+        marital_status: registrationForm.maritalStatus,
+        country: registrationForm.country,
+        state: registrationForm.state,
+        home_phone_number: registrationForm.homePhoneNumber,
+        postal_code: registrationForm.postalCode,
+        persian_name: registrationForm.persianInfluencerName,
+        persian_last_name: registrationForm.persianInfluencerLastName,
+        name: registrationForm.englishInfluencerName,
+        last_name: registrationForm.englishInfluencerLastName,
+        birth_date: registrationForm.birthDate,
+        gender: registrationForm.gender,
+        influencer_type: registrationForm.influencerType,
+        persian_business_name: null,
+        english_business_name: null,
+        business_industry: null,
+      };
+    case UserType.BUSINESS:
+      return {
+        email: registrationForm.email,
+        password: registrationForm.password,
+        user_type: UserType.BUSINESS,
+        instagram_account: registrationForm.instagramAccount,
+        mobile_phone_number: registrationForm.mobilePhoneNumber,
+        address: registrationForm.address,
+        city: registrationForm.city,
+        national_id_number: registrationForm.nationalIdNumber,
+        national_registration_code: registrationForm.nationalRegistrationCode,
+        twitter_account: registrationForm.twitterAccount,
+        marital_status: registrationForm.maritalStatus,
+        country: registrationForm.country,
+        state: registrationForm.state,
+        home_phone_number: registrationForm.homePhoneNumber,
+        postal_code: registrationForm.postalCode,
+        persian_name: null,
+        persian_last_name: null,
+        name: null,
+        last_name: null,
+        birth_date: null,
+        gender: null,
+        influencer_type: null,
+        persian_business_name: registrationForm.persianBusinessName,
+        english_business_name: registrationForm.englishBusinessName,
+        business_industry: registrationForm.businessIndustry,
+      };
+  }
 }
 
 export interface UserDto {
@@ -274,7 +325,7 @@ export interface SideMenuOption {
 
 export interface UserTypeDetail {
   value: UserType;
-  label: string;
+  label: UserTypeLabel;
 }
 
 function addUserTypeDetail(value: string): UserTypeDetail {
@@ -282,8 +333,8 @@ function addUserTypeDetail(value: string): UserTypeDetail {
     throw new Error('User type is not fetched or undefined');
   }
   const labels: Record<string, string> = {
-    business: 'کسب و کار',
-    influencer: 'تولید کننده محتوا',
+    business: UserTypeLabel.BUSINESS,
+    influencer: UserTypeLabel.INFLUENCER,
   };
   return {value, label: labels[value]} as UserTypeDetail;
 }

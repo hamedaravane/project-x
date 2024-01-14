@@ -56,7 +56,7 @@ export class BasicInfoComponent {
 
   submitForm(): void {
     if (this.emailControl.value && this.passwordControl.value) {
-      this.registerService.userBasicInfo$ = {email: this.emailControl.value, password: this.passwordControl.value};
+      this.registerService.userAuthInfo$ = {email: this.emailControl.value, password: this.passwordControl.value};
     }
     this.userType$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(type => {
       if (type.value === 'influencer') {

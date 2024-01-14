@@ -20,7 +20,6 @@ export class SelectProfilePhotoComponent extends PhotoComponent {
   private readonly registerService = inject(RegisterService);
 
   submitRegistration(): void {
-    console.log('submitting...');
     this.registerService.submitInfluencerData();
   }
 }

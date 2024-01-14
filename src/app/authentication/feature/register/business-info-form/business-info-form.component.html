@@ -231,7 +231,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control
-      [nzValidateStatus]="businessAddress.valid ? 'warning' : 'error'"
+      [nzValidateStatus]="addressControl.valid ? 'warning' : 'error'"
       nzWarningTip="اگر کسب و کار مجازی است، آدرس فیزیکی الزامی نیست"
       nzErrorTip="به فارسی وارد شود">
       <nz-input-group>
@@ -264,14 +264,14 @@
   <i class="fa-brands fa-twitter"></i>
 </ng-template>
 <ng-template #PersianBusinessNameErrorTip>
-  <ng-container *ngIf="persianBusinessName.errors?.['required']">نام کسب و کار به فارسی الزامی است</ng-container>
-  <ng-container *ngIf="persianBusinessName.errors?.['notPersianCharacters']">از حروف فارسی استفاده کنید</ng-container>
+  <ng-container *ngIf="persianBusinessNameControl.errors?.['required']">نام کسب و کار به فارسی الزامی است</ng-container>
+  <ng-container *ngIf="persianBusinessNameControl.errors?.['notPersianCharacters']">از حروف فارسی استفاده کنید</ng-container>
 </ng-template>
 <ng-template #EnglishBusinessNameErrorTip>
-  <ng-container *ngIf="englishBusinessName.errors?.['required']">نام کسب و کار به انگلیسی الزامی است</ng-container>
-  <ng-container *ngIf="englishBusinessName.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
+  <ng-container *ngIf="englishBusinessNameControl.errors?.['required']">نام کسب و کار به انگلیسی الزامی است</ng-container>
+  <ng-container *ngIf="englishBusinessNameControl.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
 </ng-template>
 <ng-template #IranianMobilePhoneNumberErrorsTip>
-  <ng-container *ngIf="mobilePhoneNumber.errors?.['required']">شماره موبایل الزامی است</ng-container>
-  <ng-container *ngIf="mobilePhoneNumber.errors?.['pattern']">فرمت شماره صحیح نیست</ng-container>
+  <ng-container *ngIf="mobilePhoneNumberControl.errors?.['required']">شماره موبایل الزامی است</ng-container>
+  <ng-container *ngIf="mobilePhoneNumberControl.errors?.['pattern']">فرمت شماره صحیح نیست</ng-container>
 </ng-template>

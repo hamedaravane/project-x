@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BusinessValue} from '@shared/data-access/models/category.model';
+import {ProfessionEnum} from '@shared/data-access/models/category.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {FilterSort, InfluencerSummary, SortOption, SortOrder} from './model/filter-sort.model';
 
@@ -32,7 +32,7 @@ export class FilterSortService {
     this.filteredInfluencerSummaryList$ = this.categorizeInfluencersList(filteredList, option);
   }
 
-  private filterInfluencersList(originalList: InfluencerSummary[], filter: BusinessValue | null): InfluencerSummary[] {
+  private filterInfluencersList(originalList: InfluencerSummary[], filter: ProfessionEnum | null): InfluencerSummary[] {
     return originalList.filter((item: InfluencerSummary): boolean => {
       if (filter) {
         return item.category === filter;
