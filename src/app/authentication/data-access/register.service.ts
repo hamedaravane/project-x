@@ -1,5 +1,12 @@
 import {inject, Injectable} from '@angular/core';
-import {combinedFormDataToCreateUserDto, combineInfluencerInfo, Gender, InfluencerFormRawValue, influencerFormRawValueToInfluencerDetailInfo, InfluencerRegistrationForm, UserAuthInfo, UserType, UserTypeDetail, UserTypeLabel} from '@user/data-access/model/user.model';
+import {
+  combinedFormDataToCreateUserDto,
+  Gender,
+  UserAuthProperties,
+  UserType,
+  UserTypeDetail,
+  UserTypeLabel,
+} from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject, combineLatest, filter, firstValueFrom, map, Observable} from 'rxjs';
 import {ProfessionEnum} from '@shared/data-access/models/category.model';
@@ -14,59 +21,62 @@ import {ProfessionEnum} from '@shared/data-access/models/category.model';
  */
 export class RegisterService {
   private readonly userTypeSubject = new BehaviorSubject<UserTypeDetail | null>(null);
-  private readonly userBasicInfoSubject = new BehaviorSubject<UserAuthInfo | null>(null);
-  private readonly influencerDetailInfoSubject = new BehaviorSubject<InfluencerRegistrationForm | null>(null);
+  private readonly userAuthInfoSubject = new BehaviorSubject<UserAuthProperties | null>(null);
+  private readonly detailRegistrationInfoSubject = new BehaviorSubject<DetailedInfoRegistration | null>(null);
   private readonly authInfra = inject(AuthInfra);
 
   /**
-   * Returns an observable for the UserTypeDetail. The observable filters out null values.
-   * @returns {Observable<UserTypeDetail>} An observable stream of user type details.
+   * Returns an observable of UserType. The observable filters out null values.
+   * @returns {Observable<UserTypeDetail>}
    */
   get userType$(): Observable<UserTypeDetail> {
     return this.userTypeSubject.asObservable().pipe(filter(Boolean));
   }
+
   /**
    * Updates the UserTypeDetail and notifies all subscribers.
-   * @param {UserTypeDetail} type The new user type detail to be set.
+   * @param {UserTypeDetail} type The new user type to be set.
    */
   set userType$(type: UserTypeDetail) {
     this.userTypeSubject.next(type);
   }
+
   /**
-   * Returns an observable for the UserBasicInfo. The observable filters out null values.
-   * @returns {Observable<UserAuthInfo>} An observable stream of user basic information.
+   * Returns an observable for the UserAuthInfo. The observable filters out null values.
+   * @returns {Observable<UserAuthProperties>} An observable stream of username & password.
    */
-  get userBasicInfo$(): Observable<UserAuthInfo> {
-    return this.userBasicInfoSubject.asObservable().pipe(filter(Boolean));
-  }
-  /**
-   * Updates the UserBasicInfo and notifies all subscribers.
-   * @param {UserAuthInfo} info The new user basic information to be set.
-   */
-  set userBasicInfo$(info: UserAuthInfo) {
-    this.userBasicInfoSubject.next(info);
-  }
-  /**
-   * @description Returns an observable for the InfluencerDetailInfo. The observable filters out null values.
-   * @returns {Observable<InfluencerRegistrationForm>} An observable stream of influencer detail information.
-   */
-  get influencerDetailInfo$(): Observable<InfluencerRegistrationForm> {
-    return this.influencerDetailInfoSubject.asObservable().pipe(filter(Boolean));
-  }
-  /**
-   * Updates the InfluencerDetailInfo and notifies all subscribers.
-   * @param {InfluencerRegistrationForm} info The new influencer detail information to be set.
-   */
-  set influencerDetailInfo$(info: InfluencerRegistrationForm) {
-    this.influencerDetailInfoSubject.next(info);
+  get userAuthInfo$(): Observable<UserAuthProperties> {
+    return this.userAuthInfoSubject.asObservable().pipe(filter(Boolean));
   }
 
   /**
-   * @description set data into influencerDetailInfo$ state from formRawData
-   * @param formValue {InfluencerFormRawValue}
+   * Updates the UserBasicInfo and notifies all subscribers.
+   * @param {UserAuthProperties} info The new user basic information to be set.
    */
-  setFormValueIntoInfluencerDetailInfo(formValue: InfluencerFormRawValue): void {
-    this.influencerDetailInfo$ = influencerFormRawValueToInfluencerDetailInfo(formValue);
+  set userAuthInfo$(info: UserAuthProperties) {
+    this.userAuthInfoSubject.next(info);
+  }
+
+  /**
+   * @description Returns an observable for the InfluencerDetailInfo. The observable filters out null values.
+   * @returns {Observable<DetailedInfoRegistration>} An observable stream of influencer detail information.
+   */
+  get detailInfoRegistration$(): Observable<DetailedInfoRegistration> {
+    return this.detailRegistrationInfoSubject.asObservable().pipe(filter(Boolean));
+  }
+
+  /**
+   * Updates the InfluencerDetailInfo and notifies all subscribers.
+   * @param {DetailedInfoRegistration} info The new influencer detail information to be set.
+   */
+  set detailInfoRegistration$(info: DetailedInfoRegistration) {
+    this.detailRegistrationInfoSubject.next(info);
+  }
+
+  private async _combineBasicInfo(): Promise<UserAuthProperties & UserType> {
+    const authInfo = await firstValueFrom(this.userAuthInfo$);
+    const userType = await firstValueFrom(this.userType$);
+    return new Promise(() => ({...authInfo, ...userType}));
   }
 
   submitInfluencerData(): void {
@@ -74,10 +84,9 @@ export class RegisterService {
   }
 
   private async _submitInfluencerData(): Promise<void> {
-    console.log('fill up the values of registration steps...');
     this.userType$ = {value: UserType.INFLUENCER, label: UserTypeLabel.INFLUENCER};
-    this.userBasicInfo$ = {email: 'hamedaravane@gmail.com', password: '11559933Aa!'};
-    this.influencerDetailInfo$ = {
+    this.userAuthInfo$ = {email: 'hamedaravane@gmail.com', password: '11559933Aa!'};
+    this.detailInfoRegistration$ = {
       persianName: 'حامد',
       persianLastName: 'ارغوان',
       name: 'hamed',
@@ -94,9 +103,9 @@ export class RegisterService {
       homePhoneNumber: null,
     };
     const combinedValues = await firstValueFrom(
-      combineLatest([this.userType$, this.userBasicInfo$, this.influencerDetailInfo$]).pipe(
+      combineLatest([this.userType$, this.userAuthInfo$, this.detailInfoRegistration$]).pipe(
         map(([userType, userBasicInfo, influencerDetailInfo]) => {
-          return combineInfluencerInfo(userType, userBasicInfo, influencerDetailInfo);
+          return combineRegistrationData(userType, userBasicInfo, influencerDetailInfo);
         }),
       ),
     );

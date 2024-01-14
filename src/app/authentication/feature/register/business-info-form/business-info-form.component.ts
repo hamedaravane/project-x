@@ -52,19 +52,19 @@ export class BusinessInfoFormComponent {
     instagramAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z0-9._]{1,30}$/)),
     twitterAccount: new FormControl<string | null>(null, Validators.pattern(/^[a-zA-Z_][a-zA-Z0-9_]{0,14}$/)),
     businessIndustry: new FormControl<IndustryEnum | null>(null, Validators.required),
-    businessCity: new FormControl<any | null>(null, Validators.required),
+    city: new FormControl<any | null>(null, Validators.required),
     mobilePhoneNumber: new FormControl<number | null>(null, [Validators.required, Validators.pattern(/^9[0-9]{9}$/)]),
-    businessAddress: new FormControl<string | null>(null, persianCharValidator),
+    address: new FormControl<string | null>(null, persianCharValidator),
   });
 
-  persianBusinessName = this.businessInfoForm.get('persianBusinessName') as AbstractControl<string | null>;
-  englishBusinessName = this.businessInfoForm.get('englishBusinessName') as AbstractControl<string | null>;
-  instagramAccount = this.businessInfoForm.get('instagramAccount') as AbstractControl<string | null>;
-  twitterAccount = this.businessInfoForm.get('instagramAccount') as AbstractControl<string | null>;
-  businessIndustry = this.businessInfoForm.get('businessIndustry') as AbstractControl<IndustryEnum | null>;
-  businessCity = this.businessInfoForm.get('businessCity') as AbstractControl<any | null>;
-  mobilePhoneNumber = this.businessInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
-  businessAddress = this.businessInfoForm.get('businessAddress') as AbstractControl<string | null>;
+  persianBusinessNameControl = this.businessInfoForm.get('persianBusinessName') as AbstractControl<string | null>;
+  englishBusinessNameControl = this.businessInfoForm.get('englishBusinessName') as AbstractControl<string | null>;
+  instagramAccountControl = this.businessInfoForm.get('instagramAccount') as AbstractControl<string | null>;
+  twitterAccountControl = this.businessInfoForm.get('instagramAccount') as AbstractControl<string | null>;
+  businessIndustryControl = this.businessInfoForm.get('businessIndustry') as AbstractControl<IndustryEnum | null>;
+  cityControl = this.businessInfoForm.get('city') as AbstractControl<any | null>;
+  mobilePhoneNumberControl = this.businessInfoForm.get('mobilePhoneNumber') as AbstractControl<number | null>;
+  addressControl = this.businessInfoForm.get('address') as AbstractControl<string | null>;
 
   submitForm(): void {
     this.router.navigateByUrl('/auth/register/select-profile-photo');
