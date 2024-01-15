@@ -186,9 +186,9 @@ interface BusinessCreateUserDtoProperties {
   english_business_name: string;
   business_industry: IndustryEnum;
 
-  persian_name: null;
+  persian_first_name: null;
   persian_last_name: null;
-  name: null;
+  first_name: null;
   last_name: null;
   birth_date: null;
   gender: null;
@@ -197,9 +197,9 @@ interface BusinessCreateUserDtoProperties {
 
 interface InfluencerCreateUserDtoProperties {
   user_type: UserType.INFLUENCER;
-  persian_name: string;
+  persian_first_name: string;
   persian_last_name: string;
-  name: string;
+  first_name: string;
   last_name: string;
   birth_date: Date;
   gender: Gender;
@@ -225,6 +225,7 @@ export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegist
         email: registrationForm.email,
         password: registrationForm.password,
         user_type: UserType.INFLUENCER,
+        influencer_type: registrationForm.influencerType,
         instagram_account: registrationForm.instagramAccount,
         mobile_phone_number: registrationForm.mobilePhoneNumber,
         address: registrationForm.address,
@@ -237,13 +238,12 @@ export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegist
         state: registrationForm.state,
         home_phone_number: registrationForm.homePhoneNumber,
         postal_code: registrationForm.postalCode,
-        persian_name: registrationForm.persianInfluencerName,
+        persian_first_name: registrationForm.persianInfluencerName,
         persian_last_name: registrationForm.persianInfluencerLastName,
-        name: registrationForm.englishInfluencerName,
+        first_name: registrationForm.englishInfluencerName,
         last_name: registrationForm.englishInfluencerLastName,
         birth_date: registrationForm.birthDate,
         gender: registrationForm.gender,
-        influencer_type: registrationForm.influencerType,
         persian_business_name: null,
         english_business_name: null,
         business_industry: null,
@@ -265,9 +265,9 @@ export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegist
         state: registrationForm.state,
         home_phone_number: registrationForm.homePhoneNumber,
         postal_code: registrationForm.postalCode,
-        persian_name: null,
+        persian_first_name: null,
         persian_last_name: null,
-        name: null,
+        first_name: null,
         last_name: null,
         birth_date: null,
         gender: null,
