@@ -80,6 +80,19 @@ export class RegisterService {
     return new Promise(() => ({...authInfo, ...userType}));
   }
 
+  uploadProfilePhoto(data: Blob): void {
+    this._uploadProfilePhoto(data).then();
+  }
+
+  private async _uploadProfilePhoto(data: Blob): Promise<void> {
+    const formData = new FormData();
+    formData.set('file', data);
+    const response = await firstValueFrom(this.authInfra.uploadProfilePhoto(formData));
+    if (response) {
+      console.log('photo successfully sent to backend');
+    }
+  }
+
   submitInfluencerData(): void {
     this._submitInfluencerData().then();
   }
