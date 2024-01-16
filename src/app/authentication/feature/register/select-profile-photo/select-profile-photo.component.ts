@@ -20,6 +20,7 @@ export class SelectProfilePhotoComponent extends PhotoComponent {
   private readonly registerService = inject(RegisterService);
 
   submitRegistration(): void {
-    this.registerService.submitInfluencerData();
+    // this.registerService.submitInfluencerData();
+    this.registerService.uploadProfilePhoto(this.croppedImageFromData);
   }
 }

@@ -30,4 +30,13 @@ export class AuthInfra extends BaseInfraService {
       }),
     );
   }
+
+  uploadProfilePhoto(data: FormData): Observable<ApiResponse<void>> {
+    console.log('sending profile photo to backend...');
+    return this.http.post(`${this.apiUrl}/users/photo`, data).pipe(
+      map(res => {
+        return this.convertWithApiResponse(res, (): void => {});
+      })
+    );
+  }
 }

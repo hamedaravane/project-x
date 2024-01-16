@@ -15,6 +15,7 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
   compressedFile!: File;
   selectedImageSrc: string | null = null;
   croppedImageSrc: string | null = null;
+  croppedImageFromData!: Blob;
   isCropModalVisible = false;
   cropper!: Cropper;
 
@@ -55,7 +56,7 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
       this.cropper.destroy();
     }
 
-    const options = {aspectRatio: 1};
+    const options = {aspectRatio: 1, background: true, center: true, autoCropArea: 2};
     this.cropper = this.cropperService.initCropper(this.imageElement, options);
   }
 
@@ -77,10 +78,20 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
     if (canvas) {
       this.selectedImageSrc = null;
       this.croppedImageSrc = canvas.toDataURL();
+      new Promise<Blob>((resolve, reject): void => {
+        canvas.toBlob((blob) => {
+          if (blob) {
+            this.croppedImageFromData = blob;
+            resolve(this.croppedImageFromData);
+          } else {
+            reject('Cannot convert canvas to file');
+          }
+        });
+      }).then(() => {
+        this.cropper.destroy();
+        this.isCropModalVisible = false;
+      });
     }
-
-    this.cropper.destroy();
-    this.isCropModalVisible = false;
   }
 
   /**
