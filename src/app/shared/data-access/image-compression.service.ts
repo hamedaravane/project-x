@@ -6,10 +6,10 @@ import imageCompression from 'browser-image-compression';
 })
 export class ImageCompressionService {
   private readonly DEFAULT_OPTIONS = {
-    maxSizeMB: 1,
-    maxWidthOrHeight: 1000,
+    maxSizeMB: 0.7,
+    maxWidthOrHeight: 900,
     useWebWorker: true,
-    maxIteration: 15,
+    maxIteration: 30,
   };
 
   /**

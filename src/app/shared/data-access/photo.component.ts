@@ -16,6 +16,7 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
   selectedImageSrc: string | null = null;
   croppedImageSrc: string | null = null;
   croppedImageFile!: File;
+  compressedCroppedImageFile!: File;
   isCropModalVisible = false;
   cropper!: Cropper;
 
@@ -78,22 +79,28 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
     if (canvas) {
       this.selectedImageSrc = null;
       this.croppedImageSrc = canvas.toDataURL();
-      new Promise<void>((resolve, reject): void => {
-        canvas.toBlob((blob) => {
-          if (blob) {
-            this.croppedImageFile = new File([blob], 'profile_photo', { type: blob.type });
-            console.log('cropped image file generated');
-            console.log('size: ', Math.round(this.croppedImageFile.size / 1024 / 1024), 'MB');
-            resolve();
-          } else {
-            reject('Failed to convert canvas to Blob.');
-          }
-        });
-      }).then(() => {
+      this._canvasToCompressedFile(canvas).then((f) => {
         this.cropper.destroy();
         this.isCropModalVisible = false;
+        this.compressedCroppedImageFile = f;
+        console.log(this.compressedCroppedImageFile.size);
       });
     }
+  }
+
+  private async _canvasToCompressedFile(canvas: HTMLCanvasElement): Promise<File> {
+    return new Promise<File>((res2, reject) => {
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const rawFile = new File([blob], 'blob', {type: blob.type});
+          new Promise<File>(() => {
+            res2(this.imageCompressionService.compressImage(rawFile));
+          });
+        } else {
+          reject('failed to load the blob');
+        }
+      });
+    });
   }
 
   /**
