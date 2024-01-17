@@ -80,11 +80,11 @@ export class RegisterService {
     return new Promise(() => ({...authInfo, ...userType}));
   }
 
-  uploadProfilePhoto(data: Blob): void {
+  uploadProfilePhoto(data: File): void {
     this._uploadProfilePhoto(data).then();
   }
 
-  private async _uploadProfilePhoto(data: Blob): Promise<void> {
+  private async _uploadProfilePhoto(data: File): Promise<void> {
     const formData = new FormData();
     formData.set('file', data);
     const response = await firstValueFrom(this.authInfra.uploadProfilePhoto(formData));
