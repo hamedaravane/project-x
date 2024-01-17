@@ -21,6 +21,6 @@ export class SelectProfilePhotoComponent extends PhotoComponent {
 
   submitRegistration(): void {
     // this.registerService.submitInfluencerData();
-    this.registerService.uploadProfilePhoto(this.croppedImageFile);
+    this.registerService.uploadProfilePhoto(this.compressedCroppedImageFile);
   }
 }
