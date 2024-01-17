@@ -15,7 +15,7 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
   compressedFile!: File;
   selectedImageSrc: string | null = null;
   croppedImageSrc: string | null = null;
-  croppedImageFromData!: Blob;
+  croppedImageFile!: File;
   isCropModalVisible = false;
   cropper!: Cropper;
 
@@ -78,13 +78,15 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
     if (canvas) {
       this.selectedImageSrc = null;
       this.croppedImageSrc = canvas.toDataURL();
-      new Promise<Blob>((resolve, reject): void => {
+      new Promise<void>((resolve, reject): void => {
         canvas.toBlob((blob) => {
           if (blob) {
-            this.croppedImageFromData = blob;
-            resolve(this.croppedImageFromData);
+            this.croppedImageFile = new File([blob], 'profile_photo', { type: blob.type });
+            console.log('cropped image file generated');
+            console.log('size: ', Math.round(this.croppedImageFile.size / 1024 / 1024), 'MB');
+            resolve();
           } else {
-            reject('Cannot convert canvas to file');
+            reject('Failed to convert canvas to Blob.');
           }
         });
       }).then(() => {
