@@ -1,4 +1,4 @@
-import {NgClass, NgIf} from '@angular/common';
+import {AsyncPipe, NgClass, NgIf} from '@angular/common';
 import {Component, ElementRef, ViewChild, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {RegisterService} from '@authentication/data-access/register.service';
@@ -6,12 +6,13 @@ import {PhotoComponent} from '@shared/data-access/photo.component';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzUploadModule} from 'ng-zorro-antd/upload';
+import {NzProgressComponent} from 'ng-zorro-antd/progress';
 
 @Component({
   standalone: true,
   selector: 'app-select-profile-photo',
   templateUrl: './select-profile-photo.component.html',
-  imports: [NzUploadModule, NzButtonModule, NzModalModule, NgIf, RouterLink, NgClass],
+  imports: [NzUploadModule, NzButtonModule, NzModalModule, NgIf, RouterLink, NgClass, NzProgressComponent, AsyncPipe],
   styleUrls: ['./select-profile-photo.component.scss'],
 })
 export class SelectProfilePhotoComponent extends PhotoComponent {
@@ -23,4 +24,6 @@ export class SelectProfilePhotoComponent extends PhotoComponent {
     // this.registerService.submitInfluencerData();
     this.registerService.uploadProfilePhoto(this.compressedCroppedImageFile);
   }
+
+  protected readonly Boolean = Boolean;
 }

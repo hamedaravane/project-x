@@ -1,31 +1,30 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, inject} from '@angular/core';
-import {CropperService} from '@shared/data-access/cropper.service';
-import {ImageCompressionService} from '@shared/data-access/image-compression.service';
+import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import Cropper from 'cropperjs';
+import {ImageCompressor} from '@shared/util/image-compressor/image-compressor';
+import {map} from 'rxjs';
+import ImageCropper from '@shared/util/cropper/cropper';
 
 @Component({
   standalone: true,
   template: ``,
 })
-export class PhotoComponent implements AfterViewInit, OnDestroy {
-  private readonly imageCompressionService = inject(ImageCompressionService);
-  private readonly cropperService = inject(CropperService);
+export class PhotoComponent implements OnDestroy {
   @ViewChild('fileInput') fileInput!: ElementRef;
-  @ViewChild('image') imageElement!: ElementRef;
-  compressedFile!: File;
+  @ViewChild('image') imageElement!: ElementRef<HTMLImageElement>;
+  cropper!: Cropper;
+  isCropModalVisible = false;
   selectedImageSrc: string | null = null;
   croppedImageSrc: string | null = null;
-  croppedImageFile!: File;
   compressedCroppedImageFile!: File;
-  isCropModalVisible = false;
-  cropper!: Cropper;
-
-  /**
-   * Programmatically triggers the file input to open the file selection dialog.
-   */
-  triggerFileInput(): void {
-    this.fileInput.nativeElement.click();
-  }
+  progressPercentage$ = ImageCompressor.progressPercentage.pipe(
+    (map((value) => {
+      if (value > 99.0 || value < 0.01) {
+        return false;
+      } else {
+        return value;
+      }
+    }))
+  );
 
   /**
    * Handles the event when a file is selected. Compresses and prepares the image for cropping.
@@ -39,14 +38,14 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    this.imageCompressionService.compressImage(input.files[0]).then(f => {
-      this.compressedFile = f;
-      this.selectedImageSrc = URL.createObjectURL(this.compressedFile);
-      this.isCropModalVisible = true;
-      setTimeout(() => {
+    ImageCompressor.compress(input.files[0], 'READY_FOR_CROP')
+      .then((file): void => {
+        this.selectedImageSrc = URL.createObjectURL(file);
+        this.isCropModalVisible = true;
+      })
+      .then(() => {
         this.initCropper();
       });
-    });
   }
 
   /**
@@ -56,9 +55,9 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
     if (this.cropper) {
       this.cropper.destroy();
     }
-
-    const options = {aspectRatio: 1, background: true, center: true, autoCropArea: 2};
-    this.cropper = this.cropperService.initCropper(this.imageElement, options);
+    setTimeout(() => {
+      this.cropper = new Cropper(this.imageElement.nativeElement, ImageCropper.profilePhotoOptions);
+    });
   }
 
   /**
@@ -79,28 +78,19 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
     if (canvas) {
       this.selectedImageSrc = null;
       this.croppedImageSrc = canvas.toDataURL();
-      this._canvasToCompressedFile(canvas).then((f) => {
-        this.cropper.destroy();
-        this.isCropModalVisible = false;
-        this.compressedCroppedImageFile = f;
-        console.log(this.compressedCroppedImageFile.size);
-      });
+      ImageCompressor.canvasToFile(canvas)
+        .then((file): File => {
+          return file;
+        })
+        .then((croppedFile): Promise<File> => {
+          return ImageCompressor.compress(croppedFile, 'PROFILE_PHOTOS');
+        })
+        .then((compressedCroppedFile) => {
+          this.cropper.destroy();
+          this.isCropModalVisible = false;
+          this.compressedCroppedImageFile = compressedCroppedFile;
+        });
     }
-  }
-
-  private async _canvasToCompressedFile(canvas: HTMLCanvasElement): Promise<File> {
-    return new Promise<File>((res2, reject) => {
-      canvas.toBlob((blob) => {
-        if (blob) {
-          const rawFile = new File([blob], 'blob', {type: blob.type});
-          new Promise<File>(() => {
-            res2(this.imageCompressionService.compressImage(rawFile));
-          });
-        } else {
-          reject('failed to load the blob');
-        }
-      });
-    });
   }
 
   /**
@@ -112,12 +102,10 @@ export class PhotoComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * After view initialization, sets up the Cropper if a cropped image is already available.
+   * Programmatically triggers the file input to open the file selection dialog.
    */
-  ngAfterViewInit(): void {
-    if (this.croppedImageSrc) {
-      this.initCropper();
-    }
+  triggerFileInput(): void {
+    this.fileInput.nativeElement.click();
   }
 
   /**
