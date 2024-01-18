@@ -52,7 +52,7 @@
   </button>
 </div>
 
-<nz-modal nzCentered [nzClosable]="false" [(nzVisible)]="isCropModalVisible">
+<nz-modal nzCentered [nzZIndex]="1" [nzClosable]="false" [(nzVisible)]="isCropModalVisible">
   <ng-container *nzModalTitle>
     <i class="fa-solid fa-crop me-3"></i>
     <span>محدوده‌ی عکس را انتخاب کنید</span>
@@ -69,3 +69,18 @@
     </div>
   </ng-container>
 </nz-modal>
+
+@if (progressPercentage$ | async; as value) {
+  <nz-modal [nzVisible]="!!value"
+            nzTitle="در حال پردازش..."
+            [nzCentered]="true"
+            [nzZIndex]="12"
+            [nzFooter]="null"
+            [nzClosable]="false"
+            nzWidth="75%"
+            [nzMaskClosable]="false">
+    <ng-container *nzModalContent>
+      <nz-progress [nzPercent]="value"></nz-progress>
+    </ng-container>
+  </nz-modal>
+}
