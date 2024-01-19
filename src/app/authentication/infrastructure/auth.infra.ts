@@ -39,4 +39,14 @@ export class AuthInfra extends BaseInfraService {
       })
     );
   }
+
+  login(email: string, password: string): Observable<ApiResponse<void>> {
+    return this.http
+      .post<any>(`${this.apiUrl}/login`, { email, password })
+      .pipe(
+        map(res => {
+          return this.convertWithApiResponse(res, (): void => {});
+        })
+      );
+  }
 }
