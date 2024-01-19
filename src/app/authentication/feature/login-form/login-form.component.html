@@ -123,8 +123,8 @@
 </form>
 
 <ng-template #EmailErrorTip>
-  <ng-container *ngIf="email.errors?.['email']">آدرس ایمیل صحیح نیست</ng-container>
-  <ng-container *ngIf="email.errors?.['required']">آدرس ایمیل را وارد کنید</ng-container>
+  <ng-container *ngIf="emailControl.errors?.['email']">آدرس ایمیل صحیح نیست</ng-container>
+  <ng-container *ngIf="emailControl.errors?.['required']">آدرس ایمیل را وارد کنید</ng-container>
 </ng-template>
 <ng-template #UserIcon>
   <i class="fa-solid fa-user"></i>
