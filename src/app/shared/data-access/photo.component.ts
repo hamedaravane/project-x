@@ -88,6 +88,7 @@ export class PhotoComponent implements OnDestroy {
         .then((compressedCroppedFile) => {
           this.cropper.destroy();
           this.isCropModalVisible = false;
+          console.log(compressedCroppedFile.size);
           this.compressedCroppedImageFile = compressedCroppedFile;
         });
     }

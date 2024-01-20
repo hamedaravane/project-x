@@ -1,4 +1,4 @@
-import {NgIf} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
@@ -7,8 +7,8 @@ import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
-import {LoginService} from '@authentication/data-access/login.service';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
+import {LoginService} from '@authentication/data-access/login.service';
 
 @Component({
   standalone: true,
@@ -23,11 +23,14 @@ import {LoginEntity} from '@authentication/data-access/model/auth.model';
     NzLayoutModule,
     NzButtonModule,
     RouterLink,
+    AsyncPipe,
   ],
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
   private readonly loginService = inject(LoginService);
+  isLoading$ = this.loginService.isLoadingLogin$;
+  showLoginError$ = this.loginService.hasLoginError$;
   loginFrom = new FormGroup({
     email: new FormControl<null | string>(null, [Validators.required, Validators.email]),
     password: new FormControl<null | string>(null, Validators.required),

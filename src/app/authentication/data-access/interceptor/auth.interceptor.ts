@@ -1,6 +1,6 @@
+import {catchError, EMPTY, Observable, throwError} from 'rxjs';
 import {inject, Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {catchError, EMPTY, Observable, throwError} from 'rxjs';
 import {TokenStorageService} from '@authentication/data-access/token-storage.service';
 import {LoginService} from '@authentication/data-access/login.service';
 
