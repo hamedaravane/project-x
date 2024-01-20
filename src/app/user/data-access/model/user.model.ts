@@ -279,6 +279,62 @@ export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegist
   }
 }
 
+export interface UserEntity2 {
+  uuid: string;
+  email: string;
+  type: UserType;
+  influencerType: ProfessionEnum;
+  businessType: IndustryEnum;
+  firstName: string;
+  lastName: string;
+  persianFirstName: string;
+  persianLastName: string;
+  nationalIdNumber: string;
+  nationalRegistrationCode: string;
+  birth: Date;
+  instagramUsername: string;
+  twitterUsername: string;
+  gender: Gender;
+  maritalStatus: MaritalStatus;
+  mobilePhoneNumber: string;
+  country: string;
+  state: string;
+  city: string;
+  address: string;
+  postalCode: string;
+  businessName: string;
+  businessInstagramUsername: string;
+  businessTwitterUsername: string;
+}
+
+export interface UserDto2 {
+  uuid: string;
+  email: string;
+  type: UserType;
+  influencerType: ProfessionEnum;
+  businessType: IndustryEnum;
+  firstName: string;
+  lastName: string;
+  persianFirstName: string;
+  persianLastName: string;
+  nationalIdNumber: string;
+  nationalRegistrationCode: string;
+  birth: Date;
+  instagramUsername: string;
+  twitterUsername: string;
+  gender: Gender;
+  maritalStatus: MaritalStatus;
+  mobilePhoneNumber: string;
+  country: string;
+  state: string;
+  city: string;
+  address: string;
+  postalCode: string;
+  businessName: string;
+  businessInstagramUsername: string;
+  businessTwitterUsername: string;
+}
+
 export interface UserDto {
   id: number;
   type: string;

@@ -107,6 +107,7 @@
   </div>
   <button
     nz-button
+    [nzLoading]="(isLoading$ | async)!"
     nzBlock
     class="mt-4"
     nzType="primary"

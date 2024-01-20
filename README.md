@@ -23,7 +23,9 @@ Follow these simple steps to get the Purple Project up and running on your local
    Good practice to check these for better experience with yarn:
    ```bash
    yarn dlx @yarnpkg/doctor
-   yarn dlx @yarnpkg/sdks base
+   ```
+   ```bash
+    yarn dlx @yarnpkg/sdks base
    ```
 
 4. **Start the Application:**

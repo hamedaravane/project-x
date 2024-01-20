@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {BehaviorSubject, firstValueFrom} from 'rxjs';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
+import {BehaviorSubject, firstValueFrom} from 'rxjs';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
 
 @Injectable({providedIn: 'root'})
@@ -10,6 +10,18 @@ export class LoginService {
   private readonly userKey = 'currentUser';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+
+  authSubject$ = new BehaviorSubject<string | null>(null);
+  userSubject$ = new BehaviorSubject<string | null>(null);
+  isLoggedInSubject$ = new BehaviorSubject<string | null>(null);
+  isLoadingLoginSubject$ = new BehaviorSubject<string | null>(null);
+  hasLoginErrorSubject$ = new BehaviorSubject<string | null>(null);
+
+  auth$ = this.authSubject$.asObservable();
+  user$ = this.userSubject$.asObservable();
+  isLoggedIn$ = this.isLoggedInSubject$.asObservable();
+  isLoadingLogin$ = this.isLoadingLoginSubject$.asObservable();
+  hasLoginError$ = this.hasLoginErrorSubject$.asObservable();
 
   private hasToken(): boolean {
     return !!localStorage.getItem(this.tokenKey);
