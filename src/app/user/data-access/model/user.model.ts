@@ -279,62 +279,98 @@ export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegist
   }
 }
 
-export interface UserEntity2 {
-  uuid: string;
-  email: string;
-  type: UserType;
-  influencerType: ProfessionEnum;
-  businessType: IndustryEnum;
-  firstName: string;
-  lastName: string;
-  persianFirstName: string;
-  persianLastName: string;
-  nationalIdNumber: string;
-  nationalRegistrationCode: string;
-  birth: Date;
-  instagramUsername: string;
-  twitterUsername: string;
-  gender: Gender;
-  maritalStatus: MaritalStatus;
-  mobilePhoneNumber: string;
-  country: string;
-  state: string;
-  city: string;
-  address: string;
-  postalCode: string;
-  businessName: string;
-  businessInstagramUsername: string;
-  businessTwitterUsername: string;
+export type UserEntity2 = CommonUserEntityProperties & (InfluencerUserEntityProperties | BusinessUserEntityProperties);
+export type UserDto2 = CommonUserDtoProperties & (InfluencerUserDtoProperties | BusinessUserDtoProperties);
+
+export function userEntityToDto(data: UserEntity2): UserDto2 {
+  switch (data.type) {
+    case UserType.INFLUENCER:
+      return {
+        uuid: data.uuid,
+        email: data.email,
+        mobile_phone_number: data.mobilePhoneNumber,
+        country: data.country,
+        state: data.state,
+        city: data.city,
+        address: data.address,
+        postal_code: data.postalCode,
+        type: UserType.INFLUENCER,
+        influencer_type: data.influencerType,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        persian_first_name: data.persianFirstNamer,
+        persian_last_name: data.persianLastName,
+        national_id_number: data.nationalIdNumber,
+        national_registration_code: data.nationalRegistrationCode,
+        birth: data.birth,
+        instagram_username: data.instagramUsername,
+        twitter_username: data.twitterUsername,
+        gender: data.gender,
+        maritalStatus: data.maritalStatus,
+      };
+    case UserType.BUSINESS:
+      return {
+        uuid: data.uuid,
+        email: data.email,
+        mobile_phone_number: data.mobilePhoneNumber,
+        country: data.country,
+        state: data.state,
+        city: data.city,
+        address: data.address,
+        postal_code: data.postalCode,
+        type: UserType.BUSINESS,
+        business_type: data.businessType,
+        business_name: data.businessName,
+        business_instagram_username: data.businessInstagramUsername,
+        business_twitter_username: data.businessTwitterUsername
+      };
+  }
 }
 
-export interface UserDto2 {
-  uuid: string;
-  email: string;
-  type: UserType;
-  influencerType: ProfessionEnum;
-  businessType: IndustryEnum;
-  firstName: string;
-  lastName: string;
-  persianFirstName: string;
-  persianLastName: string;
-  nationalIdNumber: string;
-  nationalRegistrationCode: string;
-  birth: Date;
-  instagramUsername: string;
-  twitterUsername: string;
-  gender: Gender;
-  maritalStatus: MaritalStatus;
-  mobilePhoneNumber: string;
-  country: string;
-  state: string;
-  city: string;
-  address: string;
-  postalCode: string;
-  businessName: string;
-  businessInstagramUsername: string;
-  businessTwitterUsername: string;
+export function userDtoToEntity(data: UserDto2): UserEntity2 {
+  switch (data.type) {
+    case UserType.INFLUENCER:
+      return {
+        uuid: data.uuid,
+        email: data.email,
+        mobilePhoneNumber: data.mobile_phone_number,
+        country: data.country,
+        state: data.state,
+        city: data.city,
+        address: data.address,
+        postalCode: data.postal_code,
+        type: UserType.INFLUENCER,
+        influencerType: data.influencer_type,
+        firstName: data.first_name,
+        lastName: data.last_name,
+        persianFirstName: data.persian_first_name,
+        persianLastName: data.persian_last_name,
+        nationalIdNumber: data.national_id_number,
+        nationalRegistrationCode: data.national_registration_code,
+        birth: data.birth,
+        instagramUsername: data.instagram_username,
+        twitterUsername: data.twitter_username,
+        gender: data.gender,
+        maritalStatus: data.maritalStatus,
+      };
+    case UserType.BUSINESS:
+      return {
+        uuid: data.uuid,
+        email: data.email,
+        mobilePhoneNumber: data.mobile_phone_number,
+        country: data.country,
+        state: data.state,
+        city: data.city,
+        address: data.address,
+        postalCode: data.postal_code,
+        type: UserType.BUSINESS,
+        businessType: data.business_type,
+        businessName: data.business_name,
+        businessInstagramUsername: data.business_instagram_username,
+        businessTwitterUsername: data.business_twitter_username
+      };
+  }
 }
-
 export interface UserDto {
   id: number;
   type: string;
@@ -414,4 +450,72 @@ export function userDtoToDomain(value: UserDto): User {
     mobilePhoneNumber: value.mobile_phone_number,
     businessAddress: value.business_address,
   };
+}
+
+interface CommonUserEntityProperties {
+  uuid: string;
+  email: string;
+  mobilePhoneNumber: string;
+  country: string;
+  state: string;
+  city: string;
+  address: string;
+  postalCode: string;
+}
+interface InfluencerUserEntityProperties {
+  type: UserType.INFLUENCER;
+  influencerType: ProfessionEnum;
+  firstName: string;
+  lastName: string;
+  persianFirstName: string;
+  persianLastName: string;
+  nationalIdNumber: string;
+  nationalRegistrationCode: string;
+  birth: Date;
+  instagramUsername: string;
+  twitterUsername: string;
+  gender: Gender;
+  maritalStatus: MaritalStatus;
+}
+interface BusinessUserEntityProperties {
+  type: UserType.BUSINESS;
+  businessType: IndustryEnum;
+  businessName: string;
+  businessInstagramUsername: string;
+  businessTwitterUsername: string;
+}
+
+interface CommonUserDtoProperties {
+  uuid: string;
+  email: string;
+  mobile_phone_number: string;
+  country: string;
+  state: string;
+  city: string;
+  address: string;
+  postal_code: string;
+}
+
+interface InfluencerUserDtoProperties {
+  type: UserType.INFLUENCER;
+  influencer_type: ProfessionEnum;
+  first_name: string;
+  last_name: string;
+  persian_first_name: string;
+  persian_last_name: string;
+  national_id_number: string;
+  national_registration_code: string;
+  birth: Date;
+  instagram_username: string;
+  twitter_username: string;
+  gender: Gender;
+  maritalStatus: MaritalStatus;
+}
+
+interface BusinessUserDtoProperties {
+  type: UserType.BUSINESS;
+  business_type: IndustryEnum;
+  business_name: string;
+  business_instagram_username: string;
+  business_twitter_username: string;
 }
