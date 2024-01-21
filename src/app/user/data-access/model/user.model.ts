@@ -81,33 +81,6 @@ export type CombinedRegistrationForm =
   & OptionalRegistrationDetailForm
   & SpecialDetailRegistrationProperty;
 
-export interface UserEntityDto {
-  uuid: string;
-  email: string;
-  password: string;
-  user_type: UserType;
-  first_name: string;
-  last_name: string;
-  persian_first_name: string;
-  persian_last_name: string;
-  national_id_number: string;
-  national_registration_code: string;
-  date_of_birth: Date;
-  instagram_username: string;
-  twitter_username: string;
-  gender: Gender;
-  marital_status: MaritalStatus;
-  mobile_phone_number: string;
-  country_of_residence: string;
-  state_of_residence: string;
-  city_of_residence: string;
-  address_of_residence: string;
-  postal_code: string;
-  business_name: string;
-  business_instagram_username: string;
-  business_twitter_username: string;
-}
-
 export function combineRegistrationProperties (
   authInfo: UserAuthInfo,
   detailedInfoRegistration: DetailRegistrationForm,
@@ -185,7 +158,6 @@ interface BusinessCreateUserDtoProperties {
   persian_business_name: string;
   english_business_name: string;
   business_industry: IndustryEnum;
-
   persian_first_name: null;
   persian_last_name: null;
   first_name: null;
@@ -204,7 +176,6 @@ interface InfluencerCreateUserDtoProperties {
   birth_date: Date;
   gender: Gender;
   influencer_type: ProfessionEnum;
-
   persian_business_name: null;
   english_business_name: null;
   business_industry: null;

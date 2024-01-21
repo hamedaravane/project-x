@@ -17,8 +17,6 @@ export class AuthInterceptor implements HttpInterceptor{
     if (accessToken) {
       req = req.clone({
         setHeaders: { Authorization: `Bearer ${accessToken}` },
-        // !Attention: it used only at Fake API, remove it in real app
-        params: req.params.set('auth-token', accessToken),
       });
     }
 
@@ -31,13 +29,9 @@ export class AuthInterceptor implements HttpInterceptor{
   ): Observable<HttpEvent<unknown>> {
     return source.pipe(
       catchError((error: HttpErrorResponse) => {
-        // try to avoid errors on logout
-        // therefore we check the url path of '/auth/'
         if (error.status === 401 && !urlPath.includes('/auth/')) {
           return this.handle401();
         }
-
-        // rethrow error
         return throwError(() => error);
       })
     );

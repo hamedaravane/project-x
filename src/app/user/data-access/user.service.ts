@@ -20,4 +20,9 @@ export class UserService {
   async getUserData(): Promise<void> {
     this.user$ = await lastValueFrom(this.userDataService.getMockUserInfo());
   }
+
+  private async _getUser(): Promise<void> {
+    /*const user = await lastValueFrom();
+    this.userSubject.next();*/
+  }
 }
