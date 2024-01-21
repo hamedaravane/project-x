@@ -119,7 +119,7 @@ export class RegisterService {
     const combinedRegistrationForm = combineRegistrationProperties(userAuthInfo, detailRegistrationProperties);
     const createUserDto = combinedFormDataToCreateUserDto(combinedRegistrationForm);
     const response = await firstValueFrom(this.authInfra.register(createUserDto));
-    if (response.isSuccess) {
+    if (response.success) {
       console.log('sent');
     }
   }
