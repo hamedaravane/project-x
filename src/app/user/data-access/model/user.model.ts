@@ -288,6 +288,7 @@ export function userEntityToDto(data: UserEntity2): UserDto2 {
       return {
         uuid: data.uuid,
         email: data.email,
+        profile_photo_src: data.profilePhotoSrc,
         mobile_phone_number: data.mobilePhoneNumber,
         country: data.country,
         state: data.state,
@@ -298,7 +299,7 @@ export function userEntityToDto(data: UserEntity2): UserDto2 {
         influencer_type: data.influencerType,
         first_name: data.firstName,
         last_name: data.lastName,
-        persian_first_name: data.persianFirstNamer,
+        persian_first_name: data.persianFirstName,
         persian_last_name: data.persianLastName,
         national_id_number: data.nationalIdNumber,
         national_registration_code: data.nationalRegistrationCode,
@@ -312,6 +313,7 @@ export function userEntityToDto(data: UserEntity2): UserDto2 {
       return {
         uuid: data.uuid,
         email: data.email,
+        profile_photo_src: data.profilePhotoSrc,
         mobile_phone_number: data.mobilePhoneNumber,
         country: data.country,
         state: data.state,
@@ -333,6 +335,7 @@ export function userDtoToEntity(data: UserDto2): UserEntity2 {
       return {
         uuid: data.uuid,
         email: data.email,
+        profilePhotoSrc: data.profile_photo_src,
         mobilePhoneNumber: data.mobile_phone_number,
         country: data.country,
         state: data.state,
@@ -357,6 +360,7 @@ export function userDtoToEntity(data: UserDto2): UserEntity2 {
       return {
         uuid: data.uuid,
         email: data.email,
+        profilePhotoSrc: data.profile_photo_src,
         mobilePhoneNumber: data.mobile_phone_number,
         country: data.country,
         state: data.state,
@@ -455,6 +459,7 @@ export function userDtoToDomain(value: UserDto): User {
 interface CommonUserEntityProperties {
   uuid: string;
   email: string;
+  profilePhotoSrc: string;
   mobilePhoneNumber: string;
   country: string;
   state: string;
@@ -488,6 +493,7 @@ interface BusinessUserEntityProperties {
 interface CommonUserDtoProperties {
   uuid: string;
   email: string;
+  profile_photo_src: string;
   mobile_phone_number: string;
   country: string;
   state: string;
