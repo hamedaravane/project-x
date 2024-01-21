@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "paths": {
       "@authentication/*": ["src/app/authentication/*"],
+      "@authentication": ["src/app/authentication/api/index.ts"],
       "@businesses/*": ["src/app/businesses/*"],
       "@cache/*": ["src/app/cache/*"],
       "@date/*": ["src/app/date/*"],

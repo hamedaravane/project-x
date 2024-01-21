@@ -60,6 +60,10 @@ export class LoginService {
     return userJson ? JSON.parse(userJson) : null;
   }
 
+  private async _getCurrentUser(): Promise<void> {
+    const cachedUser = localStorage.getItem(this.userKey);
+  }
+
   getProfilePhoto(userMail: string): void {
     this._getProfilePhoto(userMail).then();
   }
@@ -67,7 +71,7 @@ export class LoginService {
   private async _getProfilePhoto(userMail: string): Promise<void> {
     const response = await firstValueFrom(this.authInfra.getProfilePhoto(userMail));
     if (response.success) {
-      return this.userProfilePhotoSubject.next(response.data.profilePhotoSrc);
+      this.userProfilePhotoSubject.next(response.data.profilePhotoSrc);
     }
   }
 }
