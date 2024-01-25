@@ -371,43 +371,6 @@ export function userDtoToEntity(data: UserDto2): UserEntity2 {
       };
   }
 }
-export interface UserDto {
-  id: number;
-  type: string;
-  first_name: string;
-  last_name: string;
-  nick_name: string | null;
-  english_first_name: string | null;
-  english_last_name: string | null;
-  profile_photo_src: string | null;
-  persian_business_name: string;
-  english_business_name: string | null;
-  instagram_id: string;
-  email_address: string;
-  business_industry: string;
-  business_city: string;
-  mobile_phone_number: string;
-  business_address: string;
-}
-
-export interface User {
-  id: number;
-  type: UserTypeDetail;
-  firstName: string;
-  lastName: string;
-  nickName?: string;
-  englishFirstName?: string;
-  englishLastName?: string;
-  profilePhotoSrc?: string;
-  persianBusinessName: string;
-  englishBusinessName?: string;
-  instagramAccountId: string;
-  emailAddress: string;
-  businessIndustry: string;
-  businessCity: string;
-  mobilePhoneNumber: string;
-  businessAddress: string;
-}
 
 export interface SideMenuOption {
   title: string;
