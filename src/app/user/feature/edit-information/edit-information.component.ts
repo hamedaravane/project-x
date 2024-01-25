@@ -2,7 +2,6 @@ import {BidiModule} from '@angular/cdk/bidi';
 import {NgClass, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {Component, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {User} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {industryCategoryList} from '@shared/data-access/models/category.model';
@@ -15,6 +14,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {Observable, firstValueFrom} from 'rxjs';
+import {UserEntity2} from '@user/data-access/model/user.model';
 
 @Component({
   standalone: true,
@@ -40,10 +40,10 @@ import {Observable, firstValueFrom} from 'rxjs';
 export class EditInformationComponent extends PhotoComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
   private readonly citiesListService = inject(CitiesListService);
-  private readonly userData$: Observable<User> = this.userService.user$;
+  private readonly userData$ = this.userService.user$;
   @ViewChild('fileInput') override fileInput!: ElementRef;
   @ViewChild('image') override imageElement!: ElementRef;
-  userData!: User;
+  userData!: UserEntity2;
 
   cityList = this.citiesListService.cityList;
 
@@ -98,9 +98,9 @@ export class EditInformationComponent extends PhotoComponent implements OnInit {
     this.instagramAccountId.setValue(this.userData.instagramAccountId);
     this.emailAddress.setValue(this.userData.emailAddress);
     this.businessIndustry.setValue(this.userData.businessIndustry);
-    this.businessCity.setValue(this.userData.businessCity);
+    this.businessCity.setValue(this.userData.city);
     this.mobilePhoneNumber.setValue(this.userData.mobilePhoneNumber || null);
-    this.businessAddress.setValue(this.userData.businessAddress);
+    this.businessAddress.setValue(this.userData.address);
   }
   submitForm(): void {
     console.log('userInfoForm is submitted');

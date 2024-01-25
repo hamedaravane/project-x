@@ -1,19 +1,19 @@
 import {Injectable, inject} from '@angular/core';
-import {User} from '@user/data-access/model/user.model';
 import {UserDataService} from '@user/data-access/user.data.service';
-import {BehaviorSubject, Observable, lastValueFrom} from 'rxjs';
+import {BehaviorSubject, Observable, lastValueFrom, filter} from 'rxjs';
+import {UserEntity2} from '@user/data-access/model/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private readonly userDataService: UserDataService = inject(UserDataService);
-  private readonly userSubject: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
+  private readonly userSubject = new BehaviorSubject<UserEntity2>(null);
 
-  get user$(): Observable<User> {
-    return this.userSubject.asObservable();
+  get user$(): Observable<UserEntity2> {
+    return this.userSubject.asObservable().pipe(filter(Boolean));
   }
-  set user$(value: User) {
+  set user$(value: UserEntity2) {
     this.userSubject.next(value);
   }
 
