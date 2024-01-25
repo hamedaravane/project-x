@@ -81,33 +81,6 @@ export type CombinedRegistrationForm =
   & OptionalRegistrationDetailForm
   & SpecialDetailRegistrationProperty;
 
-export interface UserEntityDto {
-  uuid: string;
-  email: string;
-  password: string;
-  user_type: UserType;
-  first_name: string;
-  last_name: string;
-  persian_first_name: string;
-  persian_last_name: string;
-  national_id_number: string;
-  national_registration_code: string;
-  date_of_birth: Date;
-  instagram_username: string;
-  twitter_username: string;
-  gender: Gender;
-  marital_status: MaritalStatus;
-  mobile_phone_number: string;
-  country_of_residence: string;
-  state_of_residence: string;
-  city_of_residence: string;
-  address_of_residence: string;
-  postal_code: string;
-  business_name: string;
-  business_instagram_username: string;
-  business_twitter_username: string;
-}
-
 export function combineRegistrationProperties (
   authInfo: UserAuthInfo,
   detailedInfoRegistration: DetailRegistrationForm,
@@ -185,7 +158,6 @@ interface BusinessCreateUserDtoProperties {
   persian_business_name: string;
   english_business_name: string;
   business_industry: IndustryEnum;
-
   persian_first_name: null;
   persian_last_name: null;
   first_name: null;
@@ -204,7 +176,6 @@ interface InfluencerCreateUserDtoProperties {
   birth_date: Date;
   gender: Gender;
   influencer_type: ProfessionEnum;
-
   persian_business_name: null;
   english_business_name: null;
   business_industry: null;
@@ -288,6 +259,7 @@ export function userEntityToDto(data: UserEntity2): UserDto2 {
       return {
         uuid: data.uuid,
         email: data.email,
+        profile_photo_src: data.profilePhotoSrc,
         mobile_phone_number: data.mobilePhoneNumber,
         country: data.country,
         state: data.state,
@@ -298,7 +270,7 @@ export function userEntityToDto(data: UserEntity2): UserDto2 {
         influencer_type: data.influencerType,
         first_name: data.firstName,
         last_name: data.lastName,
-        persian_first_name: data.persianFirstNamer,
+        persian_first_name: data.persianFirstName,
         persian_last_name: data.persianLastName,
         national_id_number: data.nationalIdNumber,
         national_registration_code: data.nationalRegistrationCode,
@@ -312,6 +284,7 @@ export function userEntityToDto(data: UserEntity2): UserDto2 {
       return {
         uuid: data.uuid,
         email: data.email,
+        profile_photo_src: data.profilePhotoSrc,
         mobile_phone_number: data.mobilePhoneNumber,
         country: data.country,
         state: data.state,
@@ -333,6 +306,7 @@ export function userDtoToEntity(data: UserDto2): UserEntity2 {
       return {
         uuid: data.uuid,
         email: data.email,
+        profilePhotoSrc: data.profile_photo_src,
         mobilePhoneNumber: data.mobile_phone_number,
         country: data.country,
         state: data.state,
@@ -357,6 +331,7 @@ export function userDtoToEntity(data: UserDto2): UserEntity2 {
       return {
         uuid: data.uuid,
         email: data.email,
+        profilePhotoSrc: data.profile_photo_src,
         mobilePhoneNumber: data.mobile_phone_number,
         country: data.country,
         state: data.state,
@@ -418,6 +393,7 @@ export function userDtoToDomain(value: UserDto): User {
 interface CommonUserEntityProperties {
   uuid: string;
   email: string;
+  profilePhotoSrc: string;
   mobilePhoneNumber: string;
   country: string;
   state: string;
@@ -451,6 +427,7 @@ interface BusinessUserEntityProperties {
 interface CommonUserDtoProperties {
   uuid: string;
   email: string;
+  profile_photo_src: string;
   mobile_phone_number: string;
   country: string;
   state: string;

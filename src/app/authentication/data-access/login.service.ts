@@ -23,6 +23,9 @@ export class LoginService {
   isLoadingLogin$ = this.isLoadingLoginSubject$.asObservable();
   hasLoginError$ = this.hasLoginErrorSubject$.asObservable();
 
+  private userProfilePhotoSubject = new BehaviorSubject<string | null>(null);
+  userProfilePhoto$ = this.userProfilePhotoSubject.asObservable();
+
   private hasToken(): boolean {
     return !!localStorage.getItem(this.tokenKey);
   }
@@ -32,10 +35,10 @@ export class LoginService {
 
   private async _login(data: LoginEntity): Promise<void> {
     const res = await firstValueFrom(this.authInfra.login(data.email, data.password));
-    if (res.isSuccess) {
+    if (res.success) {
       const storage = data.rememberMe ? localStorage : sessionStorage;
-      storage.setItem(this.tokenKey, res.token);
-      storage.setItem(this.userKey, JSON.stringify(res.user));
+      // storage.setItem(this.tokenKey, res.token);
+      storage.setItem(this.userKey, JSON.stringify(res.data));
       this.isAuthenticatedSubject.next(true);
     }
   }
@@ -55,5 +58,20 @@ export class LoginService {
   getCurrentUser(): any | null {
     const userJson = localStorage.getItem(this.userKey) || sessionStorage.getItem(this.userKey);
     return userJson ? JSON.parse(userJson) : null;
+  }
+
+  private async _getCurrentUser(): Promise<void> {
+    const cachedUser = localStorage.getItem(this.userKey);
+  }
+
+  getProfilePhoto(userMail: string): void {
+    this._getProfilePhoto(userMail).then();
+  }
+
+  private async _getProfilePhoto(userMail: string): Promise<void> {
+    const response = await firstValueFrom(this.authInfra.getProfilePhoto(userMail));
+    if (response.success) {
+      this.userProfilePhotoSubject.next(response.data.profilePhotoSrc);
+    }
   }
 }
