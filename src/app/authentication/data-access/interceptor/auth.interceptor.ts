@@ -1,6 +1,12 @@
 import {catchError, EMPTY, Observable, throwError} from 'rxjs';
 import {inject, Injectable} from '@angular/core';
-import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from '@angular/common/http';
 import {TokenStorageService} from '@authentication/data-access/token-storage.service';
 import {LoginService} from '@authentication/data-access/login.service';
 
@@ -13,14 +19,11 @@ export class AuthInterceptor implements HttpInterceptor{
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const accessToken = this.tokenStorageService.getAccessToken();
-
     if (accessToken) {
       req = req.clone({
-
         setHeaders: { Authorization: `Bearer ${accessToken}` },
       });
     }
-
     return next.handle(req).pipe(s => this.handleErrors(s, req.url));
   }
 
