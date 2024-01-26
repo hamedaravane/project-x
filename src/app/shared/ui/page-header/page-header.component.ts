@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf, NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {User} from '@user/data-access/model/user.model';
+import {UserEntity} from '@user/data-access/model/user.model';
 import {LayoutService} from '@shared/data-access/layout.service';
 import {RouteService} from '@shared/data-access/route.service';
 import {Observable} from 'rxjs';
@@ -15,7 +15,7 @@ import {Observable} from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageHeaderComponent {
-  @Input() user$!: Observable<User>;
+  @Input() user$!: Observable<UserEntity>;
   private readonly routeService: RouteService = inject(RouteService);
   private readonly layoutService: LayoutService = inject(LayoutService);
   backButtonVisible$: Observable<boolean> = this.routeService.isRoot$;

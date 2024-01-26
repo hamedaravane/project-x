@@ -2,7 +2,7 @@ import {NgIf} from '@angular/common';
 import {Component, OnInit, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {CollaborationsService} from '@user/data-access/collaborations.service';
-import {User} from '@user/data-access/model/user.model';
+import {UserEntity} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
 import {PageHeaderComponent} from '@shared/ui/page-header/page-header.component';
 import {SideMenuComponent} from '@shared/ui/side-menu/side-menu.component';
@@ -18,7 +18,7 @@ import {Observable} from 'rxjs';
 export class MainComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
   private readonly collaborationsService: CollaborationsService = inject(CollaborationsService);
-  userData$: Observable<User> = this.userService.user$;
+  userData$: Observable<UserEntity> = this.userService.user$;
 
   ngOnInit(): void {
     this.userService.getUserData().then();

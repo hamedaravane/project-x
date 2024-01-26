@@ -1,30 +1,44 @@
 import {Injectable} from '@angular/core';
-import {User, UserDto, userDtoToDomain} from '@user/data-access/model/user.model';
+import {
+  Gender,
+  MaritalStatus,
+  UserDto,
+  userDtoToEntity,
+  UserEntity,
+  UserType,
+} from '@user/data-access/model/user.model';
 import {Observable, of} from 'rxjs';
+import {ProfessionEnum} from '@shared/data-access/models/category.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserDataService {
-  getMockUserInfo(): Observable<User> {
+  getMockUserInfo(): Observable<UserEntity> {
     const mockData: UserDto = {
-      id: 1226574,
-      type: 'business',
-      first_name: 'المیرا',
-      last_name: 'ثابتی',
-      nick_name: 'elmira',
-      english_first_name: 'Saabeti',
-      english_last_name: 'elimiraaa',
+      type: UserType.INFLUENCER,
+      uuid: '1226574',
+      email: 'elmirasaabeti@gmail.com',
       profile_photo_src: 'assets/mock/profile-photos/business-profile-photo.png',
-      persian_business_name: 'گیان',
-      english_business_name: 'gian flower',
-      instagram_id: 'gianflowerr',
-      email_address: 'elmirasaabeti@gmail.com',
-      business_industry: 'Cinema',
-      business_city: 'Shiraz',
       mobile_phone_number: '9017701599',
-      business_address: 'خیابان سعدی، کوچه شهید حافظی ۱، پلاک ۱۴۱',
+      country: 'Iran',
+      state: 'Shiraz',
+      city: 'Shiraz',
+      address: 'خیابان سعدی، کوچه شهید حافظی ۱، پلاک ۱۴۱',
+      postal_code: '99113448',
+      influencer_type: ProfessionEnum.Actor,
+      first_name: 'Saabeti',
+      last_name: 'elimiraaa',
+      persian_first_name: 'المیرا',
+      persian_last_name: 'ثابتی',
+      national_id_number: '0923269274',
+      national_registration_code: '0923269274',
+      instagram_username: 'gianflowerr',
+      twitter_username: 'gianflowerr',
+      birth: new Date('1995-08-15'),
+      gender: Gender.MALE,
+      maritalStatus: MaritalStatus.SINGLE
     };
-    return of(userDtoToDomain(mockData));
+    return of(userDtoToEntity(mockData));
   }
 }

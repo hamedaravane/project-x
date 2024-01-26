@@ -13,8 +13,8 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzSelectModule} from 'ng-zorro-antd/select';
-import {Observable, firstValueFrom} from 'rxjs';
-import {UserEntity2} from '@user/data-access/model/user.model';
+import { firstValueFrom} from 'rxjs';
+import {UserEntity, UserType} from '@user/data-access/model/user.model';
 
 @Component({
   standalone: true,
@@ -43,13 +43,13 @@ export class EditInformationComponent extends PhotoComponent implements OnInit {
   private readonly userData$ = this.userService.user$;
   @ViewChild('fileInput') override fileInput!: ElementRef;
   @ViewChild('image') override imageElement!: ElementRef;
-  userData!: UserEntity2;
+  userData!: UserEntity;
 
   cityList = this.citiesListService.cityList;
 
   industryList = industryCategoryList;
 
-  userInfoForm: FormGroup = new FormGroup({
+  userInfoForm = new FormGroup({
     firstName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
     lastName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
     persianBusinessName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
@@ -89,15 +89,21 @@ export class EditInformationComponent extends PhotoComponent implements OnInit {
   async loadUserData(): Promise<void> {
     this.userData = await firstValueFrom(this.userData$);
     this.croppedImageSrc = this.userData.profilePhotoSrc || null;
-    this.persianBusinessName.setValue(this.userData.persianBusinessName);
-    this.englishBusinessName.setValue(this.userData.englishBusinessName || null);
-    this.firstName.setValue(this.userData.firstName);
-    this.lastName.setValue(this.userData.lastName);
-    this.englishFirstName.setValue(this.userData.englishFirstName || null);
-    this.englishLastName.setValue(this.userData.englishLastName || null);
-    this.instagramAccountId.setValue(this.userData.instagramAccountId);
-    this.emailAddress.setValue(this.userData.emailAddress);
-    this.businessIndustry.setValue(this.userData.businessIndustry);
+    switch (this.userData.type) {
+      case UserType.BUSINESS:
+        this.persianBusinessName.setValue(this.userData.persianBusinessName);
+        this.englishBusinessName.setValue(this.userData.businessName);
+        this.businessIndustry.setValue(this.userData.businessType);
+        break;
+      case UserType.INFLUENCER:
+        this.firstName.setValue(this.userData.firstName);
+        this.lastName.setValue(this.userData.lastName);
+        this.englishFirstName.setValue(this.userData.firstName || null);
+        this.englishLastName.setValue(this.userData.lastName || null);
+        this.instagramAccountId.setValue(this.userData.instagramUsername);
+        break;
+    }
+    this.emailAddress.setValue(this.userData.email);
     this.businessCity.setValue(this.userData.city);
     this.mobilePhoneNumber.setValue(this.userData.mobilePhoneNumber || null);
     this.businessAddress.setValue(this.userData.address);

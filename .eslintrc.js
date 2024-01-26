@@ -1,22 +1,21 @@
-{
-  "root": true,
-  "ignorePatterns": ["projects/**/*"],
-  "overrides": [
+module.exports = {
+  root: true,
+  ignorePatterns: ['projects/**/*'],
+  overrides: [
     {
-      "files": ["*.ts"],
-      "extends": [
+      files: ['*.ts'],
+      extends: [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "prettier"
       ],
-      "plugins": ["unused-imports"],
-      "parser": "@typescript-eslint/parser",
-      "rules": {
-        //"indent": ["error", 2],
-        "quotes": ["error", "single", {"allowTemplateLiterals": true}],
-        "semi": ["error", "always"],
+      plugins: ['unused-imports'],
+      parser: '@typescript-eslint/parser',
+      rules: {
+        quotes: ["error", "single", {"allowTemplateLiterals": true}],
+        semi: ["error", "always"],
         "@angular-eslint/template/interactive-supports-focus": ["off"],
         "@typescript-eslint/no-explicit-any": ["off"],
         "@typescript-eslint/explicit-function-return-type": ["error"],
@@ -35,17 +34,17 @@
             "style": "kebab-case"
           }
         ]
-      }
+      },
     },
     {
-      "files": ["*.html"],
-      "excludedFiles": ["*inline-template-*.component.html"],
-      "extends": [
+      files: ['*.html'],
+      excludedFiles: ['*inline-template-*.component.html'],
+      extends: [
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility",
         "prettier"
       ],
-      "rules": {
+      rules: {
         "@angular-eslint/template/interactive-supports-focus": ["off"],
         "@angular-eslint/template/click-events-have-key-events": ["off"],
         "prettier": [
@@ -54,7 +53,7 @@
             "parser": "angular"
           }
         ]
-      }
+      },
     }
-  ]
+  ],
 }
