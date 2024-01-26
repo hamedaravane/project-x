@@ -1,8 +1,8 @@
 import {AsyncPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
-import {Component, DestroyRef, Input, OnInit, inject} from '@angular/core';
+import {Component, DestroyRef, inject, Input, OnInit} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLink} from '@angular/router';
-import {SideMenuOption, User} from '@user/data-access/model/user.model';
+import {SideMenuOption, UserEntity, UserType} from '@user/data-access/model/user.model';
 import {sideMenuAnimations} from '@shared/data-access/animations/animations';
 import {LayoutService} from '@shared/data-access/layout.service';
 import {SkeletonComponent} from '@shared/ui/skeleton/skeleton.component';
@@ -18,11 +18,11 @@ import {Observable} from 'rxjs';
   animations: [sideMenuAnimations],
 })
 export class SideMenuComponent implements OnInit {
-  @Input() user$!: Observable<User>;
+  @Input() user$!: Observable<UserEntity>;
   private readonly layoutService: LayoutService = inject(LayoutService);
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   isSideMenuOpen$: Observable<boolean> = this.layoutService.isSideMenuOpen$;
-  userData!: User;
+  userData!: UserEntity;
   sideMenuOptions!: SideMenuOption[];
 
   ngOnInit(): void {
@@ -41,8 +41,8 @@ export class SideMenuComponent implements OnInit {
       {title: 'تنظیمات', icon: 'fa-gear', url: 'settings'},
       {title: 'خروج از حساب کاربری', icon: 'fa-right-from-bracket', url: ''},
     ];
-    this.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((data: User) => {
-      if (data.type?.value === 'influencer') {
+    this.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((data: UserEntity) => {
+      if (data.type === UserType.INFLUENCER) {
         this.sideMenuOptions = influencerSideMenuOptions;
       } else {
         this.sideMenuOptions = businessSideMenuOptions;

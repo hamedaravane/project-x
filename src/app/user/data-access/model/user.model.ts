@@ -250,10 +250,10 @@ export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegist
   }
 }
 
-export type UserEntity2 = CommonUserEntityProperties & (InfluencerUserEntityProperties | BusinessUserEntityProperties);
-export type UserDto2 = CommonUserDtoProperties & (InfluencerUserDtoProperties | BusinessUserDtoProperties);
+export type UserEntity = CommonUserEntityProperties & (InfluencerUserEntityProperties | BusinessUserEntityProperties);
+export type UserDto = CommonUserDtoProperties & (InfluencerUserDtoProperties | BusinessUserDtoProperties);
 
-export function userEntityToDto(data: UserEntity2): UserDto2 {
+export function userEntityToDto(data: UserEntity): UserDto {
   switch (data.type) {
     case UserType.INFLUENCER:
       return {
@@ -294,17 +294,18 @@ export function userEntityToDto(data: UserEntity2): UserDto2 {
         type: UserType.BUSINESS,
         business_type: data.businessType,
         business_name: data.businessName,
+        persian_business_name: data.persianBusinessName,
         business_instagram_username: data.businessInstagramUsername,
         business_twitter_username: data.businessTwitterUsername
       };
   }
 }
-
-export function userDtoToEntity(data: UserDto2): UserEntity2 {
+export function userDtoToEntity(data: UserDto): UserEntity {
   switch (data.type) {
     case UserType.INFLUENCER:
       return {
         uuid: data.uuid,
+        typeLabel: UserTypeLabel.INFLUENCER,
         email: data.email,
         profilePhotoSrc: data.profile_photo_src,
         mobilePhoneNumber: data.mobile_phone_number,
@@ -339,6 +340,8 @@ export function userDtoToEntity(data: UserDto2): UserEntity2 {
         address: data.address,
         postalCode: data.postal_code,
         type: UserType.BUSINESS,
+        typeLabel: UserTypeLabel.BUSINESS,
+        persianBusinessName: data.persian_business_name,
         businessType: data.business_type,
         businessName: data.business_name,
         businessInstagramUsername: data.business_instagram_username,
@@ -346,50 +349,15 @@ export function userDtoToEntity(data: UserDto2): UserEntity2 {
       };
   }
 }
-
 export interface SideMenuOption {
   title: string;
   icon: string;
   url: string;
 }
-
 export interface UserTypeDetail {
   value: UserType;
   label: UserTypeLabel;
 }
-
-function addUserTypeDetail(value: string): UserTypeDetail {
-  if (!value) {
-    throw new Error('User type is not fetched or undefined');
-  }
-  const labels: Record<string, string> = {
-    business: UserTypeLabel.BUSINESS,
-    influencer: UserTypeLabel.INFLUENCER,
-  };
-  return {value, label: labels[value]} as UserTypeDetail;
-}
-
-export function userDtoToDomain(value: UserDto): User {
-  return {
-    id: value.id,
-    type: addUserTypeDetail(value.type),
-    firstName: value.first_name,
-    lastName: value.last_name,
-    nickName: value.nick_name || undefined,
-    englishFirstName: value.english_first_name || undefined,
-    englishLastName: value.english_last_name || undefined,
-    profilePhotoSrc: value.profile_photo_src || undefined,
-    persianBusinessName: value.persian_business_name,
-    englishBusinessName: value.english_business_name || undefined,
-    instagramAccountId: value.instagram_id,
-    emailAddress: value.email_address,
-    businessIndustry: value.business_industry,
-    businessCity: value.business_city,
-    mobilePhoneNumber: value.mobile_phone_number,
-    businessAddress: value.business_address,
-  };
-}
-
 interface CommonUserEntityProperties {
   uuid: string;
   email: string;
@@ -403,6 +371,7 @@ interface CommonUserEntityProperties {
 }
 interface InfluencerUserEntityProperties {
   type: UserType.INFLUENCER;
+  typeLabel: UserTypeLabel.INFLUENCER;
   influencerType: ProfessionEnum;
   firstName: string;
   lastName: string;
@@ -418,12 +387,13 @@ interface InfluencerUserEntityProperties {
 }
 interface BusinessUserEntityProperties {
   type: UserType.BUSINESS;
+  typeLabel: UserTypeLabel.BUSINESS;
   businessType: IndustryEnum;
   businessName: string;
+  persianBusinessName: string;
   businessInstagramUsername: string;
   businessTwitterUsername: string;
 }
-
 interface CommonUserDtoProperties {
   uuid: string;
   email: string;
@@ -435,7 +405,6 @@ interface CommonUserDtoProperties {
   address: string;
   postal_code: string;
 }
-
 interface InfluencerUserDtoProperties {
   type: UserType.INFLUENCER;
   influencer_type: ProfessionEnum;
@@ -451,11 +420,11 @@ interface InfluencerUserDtoProperties {
   gender: Gender;
   maritalStatus: MaritalStatus;
 }
-
 interface BusinessUserDtoProperties {
   type: UserType.BUSINESS;
   business_type: IndustryEnum;
   business_name: string;
+  persian_business_name: string;
   business_instagram_username: string;
   business_twitter_username: string;
 }

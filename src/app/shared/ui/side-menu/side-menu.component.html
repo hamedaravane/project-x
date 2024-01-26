@@ -7,9 +7,13 @@
         </ng-container>
       </div>
       <div class="mt-2 mx-auto w-fit">
-        <span>{{ userData.firstName }}</span>
-        <span>&nbsp;</span>
-        <span>{{ userData.lastName }}</span>
+        @if (userData.type === 'influencer') {
+          <span>{{ userData.firstName }}</span>
+          <span>&nbsp;</span>
+          <span>{{ userData.lastName }}</span>
+        } @else if (userData.type === 'business') {
+          <span>{{ userData.persianBusinessName }}</span>
+        }
       </div>
       <div class="mt-12">
         <div *ngFor="let option of sideMenuOptions" class="mt-8" [routerLink]="option.url" (click)="closeMenu()">

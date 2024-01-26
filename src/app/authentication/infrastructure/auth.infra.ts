@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {CreateUserDto, UserDto2, userDtoToEntity, UserEntity2} from '@user/data-access/model/user.model';
+import {CreateUserDto, UserDto, userDtoToEntity, UserEntity} from '@user/data-access/model/user.model';
 import {BaseInfraService} from 'src/app/base/data-access/services/base-infra.service';
 import {ApiResponse} from 'src/app/base/data-access/models/api-response.model';
 import {Observable, map} from 'rxjs';
@@ -15,15 +15,15 @@ export class AuthInfra extends BaseInfraService {
   /**
    * @description send registration form to backend.
    * @param {CreateUserDto} data - user register form.
-   * @returns {Observable<ApiResponse<UserEntity2>>} - void.
+   * @returns {Observable<ApiResponse<UserEntity>>} - void.
    * @author Hamed Arghavan
    *
    * @example
    * this._authInfra.register(data);
    */
-  register(data: CreateUserDto): Observable<ApiResponse<UserEntity2>> {
+  register(data: CreateUserDto): Observable<ApiResponse<UserEntity>> {
     console.log('register post to the server...');
-    return this.http.post<ApiResponse<UserDto2>>(`${this.apiUrl}/users/create`, data).pipe(
+    return this.http.post<ApiResponse<UserDto>>(`${this.apiUrl}/users/create`, data).pipe(
       map((res) => {
         return this.convertWithApiResponse(res, userDtoToEntity);
       }),
@@ -39,9 +39,9 @@ export class AuthInfra extends BaseInfraService {
     );
   }
 
-  login(email: string, password: string): Observable<ApiResponse<UserEntity2>> {
+  login(email: string, password: string): Observable<ApiResponse<UserEntity>> {
     return this.http
-      .post<ApiResponse<UserDto2>>(`${this.apiUrl}/login`, { email, password })
+      .post<ApiResponse<UserDto>>(`${this.apiUrl}/login`, { email, password })
       .pipe(
         map(res => {
           return this.convertWithApiResponse(res, userDtoToEntity);
