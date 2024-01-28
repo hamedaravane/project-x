@@ -44,6 +44,7 @@ module.exports = {
         "plugin:@angular-eslint/template/accessibility",
         "prettier"
       ],
+      plugins: ["prettier"],
       rules: {
         "@angular-eslint/template/interactive-supports-focus": ["off"],
         "@angular-eslint/template/click-events-have-key-events": ["off"],
