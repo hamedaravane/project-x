@@ -47,7 +47,7 @@ module.exports = {
       rules: {
         "@angular-eslint/template/interactive-supports-focus": ["off"],
         "@angular-eslint/template/click-events-have-key-events": ["off"],
-        "prettier": [
+        "prettier/prettier": [
           "error",
           {
             "parser": "angular"
