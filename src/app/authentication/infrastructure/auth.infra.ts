@@ -22,7 +22,6 @@ export class AuthInfra extends BaseInfraService {
    * this._authInfra.register(data);
    */
   register(data: CreateUserDto): Observable<ApiResponse<UserEntity>> {
-    console.log('register post to the server...');
     return this.http.post<ApiResponse<UserDto>>(`${this.apiUrl}/users/create`, data).pipe(
       map((res) => {
         return this.convertWithApiResponse(res, userDtoToEntity);
@@ -31,7 +30,6 @@ export class AuthInfra extends BaseInfraService {
   }
 
   uploadProfilePhoto(data: FormData): Observable<ApiResponse<void>> {
-    console.log('sending profile photo to backend...');
     return this.http.post<ApiResponse<void>>(`${this.apiUrl}/users/photo`, data).pipe(
       map(res => {
         return this.convertWithApiResponse(res, (): void => {});

@@ -30,6 +30,7 @@ import {LoginService} from '@authentication/data-access/login.service';
 export class LoginFormComponent {
   private readonly loginService = inject(LoginService);
   isLoading$ = this.loginService.isLoadingLogin$;
+  // TODO: implement error for login
   showLoginError$ = this.loginService.hasLoginError$;
   loginFrom = new FormGroup({
     email: new FormControl<null | string>(null, [Validators.required, Validators.email]),
@@ -44,11 +45,6 @@ export class LoginFormComponent {
   isHidePassword = true;
 
   submitLoginForm(): void {
-    const formValue: LoginEntity = {
-      email: this.emailControl.value,
-      password: this.passwordControl.value,
-      rememberMe: this.rememberMeControl.value
-    };
-    this.loginService.login(formValue);
+    this.loginService.login(this.loginFrom.value as LoginEntity);
   }
 }
