@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class TokenStorageService {
-  readonly APP_PREFIX = 'PURPLE';
+  readonly APP_PREFIX: string = 'APP';
   accessTokenKey = 'accessToken';
   refreshTokenKey = 'refreshToken';
 
