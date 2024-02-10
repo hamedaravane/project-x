@@ -9,6 +9,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {LoginService} from '@authentication/data-access/login.service';
+import {NzMessageModule} from 'ng-zorro-antd/message';
 
 @Component({
   standalone: true,
@@ -24,6 +25,7 @@ import {LoginService} from '@authentication/data-access/login.service';
     NzButtonModule,
     RouterLink,
     AsyncPipe,
+    NzMessageModule
   ],
   styleUrls: ['./login-form.component.scss'],
 })

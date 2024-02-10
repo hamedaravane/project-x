@@ -2,12 +2,14 @@ import {inject, Injectable} from '@angular/core';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject, firstValueFrom} from 'rxjs';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
+import {MessageService} from '../../notification/data-access/message.service';
 
 @Injectable({providedIn: 'root'})
 export class LoginService {
   private readonly authInfra = inject(AuthInfra);
   private readonly tokenKey = 'authToken';
   private readonly userKey = 'currentUser';
+  private readonly messageService = inject(MessageService);
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
@@ -34,12 +36,17 @@ export class LoginService {
   }
 
   private async _login(data: LoginEntity): Promise<void> {
+    console.log('user clicked on login button');
     const res = await firstValueFrom(this.authInfra.login(data.email, data.password));
     if (res.success) {
       const storage = data.rememberMe ? localStorage : sessionStorage;
       // storage.setItem(this.tokenKey, res.token);
       storage.setItem(this.userKey, JSON.stringify(res.data));
       this.isAuthenticatedSubject.next(true);
+      this.messageService.success('با موفقیت وارد شدید');
+    } else {
+      console.log('failed');
+      this.messageService.error('خطایی رخ داده');
     }
   }
 
