@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {CreateUserDto, UserDto, userDtoToEntity, UserEntity} from '@user/data-access/model/user.model';
 import {BaseInfraService} from 'src/app/base/data-access/services/base-infra.service';
 import {ApiResponse} from 'src/app/base/data-access/models/api-response.model';
-import {Observable, map} from 'rxjs';
+import {Observable, map, catchError, throwError, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +39,7 @@ export class AuthInfra extends BaseInfraService {
 
   login(email: string, password: string): Observable<ApiResponse<UserEntity>> {
     return this.http
-      .post<ApiResponse<UserDto>>(`${this.apiUrl}/login`, { email, password })
+      .post<ApiResponse<UserDto>>(`${this.apiUrl}/users/login`, { email, password })
       .pipe(
         map(res => {
           return this.convertWithApiResponse(res, userDtoToEntity);

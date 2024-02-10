@@ -20,12 +20,14 @@ export class BaseInfraService {
   protected convertWithApiResponse<SRC, DEC>(res: ApiResponse<SRC>, converterFn: (data: SRC) => (DEC)): ApiResponse<DEC> {
     if (res.success) {
       const data = converterFn(res.data);
+      console.log('in success: ', res);
       return {
         success: true,
         data,
         timestamp: res.timestamp
       };
     } else {
+      console.log('in error: ', res);
       return {
         success: false,
         error: res.error
