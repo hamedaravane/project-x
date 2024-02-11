@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {CreateUserDto, UserDto, userDtoToEntity, UserEntity} from '@user/data-access/model/user.model';
-import {BaseInfraService} from 'src/app/base/data-access/services/base-infra.service';
-import {ApiResponse} from 'src/app/base/data-access/models/api-response.model';
+import {BaseInfraService} from '@shared/data-access/base-infra.service';
+import {ApiResponse} from '@shared/data-access/models/api-response.model';
 import {Observable, map, catchError, throwError, of} from 'rxjs';
 
 @Injectable({

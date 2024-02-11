@@ -9,7 +9,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {LoginService} from '@authentication/data-access/login.service';
-import {NzMessageModule} from 'ng-zorro-antd/message';
+import {NzMessageModule, NzMessageService} from 'ng-zorro-antd/message';
 
 @Component({
   standalone: true,
@@ -25,12 +25,12 @@ import {NzMessageModule} from 'ng-zorro-antd/message';
     NzButtonModule,
     RouterLink,
     AsyncPipe,
-    NzMessageModule
   ],
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
   private readonly loginService = inject(LoginService);
+  private message = inject(NzMessageService);
   isLoading$ = this.loginService.isLoadingLogin$;
   // TODO: implement error for login
   showLoginError$ = this.loginService.hasLoginError$;
@@ -47,6 +47,8 @@ export class LoginFormComponent {
   isHidePassword = true;
 
   submitLoginForm(): void {
-    this.loginService.login(this.loginFrom.value as LoginEntity);
+    if (this.loginFrom.valid) {
+      this.loginService.login(this.loginFrom.value as LoginEntity);
+    }
   }
 }
