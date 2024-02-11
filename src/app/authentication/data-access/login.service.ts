@@ -3,6 +3,7 @@ import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject, firstValueFrom} from 'rxjs';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {MessageService} from '../../notification/data-access/message.service';
+import {ApiErrorResponse} from '@shared/data-access/models/api-response.model';
 
 @Injectable({providedIn: 'root'})
 export class LoginService {
@@ -31,21 +32,22 @@ export class LoginService {
   private hasToken(): boolean {
     return !!localStorage.getItem(this.tokenKey);
   }
+
   login(data: LoginEntity): void {
     this._login(data).then();
   }
 
   private async _login(data: LoginEntity): Promise<void> {
-    console.log('user clicked on login button');
-    const res = await firstValueFrom(this.authInfra.login(data.email, data.password));
-    if (res.success) {
+    try {
+      const res = await firstValueFrom(this.authInfra.login(data.email, data.password));
       const storage = data.rememberMe ? localStorage : sessionStorage;
       // storage.setItem(this.tokenKey, res.token);
       storage.setItem(this.userKey, JSON.stringify(res.data));
       this.isAuthenticatedSubject.next(true);
       this.messageService.success('با موفقیت وارد شدید');
-    } else {
-      console.log('failed');
+    } catch (err: unknown) {
+      const apiErrorResponse = err as ApiErrorResponse;
+      console.log('look at the err type: ', apiErrorResponse);
       this.messageService.error('خطایی رخ داده');
     }
   }

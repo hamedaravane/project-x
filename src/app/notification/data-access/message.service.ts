@@ -5,10 +5,10 @@ import {NzMessageDataOptions, NzMessageService} from 'ng-zorro-antd/message';
   providedIn: 'root'
 })
 export class MessageService{
-  nzMessageService = inject(NzMessageService);
+  private readonly nzMessageService = inject(NzMessageService);
   error(content: string): void {
     const defaultOptions: NzMessageDataOptions = {
-      nzDuration: 40,
+      nzDuration: 100_000,
       nzAnimate: true,
       nzPauseOnHover: true,
     };
@@ -17,10 +17,10 @@ export class MessageService{
 
   success(content: string): void {
     const defaultOptions: NzMessageDataOptions = {
-      nzDuration: 20,
+      nzDuration: 100_000,
       nzAnimate: true,
       nzPauseOnHover: true,
     };
-    this.nzMessageService.create('error', content, defaultOptions);
+    this.nzMessageService.create('success', content, defaultOptions);
   }
 }

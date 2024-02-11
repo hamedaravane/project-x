@@ -2,10 +2,12 @@ import {inject, Injectable} from '@angular/core';
 
 
 import {HttpClient} from '@angular/common/http';
-import {ApiResponse} from 'src/app/base/data-access/models/api-response.model';
+import {ApiResponse} from '@shared/data-access/models/api-response.model';
+import {catchError, of} from 'rxjs';
+import {log} from 'ng-zorro-antd/core/logger';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class BaseInfraService {
   protected readonly http = inject(HttpClient);
@@ -18,20 +20,11 @@ export class BaseInfraService {
    * @author Hamed Arghavan
    */
   protected convertWithApiResponse<SRC, DEC>(res: ApiResponse<SRC>, converterFn: (data: SRC) => (DEC)): ApiResponse<DEC> {
-    if (res.success) {
-      const data = converterFn(res.data);
-      console.log('in success: ', res);
-      return {
-        success: true,
-        data,
-        timestamp: res.timestamp
-      };
-    } else {
-      console.log('in error: ', res);
-      return {
-        success: false,
-        error: res.error
-      };
-    }
+    const data = converterFn(res.data);
+    return {
+      success: true,
+      data,
+      timestamp: res.timestamp
+    };
   }
 }
