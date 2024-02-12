@@ -11,7 +11,7 @@ module.exports = {
         "plugin:@angular-eslint/template/process-inline-templates",
         "prettier"
       ],
-      plugins: ['unused-imports'],
+      plugins: ['unused-imports', "prettier"],
       parser: '@typescript-eslint/parser',
       rules: {
         quotes: ["error", "single", {"allowTemplateLiterals": true}],

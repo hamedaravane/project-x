@@ -8,7 +8,7 @@ export class MessageService{
   private readonly nzMessageService = inject(NzMessageService);
   error(content: string): void {
     const defaultOptions: NzMessageDataOptions = {
-      nzDuration: 100_000,
+      nzDuration: 7_000,
       nzAnimate: true,
       nzPauseOnHover: true,
     };
@@ -17,7 +17,7 @@ export class MessageService{
 
   success(content: string): void {
     const defaultOptions: NzMessageDataOptions = {
-      nzDuration: 100_000,
+      nzDuration: 7_000,
       nzAnimate: true,
       nzPauseOnHover: true,
     };

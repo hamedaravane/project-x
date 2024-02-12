@@ -1,16 +1,16 @@
-import {inject, Injectable} from '@angular/core';
-
+import {Inject, inject, Injectable} from '@angular/core';
 
 import {HttpClient} from '@angular/common/http';
 import {ApiResponse} from '@shared/data-access/models/api-response.model';
-import {catchError, of} from 'rxjs';
-import {log} from 'ng-zorro-antd/core/logger';
+import {firstValueFrom, map} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BaseInfraService {
   protected readonly http = inject(HttpClient);
+  constructor(@Inject('API_URL') protected apiUrl: string) {
+  }
 
   /**
    * Converts API response data using the provided converter function.
@@ -24,7 +24,23 @@ export class BaseInfraService {
     return {
       success: true,
       data,
-      timestamp: res.timestamp
+      timestamp: res.timestamp,
     };
+  }
+
+  protected async get<SRC, DEC>(url: string, converterFn: (data: SRC) => (DEC)): Promise<ApiResponse<DEC>> {
+    return await firstValueFrom(this.http.get<ApiResponse<SRC>>(this.apiUrl + url).pipe(
+      map(res => {
+        return this.convertWithApiResponse(res, converterFn);
+      }),
+    ));
+  }
+
+  protected async post<SRC, DEC>(url: string, body: any | null, converterFn: (data: SRC) => (DEC)): Promise<ApiResponse<DEC>> {
+    return firstValueFrom(this.http.post<ApiResponse<SRC>>(this.apiUrl + url, body).pipe(
+      map((res) => {
+        return this.convertWithApiResponse(res, converterFn);
+      })),
+    );
   }
 }

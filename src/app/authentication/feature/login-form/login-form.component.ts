@@ -9,7 +9,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {LoginService} from '@authentication/data-access/login.service';
-import {NzMessageModule, NzMessageService} from 'ng-zorro-antd/message';
+import { NzMessageService} from 'ng-zorro-antd/message';
 
 @Component({
   standalone: true,
