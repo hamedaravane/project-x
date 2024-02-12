@@ -3,7 +3,6 @@ import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject, firstValueFrom} from 'rxjs';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {MessageService} from '../../notification/data-access/message.service';
-import {ApiErrorResponse} from '@shared/data-access/models/api-response.model';
 
 @Injectable({providedIn: 'root'})
 export class LoginService {
@@ -39,15 +38,13 @@ export class LoginService {
 
   private async _login(data: LoginEntity): Promise<void> {
     try {
-      const res = await firstValueFrom(this.authInfra.login(data.email, data.password));
+      const res = await this.authInfra.login(data.email, data.password);
       const storage = data.rememberMe ? localStorage : sessionStorage;
       // storage.setItem(this.tokenKey, res.token);
       storage.setItem(this.userKey, JSON.stringify(res.data));
       this.isAuthenticatedSubject.next(true);
       this.messageService.success('با موفقیت وارد شدید');
-    } catch (err: unknown) {
-      const apiErrorResponse = err as ApiErrorResponse;
-      console.log('look at the err type: ', apiErrorResponse);
+    } catch (e) {
       this.messageService.error('خطایی رخ داده');
     }
   }
