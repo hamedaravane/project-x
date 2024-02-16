@@ -3,3 +3,8 @@ export interface LoginEntity {
   password: string,
   rememberMe: boolean
 }
+
+export interface LoginResponse {
+  message: string;
+  token: string;
+}

@@ -40,7 +40,7 @@ export class LoginService {
     try {
       const res = await this.authInfra.login(data.email, data.password);
       const storage = data.rememberMe ? localStorage : sessionStorage;
-      // storage.setItem(this.tokenKey, res.token);
+      storage.setItem(this.tokenKey, res.token);
       storage.setItem(this.userKey, JSON.stringify(res.data));
       this.isAuthenticatedSubject.next(true);
       this.messageService.success('با موفقیت وارد شدید');
