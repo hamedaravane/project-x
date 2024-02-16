@@ -21,8 +21,8 @@ export class AuthInfra extends BaseInfraService {
     );
   }
 
-  login(email: string, password: string): Promise<ApiResponse<UserEntity>> {
-    return this.post<UserDto, UserEntity>('/users/login', { email, password }, userDtoToEntity);
+  login(email: string, password: string): Promise<ApiResponse<LoginResponse>> {
+    return this.post<UserDto, LoginResponse>('/users/login', { email, password }, userDtoToEntity);
   }
 
   getProfilePhoto(uuid: string): Observable<ApiResponse<{profilePhotoSrc: string}>> {

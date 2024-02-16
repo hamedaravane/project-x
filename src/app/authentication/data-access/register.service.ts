@@ -11,6 +11,8 @@ import {
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject, filter, firstValueFrom, Observable} from 'rxjs';
 import {ProfessionEnum} from '@shared/data-access/models/category.model';
+import {MessageService} from '../../notification/data-access/message.service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +27,8 @@ export class RegisterService {
   private readonly userAuthInfoSubject = new BehaviorSubject<UserAuthInfo | null>(null);
   private readonly detailRegistrationInfoSubject = new BehaviorSubject<DetailRegistrationForm | null>(null);
   private readonly authInfra = inject(AuthInfra);
+  private readonly messageService = inject(MessageService);
+  private readonly route = inject(Router);
 
   /**
    * Returns an observable of UserType. The observable filters out null values.
@@ -119,10 +123,11 @@ export class RegisterService {
     const combinedRegistrationForm = combineRegistrationProperties(userAuthInfo, detailRegistrationProperties);
     const createUserDto = combinedFormDataToCreateUserDto(combinedRegistrationForm);
     try {
-      const response = await this.authInfra.register(createUserDto);
-      console.log(response);
+      await this.authInfra.register(createUserDto);
+      this.messageService.success('شما با موفقیت ثبت نام شدید.');
+      this.route.navigateByUrl('/auth/login').then();
     } catch (e) {
-      console.log(e);
+      this.messageService.error('در حال حاضر با مشکل مواجه شدیم. کمی بعدتر تلاش کنید.');
     }
   }
 }
