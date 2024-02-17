@@ -16,5 +16,6 @@ export function convertToLoginRes(data: LoginResponse): LoginResponse {
   return {
     message: data.message,
     token: data.token,
+    user: data.user
   };
 }

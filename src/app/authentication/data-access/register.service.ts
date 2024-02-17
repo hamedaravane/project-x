@@ -91,9 +91,10 @@ export class RegisterService {
   private async _uploadProfilePhoto(data: File): Promise<void> {
     const formData = new FormData();
     formData.set('file', data);
-    const response = await firstValueFrom(this.authInfra.uploadProfilePhoto(formData));
-    if (response) {
-      console.log('photo successfully sent to backend');
+    try {
+      await firstValueFrom(this.authInfra.uploadProfilePhoto(formData));
+    } catch (e) {
+      this.messageService.error('در آپلود عکس پروفایل مشکلی داشتیم.');
     }
   }
 
