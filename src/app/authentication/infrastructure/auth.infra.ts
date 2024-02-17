@@ -25,15 +25,4 @@ export class AuthInfra extends BaseInfraService {
   login(email: string, password: string): Promise<ApiResponse<LoginResponse>> {
     return this.post<LoginResponse, LoginResponse>('/users/login', { email, password }, convertToLoginRes);
   }
-
-  getProfilePhoto(uuid: string): Observable<ApiResponse<{profilePhotoSrc: string}>> {
-    return this.http.get<ApiResponse<{profile_photo_src: string}>>(`${this.apiUrl}/users/${uuid}/photo`)
-      .pipe(
-        map(res => {
-          return this.convertWithApiResponse(res, (res): {profilePhotoSrc: string} => {
-            return {profilePhotoSrc: res.profile_photo_src};
-          });
-        })
-      );
-  }
 }

@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
-import {BehaviorSubject, firstValueFrom} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {MessageService} from '../../notification/data-access/message.service';
 
@@ -16,8 +16,8 @@ export class LoginService {
   authSubject$ = new BehaviorSubject<string | null>(null);
   userSubject$ = new BehaviorSubject<string | null>(null);
   isLoggedInSubject$ = new BehaviorSubject<string | null>(null);
-  isLoadingLoginSubject$ = new BehaviorSubject<string | null>(null);
-  hasLoginErrorSubject$ = new BehaviorSubject<string | null>(null);
+  isLoadingLoginSubject$ = new BehaviorSubject<boolean>(false);
+  hasLoginErrorSubject$ = new BehaviorSubject<boolean>(false);
 
   auth$ = this.authSubject$.asObservable();
   user$ = this.userSubject$.asObservable();
@@ -38,13 +38,17 @@ export class LoginService {
 
   private async _login(data: LoginEntity): Promise<void> {
     try {
+      this.isLoadingLoginSubject$.next(true);
       const res = await this.authInfra.login(data.email, data.password);
       const storage = data.rememberMe ? localStorage : sessionStorage;
       storage.setItem(this.authTokenKey, res.data.token);
-      storage.setItem(this.currentUserKey, JSON.stringify(res.data.token));
+      storage.setItem(this.currentUserKey, JSON.stringify(res.data.user));
+      this.isLoadingLoginSubject$.next(false);
       this.isAuthenticatedSubject.next(true);
       this.messageService.success('با موفقیت وارد شدید');
+      this.hasLoginErrorSubject$.next(false);
     } catch (e) {
+      this.hasLoginErrorSubject$.next(true);
       this.messageService.error('خطایی رخ داده');
     }
   }
@@ -68,16 +72,5 @@ export class LoginService {
 
   private async _getCurrentUser(): Promise<void> {
     const cachedUser = localStorage.getItem(this.currentUserKey);
-  }
-
-  getProfilePhoto(userMail: string): void {
-    this._getProfilePhoto(userMail).then();
-  }
-
-  private async _getProfilePhoto(userMail: string): Promise<void> {
-    const response = await firstValueFrom(this.authInfra.getProfilePhoto(userMail));
-    if (response.success) {
-      this.userProfilePhotoSubject.next(response.data.profilePhotoSrc);
-    }
   }
 }
