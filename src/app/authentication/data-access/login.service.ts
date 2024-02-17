@@ -7,8 +7,8 @@ import {MessageService} from '../../notification/data-access/message.service';
 @Injectable({providedIn: 'root'})
 export class LoginService {
   private readonly authInfra = inject(AuthInfra);
-  private readonly tokenKey = 'authToken';
-  private readonly userKey = 'currentUser';
+  private readonly authTokenKey = 'authToken';
+  private readonly currentUserKey = 'currentUser';
   private readonly messageService = inject(MessageService);
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
@@ -29,7 +29,7 @@ export class LoginService {
   userProfilePhoto$ = this.userProfilePhotoSubject.asObservable();
 
   private hasToken(): boolean {
-    return !!localStorage.getItem(this.tokenKey);
+    return !!localStorage.getItem(this.authTokenKey);
   }
 
   login(data: LoginEntity): void {
@@ -40,8 +40,8 @@ export class LoginService {
     try {
       const res = await this.authInfra.login(data.email, data.password);
       const storage = data.rememberMe ? localStorage : sessionStorage;
-      storage.setItem(this.tokenKey, res.token);
-      storage.setItem(this.userKey, JSON.stringify(res.data));
+      storage.setItem(this.authTokenKey, res.data.token);
+      storage.setItem(this.currentUserKey, JSON.stringify(res.data.token));
       this.isAuthenticatedSubject.next(true);
       this.messageService.success('با موفقیت وارد شدید');
     } catch (e) {
@@ -50,24 +50,24 @@ export class LoginService {
   }
 
   logout(): void {
-    localStorage.removeItem(this.tokenKey);
-    localStorage.removeItem(this.userKey);
-    sessionStorage.removeItem(this.tokenKey);
-    sessionStorage.removeItem(this.userKey);
+    localStorage.removeItem(this.authTokenKey);
+    localStorage.removeItem(this.currentUserKey);
+    sessionStorage.removeItem(this.authTokenKey);
+    sessionStorage.removeItem(this.currentUserKey);
     this.isAuthenticatedSubject.next(false);
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey) || sessionStorage.getItem(this.tokenKey);
+    return localStorage.getItem(this.authTokenKey) || sessionStorage.getItem(this.authTokenKey);
   }
 
   getCurrentUser(): any | null {
-    const userJson = localStorage.getItem(this.userKey) || sessionStorage.getItem(this.userKey);
+    const userJson = localStorage.getItem(this.currentUserKey) || sessionStorage.getItem(this.currentUserKey);
     return userJson ? JSON.parse(userJson) : null;
   }
 
   private async _getCurrentUser(): Promise<void> {
-    const cachedUser = localStorage.getItem(this.userKey);
+    const cachedUser = localStorage.getItem(this.currentUserKey);
   }
 
   getProfilePhoto(userMail: string): void {

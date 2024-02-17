@@ -3,6 +3,7 @@ import {CreateUserDto, UserDto, userDtoToEntity, UserEntity} from '@user/data-ac
 import {BaseInfraService} from '@shared/data-access/base-infra.service';
 import {ApiResponse} from '@shared/data-access/models/api-response.model';
 import {Observable, map} from 'rxjs';
+import {convertToLoginRes, LoginResponse} from '@authentication/data-access/model/auth.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class AuthInfra extends BaseInfraService {
   }
 
   login(email: string, password: string): Promise<ApiResponse<LoginResponse>> {
-    return this.post<UserDto, LoginResponse>('/users/login', { email, password }, userDtoToEntity);
+    return this.post<LoginResponse, LoginResponse>('/users/login', { email, password }, convertToLoginRes);
   }
 
   getProfilePhoto(uuid: string): Observable<ApiResponse<{profilePhotoSrc: string}>> {
