@@ -350,6 +350,7 @@ export function userDtoToEntity(data: UserDto): UserEntity {
   }
 }
 export interface SideMenuOption {
+  id: number;
   title: string;
   icon: string;
   url: string;

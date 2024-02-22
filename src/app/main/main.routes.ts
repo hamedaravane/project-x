@@ -1,5 +1,4 @@
 import {Routes} from '@angular/router';
-import {authGuardFn} from '@authentication/data-access/guard/auth.guard';
 
 export const mainRoutes: Routes = [
   {
@@ -22,7 +21,7 @@ export const mainRoutes: Routes = [
       {
         path: 'settings',
         loadChildren: () => import('@settings/settings.routes').then(r => r.settingsRoutes),
-        canActivate: [authGuardFn]
+        canActivate: []
       },
       {
         path: 'user',

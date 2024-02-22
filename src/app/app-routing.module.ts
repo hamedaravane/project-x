@@ -5,10 +5,10 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
+    redirectTo: 'app',
   },
   {
-    path: 'home',
+    path: 'app',
     loadChildren: () => import('@main/main.routes').then(r => r.mainRoutes),
   },
   {
@@ -18,11 +18,7 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('@authentication/authentication.routes').then(r => r.authenticationRoutes),
-  },
-  {
-    path: 'settings',
-    loadChildren: () => import('@settings/settings.routes').then(r => r.settingsRoutes),
-  },
+  }
 ];
 
 @NgModule({

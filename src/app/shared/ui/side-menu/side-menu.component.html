@@ -16,10 +16,12 @@
         }
       </div>
       <div class="mt-12">
-        <div *ngFor="let option of sideMenuOptions" class="mt-8" [routerLink]="option.url" (click)="closeMenu()">
-          <i [class]="option.icon" class="fa-solid me-4"></i>
-          <strong>{{ option.title }}</strong>
-        </div>
+        @for (option of sideMenuOptions; track option.id) {
+          <div class="mt-8" (click)="selectOption(option.url)">
+            <i [class]="option.icon" class="fa-solid me-4"></i>
+            <strong>{{ option.title }}</strong>
+          </div>
+        }
       </div>
       <div class="my-8" (click)="logout()">
         <i class="fa-right-from-bracket fa-solid opacity-70 me-4"></i>
