@@ -21,9 +21,6 @@ export class SelectProfilePhotoComponent extends PhotoComponent {
   private readonly registerService = inject(RegisterService);
 
   submitRegistration(): void {
-    // this.registerService.submitInfluencerData();
-    this.registerService.uploadProfilePhoto(this.compressedCroppedImageFile);
+    this.registerService.submitInfluencerData(this.compressedCroppedImageFile);
   }
-
-  protected readonly Boolean = Boolean;
 }

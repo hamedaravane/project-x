@@ -1,8 +1,9 @@
-import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, OnDestroy, ViewChild} from '@angular/core';
 import Cropper from 'cropperjs';
 import {ImageCompressor} from '@shared/util/image-compressor/image-compressor';
 import {map} from 'rxjs';
 import ImageCropper from '@shared/util/cropper/cropper';
+import {MessageService} from 'src/app/notification/data-access/message.service';
 
 @Component({
   standalone: true,
@@ -11,6 +12,7 @@ import ImageCropper from '@shared/util/cropper/cropper';
 export class PhotoComponent implements OnDestroy {
   @ViewChild('fileInput') fileInput!: ElementRef;
   @ViewChild('image') imageElement!: ElementRef<HTMLImageElement>;
+  messageService = inject(MessageService);
   cropper!: Cropper;
   isCropModalVisible = false;
   selectedImageSrc: string | null = null;
@@ -35,6 +37,7 @@ export class PhotoComponent implements OnDestroy {
     const input: HTMLInputElement = event.target as HTMLInputElement;
 
     if (!input.files || !input.files[0]) {
+      this.messageService.error('فایلی که انتخاب کردین برای ما قابل خوندن نیست');
       return;
     }
 
@@ -88,7 +91,6 @@ export class PhotoComponent implements OnDestroy {
         .then((compressedCroppedFile) => {
           this.cropper.destroy();
           this.isCropModalVisible = false;
-          console.log(compressedCroppedFile.size);
           this.compressedCroppedImageFile = compressedCroppedFile;
         });
     }
