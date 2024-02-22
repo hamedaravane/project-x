@@ -199,46 +199,55 @@ h6 {
   --heading-color-dark: #{$heading-color-light};
 }
 
-[data-theme='dark'] {
-  --text-color: #{$text-color-dark};
-  --heading-color: #{$heading-color-dark};
-  --disabled-color: #{$disable-color-dark};
-  --body-background: #{$body-background-dark};
-  --component-background: #{$component-background-dark};
-  --disabled-background: #{$disable-background-dark};
-  --disabled-border-color: #{$disabled-border-color-dark};
-  --border-color-base: #{$border-color-base-dark};
-  --header-background: #{$header-background-color-dark};
-  --gray-50: #{$gray-950};
-  --gray-100: #{$gray-900};
-  --gray-200: #{$gray-800};
-  --gray-300: #{$gray-700};
-  --gray-400: #{$gray-600};
-  --gray-600: #{$gray-400};
-  --gray-700: #{$gray-300};
-  --gray-800: #{$gray-200};
-  --gray-900: #{$gray-100};
-  --gray-950: #{$gray-50};
-}
+$themes: (
+  dark: (
+    text-color: $text-color-dark,
+    heading-color: $heading-color-dark,
+    disabled-color: $disable-color-dark,
+    body-background: $body-background-dark,
+    component-background: $component-background-dark,
+    disabled-background: $disable-background-dark,
+    disabled-border-color: $disabled-border-color-dark,
+    border-color-base: $border-color-base-dark,
+    header-background: $header-background-color-dark,
+    gray-50: $gray-950,
+    gray-100: $gray-900,
+    gray-200: $gray-800,
+    gray-300: $gray-700,
+    gray-400: $gray-600,
+    gray-600: $gray-400,
+    gray-700: $gray-300,
+    gray-800: $gray-200,
+    gray-900: $gray-100,
+    gray-950: $gray-50
+  ),
+  light: (
+    text-color: $text-color-light,
+    heading-color: $heading-color-light,
+    disabled-color: $disable-color-light,
+    body-background: $body-background-light,
+    component-background: $component-background-light,
+    disabled-background: $disable-background-light,
+    disabled-border-color: $disabled-border-color-light,
+    border-color-base: $border-color-base-light,
+    header-background: $header-background-color-light,
+    gray-50: $gray-50,
+    gray-100: $gray-100,
+    gray-200: $gray-200,
+    gray-300: $gray-300,
+    gray-400: $gray-400,
+    gray-600: $gray-600,
+    gray-700: $gray-700,
+    gray-800: $gray-800,
+    gray-900: $gray-900,
+    gray-950: $gray-950
+  )
+);
 
-[data-theme='light'] {
-  --text-color: #{$text-color-light};
-  --heading-color: #{$heading-color-light};
-  --disabled-color: #{$disable-color-light};
-  --body-background: #{$body-background-light};
-  --component-background: #{$component-background-light};
-  --disabled-background: #{$disable-background-light};
-  --disabled-border-color: #{$disabled-border-color-light};
-  --border-color-base: #{$border-color-base-light};
-  --header-background: #{$header-background-color-light};
-  --gray-50: #{$gray-50};
-  --gray-100: #{$gray-100};
-  --gray-200: #{$gray-200};
-  --gray-300: #{$gray-300};
-  --gray-400: #{$gray-400};
-  --gray-600: #{$gray-600};
-  --gray-700: #{$gray-700};
-  --gray-800: #{$gray-800};
-  --gray-900: #{$gray-900};
-  --gray-950: #{$gray-950};
+@each $theme, $variables in $themes {
+  [data-theme="#{$theme}"] {
+    @each $name, $value in $variables {
+      --#{$name}: #{$value};
+    }
+  }
 }

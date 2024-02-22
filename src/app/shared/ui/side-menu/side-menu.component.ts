@@ -21,7 +21,7 @@ import {LoginService} from '@authentication/data-access/login.service';
 export class SideMenuComponent implements OnInit {
   @Input() user$!: Observable<UserEntity>;
   private readonly loginService = inject(LoginService);
-  private readonly layoutService: LayoutService = inject(LayoutService);
+  private readonly layoutService = inject(LayoutService);
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly route = inject(Router);
   isSideMenuOpen$: Observable<boolean> = this.layoutService.isSideMenuOpen$;
@@ -30,17 +30,17 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit(): void {
     const businessSideMenuOptions: SideMenuOption[] = [
-      {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
-      {title: 'همکاری ها', icon: 'fa-handshake-simple', url: 'user/collaborations'},
-      {title: 'ویرایش حساب', icon: 'fa-user', url: 'user'},
-      {title: 'تنظیمات', icon: 'fa-gear', url: 'settings'},
+      {id: 0, title: 'صفحه اصلی', icon: 'fa-house', url: '/app'},
+      {id: 1, title: 'همکاری ها', icon: 'fa-handshake-simple', url: '/app/user/collaborations'},
+      {id: 2, title: 'ویرایش حساب', icon: 'fa-user', url: '/app/user'},
+      {id: 3, title: 'تنظیمات', icon: 'fa-gear', url: '/app/settings'},
     ];
     const influencerSideMenuOptions: SideMenuOption[] = [
-      {title: 'صفحه اصلی', icon: 'fa-house', url: ''},
-      {title: 'همکاری ها', icon: 'fa-handshake-simple', url: ''},
-      {title: 'پرداخت ها', icon: 'fa-coins', url: ''},
-      {title: 'ویرایش حساب', icon: 'fa-user', url: 'user'},
-      {title: 'تنظیمات', icon: 'fa-gear', url: 'settings'},
+      {id: 0, title: 'صفحه اصلی', icon: 'fa-house', url: '/app'},
+      {id: 1, title: 'همکاری ها', icon: 'fa-handshake-simple', url: '/app/user/collaborations'},
+      {id: 2, title: 'پرداخت ها', icon: 'fa-coins', url: ''},
+      {id: 3, title: 'ویرایش حساب', icon: 'fa-user', url: '/app/user'},
+      {id: 4, title: 'تنظیمات', icon: 'fa-gear', url: '/app/settings'},
     ];
     this.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((data: UserEntity) => {
       if (data.type === UserType.INFLUENCER) {
@@ -52,13 +52,16 @@ export class SideMenuComponent implements OnInit {
     });
   }
 
+  selectOption(url: string): void {
+    this.route.navigateByUrl(url).then(this.closeMenu);
+  }
+
   logout(): void {
     this.loginService.logout();
-    this.route.navigateByUrl('/auth/login').then();
-    this.closeMenu();
+    this.route.navigateByUrl('/auth/login').then(this.closeMenu);
   }
 
   closeMenu(): void {
-    this.layoutService.isSideMenuOpen$ = false;
+    this.layoutService.setSideMenuStatus(false);
   }
 }

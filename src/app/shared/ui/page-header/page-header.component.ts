@@ -20,7 +20,7 @@ export class PageHeaderComponent {
   private readonly layoutService: LayoutService = inject(LayoutService);
   backButtonVisible$: Observable<boolean> = this.routeService.isRoot$;
   openSideMenu(): void {
-    this.layoutService.isSideMenuOpen$ = true;
+    this.layoutService.setSideMenuStatus(true);
   }
   back(): void {
     if (!this.routeService.isRoot()) {
