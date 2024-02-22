@@ -84,25 +84,11 @@ export class RegisterService {
     return new Promise(() => ({...authInfo, ...userType}));
   }
 
-  uploadProfilePhoto(data: File): void {
-    this._uploadProfilePhoto(data).then();
+  submitInfluencerData(photo: File): void {
+    this._submitInfluencerData(photo).then();
   }
 
-  private async _uploadProfilePhoto(data: File): Promise<void> {
-    const formData = new FormData();
-    formData.set('file', data);
-    try {
-      await firstValueFrom(this.authInfra.uploadProfilePhoto(formData));
-    } catch (e) {
-      this.messageService.error('در آپلود عکس پروفایل مشکلی داشتیم.');
-    }
-  }
-
-  submitInfluencerData(): void {
-    this._submitInfluencerData().then();
-  }
-
-  private async _submitInfluencerData(): Promise<void> {
+  private async _submitInfluencerData(photo: File): Promise<void> {
     this.userAuthInfo$ = {email: 'hamedaravane@gmail.com', password: '11559933Aa!'};
     this.detailRegistrationProperties$ = {
       userType: UserType.INFLUENCER,
@@ -124,7 +110,11 @@ export class RegisterService {
     const combinedRegistrationForm = combineRegistrationProperties(userAuthInfo, detailRegistrationProperties);
     const createUserDto = combinedFormDataToCreateUserDto(combinedRegistrationForm);
     try {
+      const updatePhoto = new File([photo], createUserDto.uuid);
+      const formData = new FormData();
+      formData.set('file', updatePhoto);
       await this.authInfra.register(createUserDto);
+      await firstValueFrom(this.authInfra.uploadProfilePhoto(formData));
       this.messageService.success('شما با موفقیت ثبت نام شدید.');
       this.route.navigateByUrl('/auth/login').then();
     } catch (e) {

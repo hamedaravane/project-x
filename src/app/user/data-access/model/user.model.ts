@@ -136,6 +136,7 @@ export function combineRegistrationProperties (
 }
 
 interface CommonCreateUserDtoProperties {
+  uuid: string;
   instagram_account: string;
   mobile_phone_number: string;
   address: string | null;
@@ -190,9 +191,11 @@ export type CreateUserDto =
   & SpecialCreateUserDtoProperty;
 
 export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegistrationForm): CreateUserDto {
+  const uuid = crypto.randomUUID();
   switch (registrationForm.userType) {
     case UserType.INFLUENCER:
       return {
+        uuid,
         email: registrationForm.email,
         password: registrationForm.password,
         user_type: UserType.INFLUENCER,
@@ -221,6 +224,7 @@ export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegist
       };
     case UserType.BUSINESS:
       return {
+        uuid,
         email: registrationForm.email,
         password: registrationForm.password,
         user_type: UserType.BUSINESS,
