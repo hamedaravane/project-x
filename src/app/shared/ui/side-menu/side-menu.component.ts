@@ -53,12 +53,14 @@ export class SideMenuComponent implements OnInit {
   }
 
   selectOption(url: string): void {
-    this.route.navigateByUrl(url).then(this.closeMenu);
+    this.closeMenu();
+    this.route.navigateByUrl(url).then();
   }
 
   logout(): void {
+    this.closeMenu();
     this.loginService.logout();
-    this.route.navigateByUrl('/auth/login').then(this.closeMenu);
+    this.route.navigateByUrl('/auth/login').then();
   }
 
   closeMenu(): void {
