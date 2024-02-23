@@ -3,6 +3,7 @@ import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject} from 'rxjs';
 import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {MessageService} from '../../notification/data-access/message.service';
+import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class LoginService {
@@ -10,6 +11,7 @@ export class LoginService {
   private readonly authTokenKey = 'authToken';
   private readonly currentUserKey = 'currentUser';
   private readonly messageService = inject(MessageService);
+  private readonly router = inject(Router);
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
@@ -24,9 +26,6 @@ export class LoginService {
   isLoggedIn$ = this.isLoggedInSubject$.asObservable();
   isLoadingLogin$ = this.isLoadingLoginSubject$.asObservable();
   hasLoginError$ = this.hasLoginErrorSubject$.asObservable();
-
-  private userProfilePhotoSubject = new BehaviorSubject<string | null>(null);
-  userProfilePhoto$ = this.userProfilePhotoSubject.asObservable();
 
   private hasToken(): boolean {
     return !!localStorage.getItem(this.authTokenKey);
@@ -47,6 +46,7 @@ export class LoginService {
       this.isAuthenticatedSubject.next(true);
       this.messageService.success('با موفقیت وارد شدید');
       this.hasLoginErrorSubject$.next(false);
+      this.router.navigateByUrl('/').then();
     } catch (e) {
       this.hasLoginErrorSubject$.next(true);
       this.messageService.error('خطایی رخ داده');
@@ -59,18 +59,5 @@ export class LoginService {
     sessionStorage.removeItem(this.authTokenKey);
     sessionStorage.removeItem(this.currentUserKey);
     this.isAuthenticatedSubject.next(false);
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem(this.authTokenKey) || sessionStorage.getItem(this.authTokenKey);
-  }
-
-  getCurrentUser(): any | null {
-    const userJson = localStorage.getItem(this.currentUserKey) || sessionStorage.getItem(this.currentUserKey);
-    return userJson ? JSON.parse(userJson) : null;
-  }
-
-  private async _getCurrentUser(): Promise<void> {
-    const cachedUser = localStorage.getItem(this.currentUserKey);
   }
 }

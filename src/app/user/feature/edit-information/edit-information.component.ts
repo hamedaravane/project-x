@@ -40,7 +40,7 @@ import {UserEntity, UserType} from '@user/data-access/model/user.model';
 export class EditInformationComponent extends PhotoComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
   private readonly citiesListService = inject(CitiesListService);
-  private readonly userData$ = this.userService.user$;
+  private readonly userData$ = this.userService.currentUser$;
   @ViewChild('fileInput') override fileInput!: ElementRef;
   @ViewChild('image') override imageElement!: ElementRef;
   userData!: UserEntity;

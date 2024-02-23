@@ -18,10 +18,10 @@ import {Observable} from 'rxjs';
 export class MainComponent implements OnInit {
   private readonly userService: UserService = inject(UserService);
   private readonly collaborationsService: CollaborationsService = inject(CollaborationsService);
-  userData$: Observable<UserEntity> = this.userService.user$;
+  userData$: Observable<UserEntity> = this.userService.currentUser$;
 
   ngOnInit(): void {
-    this.userService.getUserData().then();
+    this.userService.getCurrentUser();
     this.collaborationsService.getCollaborationsData().then();
   }
 }
