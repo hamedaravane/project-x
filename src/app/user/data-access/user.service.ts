@@ -1,7 +1,7 @@
 import {Injectable, inject} from '@angular/core';
 import {UserDataService} from '@user/data-access/user.data.service';
-import {BehaviorSubject, Observable, lastValueFrom, filter} from 'rxjs';
-import {UserEntity} from '@user/data-access/model/user.model';
+import {BehaviorSubject, filter} from 'rxjs';
+import {userDtoToEntity, UserEntity} from '@user/data-access/model/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,20 +9,16 @@ import {UserEntity} from '@user/data-access/model/user.model';
 export class UserService {
   private readonly userDataService: UserDataService = inject(UserDataService);
   private readonly userSubject = new BehaviorSubject<UserEntity | null>(null);
+  currentUser$ = this.userSubject.asObservable().pipe(filter(Boolean));
+  authTokenKey = 'authToken';
+  currentUserKey = 'currentUser';
 
-  get user$(): Observable<UserEntity> {
-    return this.userSubject.asObservable().pipe(filter(Boolean));
-  }
-  set user$(value: UserEntity) {
-    this.userSubject.next(value);
-  }
-
-  async getUserData(): Promise<void> {
-    this.user$ = await lastValueFrom(this.userDataService.getMockUserInfo());
+  getToken(): string | null {
+    return localStorage.getItem(this.authTokenKey) || sessionStorage.getItem(this.authTokenKey);
   }
 
-  private async _getUser(): Promise<void> {
-    /*const user = await lastValueFrom();
-    this.userSubject.next();*/
+  getCurrentUser(): void {
+    const userJson = localStorage.getItem(this.currentUserKey) || sessionStorage.getItem(this.currentUserKey);
+    this.userSubject.next(userJson ? userDtoToEntity(JSON.parse(userJson)) : null);
   }
 }

@@ -8,9 +8,9 @@
       </div>
       <div class="mt-2 mx-auto w-fit">
         @if (userData.type === 'influencer') {
-          <span>{{ userData.firstName }}</span>
+          <span>{{ userData.persianFirstName }}</span>
           <span>&nbsp;</span>
-          <span>{{ userData.lastName }}</span>
+          <span>{{ userData.persianLastName }}</span>
         } @else if (userData.type === 'business') {
           <span>{{ userData.persianBusinessName }}</span>
         }

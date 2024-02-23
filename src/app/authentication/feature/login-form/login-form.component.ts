@@ -47,8 +47,6 @@ export class LoginFormComponent {
   isHidePassword = true;
 
   submitLoginForm(): void {
-    if (this.loginFrom.valid) {
-      this.loginService.login(this.loginFrom.value as LoginEntity);
-    }
+    this.loginService.login(this.loginFrom.value as LoginEntity);
   }
 }
