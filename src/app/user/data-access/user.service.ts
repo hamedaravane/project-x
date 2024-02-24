@@ -1,8 +1,8 @@
 import {Injectable, inject} from '@angular/core';
+import {Router} from '@angular/router';
+import {UserEntity, userDtoToEntity} from '@user/data-access/model/user.model';
 import {UserDataService} from '@user/data-access/user.data.service';
 import {BehaviorSubject, filter} from 'rxjs';
-import {userDtoToEntity, UserEntity} from '@user/data-access/model/user.model';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',

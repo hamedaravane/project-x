@@ -219,7 +219,7 @@ $themes: (
     gray-700: $gray-300,
     gray-800: $gray-200,
     gray-900: $gray-100,
-    gray-950: $gray-50
+    gray-950: $gray-50,
   ),
   light: (
     text-color: $text-color-light,
@@ -240,12 +240,12 @@ $themes: (
     gray-700: $gray-700,
     gray-800: $gray-800,
     gray-900: $gray-900,
-    gray-950: $gray-950
-  )
+    gray-950: $gray-950,
+  ),
 );
 
 @each $theme, $variables in $themes {
-  [data-theme="#{$theme}"] {
+  [data-theme='#{$theme}'] {
     @each $name, $value in $variables {
       --#{$name}: #{$value};
     }

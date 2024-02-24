@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class TokenStorageService {
   readonly APP_PREFIX: string = 'APP';
   accessTokenKey = 'accessToken';
@@ -40,10 +40,7 @@ export class TokenStorageService {
    */
   setItem(key: string, value: unknown): void {
     try {
-      localStorage.setItem(
-        `${this.APP_PREFIX}${key}`,
-        JSON.stringify(value)
-      );
+      localStorage.setItem(`${this.APP_PREFIX}${key}`, JSON.stringify(value));
     } catch (e) {
       localStorage.setItem(`${this.APP_PREFIX}${key}`, value as string);
     }

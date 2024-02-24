@@ -2,6 +2,7 @@ import {BidiModule} from '@angular/cdk/bidi';
 import {NgClass, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {Component, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {UserEntity, UserType} from '@user/data-access/model/user.model';
 import {UserService} from '@user/data-access/user.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
 import {industryCategoryList} from '@shared/data-access/models/category.model';
@@ -13,8 +14,7 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzSelectModule} from 'ng-zorro-antd/select';
-import { firstValueFrom} from 'rxjs';
-import {UserEntity, UserType} from '@user/data-access/model/user.model';
+import {firstValueFrom} from 'rxjs';
 
 @Component({
   standalone: true,

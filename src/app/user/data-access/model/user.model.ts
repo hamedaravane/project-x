@@ -70,18 +70,16 @@ interface InfluencerRegistrationDetailForm {
 
 type SpecialDetailRegistrationProperty = BusinessRegistrationDetailForm | InfluencerRegistrationDetailForm;
 
-export type DetailRegistrationForm =
-  CommonRegistrationDetailForm
-  & OptionalRegistrationDetailForm
-  & SpecialDetailRegistrationProperty;
+export type DetailRegistrationForm = CommonRegistrationDetailForm &
+  OptionalRegistrationDetailForm &
+  SpecialDetailRegistrationProperty;
 
-export type CombinedRegistrationForm =
-  UserAuthInfo
-  & CommonRegistrationDetailForm
-  & OptionalRegistrationDetailForm
-  & SpecialDetailRegistrationProperty;
+export type CombinedRegistrationForm = UserAuthInfo &
+  CommonRegistrationDetailForm &
+  OptionalRegistrationDetailForm &
+  SpecialDetailRegistrationProperty;
 
-export function combineRegistrationProperties (
+export function combineRegistrationProperties(
   authInfo: UserAuthInfo,
   detailedInfoRegistration: DetailRegistrationForm,
 ): CombinedRegistrationForm {
@@ -184,11 +182,10 @@ interface InfluencerCreateUserDtoProperties {
 
 type SpecialCreateUserDtoProperty = BusinessCreateUserDtoProperties | InfluencerCreateUserDtoProperties;
 
-export type CreateUserDto =
-  UserAuthInfo
-  & CommonCreateUserDtoProperties
-  & OptionalCreateUserDtoProperties
-  & SpecialCreateUserDtoProperty;
+export type CreateUserDto = UserAuthInfo &
+  CommonCreateUserDtoProperties &
+  OptionalCreateUserDtoProperties &
+  SpecialCreateUserDtoProperty;
 
 export function combinedFormDataToCreateUserDto(registrationForm: CombinedRegistrationForm): CreateUserDto {
   const uuid = crypto.randomUUID();
@@ -300,7 +297,7 @@ export function userEntityToDto(data: UserEntity): UserDto {
         business_name: data.businessName,
         persian_business_name: data.persianBusinessName,
         business_instagram_username: data.businessInstagramUsername,
-        business_twitter_username: data.businessTwitterUsername
+        business_twitter_username: data.businessTwitterUsername,
       };
   }
 }
@@ -349,7 +346,7 @@ export function userDtoToEntity(data: UserDto): UserEntity {
         businessType: data.business_type,
         businessName: data.business_name,
         businessInstagramUsername: data.business_instagram_username,
-        businessTwitterUsername: data.business_twitter_username
+        businessTwitterUsername: data.business_twitter_username,
       };
   }
 }

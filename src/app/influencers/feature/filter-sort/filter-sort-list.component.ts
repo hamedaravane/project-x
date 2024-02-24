@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {FilterSortService} from '@influencers/data-access/filter-sort.service';
 import {SortOption, SortOrder} from '@influencers/data-access/model/filter-sort.model';
 import {influencerCategoryList} from '@shared/data-access/models/category.model';
-import {ProfessionEnum, LabelValue} from '@shared/data-access/models/category.model';
+import {LabelValue, ProfessionEnum} from '@shared/data-access/models/category.model';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 

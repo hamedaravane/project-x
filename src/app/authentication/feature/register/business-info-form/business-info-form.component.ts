@@ -3,8 +3,9 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
+import {UserType} from '@user/data-access/model/user.model';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
-import {industryCategoryList, IndustryEnum} from '@shared/data-access/models/category.model';
+import {IndustryEnum, industryCategoryList} from '@shared/data-access/models/category.model';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzWaveModule} from 'ng-zorro-antd/core/wave';
@@ -13,7 +14,6 @@ import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzSkeletonModule} from 'ng-zorro-antd/skeleton';
-import {UserType} from '@user/data-access/model/user.model';
 
 @Component({
   standalone: true,

@@ -6,12 +6,13 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ErrorInterceptor} from '@shared/data-access/interceptor/error.interceptor';
 import {NZ_DATE_CONFIG, NZ_I18N, en_US, fa_IR} from 'ng-zorro-antd/i18n';
+import {NzMessageModule} from 'ng-zorro-antd/message';
 import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {NzMessageModule} from 'ng-zorro-antd/message';
-import {ErrorInterceptor} from '@shared/data-access/interceptor/error.interceptor';
+
 // import {AuthInterceptor} from '@authentication/data-access/interceptor/auth.interceptor';
 
 registerLocaleData(en);

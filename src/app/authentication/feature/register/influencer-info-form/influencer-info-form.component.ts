@@ -3,9 +3,10 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
-import { Gender, UserType} from '@user/data-access/model/user.model';
+import {Gender, UserType} from '@user/data-access/model/user.model';
+import {RegisterService} from '@authentication/data-access/register.service';
 import {CitiesListService} from '@shared/data-access/cities-list.service';
-import {influencerCategoryList, ProfessionEnum} from '@shared/data-access/models/category.model';
+import {ProfessionEnum, influencerCategoryList} from '@shared/data-access/models/category.model';
 import {persianCharValidator} from '@shared/data-access/validators/custom-validators';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzWaveModule} from 'ng-zorro-antd/core/wave';
@@ -15,7 +16,6 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {PurpleDate} from '@date/data-access/model/date.model';
 import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date-picker.component';
-import {RegisterService} from '@authentication/data-access/register.service';
 
 @Component({
   standalone: true,
@@ -69,13 +69,9 @@ export class InfluencerInfoFormComponent {
   });
 
   persianInfluencerNameControl = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<string>;
-  persianInfluencerLastNameControl = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<
-    string
-  >;
+  persianInfluencerLastNameControl = this.influencerInfoForm.get('persianInfluencerName') as AbstractControl<string>;
   englishInfluencerNameControl = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string>;
-  englishInfluencerLastNameControl = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<
-    string
-  >;
+  englishInfluencerLastNameControl = this.influencerInfoForm.get('englishInfluencerName') as AbstractControl<string>;
   birthDateControl = this.influencerInfoForm.get('birthDate') as AbstractControl<PurpleDate>;
   genderControl = this.influencerInfoForm.get('gender') as AbstractControl<Gender>;
   influencerTypeControl = this.influencerInfoForm.get('influencerType') as AbstractControl<ProfessionEnum>;
@@ -98,7 +94,7 @@ export class InfluencerInfoFormComponent {
       twitterAccount: this.twitterAccountControl.value,
       birthDate: this.birthDateControl.value.gregorianDate,
       mobilePhoneNumber: '+98' + this.mobilePhoneNumberControl.value,
-      influencerType: this.influencerTypeControl.value
+      influencerType: this.influencerTypeControl.value,
     };
     this.router.navigateByUrl('/auth/register/select-profile-photo');
   }

@@ -3,9 +3,14 @@
     <ng-container *ngIf="userData; else userLoading">
       <div class="w-full max-h-36 absolute right-0 top-0 -z-10 overflow-clip">
         @if (userData.type === 'influencer') {
-          <img class="opacity-20" ngSrc="assets/influencer-bg-sidebar.png" width="600" height="400" alt="sidebar-image"/>
+          <img
+            class="opacity-20"
+            ngSrc="assets/influencer-bg-sidebar.png"
+            width="600"
+            height="400"
+            alt="sidebar-image" />
         } @else if (userData.type === 'business') {
-          <img class="opacity-20" ngSrc="assets/business-bg-sidebar.png" width="600" height="400" alt="sidebar-image"/>
+          <img class="opacity-20" ngSrc="assets/business-bg-sidebar.png" width="600" height="400" alt="sidebar-image" />
         }
       </div>
       <div class="rounded-full w-16 h-16 overflow-clip mx-auto border-2 border-solid border-gray-300">

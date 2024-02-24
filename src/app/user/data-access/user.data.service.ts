@@ -3,12 +3,12 @@ import {
   Gender,
   MaritalStatus,
   UserDto,
-  userDtoToEntity,
   UserEntity,
   UserType,
+  userDtoToEntity,
 } from '@user/data-access/model/user.model';
-import {Observable, of} from 'rxjs';
 import {ProfessionEnum} from '@shared/data-access/models/category.model';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +37,7 @@ export class UserDataService {
       twitter_username: 'gianflowerr',
       birth: new Date('1995-08-15'),
       gender: Gender.MALE,
-      maritalStatus: MaritalStatus.SINGLE
+      maritalStatus: MaritalStatus.SINGLE,
     };
     return of(userDtoToEntity(mockData));
   }

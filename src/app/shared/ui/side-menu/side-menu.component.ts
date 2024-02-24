@@ -1,14 +1,14 @@
 import {AsyncPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
-import {Component, DestroyRef, inject, Input, OnInit} from '@angular/core';
+import {Component, DestroyRef, Input, OnInit, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {Router, RouterLink} from '@angular/router';
 import {SideMenuOption, UserEntity, UserType} from '@user/data-access/model/user.model';
+import {LoginService} from '@authentication/data-access/login.service';
 import {sideMenuAnimations} from '@shared/data-access/animations/animations';
 import {LayoutService} from '@shared/data-access/layout.service';
 import {SkeletonComponent} from '@shared/ui/skeleton/skeleton.component';
 import {NzSkeletonModule} from 'ng-zorro-antd/skeleton';
 import {Observable} from 'rxjs';
-import {LoginService} from '@authentication/data-access/login.service';
 
 @Component({
   standalone: true,

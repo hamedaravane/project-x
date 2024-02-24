@@ -2,14 +2,14 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
+import {LoginService} from '@authentication/data-access/login.service';
+import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
-import {LoginEntity} from '@authentication/data-access/model/auth.model';
-import {LoginService} from '@authentication/data-access/login.service';
-import { NzMessageService} from 'ng-zorro-antd/message';
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 @Component({
   standalone: true,

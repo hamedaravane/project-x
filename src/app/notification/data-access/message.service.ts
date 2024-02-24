@@ -1,10 +1,10 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {NzMessageDataOptions, NzMessageService} from 'ng-zorro-antd/message';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class MessageService{
+export class MessageService {
   private readonly nzMessageService = inject(NzMessageService);
   error(content: string): void {
     const defaultOptions: NzMessageDataOptions = {

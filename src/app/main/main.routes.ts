@@ -21,7 +21,7 @@ export const mainRoutes: Routes = [
       {
         path: 'settings',
         loadChildren: () => import('@settings/settings.routes').then(r => r.settingsRoutes),
-        canActivate: []
+        canActivate: [],
       },
       {
         path: 'user',

@@ -1,6 +1,6 @@
 enum EnumType {
   NUMBER,
-  STRING
+  STRING,
 }
 
 function enumType(input: any): EnumType {

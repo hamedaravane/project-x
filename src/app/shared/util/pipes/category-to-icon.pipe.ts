@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {ProfessionEnum, IndustryEnum} from '@shared/data-access/models/category.model';
+import {IndustryEnum, ProfessionEnum} from '@shared/data-access/models/category.model';
 
 @Pipe({
   standalone: true,

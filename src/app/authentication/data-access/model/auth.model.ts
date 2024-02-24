@@ -1,9 +1,9 @@
 import {UserDto} from '@user/data-access/model/user.model';
 
 export interface LoginEntity {
-  email: string,
-  password: string,
-  rememberMe: boolean
+  email: string;
+  password: string;
+  rememberMe: boolean;
 }
 
 export interface LoginResponse {
@@ -16,6 +16,6 @@ export function convertToLoginRes(data: LoginResponse): LoginResponse {
   return {
     message: data.message,
     token: data.token,
-    user: data.user
+    user: data.user,
   };
 }

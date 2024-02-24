@@ -265,10 +265,14 @@
 </ng-template>
 <ng-template #PersianBusinessNameErrorTip>
   <ng-container *ngIf="persianBusinessNameControl.errors?.['required']">نام کسب و کار به فارسی الزامی است</ng-container>
-  <ng-container *ngIf="persianBusinessNameControl.errors?.['notPersianCharacters']">از حروف فارسی استفاده کنید</ng-container>
+  <ng-container *ngIf="persianBusinessNameControl.errors?.['notPersianCharacters']"
+    >از حروف فارسی استفاده کنید</ng-container
+  >
 </ng-template>
 <ng-template #EnglishBusinessNameErrorTip>
-  <ng-container *ngIf="englishBusinessNameControl.errors?.['required']">نام کسب و کار به انگلیسی الزامی است</ng-container>
+  <ng-container *ngIf="englishBusinessNameControl.errors?.['required']"
+    >نام کسب و کار به انگلیسی الزامی است</ng-container
+  >
   <ng-container *ngIf="englishBusinessNameControl.errors?.['pattern']">از حروف انگلیسی استفاده کنید</ng-container>
 </ng-template>
 <ng-template #IranianMobilePhoneNumberErrorsTip>

@@ -71,14 +71,15 @@
 </nz-modal>
 
 @if (progressPercentage$ | async; as value) {
-  <nz-modal [nzVisible]="!!value"
-            nzTitle="در حال پردازش..."
-            [nzCentered]="true"
-            [nzZIndex]="12"
-            [nzFooter]="null"
-            [nzClosable]="false"
-            nzWidth="75%"
-            [nzMaskClosable]="false">
+  <nz-modal
+    [nzVisible]="!!value"
+    nzTitle="در حال پردازش..."
+    [nzCentered]="true"
+    [nzZIndex]="12"
+    [nzFooter]="null"
+    [nzClosable]="false"
+    nzWidth="75%"
+    [nzMaskClosable]="false">
     <ng-container *nzModalContent>
       <nz-progress [nzPercent]="value"></nz-progress>
     </ng-container>

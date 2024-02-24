@@ -471,7 +471,7 @@ export class CitiesListService {
       faName: 'هشتجین',
     },
     {
-      name: 'Sar\'eyn',
+      name: "Sar'eyn",
       faName: 'سرعین',
     },
     {
@@ -2731,7 +2731,7 @@ export class CitiesListService {
       faName: 'حسامی',
     },
     {
-      name: 'Korreh\'i',
+      name: "Korreh'i",
       faName: 'کره ای',
     },
     {
@@ -4015,7 +4015,7 @@ export class CitiesListService {
       faName: 'شفت',
     },
     {
-      name: 'Sowme\'eh Sara',
+      name: "Sowme'eh Sara",
       faName: 'صومعه سرا',
     },
     {

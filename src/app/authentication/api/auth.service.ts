@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {LoginService} from 'src/app/authentication/data-access/login.service';
 
 @Injectable({providedIn: 'root'})

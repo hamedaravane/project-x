@@ -5,8 +5,8 @@ import {RegisterService} from '@authentication/data-access/register.service';
 import {PhotoComponent} from '@shared/data-access/photo.component';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzModalModule} from 'ng-zorro-antd/modal';
-import {NzUploadModule} from 'ng-zorro-antd/upload';
 import {NzProgressComponent} from 'ng-zorro-antd/progress';
+import {NzUploadModule} from 'ng-zorro-antd/upload';
 
 @Component({
   standalone: true,

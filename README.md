@@ -9,27 +9,32 @@ Purple Project is a web application generated using Angular CLI and recently upd
 Follow these simple steps to get the Purple Project up and running on your local machine:
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/hamedaravane/project-x.git
    ```
 
 2. **Install Dependencies:**
    Navigate to the project directory and run the following command to install the project dependencies using Yarn:
+
    ```bash
    yarn install
    ```
 
 3. **Yarn Tools for project:**
    Good practice to check these for better experience with yarn:
+
    ```bash
    yarn dlx @yarnpkg/doctor
    ```
+
    ```bash
     yarn dlx @yarnpkg/sdks base
    ```
 
 4. **Start the Application:**
    Once the dependencies are installed, run the following command to start the development server:
+
    ```bash
    yarn run start
    ```

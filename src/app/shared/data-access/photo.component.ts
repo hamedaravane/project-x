@@ -1,8 +1,8 @@
-import {Component, ElementRef, inject, OnDestroy, ViewChild} from '@angular/core';
-import Cropper from 'cropperjs';
-import {ImageCompressor} from '@shared/util/image-compressor/image-compressor';
-import {map} from 'rxjs';
+import {Component, ElementRef, OnDestroy, ViewChild, inject} from '@angular/core';
 import ImageCropper from '@shared/util/cropper/cropper';
+import {ImageCompressor} from '@shared/util/image-compressor/image-compressor';
+import Cropper from 'cropperjs';
+import {map} from 'rxjs';
 import {MessageService} from 'src/app/notification/data-access/message.service';
 
 @Component({
@@ -19,13 +19,13 @@ export class PhotoComponent implements OnDestroy {
   croppedImageSrc: string | null = null;
   compressedCroppedImageFile!: File;
   progressPercentage$ = ImageCompressor.progressPercentage.pipe(
-    (map((value) => {
+    map(value => {
       if (value > 99.0 || value < 0.01) {
         return false;
       } else {
         return value;
       }
-    }))
+    }),
   );
 
   /**
@@ -88,7 +88,7 @@ export class PhotoComponent implements OnDestroy {
         .then((croppedFile): Promise<File> => {
           return ImageCompressor.compress(croppedFile, 'PROFILE_PHOTOS');
         })
-        .then((compressedCroppedFile) => {
+        .then(compressedCroppedFile => {
           this.cropper.destroy();
           this.isCropModalVisible = false;
           this.compressedCroppedImageFile = compressedCroppedFile;

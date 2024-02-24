@@ -1,18 +1,18 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
+import {Router} from '@angular/router';
 import {
-  combinedFormDataToCreateUserDto,
-  combineRegistrationProperties,
   DetailRegistrationForm,
   Gender,
   UserAuthInfo,
   UserType,
   UserTypeDetail,
+  combineRegistrationProperties,
+  combinedFormDataToCreateUserDto,
 } from '@user/data-access/model/user.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
-import {BehaviorSubject, filter, firstValueFrom, Observable} from 'rxjs';
 import {ProfessionEnum} from '@shared/data-access/models/category.model';
+import {BehaviorSubject, Observable, filter, firstValueFrom} from 'rxjs';
 import {MessageService} from '../../notification/data-access/message.service';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',

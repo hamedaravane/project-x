@@ -1,9 +1,9 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
+import {Router} from '@angular/router';
+import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {AuthInfra} from '@authentication/infrastructure/auth.infra';
 import {BehaviorSubject} from 'rxjs';
-import {LoginEntity} from '@authentication/data-access/model/auth.model';
 import {MessageService} from '../../notification/data-access/message.service';
-import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class LoginService {
