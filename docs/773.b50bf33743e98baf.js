@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkproject_x=self.webpackChunkproject_x||[]).push([[773],{6773:(h,n,o)=>{o.r(n),o.d(n,{errorRoutes:()=>t});const t=[{path:"",loadComponent:()=>Promise.all([o.e(135),o.e(549),o.e(484),o.e(804),o.e(765)]).then(o.bind(o,765)).then(s=>s.DeviceErrorComponent)}]}}]);
