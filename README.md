@@ -38,35 +38,6 @@ Follow these simple steps to get the Purple Project up and running on your local
 
 ## Structure tree
 
-<pre>
-project/
-├─ src/
-│  ├─ app/
-│  │  ├─ authentication/
-│  │  ├─ base/
-│  │  ├─ businesses/
-│  │  ├─ cache/
-│  │  ├─ date/
-│  │  ├─ error/
-│  │  ├─ influencers/
-│  │  ├─ main/
-│  │  ├─ settings/
-│  │  ├─ shared/
-│  │  ├─ user/
-│  │  ├─ app-routing.module.ts
-│  │  ├─ app.component.html
-│  │  ├─ app.component.scss
-│  │  ├─ app.component.spec.ts
-│  │  ├─ app.component.ts
-│  │  ├─ app.module.ts
-│  ├─ environments/
-│  ├─ styles/
-│  ├─ favicon.ico
-│  ├─ index.html
-│  ├─ main.ts
-│  ├─ assets/
-</pre>
-
 ## Author
 
 Purple Project is proudly authored by Hamed Arghavan.
