@@ -36,12 +36,12 @@ export class PhotoComponent implements OnDestroy {
   onFileSelected(event: Event): void {
     const input: HTMLInputElement = event.target as HTMLInputElement;
 
-    if (!input.files || !input.files[0]) {
+    if (!input.files || !input.files?.[0]) {
       this.messageService.error('فایلی که انتخاب کردین برای ما قابل خوندن نیست');
       return;
     }
 
-    ImageCompressor.compress(input.files[0], 'READY_FOR_CROP')
+    ImageCompressor.compress(input.files?.[0], 'READY_FOR_CROP')
       .then((file): void => {
         this.selectedImageSrc = URL.createObjectURL(file);
         this.isCropModalVisible = true;

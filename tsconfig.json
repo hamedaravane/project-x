@@ -14,7 +14,12 @@
       "@settings/*": ["src/app/settings/*"],
       "@shared/*": ["src/app/shared/*"],
       "@user/*": ["src/app/user/*"],
-      "@error/*": ["src/app/error/*"]
+      "@error/*": [
+        "src/app/error/*"
+      ],
+      "purple-form": [
+        "./dist/purple-form"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

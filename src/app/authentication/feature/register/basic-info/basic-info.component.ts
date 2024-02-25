@@ -13,6 +13,7 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzPopoverModule} from 'ng-zorro-antd/popover';
 import {Observable} from 'rxjs';
+import {EmailInputComponent} from 'purple-form';
 
 @Component({
   standalone: true,
@@ -31,6 +32,7 @@ import {Observable} from 'rxjs';
     AsyncPipe,
     NzPopoverModule,
     NgClass,
+    EmailInputComponent,
   ],
   styleUrls: ['./basic-info.component.scss'],
 })
