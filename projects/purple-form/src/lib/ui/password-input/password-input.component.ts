@@ -5,7 +5,6 @@ import {NgClass, NgIf} from '@angular/common';
 import {AbstractControl, ReactiveFormsModule} from '@angular/forms';
 import {NzColDirective} from 'ng-zorro-antd/grid';
 import {NzPopoverDirective} from 'ng-zorro-antd/popover';
-import {NzTransitionPatchDirective} from 'ng-zorro-antd/core/transition-patch/transition-patch.directive';
 
 @Component({
   templateUrl: 'password-input.component.html',
@@ -19,7 +18,6 @@ import {NzTransitionPatchDirective} from 'ng-zorro-antd/core/transition-patch/tr
     NzColDirective,
     NzInputGroupWhitSuffixOrPrefixDirective,
     NzPopoverDirective,
-    NzTransitionPatchDirective,
     ReactiveFormsModule,
     NgClass,
   ],
