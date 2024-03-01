@@ -1,8 +1,20 @@
-export type InputType = 'email-getter' | 'email-validator' | 'password-getter' | 'password-validator' | 'password-confirmation' | 'mobile' | 'home-phone' | 'address' | 'persian-text' | 'english-text';
+import {TemplateRef} from '@angular/core';
+
+export type InputType =
+  | 'email-getter'
+  | 'email-validator'
+  | 'password-getter'
+  | 'password-validator'
+  | 'password-confirmation'
+  | 'mobile'
+  | 'home-phone'
+  | 'address'
+  | 'persian-text'
+  | 'english-text';
 
 export enum InputTypeEnum {
   email_getter,
-  email_validator ,
+  email_validator,
   password_getter,
   password_validator,
   password_confirmation,
@@ -35,5 +47,182 @@ export function transformInputTypeToEnum(value: InputType): InputTypeEnum {
       return InputTypeEnum.address;
     default:
       return InputTypeEnum.email_getter;
+  }
+}
+
+export function placeholderGeneratorBasedOnInputTypeEnum(enumValue: InputTypeEnum): string {
+  switch (enumValue) {
+    case InputTypeEnum.email_validator:
+      return 'آدرس ایمیل';
+    case InputTypeEnum.password_getter:
+      return 'کلمه عبور';
+    case InputTypeEnum.password_validator:
+      return 'کلمه عبور';
+    case InputTypeEnum.password_confirmation:
+      return 'تکرار کلمه عبور';
+    case InputTypeEnum.mobile:
+      return 'شماره موبایل';
+    case InputTypeEnum.home_phone:
+      return 'شماره تلفن';
+    case InputTypeEnum.english_text:
+      return '';
+    case InputTypeEnum.persian_text:
+      return '';
+    case InputTypeEnum.address:
+      return 'آدرس';
+    case InputTypeEnum.email_getter:
+      return 'آدرس ایمیل';
+  }
+}
+
+type FontAwesomeIconPrefix =
+  | 'fa-solid fa-lock'
+  | 'fa-solid fa-envelope'
+  | 'fa-solid fa-user'
+  | 'fa-solid fa-input-text'
+  | 'fa-solid fa-mobile'
+  | 'fa-solid fa-phone'
+  | 'fa-solid fa-location-dot'
+  | 'fa-solid fa-at'
+  | 'fa-solid fa-city'
+  | 'fa-solid fa-earth-americas'
+  | 'fa-solid fa-building-columns'
+  | 'fa-solid fa-shop'
+  | 'fa-brands fa-instagram'
+  | 'fa-brands fa-twitter'
+  | 'fa-brands fa-bitcoin'
+  | undefined;
+
+type FontAwesomeIconSuffix = 'fa-solid fa-eye' | 'fa-solid fa-eye-slash' | undefined;
+
+export interface InputMetrics {
+  prefixIcon: FontAwesomeIconPrefix;
+  suffixIcon: FontAwesomeIconSuffix;
+  prefixTemplateRef: TemplateRef<void> | undefined;
+  suffixTemplateRef: TemplateRef<void> | undefined;
+  addOnAfterTemplateRef: TemplateRef<void> | undefined;
+  addOnBeforeTemplateRef: TemplateRef<void> | undefined;
+  label: string;
+  placeholder: string;
+}
+
+export function generateInputBasedOnType(
+  value: InputTypeEnum,
+  prefixTemplateRef: TemplateRef<void>,
+  suffixTemplateRef: TemplateRef<void>,
+  addOnAfterTemplateRef: TemplateRef<void>,
+  addOnBeforeTemplateRef: TemplateRef<void>,
+): InputMetrics {
+  switch (value) {
+    case InputTypeEnum.email_validator:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.password_getter:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.password_validator:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.password_confirmation:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.mobile:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.home_phone:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.english_text:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.persian_text:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.address:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
+    case InputTypeEnum.email_getter:
+      return {
+        prefixIcon: 'fa-solid fa-envelope',
+        suffixIcon: undefined,
+        prefixTemplateRef: prefixTemplateRef,
+        suffixTemplateRef: undefined,
+        addOnAfterTemplateRef: undefined,
+        addOnBeforeTemplateRef: undefined,
+        label: 'آدرس ایمیل',
+        placeholder: 'sample@email.com',
+      };
   }
 }

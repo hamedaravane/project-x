@@ -12,8 +12,8 @@ import {NzWaveModule} from 'ng-zorro-antd/core/wave';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzPopoverModule} from 'ng-zorro-antd/popover';
+import {InputComponent} from 'purple-form';
 import {Observable} from 'rxjs';
-import {EmailInputComponent} from 'purple-form';
 
 @Component({
   standalone: true,
@@ -32,7 +32,7 @@ import {EmailInputComponent} from 'purple-form';
     AsyncPipe,
     NzPopoverModule,
     NgClass,
-    EmailInputComponent,
+    InputComponent,
   ],
   styleUrls: ['./basic-info.component.scss'],
 })

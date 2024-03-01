@@ -1,10 +1,17 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {Component, Input, TemplateRef, ViewChild, computed, forwardRef} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {InputType, InputTypeEnum, transformInputTypeToEnum} from '../../data-access/entity/purple-form.entity';
+import {NzInputDirective, NzInputGroupComponent} from 'ng-zorro-antd/input';
+import {
+  InputType,
+  InputTypeEnum,
+  generateInputBasedOnType,
+  placeholderGeneratorBasedOnInputTypeEnum,
+  transformInputTypeToEnum,
+} from '../../data-access/entity/purple-form.entity';
 
 @Component({
   selector: 'purple-form-input',
-  imports: [],
+  imports: [NzInputGroupComponent, NzInputDirective],
   templateUrl: 'input.component.html',
   styleUrl: './input.component.scss',
   standalone: true,
@@ -12,20 +19,32 @@ import {InputType, InputTypeEnum, transformInputTypeToEnum} from '../../data-acc
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => InputComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class InputComponent implements ControlValueAccessor {
   @Input({
-      required: true,
-      alias: 'type',
-      transform: transformInputTypeToEnum
-  }) inputType: InputTypeEnum;
-
+    required: true,
+    transform: transformInputTypeToEnum,
+  })
+  inputType!: InputTypeEnum;
+  @ViewChild('prefixIcon', {read: TemplateRef}) prefixIconRef!: TemplateRef<void>;
+  @ViewChild('suffixIcon', {read: TemplateRef}) suffixIconRef!: TemplateRef<void>;
+  @ViewChild('addOnAfter', {read: TemplateRef}) addOnAfterRef!: TemplateRef<void>;
+  @ViewChild('addOnBefore', {read: TemplateRef}) addOnBeforeRef!: TemplateRef<void>;
   INPUT_TYPE_ENUM = InputTypeEnum;
-  formControlValue: string;
+  formControlValue!: string;
   _isDisabled = false;
+  _input = computed(() => {
+    return generateInputBasedOnType(
+      this.inputType,
+      this.prefixIconRef,
+      this.suffixIconRef,
+      this.addOnAfterRef,
+      this.addOnBeforeRef,
+    );
+  });
   public _onChange(value: any) {
     this.formControlValue = value;
   }

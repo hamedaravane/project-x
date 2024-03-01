@@ -1,0 +1,25 @@
+<nz-input-group
+  [nzSuffix]="_input().suffixTemplateRef"
+  [nzPrefix]="_input().prefixTemplateRef"
+  [nzAddOnAfter]="_input().addOnAfterTemplateRef"
+  [nzAddOnBefore]="_input().addOnBeforeTemplateRef"
+>
+  <input nz-input [disabled]="_isDisabled" nzSize="default" [placeholder]="_input().placeholder">
+</nz-input-group>
+
+
+<ng-template #prefixIcon>
+  <i [class]="_input().prefixIcon"></i>
+</ng-template>
+
+<ng-template #suffixIcon>
+  <i [class]="_input().suffixIcon"></i>
+</ng-template>
+
+<ng-template #addOnAfter>
+
+</ng-template>
+
+<ng-template #addOnBefore>
+
+</ng-template>
