@@ -1,1 +1,1 @@
-export * from './lib/ui/inuput/input.component';
+export * from 'projects/purple-form/src/lib/ui/input/input.component';
