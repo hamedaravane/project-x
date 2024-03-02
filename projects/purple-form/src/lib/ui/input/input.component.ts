@@ -6,10 +6,14 @@ import {
   transformInputTypeToEnum, InputMetrics,
 } from '../../data-access/entity/purple-form.entity';
 import {NgTemplateOutlet} from '@angular/common';
+import {NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent} from 'ng-zorro-antd/form';
 
 @Component({
   selector: 'purple-form-input',
-  imports: [NzInputGroupComponent, NzInputDirective, NgTemplateOutlet],
+  imports: [
+    NzInputGroupComponent, NzInputDirective, NgTemplateOutlet, NzFormItemComponent, NzFormControlComponent,
+    NzFormLabelComponent,
+  ],
   templateUrl: 'input.component.html',
   styleUrl: './input.component.scss',
   standalone: true,
@@ -27,10 +31,10 @@ export class InputComponent implements ControlValueAccessor {
     transform: transformInputTypeToEnum,
   })
   inputType!: InputTypeEnum;
-  @ViewChild('prefixIcon', {read: TemplateRef}) prefixIconRef!: TemplateRef<void> | undefined;
-  @ViewChild('suffixIcon', {read: TemplateRef}) suffixIconRef!: TemplateRef<void> | undefined;
-  @ViewChild('addOnAfter', {read: TemplateRef}) addOnAfterRef!: TemplateRef<void> | undefined;
-  @ViewChild('addOnBefore', {read: TemplateRef}) addOnBeforeRef!: TemplateRef<void> | undefined;
+  @ViewChild('prefixIcon', {read: TemplateRef, static: true}) prefixIconRef?: TemplateRef<void> | string;
+  @ViewChild('suffixIcon', {read: TemplateRef, static: true}) suffixIconRef?: TemplateRef<void> | string;
+  @ViewChild('addOnAfter', {read: TemplateRef, static: true}) addOnAfterRef?: TemplateRef<void> | string;
+  @ViewChild('addOnBefore', {read: TemplateRef, static: true}) addOnBeforeRef?: TemplateRef<void> | string;
   INPUT_TYPE_ENUM = InputTypeEnum;
   formControlValue!: string;
   _isDisabled = false;
@@ -69,24 +73,27 @@ export class InputComponent implements ControlValueAccessor {
       case InputTypeEnum.password_getter:
         return {
           prefixTemplateRef: this.prefixIconRef,
-          prefixIcon: 'fa-solid fa-envelope',
-          suffixIcon: undefined,
+          suffixTemplateRef: this.suffixIconRef,
+          prefixIcon: 'fa-solid fa-lock',
+          suffixIcon: 'fa-solid fa-eye',
           label: 'آدرس ایمیل',
           placeholder: 'sample@email.com',
         };
       case InputTypeEnum.password_validator:
         return {
           prefixTemplateRef: this.prefixIconRef,
-          prefixIcon: 'fa-solid fa-envelope',
-          suffixIcon: undefined,
+          suffixTemplateRef: this.suffixIconRef,
+          prefixIcon: 'fa-solid fa-lock',
+          suffixIcon: 'fa-solid fa-eye',
           label: 'آدرس ایمیل',
           placeholder: 'sample@email.com',
         };
       case InputTypeEnum.password_confirmation:
         return {
           prefixTemplateRef: this.prefixIconRef,
-          prefixIcon: 'fa-solid fa-envelope',
-          suffixIcon: undefined,
+          suffixTemplateRef: this.suffixIconRef,
+          prefixIcon: 'fa-solid fa-lock',
+          suffixIcon: 'fa-solid fa-eye',
           label: 'آدرس ایمیل',
           placeholder: 'sample@email.com',
         };

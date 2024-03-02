@@ -98,10 +98,10 @@ type FontAwesomeIconSuffix = 'fa-solid fa-eye' | 'fa-solid fa-eye-slash' | undef
 export interface InputMetrics {
   prefixIcon: FontAwesomeIconPrefix;
   suffixIcon: FontAwesomeIconSuffix;
-  prefixTemplateRef?: TemplateRef<void>;
-  suffixTemplateRef?: TemplateRef<void>;
-  addOnAfterTempRef?: TemplateRef<void>;
-  addOnBeforeTempRef?: TemplateRef<void>;
+  prefixTemplateRef?: TemplateRef<void> | string;
+  suffixTemplateRef?: TemplateRef<void> | string;
+  addOnAfterTempRef?: TemplateRef<void> | string;
+  addOnBeforeTempRef?: TemplateRef<void> | string;
   label: string;
   placeholder: string;
 }
