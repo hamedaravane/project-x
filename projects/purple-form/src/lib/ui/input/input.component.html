@@ -25,7 +25,7 @@
 
 <ng-template #errors let-control>
   <ng-container *ngFor="let possibleError of input().possibleErrors">
-    <ng-container *ngFor="let errorKey of Object.keys(possibleError)">
+    <ng-container *ngFor="let errorKey of objectKeys(possibleError)">
       @if (control.errors?.[errorKey]) {
         {{ possibleError[errorKey] }}
       }

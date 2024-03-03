@@ -176,6 +176,10 @@ export function generateInputBasedOnType(
         suffixIcon: undefined,
         label: 'آدرس ایمیل',
         placeholder: 'sample@email.com',
+        possibleErrors: [
+          {required: 'وارد کردن آدرس ایمیل الزامی است'},
+          {email: 'آدرس ایمیل صحیح نیست'}
+        ]
       };
   }
 }

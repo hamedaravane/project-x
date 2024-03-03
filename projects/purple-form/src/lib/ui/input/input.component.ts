@@ -1,18 +1,17 @@
-import {Component, Input, TemplateRef, ViewChild, computed, forwardRef, AfterViewInit, Signal, ContentChild} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {Component, Input, TemplateRef, ViewChild, computed} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NzInputDirective, NzInputGroupComponent} from 'ng-zorro-antd/input';
 import {
-  InputTypeEnum,
-  transformInputTypeToEnum, InputMetrics, generateInputBasedOnType,
+  InputTypeEnum, transformInputTypeToEnum, generateInputBasedOnType,
 } from '../../data-access/entity/purple-form.entity';
-import {KeyValuePipe, NgForOf, NgTemplateOutlet} from '@angular/common';
+import {NgForOf, NgTemplateOutlet} from '@angular/common';
 import {NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent} from 'ng-zorro-antd/form';
 
 @Component({
   selector: 'purple-form-input',
   imports: [
     NzInputGroupComponent, NzInputDirective, NgTemplateOutlet, NzFormItemComponent, NzFormControlComponent,
-    NzFormLabelComponent, ReactiveFormsModule, KeyValuePipe, NgForOf,
+    NzFormLabelComponent, ReactiveFormsModule, NgForOf,
   ],
   templateUrl: 'input.component.html',
   styleUrl: './input.component.scss',
@@ -52,5 +51,8 @@ export class InputComponent {
       this.addOnBeforeRef,
     );
   });
-  protected readonly Object = Object;
+
+  public objectKeys(obj: Object) {
+    return Object.keys(obj);
+  }
 }
