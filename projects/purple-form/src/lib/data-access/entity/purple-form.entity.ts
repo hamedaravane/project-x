@@ -71,15 +71,15 @@ type FontAwesomeIconPrefix =
 type FontAwesomeIconSuffix = 'fa-solid fa-eye' | 'fa-solid fa-eye-slash' | undefined;
 
 export interface InputMetrics {
-  prefixIcon: FontAwesomeIconPrefix;
-  suffixIcon: FontAwesomeIconSuffix;
+  prefixIcon?: FontAwesomeIconPrefix;
+  suffixIcon?: FontAwesomeIconSuffix;
   prefixTemplateRef?: TemplateRef<void> | string;
   suffixTemplateRef?: TemplateRef<void> | string;
   addOnAfterTempRef?: TemplateRef<void> | string;
   addOnBeforeTempRef?: TemplateRef<void> | string;
   label: string;
   placeholder: string;
-  possibleErrors?: {[key: string]: string}[];
+  possibleErrors?: Record<string, string>[];
 }
 
 export function generateInputBasedOnType(
@@ -94,13 +94,9 @@ export function generateInputBasedOnType(
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-solid fa-envelope',
-        suffixIcon: undefined,
         label: 'آدرس ایمیل',
         placeholder: 'sample@email.com',
-        possibleErrors: [
-          {required: 'وارد کردن آدرس ایمیل الزامی است'},
-          {email: 'آدرس ایمیل صحیح نیست'}
-        ]
+        possibleErrors: [{required: 'وارد کردن آدرس ایمیل الزامی است'}, {email: 'آدرس ایمیل صحیح نیست'}],
       };
     case InputTypeEnum.password_getter:
       return {
@@ -128,58 +124,63 @@ export function generateInputBasedOnType(
         suffixIcon: 'fa-solid fa-eye',
         label: 'تکرار کلمه عبور',
         placeholder: 'sample@email.com',
+        possibleErrors: [{confirm: 'کلمه عبور یکسان نیست'}, {required: 'وارد کردن تکرار کلمه عبور الزامی است'}],
       };
     case InputTypeEnum.mobile:
       return {
         prefixTemplateRef,
-        prefixIcon: 'fa-solid fa-envelope',
-        suffixIcon: undefined,
+        prefixIcon: 'fa-solid fa-mobile',
         label: 'شماره تلفن همراه',
-        placeholder: 'sample@email.com',
+        placeholder: 'بدون صفر و کد کشور',
+        addOnAfterTempRef,
+        possibleErrors: [{required: 'وارد کردن شماره همراه الزامی است'}, {pattern: 'شماره تلفن وارد شده درست نیست'}],
       };
     case InputTypeEnum.home_phone:
       return {
         prefixTemplateRef,
-        prefixIcon: 'fa-solid fa-envelope',
-        suffixIcon: undefined,
+        prefixIcon: 'fa-solid fa-phone',
         label: 'شماره تلفن',
-        placeholder: 'sample@email.com',
+        placeholder: 'بدون صفر و کد کشور',
+        addOnAfterTempRef,
+        possibleErrors: [{required: 'وارد کردن شماره تلفن الزامی است'}, {pattern: 'شماره تلفن وارد شده درست نیست'}],
       };
     case InputTypeEnum.english_text:
       return {
         prefixTemplateRef,
-        prefixIcon: 'fa-solid fa-envelope',
-        suffixIcon: undefined,
-        label: 'آدرس ایمیل',
-        placeholder: 'sample@email.com',
+        prefixIcon: 'fa-solid fa-input-text',
+        label: '',
+        placeholder: 'only in english',
+        possibleErrors: [{required: 'پر کردن این فیلد الزامی است'}, {pattern: 'فقط از حروف انگلیسی استفاده کنید'}],
       };
     case InputTypeEnum.persian_text:
       return {
         prefixTemplateRef,
-        prefixIcon: 'fa-solid fa-envelope',
-        suffixIcon: undefined,
-        label: 'آدرس ایمیل',
-        placeholder: 'sample@email.com',
+        prefixIcon: 'fa-solid fa-input-text',
+        label: '',
+        placeholder: 'از حروف فارسی استفاده شود',
+        possibleErrors: [
+          {required: 'پر کردن این فیلد الزامی است'},
+          {notPersianCharacters: 'فقط از حروف فارسی استفاده کنید'},
+        ],
       };
     case InputTypeEnum.address:
       return {
         prefixTemplateRef,
-        prefixIcon: 'fa-solid fa-envelope',
-        suffixIcon: undefined,
+        prefixIcon: 'fa-solid fa-location-dot',
         label: 'آدرس',
-        placeholder: 'sample@email.com',
+        placeholder: 'تهران، بلوار شریعتی، خیابان مدرس، پلاک ۱',
+        possibleErrors: [
+          {required: 'پر کردن این فیلد الزامی است'},
+          {notPersianCharacters: 'فقط از حروف فارسی استفاده کنید'},
+        ],
       };
     case InputTypeEnum.email_getter:
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-solid fa-envelope',
-        suffixIcon: undefined,
         label: 'آدرس ایمیل',
         placeholder: 'sample@email.com',
-        possibleErrors: [
-          {required: 'وارد کردن آدرس ایمیل الزامی است'},
-          {email: 'آدرس ایمیل صحیح نیست'}
-        ]
+        possibleErrors: [{required: 'وارد کردن آدرس ایمیل الزامی است'}, {email: 'آدرس ایمیل صحیح نیست'}],
       };
   }
 }

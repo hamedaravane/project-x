@@ -151,35 +151,20 @@
       <input type="text" nz-input disabled [placeholder]="userType.label" />
     </nz-input-group>
   </nz-form-item>
-  <purple-form-input [formController]="basicRegisterInfoForm.controls['email']" inputType="email-validator"></purple-form-input>
   <nz-form-item>
-    <nz-form-control nzErrorTip="کلمه عبور را به درستی وارد کنید">
-      <div
-        nz-popover
-        [nzPopoverTrigger]="'click' || 'focus'"
-        nzPopoverPlacement="topRight"
-        [nzPopoverTitle]="PasswordCheckComplexityTitle"
-        [nzPopoverContent]="PasswordCheckComplexityContent">
-        <nz-input-group [nzPrefix]="LockIcon" [nzSuffix]="isHidePassword ? EyeIcon : CloseEyeIcon">
-          <input
-            [type]="isHidePassword ? 'password' : 'text'"
-            nz-input
-            formControlName="password"
-            placeholder="کلمه عبور" />
-        </nz-input-group>
-      </div>
-    </nz-form-control>
+    <purple-form-input
+      [formController]="basicRegisterInfoForm.controls['email']"
+      inputType="email-validator"></purple-form-input>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control [nzErrorTip]="ConfirmPasswordErrorTip">
-      <nz-input-group [nzPrefix]="LockIcon" [nzSuffix]="isHidePassword ? EyeIcon : CloseEyeIcon">
-        <input
-          [type]="isHidePassword ? 'password' : 'text'"
-          nz-input
-          formControlName="confirmPassword"
-          placeholder="تکرار کلمه عبور" />
-      </nz-input-group>
-    </nz-form-control>
+    <purple-form-input
+      [formController]="basicRegisterInfoForm.controls['password']"
+      inputType="password-validator"></purple-form-input>
+  </nz-form-item>
+  <nz-form-item>
+    <purple-form-input
+      [formController]="basicRegisterInfoForm.controls['confirmPassword']"
+      inputType="password-confirmation"></purple-form-input>
   </nz-form-item>
   <p class="py-4">
     <span>با ثبت نام اولیه با</span>
@@ -289,3 +274,64 @@
     <span>شامل کارکترهای ویژه (!#$%^&*) باشد</span>
   </div>
 </ng-template>
+
+<!--
+<form nz-form [nzDisableAutoTips]="true" [formGroup]="basicRegisterInfoForm" (ngSubmit)="submitForm()">
+  <nz-form-item *ngIf="userType$ | async as userType">
+    <nz-input-group [nzPrefix]="InfoIcon">
+      <input type="text" nz-input disabled [placeholder]="userType.label" />
+    </nz-input-group>
+  </nz-form-item>
+  <purple-form-input [formController]="basicRegisterInfoForm.controls['email']" inputType="email-validator"></purple-form-input>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="کلمه عبور را به درستی وارد کنید">
+      <div
+        nz-popover
+        [nzPopoverTrigger]="'click' || 'focus'"
+        nzPopoverPlacement="topRight"
+        [nzPopoverTitle]="PasswordCheckComplexityTitle"
+        [nzPopoverContent]="PasswordCheckComplexityContent">
+        <nz-input-group [nzPrefix]="LockIcon" [nzSuffix]="isHidePassword ? EyeIcon : CloseEyeIcon">
+          <input
+            [type]="isHidePassword ? 'password' : 'text'"
+            nz-input
+            formControlName="password"
+            placeholder="کلمه عبور" />
+        </nz-input-group>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzErrorTip]="ConfirmPasswordErrorTip">
+      <nz-input-group [nzPrefix]="LockIcon" [nzSuffix]="isHidePassword ? EyeIcon : CloseEyeIcon">
+        <input
+          [type]="isHidePassword ? 'password' : 'text'"
+          nz-input
+          formControlName="confirmPassword"
+          placeholder="تکرار کلمه عبور" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <p class="py-4">
+    <span>با ثبت نام اولیه با</span>
+    <span>&nbsp;</span>
+    <a class="text-indigo-700 inline">شرایط و قوانین</a>
+    <span>&nbsp;</span>
+    <span>این اپلیکیشن موافقت میکنید</span>
+  </p>
+  <div class="flex justify-between gap-4 w-full">
+    <button
+      type="submit"
+      nz-button
+      class="w-full"
+      nzType="primary"
+      [disabled]="basicRegisterInfoForm.invalid"
+      nzSize="large">
+      ثبت نام اولیه
+    </button>
+    <button routerLink="/auth/register/user-type" nz-button class="w-full" nzType="default" nzSize="large">
+      بازگشت
+    </button>
+  </div>
+</form>
+-->
