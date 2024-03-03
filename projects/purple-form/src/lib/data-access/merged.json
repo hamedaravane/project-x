@@ -1,0 +1,2090 @@
+[
+  {
+    "name": "Ascension Island",
+    "code": "AC",
+    "emoji": "🇦🇨",
+    "unicode": "U+1F1E6 U+1F1E8",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Andorra",
+    "code": "AD",
+    "emoji": "🇦🇩",
+    "unicode": "U+1F1E6 U+1F1E9",
+    "dial_code": "+376",
+    "fa_name": "آندورا"
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "emoji": "🇦🇪",
+    "unicode": "U+1F1E6 U+1F1EA",
+    "dial_code": "+971",
+    "fa_name": "امارات متحده"
+  },
+  {
+    "name": "Afghanistan",
+    "code": "AF",
+    "emoji": "🇦🇫",
+    "unicode": "U+1F1E6 U+1F1EB",
+    "dial_code": "+93",
+    "fa_name": "افغانستان"
+  },
+  {
+    "name": "Antigua & Barbuda",
+    "code": "AG",
+    "emoji": "🇦🇬",
+    "unicode": "U+1F1E6 U+1F1EC",
+    "dial_code": "+1268",
+    "fa_name": "آنتیگوآ و باربودا"
+  },
+  {
+    "name": "Anguilla",
+    "code": "AI",
+    "emoji": "🇦🇮",
+    "unicode": "U+1F1E6 U+1F1EE",
+    "dial_code": "+1264",
+    "fa_name": "آنگویلا"
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "emoji": "🇦🇱",
+    "unicode": "U+1F1E6 U+1F1F1",
+    "dial_code": "+355",
+    "fa_name": "آلبانی"
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "emoji": "🇦🇲",
+    "unicode": "U+1F1E6 U+1F1F2",
+    "dial_code": "+374",
+    "fa_name": "ارمنستان"
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "emoji": "🇦🇴",
+    "unicode": "U+1F1E6 U+1F1F4",
+    "dial_code": "+244",
+    "fa_name": "آنگولا"
+  },
+  {
+    "name": "Antarctica",
+    "code": "AQ",
+    "emoji": "🇦🇶",
+    "unicode": "U+1F1E6 U+1F1F6",
+    "dial_code": "+672",
+    "fa_name": null
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "emoji": "🇦🇷",
+    "unicode": "U+1F1E6 U+1F1F7",
+    "dial_code": "+54",
+    "fa_name": "آرژانتین"
+  },
+  {
+    "name": "American Samoa",
+    "code": "AS",
+    "emoji": "🇦🇸",
+    "unicode": "U+1F1E6 U+1F1F8",
+    "dial_code": "+1684",
+    "fa_name": "ساموآی آمریکا"
+  },
+  {
+    "name": "Austria",
+    "code": "AT",
+    "emoji": "🇦🇹",
+    "unicode": "U+1F1E6 U+1F1F9",
+    "dial_code": "+43",
+    "fa_name": "اتریش"
+  },
+  {
+    "name": "Australia",
+    "code": "AU",
+    "emoji": "🇦🇺",
+    "unicode": "U+1F1E6 U+1F1FA",
+    "dial_code": "+61",
+    "fa_name": "استرالیا"
+  },
+  {
+    "name": "Aruba",
+    "code": "AW",
+    "emoji": "🇦🇼",
+    "unicode": "U+1F1E6 U+1F1FC",
+    "dial_code": "+297",
+    "fa_name": "آروبا"
+  },
+  {
+    "name": "Åland Islands",
+    "code": "AX",
+    "emoji": "🇦🇽",
+    "unicode": "U+1F1E6 U+1F1FD",
+    "dial_code": "+358",
+    "fa_name": "جزایر الند"
+  },
+  {
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "emoji": "🇦🇿",
+    "unicode": "U+1F1E6 U+1F1FF",
+    "dial_code": "+994",
+    "fa_name": "آذربایجان"
+  },
+  {
+    "name": "Bosnia & Herzegovina",
+    "code": "BA",
+    "emoji": "🇧🇦",
+    "unicode": "U+1F1E7 U+1F1E6",
+    "dial_code": "+387",
+    "fa_name": "بوسنی و هرزگوین"
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "emoji": "🇧🇧",
+    "unicode": "U+1F1E7 U+1F1E7",
+    "dial_code": "+1246",
+    "fa_name": "باربادوس"
+  },
+  {
+    "name": "Bangladesh",
+    "code": "BD",
+    "emoji": "🇧🇩",
+    "unicode": "U+1F1E7 U+1F1E9",
+    "dial_code": "+880",
+    "fa_name": "بنگلادش"
+  },
+  {
+    "name": "Belgium",
+    "code": "BE",
+    "emoji": "🇧🇪",
+    "unicode": "U+1F1E7 U+1F1EA",
+    "dial_code": "+32",
+    "fa_name": "بلژیک"
+  },
+  {
+    "name": "Burkina Faso",
+    "code": "BF",
+    "emoji": "🇧🇫",
+    "unicode": "U+1F1E7 U+1F1EB",
+    "dial_code": "+226",
+    "fa_name": "بورکینافاسو"
+  },
+  {
+    "name": "Bulgaria",
+    "code": "BG",
+    "emoji": "🇧🇬",
+    "unicode": "U+1F1E7 U+1F1EC",
+    "dial_code": "+359",
+    "fa_name": "بلغارستان"
+  },
+  {
+    "name": "Bahrain",
+    "code": "BH",
+    "emoji": "🇧🇭",
+    "unicode": "U+1F1E7 U+1F1ED",
+    "dial_code": "+973",
+    "fa_name": "بحرین"
+  },
+  {
+    "name": "Burundi",
+    "code": "BI",
+    "emoji": "🇧🇮",
+    "unicode": "U+1F1E7 U+1F1EE",
+    "dial_code": "+257",
+    "fa_name": "بوروندی"
+  },
+  {
+    "name": "Benin",
+    "code": "BJ",
+    "emoji": "🇧🇯",
+    "unicode": "U+1F1E7 U+1F1EF",
+    "dial_code": "+229",
+    "fa_name": "بنین"
+  },
+  {
+    "name": "St. Barthélemy",
+    "code": "BL",
+    "emoji": "🇧🇱",
+    "unicode": "U+1F1E7 U+1F1F1",
+    "dial_code": "+590",
+    "fa_name": null
+  },
+  {
+    "name": "Bermuda",
+    "code": "BM",
+    "emoji": "🇧🇲",
+    "unicode": "U+1F1E7 U+1F1F2",
+    "dial_code": "+1441",
+    "fa_name": "برمودا"
+  },
+  {
+    "name": "Brunei",
+    "code": "BN",
+    "emoji": "🇧🇳",
+    "unicode": "U+1F1E7 U+1F1F3",
+    "dial_code": "+673",
+    "fa_name": "برونئی"
+  },
+  {
+    "name": "Bolivia",
+    "code": "BO",
+    "emoji": "🇧🇴",
+    "unicode": "U+1F1E7 U+1F1F4",
+    "dial_code": "+591",
+    "fa_name": "بولیوی"
+  },
+  {
+    "name": "Caribbean Netherlands",
+    "code": "BQ",
+    "emoji": "🇧🇶",
+    "unicode": "U+1F1E7 U+1F1F6",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Brazil",
+    "code": "BR",
+    "emoji": "🇧🇷",
+    "unicode": "U+1F1E7 U+1F1F7",
+    "dial_code": "+55",
+    "fa_name": "برزیل"
+  },
+  {
+    "name": "Bahamas",
+    "code": "BS",
+    "emoji": "🇧🇸",
+    "unicode": "U+1F1E7 U+1F1F8",
+    "dial_code": "+1242",
+    "fa_name": "باهاما"
+  },
+  {
+    "name": "Bhutan",
+    "code": "BT",
+    "emoji": "🇧🇹",
+    "unicode": "U+1F1E7 U+1F1F9",
+    "dial_code": "+975",
+    "fa_name": "بوتان"
+  },
+  {
+    "name": "Bouvet Island",
+    "code": "BV",
+    "emoji": "🇧🇻",
+    "unicode": "U+1F1E7 U+1F1FB",
+    "dial_code": null,
+    "fa_name": "جزیره بووه"
+  },
+  {
+    "name": "Botswana",
+    "code": "BW",
+    "emoji": "🇧🇼",
+    "unicode": "U+1F1E7 U+1F1FC",
+    "dial_code": "+267",
+    "fa_name": "بوتسوانا"
+  },
+  {
+    "name": "Belarus",
+    "code": "BY",
+    "emoji": "🇧🇾",
+    "unicode": "U+1F1E7 U+1F1FE",
+    "dial_code": "+375",
+    "fa_name": "بلاروس"
+  },
+  {
+    "name": "Belize",
+    "code": "BZ",
+    "emoji": "🇧🇿",
+    "unicode": "U+1F1E7 U+1F1FF",
+    "dial_code": "+501",
+    "fa_name": "بلیز"
+  },
+  {
+    "name": "Canada",
+    "code": "CA",
+    "emoji": "🇨🇦",
+    "unicode": "U+1F1E8 U+1F1E6",
+    "dial_code": "+1",
+    "fa_name": "کانادا"
+  },
+  {
+    "name": "Cocos (Keeling) Islands",
+    "code": "CC",
+    "emoji": "🇨🇨",
+    "unicode": "U+1F1E8 U+1F1E8",
+    "dial_code": "+61",
+    "fa_name": ""
+  },
+  {
+    "name": "Congo - Kinshasa",
+    "code": "CD",
+    "emoji": "🇨🇩",
+    "unicode": "U+1F1E8 U+1F1E9",
+    "dial_code": "+243",
+    "fa_name": "جمهوری دموکراتیک کنگو"
+  },
+  {
+    "name": "Central African Republic",
+    "code": "CF",
+    "emoji": "🇨🇫",
+    "unicode": "U+1F1E8 U+1F1EB",
+    "dial_code": "+236",
+    "fa_name": "جمهوری آفریقای مرکزی"
+  },
+  {
+    "name": "Congo - Brazzaville",
+    "code": "CG",
+    "emoji": "🇨🇬",
+    "unicode": "U+1F1E8 U+1F1EC",
+    "dial_code": "+242",
+    "fa_name": "کنگو"
+  },
+  {
+    "name": "Switzerland",
+    "code": "CH",
+    "emoji": "🇨🇭",
+    "unicode": "U+1F1E8 U+1F1ED",
+    "dial_code": "+41",
+    "fa_name": "سوییس"
+  },
+  {
+    "name": "Côte d’Ivoire",
+    "code": "CI",
+    "emoji": "🇨🇮",
+    "unicode": "U+1F1E8 U+1F1EE",
+    "dial_code": "+225",
+    "fa_name": null
+  },
+  {
+    "name": "Cook Islands",
+    "code": "CK",
+    "emoji": "🇨🇰",
+    "unicode": "U+1F1E8 U+1F1F0",
+    "dial_code": "+682",
+    "fa_name": "جزایر کوک"
+  },
+  {
+    "name": "Chile",
+    "code": "CL",
+    "emoji": "🇨🇱",
+    "unicode": "U+1F1E8 U+1F1F1",
+    "dial_code": "+56",
+    "fa_name": "شیلی"
+  },
+  {
+    "name": "Cameroon",
+    "code": "CM",
+    "emoji": "🇨🇲",
+    "unicode": "U+1F1E8 U+1F1F2",
+    "dial_code": "+237",
+    "fa_name": "کامرون"
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "emoji": "🇨🇳",
+    "unicode": "U+1F1E8 U+1F1F3",
+    "dial_code": "+86",
+    "fa_name": "چین"
+  },
+  {
+    "name": "Colombia",
+    "code": "CO",
+    "emoji": "🇨🇴",
+    "unicode": "U+1F1E8 U+1F1F4",
+    "dial_code": "+57",
+    "fa_name": "کلمبیا"
+  },
+  {
+    "name": "Clipperton Island",
+    "code": "CP",
+    "emoji": "🇨🇵",
+    "unicode": "U+1F1E8 U+1F1F5",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Costa Rica",
+    "code": "CR",
+    "emoji": "🇨🇷",
+    "unicode": "U+1F1E8 U+1F1F7",
+    "dial_code": "+506",
+    "fa_name": "کاستاریکا"
+  },
+  {
+    "name": "Cuba",
+    "code": "CU",
+    "emoji": "🇨🇺",
+    "unicode": "U+1F1E8 U+1F1FA",
+    "dial_code": "+53",
+    "fa_name": "کوبا"
+  },
+  {
+    "name": "Cape Verde",
+    "code": "CV",
+    "emoji": "🇨🇻",
+    "unicode": "U+1F1E8 U+1F1FB",
+    "dial_code": "+238",
+    "fa_name": "کیپ ورد"
+  },
+  {
+    "name": "Curaçao",
+    "code": "CW",
+    "emoji": "🇨🇼",
+    "unicode": "U+1F1E8 U+1F1FC",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Christmas Island",
+    "code": "CX",
+    "emoji": "🇨🇽",
+    "unicode": "U+1F1E8 U+1F1FD",
+    "dial_code": "+61",
+    "fa_name": "جزایر کریسمس"
+  },
+  {
+    "name": "Cyprus",
+    "code": "CY",
+    "emoji": "🇨🇾",
+    "unicode": "U+1F1E8 U+1F1FE",
+    "dial_code": "+357",
+    "fa_name": "قبرس"
+  },
+  {
+    "name": "Czechia",
+    "code": "CZ",
+    "emoji": "🇨🇿",
+    "unicode": "U+1F1E8 U+1F1FF",
+    "dial_code": "+420",
+    "fa_name": "جمهوری چک"
+  },
+  {
+    "name": "Germany",
+    "code": "DE",
+    "emoji": "🇩🇪",
+    "unicode": "U+1F1E9 U+1F1EA",
+    "dial_code": "+49",
+    "fa_name": "آلمان"
+  },
+  {
+    "name": "Diego Garcia",
+    "code": "DG",
+    "emoji": "🇩🇬",
+    "unicode": "U+1F1E9 U+1F1EC",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Djibouti",
+    "code": "DJ",
+    "emoji": "🇩🇯",
+    "unicode": "U+1F1E9 U+1F1EF",
+    "dial_code": "+253",
+    "fa_name": "جیبوتی"
+  },
+  {
+    "name": "Denmark",
+    "code": "DK",
+    "emoji": "🇩🇰",
+    "unicode": "U+1F1E9 U+1F1F0",
+    "dial_code": "+45",
+    "fa_name": "دانمارک"
+  },
+  {
+    "name": "Dominica",
+    "code": "DM",
+    "emoji": "🇩🇲",
+    "unicode": "U+1F1E9 U+1F1F2",
+    "dial_code": "+1767",
+    "fa_name": "دومینیکا"
+  },
+  {
+    "name": "Dominican Republic",
+    "code": "DO",
+    "emoji": "🇩🇴",
+    "unicode": "U+1F1E9 U+1F1F4",
+    "dial_code": "+1849",
+    "fa_name": "جمهوری دومینیکن"
+  },
+  {
+    "name": "Algeria",
+    "code": "DZ",
+    "emoji": "🇩🇿",
+    "unicode": "U+1F1E9 U+1F1FF",
+    "dial_code": "+213",
+    "fa_name": "الجزایر"
+  },
+  {
+    "name": "Ceuta & Melilla",
+    "code": "EA",
+    "emoji": "🇪🇦",
+    "unicode": "U+1F1EA U+1F1E6",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "emoji": "🇪🇨",
+    "unicode": "U+1F1EA U+1F1E8",
+    "dial_code": "+593",
+    "fa_name": "اکوادور"
+  },
+  {
+    "name": "Estonia",
+    "code": "EE",
+    "emoji": "🇪🇪",
+    "unicode": "U+1F1EA U+1F1EA",
+    "dial_code": "+372",
+    "fa_name": "استونی"
+  },
+  {
+    "name": "Egypt",
+    "code": "EG",
+    "emoji": "🇪🇬",
+    "unicode": "U+1F1EA U+1F1EC",
+    "dial_code": "+20",
+    "fa_name": "مصر"
+  },
+  {
+    "name": "Western Sahara",
+    "code": "EH",
+    "emoji": "🇪🇭",
+    "unicode": "U+1F1EA U+1F1ED",
+    "dial_code": null,
+    "fa_name": "صحرای غربی"
+  },
+  {
+    "name": "Eritrea",
+    "code": "ER",
+    "emoji": "🇪🇷",
+    "unicode": "U+1F1EA U+1F1F7",
+    "dial_code": "+291",
+    "fa_name": "اریتره"
+  },
+  {
+    "name": "Spain",
+    "code": "ES",
+    "emoji": "🇪🇸",
+    "unicode": "U+1F1EA U+1F1F8",
+    "dial_code": "+34",
+    "fa_name": "اسپانیا"
+  },
+  {
+    "name": "Ethiopia",
+    "code": "ET",
+    "emoji": "🇪🇹",
+    "unicode": "U+1F1EA U+1F1F9",
+    "dial_code": "+251",
+    "fa_name": "اتیوپی"
+  },
+  {
+    "name": "European Union",
+    "code": "EU",
+    "emoji": "🇪🇺",
+    "unicode": "U+1F1EA U+1F1FA",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Finland",
+    "code": "FI",
+    "emoji": "🇫🇮",
+    "unicode": "U+1F1EB U+1F1EE",
+    "dial_code": "+358",
+    "fa_name": "فنلاند"
+  },
+  {
+    "name": "Fiji",
+    "code": "FJ",
+    "emoji": "🇫🇯",
+    "unicode": "U+1F1EB U+1F1EF",
+    "dial_code": "+679",
+    "fa_name": "فیجی"
+  },
+  {
+    "name": "Falkland Islands",
+    "code": "FK",
+    "emoji": "🇫🇰",
+    "unicode": "U+1F1EB U+1F1F0",
+    "dial_code": "+500",
+    "fa_name": "جزایر فالکلند"
+  },
+  {
+    "name": "Micronesia",
+    "code": "FM",
+    "emoji": "🇫🇲",
+    "unicode": "U+1F1EB U+1F1F2",
+    "dial_code": "+691",
+    "fa_name": "میکرونزی"
+  },
+  {
+    "name": "Faroe Islands",
+    "code": "FO",
+    "emoji": "🇫🇴",
+    "unicode": "U+1F1EB U+1F1F4",
+    "dial_code": "+298",
+    "fa_name": "جزایر فارو"
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "emoji": "🇫🇷",
+    "unicode": "U+1F1EB U+1F1F7",
+    "dial_code": "+33",
+    "fa_name": "فرانسه"
+  },
+  {
+    "name": "Gabon",
+    "code": "GA",
+    "emoji": "🇬🇦",
+    "unicode": "U+1F1EC U+1F1E6",
+    "dial_code": "+241",
+    "fa_name": "گابن"
+  },
+  {
+    "name": "United Kingdom",
+    "code": "GB",
+    "emoji": "🇬🇧",
+    "unicode": "U+1F1EC U+1F1E7",
+    "dial_code": "+44",
+    "fa_name": "انگلیس"
+  },
+  {
+    "name": "Grenada",
+    "code": "GD",
+    "emoji": "🇬🇩",
+    "unicode": "U+1F1EC U+1F1E9",
+    "dial_code": "+1473",
+    "fa_name": "گرانادا"
+  },
+  {
+    "name": "Georgia",
+    "code": "GE",
+    "emoji": "🇬🇪",
+    "unicode": "U+1F1EC U+1F1EA",
+    "dial_code": "+995",
+    "fa_name": "گرجستان"
+  },
+  {
+    "name": "French Guiana",
+    "code": "GF",
+    "emoji": "🇬🇫",
+    "unicode": "U+1F1EC U+1F1EB",
+    "dial_code": "+594",
+    "fa_name": "گویان فرانسه"
+  },
+  {
+    "name": "Guernsey",
+    "code": "GG",
+    "emoji": "🇬🇬",
+    "unicode": "U+1F1EC U+1F1EC",
+    "dial_code": "+44",
+    "fa_name": ""
+  },
+  {
+    "name": "Ghana",
+    "code": "GH",
+    "emoji": "🇬🇭",
+    "unicode": "U+1F1EC U+1F1ED",
+    "dial_code": "+233",
+    "fa_name": "غنا"
+  },
+  {
+    "name": "Gibraltar",
+    "code": "GI",
+    "emoji": "🇬🇮",
+    "unicode": "U+1F1EC U+1F1EE",
+    "dial_code": "+350",
+    "fa_name": ""
+  },
+  {
+    "name": "Greenland",
+    "code": "GL",
+    "emoji": "🇬🇱",
+    "unicode": "U+1F1EC U+1F1F1",
+    "dial_code": "+299",
+    "fa_name": "گرینلند"
+  },
+  {
+    "name": "Gambia",
+    "code": "GM",
+    "emoji": "🇬🇲",
+    "unicode": "U+1F1EC U+1F1F2",
+    "dial_code": "+220",
+    "fa_name": "گامیا"
+  },
+  {
+    "name": "Guinea",
+    "code": "GN",
+    "emoji": "🇬🇳",
+    "unicode": "U+1F1EC U+1F1F3",
+    "dial_code": "+224",
+    "fa_name": "گینه"
+  },
+  {
+    "name": "Guadeloupe",
+    "code": "GP",
+    "emoji": "🇬🇵",
+    "unicode": "U+1F1EC U+1F1F5",
+    "dial_code": "+590",
+    "fa_name": ""
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "emoji": "🇬🇶",
+    "unicode": "U+1F1EC U+1F1F6",
+    "dial_code": "+240",
+    "fa_name": "گینه استوایی"
+  },
+  {
+    "name": "Greece",
+    "code": "GR",
+    "emoji": "🇬🇷",
+    "unicode": "U+1F1EC U+1F1F7",
+    "dial_code": "+30",
+    "fa_name": "یونان"
+  },
+  {
+    "name": "South Georgia & South Sandwich Islands",
+    "code": "GS",
+    "emoji": "🇬🇸",
+    "unicode": "U+1F1EC U+1F1F8",
+    "dial_code": "+500",
+    "fa_name": ""
+  },
+  {
+    "name": "Guatemala",
+    "code": "GT",
+    "emoji": "🇬🇹",
+    "unicode": "U+1F1EC U+1F1F9",
+    "dial_code": "+502",
+    "fa_name": "گواتمالا"
+  },
+  {
+    "name": "Guam",
+    "code": "GU",
+    "emoji": "🇬🇺",
+    "unicode": "U+1F1EC U+1F1FA",
+    "dial_code": "+1671",
+    "fa_name": "گوام"
+  },
+  {
+    "name": "Guinea-Bissau",
+    "code": "GW",
+    "emoji": "🇬🇼",
+    "unicode": "U+1F1EC U+1F1FC",
+    "dial_code": "+245",
+    "fa_name": "گینه بیسائو"
+  },
+  {
+    "name": "Guyana",
+    "code": "GY",
+    "emoji": "🇬🇾",
+    "unicode": "U+1F1EC U+1F1FE",
+    "dial_code": "+595",
+    "fa_name": "گویان"
+  },
+  {
+    "name": "Hong Kong SAR China",
+    "code": "HK",
+    "emoji": "🇭🇰",
+    "unicode": "U+1F1ED U+1F1F0",
+    "dial_code": "+852",
+    "fa_name": "هنگ‌کنگ"
+  },
+  {
+    "name": "Heard & McDonald Islands",
+    "code": "HM",
+    "emoji": "🇭🇲",
+    "unicode": "U+1F1ED U+1F1F2",
+    "dial_code": null,
+    "fa_name": ""
+  },
+  {
+    "name": "Honduras",
+    "code": "HN",
+    "emoji": "🇭🇳",
+    "unicode": "U+1F1ED U+1F1F3",
+    "dial_code": "+504",
+    "fa_name": "هندوراس"
+  },
+  {
+    "name": "Croatia",
+    "code": "HR",
+    "emoji": "🇭🇷",
+    "unicode": "U+1F1ED U+1F1F7",
+    "dial_code": "+385",
+    "fa_name": "کرواسی"
+  },
+  {
+    "name": "Haiti",
+    "code": "HT",
+    "emoji": "🇭🇹",
+    "unicode": "U+1F1ED U+1F1F9",
+    "dial_code": "+509",
+    "fa_name": "هاییتی"
+  },
+  {
+    "name": "Hungary",
+    "code": "HU",
+    "emoji": "🇭🇺",
+    "unicode": "U+1F1ED U+1F1FA",
+    "dial_code": "+36",
+    "fa_name": "مجارستان"
+  },
+  {
+    "name": "Canary Islands",
+    "code": "IC",
+    "emoji": "🇮🇨",
+    "unicode": "U+1F1EE U+1F1E8",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Indonesia",
+    "code": "ID",
+    "emoji": "🇮🇩",
+    "unicode": "U+1F1EE U+1F1E9",
+    "dial_code": "+62",
+    "fa_name": "اندونزی"
+  },
+  {
+    "name": "Ireland",
+    "code": "IE",
+    "emoji": "🇮🇪",
+    "unicode": "U+1F1EE U+1F1EA",
+    "dial_code": "+353",
+    "fa_name": "ایرلند"
+  },
+  {
+    "name": "Israel",
+    "code": "IL",
+    "emoji": "🇮🇱",
+    "unicode": "U+1F1EE U+1F1F1",
+    "dial_code": "+972",
+    "fa_name": "اسراییل"
+  },
+  {
+    "name": "Isle of Man",
+    "code": "IM",
+    "emoji": "🇮🇲",
+    "unicode": "U+1F1EE U+1F1F2",
+    "dial_code": "+44",
+    "fa_name": ""
+  },
+  {
+    "name": "India",
+    "code": "IN",
+    "emoji": "🇮🇳",
+    "unicode": "U+1F1EE U+1F1F3",
+    "dial_code": "+91",
+    "fa_name": "هند"
+  },
+  {
+    "name": "British Indian Ocean Territory",
+    "code": "IO",
+    "emoji": "🇮🇴",
+    "unicode": "U+1F1EE U+1F1F4",
+    "dial_code": "+246",
+    "fa_name": ""
+  },
+  {
+    "name": "Iraq",
+    "code": "IQ",
+    "emoji": "🇮🇶",
+    "unicode": "U+1F1EE U+1F1F6",
+    "dial_code": "+964",
+    "fa_name": "عراق"
+  },
+  {
+    "name": "Iran",
+    "code": "IR",
+    "emoji": "🇮🇷",
+    "unicode": "U+1F1EE U+1F1F7",
+    "dial_code": "+98",
+    "fa_name": "ایران"
+  },
+  {
+    "name": "Iceland",
+    "code": "IS",
+    "emoji": "🇮🇸",
+    "unicode": "U+1F1EE U+1F1F8",
+    "dial_code": "+354",
+    "fa_name": "ایسلند"
+  },
+  {
+    "name": "Italy",
+    "code": "IT",
+    "emoji": "🇮🇹",
+    "unicode": "U+1F1EE U+1F1F9",
+    "dial_code": "+39",
+    "fa_name": "ایتالیا"
+  },
+  {
+    "name": "Jersey",
+    "code": "JE",
+    "emoji": "🇯🇪",
+    "unicode": "U+1F1EF U+1F1EA",
+    "dial_code": "+44",
+    "fa_name": ""
+  },
+  {
+    "name": "Jamaica",
+    "code": "JM",
+    "emoji": "🇯🇲",
+    "unicode": "U+1F1EF U+1F1F2",
+    "dial_code": "+1876",
+    "fa_name": "جاماییکا"
+  },
+  {
+    "name": "Jordan",
+    "code": "JO",
+    "emoji": "🇯🇴",
+    "unicode": "U+1F1EF U+1F1F4",
+    "dial_code": "+962",
+    "fa_name": "اردن"
+  },
+  {
+    "name": "Japan",
+    "code": "JP",
+    "emoji": "🇯🇵",
+    "unicode": "U+1F1EF U+1F1F5",
+    "dial_code": "+81",
+    "fa_name": "ژاپن"
+  },
+  {
+    "name": "Kenya",
+    "code": "KE",
+    "emoji": "🇰🇪",
+    "unicode": "U+1F1F0 U+1F1EA",
+    "dial_code": "+254",
+    "fa_name": "کنیا"
+  },
+  {
+    "name": "Kyrgyzstan",
+    "code": "KG",
+    "emoji": "🇰🇬",
+    "unicode": "U+1F1F0 U+1F1EC",
+    "dial_code": "+996",
+    "fa_name": "قرقیزستان"
+  },
+  {
+    "name": "Cambodia",
+    "code": "KH",
+    "emoji": "🇰🇭",
+    "unicode": "U+1F1F0 U+1F1ED",
+    "dial_code": "+855",
+    "fa_name": "کامبوج"
+  },
+  {
+    "name": "Kiribati",
+    "code": "KI",
+    "emoji": "🇰🇮",
+    "unicode": "U+1F1F0 U+1F1EE",
+    "dial_code": "+686",
+    "fa_name": ""
+  },
+  {
+    "name": "Comoros",
+    "code": "KM",
+    "emoji": "🇰🇲",
+    "unicode": "U+1F1F0 U+1F1F2",
+    "dial_code": "+269",
+    "fa_name": "اتحاد قمر"
+  },
+  {
+    "name": "St. Kitts & Nevis",
+    "code": "KN",
+    "emoji": "🇰🇳",
+    "unicode": "U+1F1F0 U+1F1F3",
+    "dial_code": "+1869",
+    "fa_name": "سنت کیتس و نویس"
+  },
+  {
+    "name": "North Korea",
+    "code": "KP",
+    "emoji": "🇰🇵",
+    "unicode": "U+1F1F0 U+1F1F5",
+    "dial_code": "+850",
+    "fa_name": "کره شمالی"
+  },
+  {
+    "name": "South Korea",
+    "code": "KR",
+    "emoji": "🇰🇷",
+    "unicode": "U+1F1F0 U+1F1F7",
+    "dial_code": "+82",
+    "fa_name": "کره جنوبی"
+  },
+  {
+    "name": "Kuwait",
+    "code": "KW",
+    "emoji": "🇰🇼",
+    "unicode": "U+1F1F0 U+1F1FC",
+    "dial_code": "+965",
+    "fa_name": "کویت"
+  },
+  {
+    "name": "Cayman Islands",
+    "code": "KY",
+    "emoji": "🇰🇾",
+    "unicode": "U+1F1F0 U+1F1FE",
+    "dial_code": "+ 345",
+    "fa_name": "جزایر کیمن"
+  },
+  {
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "emoji": "🇰🇿",
+    "unicode": "U+1F1F0 U+1F1FF",
+    "dial_code": "+77",
+    "fa_name": "قزاقستان"
+  },
+  {
+    "name": "Laos",
+    "code": "LA",
+    "emoji": "🇱🇦",
+    "unicode": "U+1F1F1 U+1F1E6",
+    "dial_code": "+856",
+    "fa_name": " لائوس"
+  },
+  {
+    "name": "Lebanon",
+    "code": "LB",
+    "emoji": "🇱🇧",
+    "unicode": "U+1F1F1 U+1F1E7",
+    "dial_code": "+961",
+    "fa_name": "لبنان"
+  },
+  {
+    "name": "St. Lucia",
+    "code": "LC",
+    "emoji": "🇱🇨",
+    "unicode": "U+1F1F1 U+1F1E8",
+    "dial_code": "+1758",
+    "fa_name": ""
+  },
+  {
+    "name": "Liechtenstein",
+    "code": "LI",
+    "emoji": "🇱🇮",
+    "unicode": "U+1F1F1 U+1F1EE",
+    "dial_code": "+423",
+    "fa_name": "لیختنشتاین"
+  },
+  {
+    "name": "Sri Lanka",
+    "code": "LK",
+    "emoji": "🇱🇰",
+    "unicode": "U+1F1F1 U+1F1F0",
+    "dial_code": "+94",
+    "fa_name": "سریلانکا"
+  },
+  {
+    "name": "Liberia",
+    "code": "LR",
+    "emoji": "🇱🇷",
+    "unicode": "U+1F1F1 U+1F1F7",
+    "dial_code": "+231",
+    "fa_name": "لیبریا"
+  },
+  {
+    "name": "Lesotho",
+    "code": "LS",
+    "emoji": "🇱🇸",
+    "unicode": "U+1F1F1 U+1F1F8",
+    "dial_code": "+266",
+    "fa_name": "لسوتو"
+  },
+  {
+    "name": "Lithuania",
+    "code": "LT",
+    "emoji": "🇱🇹",
+    "unicode": "U+1F1F1 U+1F1F9",
+    "dial_code": "+370",
+    "fa_name": "لیتوانی"
+  },
+  {
+    "name": "Luxembourg",
+    "code": "LU",
+    "emoji": "🇱🇺",
+    "unicode": "U+1F1F1 U+1F1FA",
+    "dial_code": "+352",
+    "fa_name": "لوگزامبورگ"
+  },
+  {
+    "name": "Latvia",
+    "code": "LV",
+    "emoji": "🇱🇻",
+    "unicode": "U+1F1F1 U+1F1FB",
+    "dial_code": "+371",
+    "fa_name": "لاتویا"
+  },
+  {
+    "name": "Libya",
+    "code": "LY",
+    "emoji": "🇱🇾",
+    "unicode": "U+1F1F1 U+1F1FE",
+    "dial_code": "+218",
+    "fa_name": "لیبی"
+  },
+  {
+    "name": "Morocco",
+    "code": "MA",
+    "emoji": "🇲🇦",
+    "unicode": "U+1F1F2 U+1F1E6",
+    "dial_code": "+212",
+    "fa_name": "مراکش"
+  },
+  {
+    "name": "Monaco",
+    "code": "MC",
+    "emoji": "🇲🇨",
+    "unicode": "U+1F1F2 U+1F1E8",
+    "dial_code": "+377",
+    "fa_name": "موناکو"
+  },
+  {
+    "name": "Moldova",
+    "code": "MD",
+    "emoji": "🇲🇩",
+    "unicode": "U+1F1F2 U+1F1E9",
+    "dial_code": "+373",
+    "fa_name": "مولداوی"
+  },
+  {
+    "name": "Montenegro",
+    "code": "ME",
+    "emoji": "🇲🇪",
+    "unicode": "U+1F1F2 U+1F1EA",
+    "dial_code": "+382",
+    "fa_name": "مونتنگرو"
+  },
+  {
+    "name": "St. Martin",
+    "code": "MF",
+    "emoji": "🇲🇫",
+    "unicode": "U+1F1F2 U+1F1EB",
+    "dial_code": "+590",
+    "fa_name": null
+  },
+  {
+    "name": "Madagascar",
+    "code": "MG",
+    "emoji": "🇲🇬",
+    "unicode": "U+1F1F2 U+1F1EC",
+    "dial_code": "+261",
+    "fa_name": "ماداگاسکار"
+  },
+  {
+    "name": "Marshall Islands",
+    "code": "MH",
+    "emoji": "🇲🇭",
+    "unicode": "U+1F1F2 U+1F1ED",
+    "dial_code": "+692",
+    "fa_name": "جزایر مارشال"
+  },
+  {
+    "name": "North Macedonia",
+    "code": "MK",
+    "emoji": "🇲🇰",
+    "unicode": "U+1F1F2 U+1F1F0",
+    "dial_code": "+389",
+    "fa_name": "مقدونیه"
+  },
+  {
+    "name": "Mali",
+    "code": "ML",
+    "emoji": "🇲🇱",
+    "unicode": "U+1F1F2 U+1F1F1",
+    "dial_code": "+223",
+    "fa_name": "مالی"
+  },
+  {
+    "name": "Myanmar (Burma)",
+    "code": "MM",
+    "emoji": "🇲🇲",
+    "unicode": "U+1F1F2 U+1F1F2",
+    "dial_code": "+95",
+    "fa_name": "میانمار"
+  },
+  {
+    "name": "Mongolia",
+    "code": "MN",
+    "emoji": "🇲🇳",
+    "unicode": "U+1F1F2 U+1F1F3",
+    "dial_code": "+976",
+    "fa_name": "مغولستان"
+  },
+  {
+    "name": "Macao SAR China",
+    "code": "MO",
+    "emoji": "🇲🇴",
+    "unicode": "U+1F1F2 U+1F1F4",
+    "dial_code": "+853",
+    "fa_name": "ماکائو"
+  },
+  {
+    "name": "Northern Mariana Islands",
+    "code": "MP",
+    "emoji": "🇲🇵",
+    "unicode": "U+1F1F2 U+1F1F5",
+    "dial_code": "+1670",
+    "fa_name": "جزایر ماریان شمالی"
+  },
+  {
+    "name": "Martinique",
+    "code": "MQ",
+    "emoji": "🇲🇶",
+    "unicode": "U+1F1F2 U+1F1F6",
+    "dial_code": "+596",
+    "fa_name": ""
+  },
+  {
+    "name": "Mauritania",
+    "code": "MR",
+    "emoji": "🇲🇷",
+    "unicode": "U+1F1F2 U+1F1F7",
+    "dial_code": "+222",
+    "fa_name": "موریتانی"
+  },
+  {
+    "name": "Montserrat",
+    "code": "MS",
+    "emoji": "🇲🇸",
+    "unicode": "U+1F1F2 U+1F1F8",
+    "dial_code": "+1664",
+    "fa_name": ""
+  },
+  {
+    "name": "Malta",
+    "code": "MT",
+    "emoji": "🇲🇹",
+    "unicode": "U+1F1F2 U+1F1F9",
+    "dial_code": "+356",
+    "fa_name": "مالت"
+  },
+  {
+    "name": "Mauritius",
+    "code": "MU",
+    "emoji": "🇲🇺",
+    "unicode": "U+1F1F2 U+1F1FA",
+    "dial_code": "+230",
+    "fa_name": "موریس"
+  },
+  {
+    "name": "Maldives",
+    "code": "MV",
+    "emoji": "🇲🇻",
+    "unicode": "U+1F1F2 U+1F1FB",
+    "dial_code": "+960",
+    "fa_name": "مالدیو"
+  },
+  {
+    "name": "Malawi",
+    "code": "MW",
+    "emoji": "🇲🇼",
+    "unicode": "U+1F1F2 U+1F1FC",
+    "dial_code": "+265",
+    "fa_name": "مالاوی"
+  },
+  {
+    "name": "Mexico",
+    "code": "MX",
+    "emoji": "🇲🇽",
+    "unicode": "U+1F1F2 U+1F1FD",
+    "dial_code": "+52",
+    "fa_name": "مکزیک"
+  },
+  {
+    "name": "Malaysia",
+    "code": "MY",
+    "emoji": "🇲🇾",
+    "unicode": "U+1F1F2 U+1F1FE",
+    "dial_code": "+60",
+    "fa_name": "مالزی"
+  },
+  {
+    "name": "Mozambique",
+    "code": "MZ",
+    "emoji": "🇲🇿",
+    "unicode": "U+1F1F2 U+1F1FF",
+    "dial_code": "+258",
+    "fa_name": "موزامبیک"
+  },
+  {
+    "name": "Namibia",
+    "code": "NA",
+    "emoji": "🇳🇦",
+    "unicode": "U+1F1F3 U+1F1E6",
+    "dial_code": "+264",
+    "fa_name": "نامیبیا"
+  },
+  {
+    "name": "New Caledonia",
+    "code": "NC",
+    "emoji": "🇳🇨",
+    "unicode": "U+1F1F3 U+1F1E8",
+    "dial_code": "+687",
+    "fa_name": ""
+  },
+  {
+    "name": "Niger",
+    "code": "NE",
+    "emoji": "🇳🇪",
+    "unicode": "U+1F1F3 U+1F1EA",
+    "dial_code": "+227",
+    "fa_name": "نیجر"
+  },
+  {
+    "name": "Norfolk Island",
+    "code": "NF",
+    "emoji": "🇳🇫",
+    "unicode": "U+1F1F3 U+1F1EB",
+    "dial_code": "+672",
+    "fa_name": ""
+  },
+  {
+    "name": "Nigeria",
+    "code": "NG",
+    "emoji": "🇳🇬",
+    "unicode": "U+1F1F3 U+1F1EC",
+    "dial_code": "+234",
+    "fa_name": "نیجریه"
+  },
+  {
+    "name": "Nicaragua",
+    "code": "NI",
+    "emoji": "🇳🇮",
+    "unicode": "U+1F1F3 U+1F1EE",
+    "dial_code": "+505",
+    "fa_name": "نیکاراگوئه"
+  },
+  {
+    "name": "Netherlands",
+    "code": "NL",
+    "emoji": "🇳🇱",
+    "unicode": "U+1F1F3 U+1F1F1",
+    "dial_code": "+31",
+    "fa_name": "هلند"
+  },
+  {
+    "name": "Norway",
+    "code": "NO",
+    "emoji": "🇳🇴",
+    "unicode": "U+1F1F3 U+1F1F4",
+    "dial_code": "+47",
+    "fa_name": "نروژ"
+  },
+  {
+    "name": "Nepal",
+    "code": "NP",
+    "emoji": "🇳🇵",
+    "unicode": "U+1F1F3 U+1F1F5",
+    "dial_code": "+977",
+    "fa_name": "نپال"
+  },
+  {
+    "name": "Nauru",
+    "code": "NR",
+    "emoji": "🇳🇷",
+    "unicode": "U+1F1F3 U+1F1F7",
+    "dial_code": "+674",
+    "fa_name": "نائورو"
+  },
+  {
+    "name": "Niue",
+    "code": "NU",
+    "emoji": "🇳🇺",
+    "unicode": "U+1F1F3 U+1F1FA",
+    "dial_code": "+683",
+    "fa_name": ""
+  },
+  {
+    "name": "New Zealand",
+    "code": "NZ",
+    "emoji": "🇳🇿",
+    "unicode": "U+1F1F3 U+1F1FF",
+    "dial_code": "+64",
+    "fa_name": "نیوزیلند"
+  },
+  {
+    "name": "Oman",
+    "code": "OM",
+    "emoji": "🇴🇲",
+    "unicode": "U+1F1F4 U+1F1F2",
+    "dial_code": "+968",
+    "fa_name": "عمان"
+  },
+  {
+    "name": "Panama",
+    "code": "PA",
+    "emoji": "🇵🇦",
+    "unicode": "U+1F1F5 U+1F1E6",
+    "dial_code": "+507",
+    "fa_name": "پاناما"
+  },
+  {
+    "name": "Peru",
+    "code": "PE",
+    "emoji": "🇵🇪",
+    "unicode": "U+1F1F5 U+1F1EA",
+    "dial_code": "+51",
+    "fa_name": "پرو"
+  },
+  {
+    "name": "French Polynesia",
+    "code": "PF",
+    "emoji": "🇵🇫",
+    "unicode": "U+1F1F5 U+1F1EB",
+    "dial_code": "+689",
+    "fa_name": "پولینزی فرانسوی"
+  },
+  {
+    "name": "Papua New Guinea",
+    "code": "PG",
+    "emoji": "🇵🇬",
+    "unicode": "U+1F1F5 U+1F1EC",
+    "dial_code": "+675",
+    "fa_name": "پاپوا گینه نو"
+  },
+  {
+    "name": "Philippines",
+    "code": "PH",
+    "emoji": "🇵🇭",
+    "unicode": "U+1F1F5 U+1F1ED",
+    "dial_code": "+63",
+    "fa_name": "فیلیپین"
+  },
+  {
+    "name": "Pakistan",
+    "code": "PK",
+    "emoji": "🇵🇰",
+    "unicode": "U+1F1F5 U+1F1F0",
+    "dial_code": "+92",
+    "fa_name": "پاکستان"
+  },
+  {
+    "name": "Poland",
+    "code": "PL",
+    "emoji": "🇵🇱",
+    "unicode": "U+1F1F5 U+1F1F1",
+    "dial_code": "+48",
+    "fa_name": "لهستان"
+  },
+  {
+    "name": "St. Pierre & Miquelon",
+    "code": "PM",
+    "emoji": "🇵🇲",
+    "unicode": "U+1F1F5 U+1F1F2",
+    "dial_code": "+508",
+    "fa_name": ""
+  },
+  {
+    "name": "Pitcairn Islands",
+    "code": "PN",
+    "emoji": "🇵🇳",
+    "unicode": "U+1F1F5 U+1F1F3",
+    "dial_code": "+872",
+    "fa_name": ""
+  },
+  {
+    "name": "Puerto Rico",
+    "code": "PR",
+    "emoji": "🇵🇷",
+    "unicode": "U+1F1F5 U+1F1F7",
+    "dial_code": "+1939",
+    "fa_name": "پورتو ریکو"
+  },
+  {
+    "name": "Palestinian Territories",
+    "code": "PS",
+    "emoji": "🇵🇸",
+    "unicode": "U+1F1F5 U+1F1F8",
+    "dial_code": "+970",
+    "fa_name": "فلسطین"
+  },
+  {
+    "name": "Portugal",
+    "code": "PT",
+    "emoji": "🇵🇹",
+    "unicode": "U+1F1F5 U+1F1F9",
+    "dial_code": "+351",
+    "fa_name": "پرتغال"
+  },
+  {
+    "name": "Palau",
+    "code": "PW",
+    "emoji": "🇵🇼",
+    "unicode": "U+1F1F5 U+1F1FC",
+    "dial_code": "+680",
+    "fa_name": "پالائو"
+  },
+  {
+    "name": "Paraguay",
+    "code": "PY",
+    "emoji": "🇵🇾",
+    "unicode": "U+1F1F5 U+1F1FE",
+    "dial_code": "+595",
+    "fa_name": "پاراگوئه"
+  },
+  {
+    "name": "Qatar",
+    "code": "QA",
+    "emoji": "🇶🇦",
+    "unicode": "U+1F1F6 U+1F1E6",
+    "dial_code": "+974",
+    "fa_name": "قطر"
+  },
+  {
+    "name": "Réunion",
+    "code": "RE",
+    "emoji": "🇷🇪",
+    "unicode": "U+1F1F7 U+1F1EA",
+    "dial_code": "+262",
+    "fa_name": ""
+  },
+  {
+    "name": "Romania",
+    "code": "RO",
+    "emoji": "🇷🇴",
+    "unicode": "U+1F1F7 U+1F1F4",
+    "dial_code": "+40",
+    "fa_name": "رومانی"
+  },
+  {
+    "name": "Serbia",
+    "code": "RS",
+    "emoji": "🇷🇸",
+    "unicode": "U+1F1F7 U+1F1F8",
+    "dial_code": "+381",
+    "fa_name": "صربستان"
+  },
+  {
+    "name": "Russia",
+    "code": "RU",
+    "emoji": "🇷🇺",
+    "unicode": "U+1F1F7 U+1F1FA",
+    "dial_code": "+7",
+    "fa_name": "روسیه"
+  },
+  {
+    "name": "Rwanda",
+    "code": "RW",
+    "emoji": "🇷🇼",
+    "unicode": "U+1F1F7 U+1F1FC",
+    "dial_code": "+250",
+    "fa_name": "رواندا"
+  },
+  {
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "emoji": "🇸🇦",
+    "unicode": "U+1F1F8 U+1F1E6",
+    "dial_code": "+966",
+    "fa_name": "عربستان"
+  },
+  {
+    "name": "Solomon Islands",
+    "code": "SB",
+    "emoji": "🇸🇧",
+    "unicode": "U+1F1F8 U+1F1E7",
+    "dial_code": "+677",
+    "fa_name": "جزایر سلیمان"
+  },
+  {
+    "name": "Seychelles",
+    "code": "SC",
+    "emoji": "🇸🇨",
+    "unicode": "U+1F1F8 U+1F1E8",
+    "dial_code": "+248",
+    "fa_name": "سیشل"
+  },
+  {
+    "name": "Sudan",
+    "code": "SD",
+    "emoji": "🇸🇩",
+    "unicode": "U+1F1F8 U+1F1E9",
+    "dial_code": "+249",
+    "fa_name": "سودان"
+  },
+  {
+    "name": "Sweden",
+    "code": "SE",
+    "emoji": "🇸🇪",
+    "unicode": "U+1F1F8 U+1F1EA",
+    "dial_code": "+46",
+    "fa_name": "سوئد"
+  },
+  {
+    "name": "Singapore",
+    "code": "SG",
+    "emoji": "🇸🇬",
+    "unicode": "U+1F1F8 U+1F1EC",
+    "dial_code": "+65",
+    "fa_name": "سنگاپور"
+  },
+  {
+    "name": "St. Helena",
+    "code": "SH",
+    "emoji": "🇸🇭",
+    "unicode": "U+1F1F8 U+1F1ED",
+    "dial_code": "+290",
+    "fa_name": ""
+  },
+  {
+    "name": "Slovenia",
+    "code": "SI",
+    "emoji": "🇸🇮",
+    "unicode": "U+1F1F8 U+1F1EE",
+    "dial_code": "+386",
+    "fa_name": "اسلوونی"
+  },
+  {
+    "name": "Svalbard & Jan Mayen",
+    "code": "SJ",
+    "emoji": "🇸🇯",
+    "unicode": "U+1F1F8 U+1F1EF",
+    "dial_code": "+47",
+    "fa_name": ""
+  },
+  {
+    "name": "Slovakia",
+    "code": "SK",
+    "emoji": "🇸🇰",
+    "unicode": "U+1F1F8 U+1F1F0",
+    "dial_code": "+421",
+    "fa_name": "اسلوواکی"
+  },
+  {
+    "name": "Sierra Leone",
+    "code": "SL",
+    "emoji": "🇸🇱",
+    "unicode": "U+1F1F8 U+1F1F1",
+    "dial_code": "+232",
+    "fa_name": "سیرالئون"
+  },
+  {
+    "name": "San Marino",
+    "code": "SM",
+    "emoji": "🇸🇲",
+    "unicode": "U+1F1F8 U+1F1F2",
+    "dial_code": "+378",
+    "fa_name": "سن مارینو"
+  },
+  {
+    "name": "Senegal",
+    "code": "SN",
+    "emoji": "🇸🇳",
+    "unicode": "U+1F1F8 U+1F1F3",
+    "dial_code": "+221",
+    "fa_name": "سنگال"
+  },
+  {
+    "name": "Somalia",
+    "code": "SO",
+    "emoji": "🇸🇴",
+    "unicode": "U+1F1F8 U+1F1F4",
+    "dial_code": "+252",
+    "fa_name": "سومالی"
+  },
+  {
+    "name": "Suriname",
+    "code": "SR",
+    "emoji": "🇸🇷",
+    "unicode": "U+1F1F8 U+1F1F7",
+    "dial_code": "+597",
+    "fa_name": "سورینام"
+  },
+  {
+    "name": "South Sudan",
+    "code": "SS",
+    "emoji": "🇸🇸",
+    "unicode": "U+1F1F8 U+1F1F8",
+    "dial_code": "+211",
+    "fa_name": null
+  },
+  {
+    "name": "São Tomé & Príncipe",
+    "code": "ST",
+    "emoji": "🇸🇹",
+    "unicode": "U+1F1F8 U+1F1F9",
+    "dial_code": "+239",
+    "fa_name": ""
+  },
+  {
+    "name": "El Salvador",
+    "code": "SV",
+    "emoji": "🇸🇻",
+    "unicode": "U+1F1F8 U+1F1FB",
+    "dial_code": "+503",
+    "fa_name": "السالوادور"
+  },
+  {
+    "name": "Sint Maarten",
+    "code": "SX",
+    "emoji": "🇸🇽",
+    "unicode": "U+1F1F8 U+1F1FD",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Syria",
+    "code": "SY",
+    "emoji": "🇸🇾",
+    "unicode": "U+1F1F8 U+1F1FE",
+    "dial_code": "+963",
+    "fa_name": "سوریه"
+  },
+  {
+    "name": "Eswatini",
+    "code": "SZ",
+    "emoji": "🇸🇿",
+    "unicode": "U+1F1F8 U+1F1FF",
+    "dial_code": "+268",
+    "fa_name": "سوازیلند"
+  },
+  {
+    "name": "Tristan da Cunha",
+    "code": "TA",
+    "emoji": "🇹🇦",
+    "unicode": "U+1F1F9 U+1F1E6",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Turks & Caicos Islands",
+    "code": "TC",
+    "emoji": "🇹🇨",
+    "unicode": "U+1F1F9 U+1F1E8",
+    "dial_code": "+1649",
+    "fa_name": ""
+  },
+  {
+    "name": "Chad",
+    "code": "TD",
+    "emoji": "🇹🇩",
+    "unicode": "U+1F1F9 U+1F1E9",
+    "dial_code": "+235",
+    "fa_name": "چاد"
+  },
+  {
+    "name": "French Southern Territories",
+    "code": "TF",
+    "emoji": "🇹🇫",
+    "unicode": "U+1F1F9 U+1F1EB",
+    "dial_code": null,
+    "fa_name": ""
+  },
+  {
+    "name": "Togo",
+    "code": "TG",
+    "emoji": "🇹🇬",
+    "unicode": "U+1F1F9 U+1F1EC",
+    "dial_code": "+228",
+    "fa_name": "توگو"
+  },
+  {
+    "name": "Thailand",
+    "code": "TH",
+    "emoji": "🇹🇭",
+    "unicode": "U+1F1F9 U+1F1ED",
+    "dial_code": "+66",
+    "fa_name": "تایلند"
+  },
+  {
+    "name": "Tajikistan",
+    "code": "TJ",
+    "emoji": "🇹🇯",
+    "unicode": "U+1F1F9 U+1F1EF",
+    "dial_code": "+992",
+    "fa_name": "تاجیکستان"
+  },
+  {
+    "name": "Tokelau",
+    "code": "TK",
+    "emoji": "🇹🇰",
+    "unicode": "U+1F1F9 U+1F1F0",
+    "dial_code": "+690",
+    "fa_name": ""
+  },
+  {
+    "name": "Timor-Leste",
+    "code": "TL",
+    "emoji": "🇹🇱",
+    "unicode": "U+1F1F9 U+1F1F1",
+    "dial_code": "+670",
+    "fa_name": "تیمور شرقی"
+  },
+  {
+    "name": "Turkmenistan",
+    "code": "TM",
+    "emoji": "🇹🇲",
+    "unicode": "U+1F1F9 U+1F1F2",
+    "dial_code": "+993",
+    "fa_name": "ترکمنستان"
+  },
+  {
+    "name": "Tunisia",
+    "code": "TN",
+    "emoji": "🇹🇳",
+    "unicode": "U+1F1F9 U+1F1F3",
+    "dial_code": "+216",
+    "fa_name": "تونس"
+  },
+  {
+    "name": "Tonga",
+    "code": "TO",
+    "emoji": "🇹🇴",
+    "unicode": "U+1F1F9 U+1F1F4",
+    "dial_code": "+676",
+    "fa_name": "تونگا"
+  },
+  {
+    "name": "Turkey",
+    "code": "TR",
+    "emoji": "🇹🇷",
+    "unicode": "U+1F1F9 U+1F1F7",
+    "dial_code": "+90",
+    "fa_name": "ترکیه"
+  },
+  {
+    "name": "Trinidad & Tobago",
+    "code": "TT",
+    "emoji": "🇹🇹",
+    "unicode": "U+1F1F9 U+1F1F9",
+    "dial_code": "+1868",
+    "fa_name": "ترینیداد"
+  },
+  {
+    "name": "Tuvalu",
+    "code": "TV",
+    "emoji": "🇹🇻",
+    "unicode": "U+1F1F9 U+1F1FB",
+    "dial_code": "+688",
+    "fa_name": "تووالو"
+  },
+  {
+    "name": "Taiwan",
+    "code": "TW",
+    "emoji": "🇹🇼",
+    "unicode": "U+1F1F9 U+1F1FC",
+    "dial_code": "+886",
+    "fa_name": "تایوان"
+  },
+  {
+    "name": "Tanzania",
+    "code": "TZ",
+    "emoji": "🇹🇿",
+    "unicode": "U+1F1F9 U+1F1FF",
+    "dial_code": "+255",
+    "fa_name": "تانزانیا"
+  },
+  {
+    "name": "Ukraine",
+    "code": "UA",
+    "emoji": "🇺🇦",
+    "unicode": "U+1F1FA U+1F1E6",
+    "dial_code": "+380",
+    "fa_name": "اوکراین"
+  },
+  {
+    "name": "Uganda",
+    "code": "UG",
+    "emoji": "🇺🇬",
+    "unicode": "U+1F1FA U+1F1EC",
+    "dial_code": "+256",
+    "fa_name": "اوگاندا"
+  },
+  {
+    "name": "U.S. Outlying Islands",
+    "code": "UM",
+    "emoji": "🇺🇲",
+    "unicode": "U+1F1FA U+1F1F2",
+    "dial_code": null,
+    "fa_name": ""
+  },
+  {
+    "name": "United Nations",
+    "code": "UN",
+    "emoji": "🇺🇳",
+    "unicode": "U+1F1FA U+1F1F3",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "emoji": "🇺🇸",
+    "unicode": "U+1F1FA U+1F1F8",
+    "dial_code": "+1",
+    "fa_name": "آمریکا"
+  },
+  {
+    "name": "Uruguay",
+    "code": "UY",
+    "emoji": "🇺🇾",
+    "unicode": "U+1F1FA U+1F1FE",
+    "dial_code": "+598",
+    "fa_name": "اروگوئه"
+  },
+  {
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "emoji": "🇺🇿",
+    "unicode": "U+1F1FA U+1F1FF",
+    "dial_code": "+998",
+    "fa_name": "ازبسکتان"
+  },
+  {
+    "name": "Vatican City",
+    "code": "VA",
+    "emoji": "🇻🇦",
+    "unicode": "U+1F1FB U+1F1E6",
+    "dial_code": "+379",
+    "fa_name": ""
+  },
+  {
+    "name": "St. Vincent & Grenadines",
+    "code": "VC",
+    "emoji": "🇻🇨",
+    "unicode": "U+1F1FB U+1F1E8",
+    "dial_code": "+1784",
+    "fa_name": ""
+  },
+  {
+    "name": "Venezuela",
+    "code": "VE",
+    "emoji": "🇻🇪",
+    "unicode": "U+1F1FB U+1F1EA",
+    "dial_code": "+58",
+    "fa_name": "ونزوئلا"
+  },
+  {
+    "name": "British Virgin Islands",
+    "code": "VG",
+    "emoji": "🇻🇬",
+    "unicode": "U+1F1FB U+1F1EC",
+    "dial_code": "+1284",
+    "fa_name": ""
+  },
+  {
+    "name": "U.S. Virgin Islands",
+    "code": "VI",
+    "emoji": "🇻🇮",
+    "unicode": "U+1F1FB U+1F1EE",
+    "dial_code": "+1340",
+    "fa_name": ""
+  },
+  {
+    "name": "Vietnam",
+    "code": "VN",
+    "emoji": "🇻🇳",
+    "unicode": "U+1F1FB U+1F1F3",
+    "dial_code": "+84",
+    "fa_name": "ویتنام"
+  },
+  {
+    "name": "Vanuatu",
+    "code": "VU",
+    "emoji": "🇻🇺",
+    "unicode": "U+1F1FB U+1F1FA",
+    "dial_code": "+678",
+    "fa_name": "وانواتو"
+  },
+  {
+    "name": "Wallis & Futuna",
+    "code": "WF",
+    "emoji": "🇼🇫",
+    "unicode": "U+1F1FC U+1F1EB",
+    "dial_code": "+681",
+    "fa_name": ""
+  },
+  {
+    "name": "Samoa",
+    "code": "WS",
+    "emoji": "🇼🇸",
+    "unicode": "U+1F1FC U+1F1F8",
+    "dial_code": "+685",
+    "fa_name": "ساموآ"
+  },
+  {
+    "name": "Kosovo",
+    "code": "XK",
+    "emoji": "🇽🇰",
+    "unicode": "U+1F1FD U+1F1F0",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Yemen",
+    "code": "YE",
+    "emoji": "🇾🇪",
+    "unicode": "U+1F1FE U+1F1EA",
+    "dial_code": "+967",
+    "fa_name": "یمن"
+  },
+  {
+    "name": "Mayotte",
+    "code": "YT",
+    "emoji": "🇾🇹",
+    "unicode": "U+1F1FE U+1F1F9",
+    "dial_code": "+262",
+    "fa_name": ""
+  },
+  {
+    "name": "South Africa",
+    "code": "ZA",
+    "emoji": "🇿🇦",
+    "unicode": "U+1F1FF U+1F1E6",
+    "dial_code": "+27",
+    "fa_name": "آفریقای جنوبی"
+  },
+  {
+    "name": "Zambia",
+    "code": "ZM",
+    "emoji": "🇿🇲",
+    "unicode": "U+1F1FF U+1F1F2",
+    "dial_code": "+260",
+    "fa_name": "زامبیا"
+  },
+  {
+    "name": "Zimbabwe",
+    "code": "ZW",
+    "emoji": "🇿🇼",
+    "unicode": "U+1F1FF U+1F1FC",
+    "dial_code": "+263",
+    "fa_name": null
+  },
+  {
+    "name": "England",
+    "code": "ENGLAND",
+    "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "unicode": "U+1F3F4 U+E0067 U+E0062 U+E0065 U+E006E U+E0067 U+E007F",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Scotland",
+    "code": "SCOTLAND",
+    "emoji": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "unicode": "U+1F3F4 U+E0067 U+E0062 U+E0073 U+E0063 U+E0074 U+E007F",
+    "dial_code": null,
+    "fa_name": null
+  },
+  {
+    "name": "Wales",
+    "code": "WALES",
+    "emoji": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+    "unicode": "U+1F3F4 U+E0067 U+E0062 U+E0077 U+E006C U+E0073 U+E007F",
+    "dial_code": null,
+    "fa_name": null
+  }
+]
