@@ -1,13 +1,13 @@
 <nz-form-item>
   <nz-form-label>{{input().label}}</nz-form-label>
-  <nz-form-control>
+  <nz-form-control [nzErrorTip]="errors">
     <nz-input-group
       [nzPrefix]="input().prefixTemplateRef"
       [nzSuffix]="input().suffixTemplateRef"
       [nzAddOnAfter]="input().addOnAfterTempRef"
       [nzAddOnBefore]="input().addOnBeforeTempRef"
     >
-      <input nz-input [disabled]="_isDisabled" [placeholder]="input().placeholder">
+      <input nz-input [formControl]="formController" [disabled]="_isDisabled" [placeholder]="input().placeholder">
     </nz-input-group>
   </nz-form-control>
 </nz-form-item>
@@ -21,4 +21,14 @@
 <ng-template #addOnAfter>
 </ng-template>
 <ng-template #addOnBefore>
+</ng-template>
+
+<ng-template #errors let-control>
+  <ng-container *ngFor="let possibleError of input().possibleErrors">
+    <ng-container *ngFor="let errorKey of Object.keys(possibleError)">
+      @if (control.errors?.[errorKey]) {
+        {{ possibleError[errorKey] }}
+      }
+    </ng-container>
+  </ng-container>
 </ng-template>

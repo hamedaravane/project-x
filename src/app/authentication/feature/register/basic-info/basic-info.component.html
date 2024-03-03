@@ -151,9 +151,7 @@
       <input type="text" nz-input disabled [placeholder]="userType.label" />
     </nz-input-group>
   </nz-form-item>
-  <nz-form-item>
-    <purple-form-input inputType="email-getter"></purple-form-input>
-  </nz-form-item>
+  <purple-form-input [formController]="basicRegisterInfoForm.controls['email']" inputType="email-validator"></purple-form-input>
   <nz-form-item>
     <nz-form-control nzErrorTip="کلمه عبور را به درستی وارد کنید">
       <div
