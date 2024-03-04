@@ -16,6 +16,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {PurpleDate} from '@date/data-access/model/date.model';
 import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date-picker.component';
+import {InputComponent} from 'purple-form';
 
 @Component({
   standalone: true,
@@ -34,6 +35,7 @@ import {PurpleDatePickerComponent} from '@date/ui/purple-date-picker/purple-date
     ReactiveFormsModule,
     RouterLink,
     PurpleDatePickerComponent,
+    InputComponent,
   ],
   styleUrls: ['./influencer-info-form.component.scss'],
 })
@@ -46,7 +48,7 @@ export class InfluencerInfoFormComponent {
 
   influencerTypeList = influencerCategoryList;
 
-  influencerInfoForm: FormGroup = new FormGroup({
+  influencerInfoForm = new FormGroup({
     userType: new FormControl<UserType>({value: UserType.INFLUENCER, disabled: true}),
     persianInfluencerName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),
     persianInfluencerLastName: new FormControl<string | null>(null, [Validators.required, persianCharValidator]),

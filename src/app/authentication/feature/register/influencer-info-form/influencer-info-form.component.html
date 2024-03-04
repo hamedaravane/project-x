@@ -215,11 +215,9 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control [nzErrorTip]="IranianMobilePhoneNumberErrorsTip">
-      <nz-input-group [nzAddOnBefore]="beforePhoneNumber">
-        <input type="number" nz-input placeholder="شماره موبایل (ایران)" formControlName="mobilePhoneNumber" />
-      </nz-input-group>
-    </nz-form-control>
+    <purple-form-input
+      [formController]="influencerInfoForm.controls['mobilePhoneNumber']"
+      inputType="mobile"></purple-form-input>
   </nz-form-item>
   <div class="flex justify-between mt-4 gap-4 w-full">
     <button

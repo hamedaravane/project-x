@@ -1,16 +1,14 @@
-<nz-form-item>
-  <nz-form-label>{{input().label}}</nz-form-label>
-  <nz-form-control [nzErrorTip]="errors">
-    <nz-input-group
-      [nzPrefix]="input().prefixTemplateRef"
-      [nzSuffix]="input().suffixTemplateRef"
-      [nzAddOnAfter]="input().addOnAfterTempRef"
-      [nzAddOnBefore]="input().addOnBeforeTempRef"
-    >
-      <input nz-input [formControl]="formController" [disabled]="_isDisabled" [placeholder]="input().placeholder">
-    </nz-input-group>
-  </nz-form-control>
-</nz-form-item>
+<nz-form-label>{{input().label}}</nz-form-label>
+<nz-form-control [nzErrorTip]="errors">
+  <nz-input-group
+    [nzPrefix]="input().prefixTemplateRef"
+    [nzSuffix]="input().suffixTemplateRef"
+    [nzAddOnAfter]="input().addOnAfterTempRef"
+    [nzAddOnBefore]="input().addOnBeforeTempRef"
+  >
+    <input nz-input [formControl]="formController" [disabled]="_isDisabled" [placeholder]="input().placeholder">
+  </nz-input-group>
+</nz-form-control>
 
 <ng-template #prefixIcon>
   <i [class]="input().prefixIcon"></i>
@@ -19,6 +17,13 @@
   <i [class]="input().suffixIcon"></i>
 </ng-template>
 <ng-template #addOnAfter>
+  <nz-select [(ngModel)]="dialCode">
+    <ng-container *ngFor="let country of countries">
+      <nz-option [nzCustomContent]="true" [nzValue]="country.dial_code" [nzKey]="country.key_id">
+        <span [innerHTML]="country.unicode"></span><span class="text-base"> {{country.fa_name}} ({{country.dial_code}}) </span>
+      </nz-option>
+    </ng-container>
+  </nz-select>
 </ng-template>
 <ng-template #addOnBefore>
 </ng-template>
@@ -27,7 +32,7 @@
   <ng-container *ngFor="let possibleError of input().possibleErrors">
     <ng-container *ngFor="let errorKey of objectKeys(possibleError)">
       @if (control.errors?.[errorKey]) {
-        {{ possibleError[errorKey] }}
+        {{possibleError[errorKey]}}
       }
     </ng-container>
   </ng-container>

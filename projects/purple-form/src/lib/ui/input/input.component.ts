@@ -1,17 +1,20 @@
 import {Component, Input, TemplateRef, ViewChild, computed} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NzInputDirective, NzInputGroupComponent} from 'ng-zorro-antd/input';
 import {
-  InputTypeEnum, transformInputTypeToEnum, generateInputBasedOnType,
+  InputTypeEnum, transformInputTypeToEnum, generateInputBasedOnType, Countries,
 } from '../../data-access/entity/purple-form.entity';
 import {NgForOf, NgTemplateOutlet} from '@angular/common';
 import {NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent} from 'ng-zorro-antd/form';
+import {NzOptionComponent, NzSelectComponent} from 'ng-zorro-antd/select';
+import CountriesDialCode from '../../data-access/countries-dial-code.json';
+import countries from '../../data-access/countries-dial-code.json';
 
 @Component({
   selector: 'purple-form-input',
   imports: [
     NzInputGroupComponent, NzInputDirective, NgTemplateOutlet, NzFormItemComponent, NzFormControlComponent,
-    NzFormLabelComponent, ReactiveFormsModule, NgForOf,
+    NzFormLabelComponent, ReactiveFormsModule, NgForOf, NzSelectComponent, NzOptionComponent, FormsModule,
   ],
   templateUrl: 'input.component.html',
   styleUrl: './input.component.scss',
@@ -24,6 +27,8 @@ export class InputComponent {
     transform: transformInputTypeToEnum,
   })
   inputType!: InputTypeEnum;
+  countries: Countries[] = CountriesDialCode;
+  dialCode = '+98'
   @ViewChild('prefixIcon', {
     read: TemplateRef,
     static: true,

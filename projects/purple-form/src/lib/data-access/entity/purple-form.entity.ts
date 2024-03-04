@@ -184,3 +184,13 @@ export function generateInputBasedOnType(
       };
   }
 }
+
+export interface Countries {
+  key_id: number;
+  name: string;
+  code: string;
+  emoji: string;
+  unicode: string;
+  dial_code: string;
+  fa_name: string;
+}

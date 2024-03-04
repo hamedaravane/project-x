@@ -13,7 +13,7 @@ import {
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {itemsAnimation, openClose} from '@shared/data-access/animations/animations';
 import {PersianDigitPipe} from '@shared/util/pipes/persian-digit.pipe';
-import * as moment from 'moment-jalaali';
+import moment from 'moment-jalaali';
 import {Day, PurpleDate} from '@date/data-access/model/date.model';
 
 @Component({
