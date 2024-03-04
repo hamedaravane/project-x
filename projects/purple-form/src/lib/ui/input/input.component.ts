@@ -9,12 +9,13 @@ import {NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent} from 
 import {NzOptionComponent, NzSelectComponent} from 'ng-zorro-antd/select';
 import CountriesDialCode from '../../data-access/countries-dial-code.json';
 import countries from '../../data-access/countries-dial-code.json';
+import {Dir} from '@angular/cdk/bidi';
 
 @Component({
   selector: 'purple-form-input',
   imports: [
     NzInputGroupComponent, NzInputDirective, NgTemplateOutlet, NzFormItemComponent, NzFormControlComponent,
-    NzFormLabelComponent, ReactiveFormsModule, NgForOf, NzSelectComponent, NzOptionComponent, FormsModule,
+    NzFormLabelComponent, ReactiveFormsModule, NgForOf, NzSelectComponent, NzOptionComponent, FormsModule, Dir,
   ],
   templateUrl: 'input.component.html',
   styleUrl: './input.component.scss',

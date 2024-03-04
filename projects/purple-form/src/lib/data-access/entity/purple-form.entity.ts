@@ -10,7 +10,9 @@ export type InputType =
   | 'home-phone'
   | 'address'
   | 'persian-text'
-  | 'english-text';
+  | 'english-text'
+  | 'instagram'
+  | 'twitter';
 
 export enum InputTypeEnum {
   email_getter,
@@ -23,6 +25,8 @@ export enum InputTypeEnum {
   address,
   persian_text,
   english_text,
+  instagram,
+  twitter
 }
 
 export function transformInputTypeToEnum(value: InputType): InputTypeEnum {
@@ -45,7 +49,11 @@ export function transformInputTypeToEnum(value: InputType): InputTypeEnum {
       return InputTypeEnum.persian_text;
     case 'address':
       return InputTypeEnum.address;
-    default:
+    case 'instagram':
+      return InputTypeEnum.instagram;
+    case 'twitter':
+      return InputTypeEnum.twitter;
+    case 'email-getter':
       return InputTypeEnum.email_getter;
   }
 }
@@ -80,6 +88,7 @@ export interface InputMetrics {
   label: string;
   placeholder: string;
   possibleErrors?: Record<string, string>[];
+  formDirection: 'rtl' | 'ltr';
 }
 
 export function generateInputBasedOnType(
@@ -97,6 +106,7 @@ export function generateInputBasedOnType(
         label: 'آدرس ایمیل',
         placeholder: 'sample@email.com',
         possibleErrors: [{required: 'وارد کردن آدرس ایمیل الزامی است'}, {email: 'آدرس ایمیل صحیح نیست'}],
+        formDirection: 'ltr'
       };
     case InputTypeEnum.password_getter:
       return {
@@ -106,6 +116,7 @@ export function generateInputBasedOnType(
         suffixIcon: 'fa-solid fa-eye',
         label: 'کلمه عبور',
         placeholder: 'sample@email.com',
+        formDirection: 'ltr'
       };
     case InputTypeEnum.password_validator:
       return {
@@ -115,6 +126,7 @@ export function generateInputBasedOnType(
         suffixIcon: 'fa-solid fa-eye',
         label: 'انتخاب کلمه عبور',
         placeholder: 'sample@email.com',
+        formDirection: 'ltr'
       };
     case InputTypeEnum.password_confirmation:
       return {
@@ -125,6 +137,7 @@ export function generateInputBasedOnType(
         label: 'تکرار کلمه عبور',
         placeholder: 'sample@email.com',
         possibleErrors: [{confirm: 'کلمه عبور یکسان نیست'}, {required: 'وارد کردن تکرار کلمه عبور الزامی است'}],
+        formDirection: 'ltr'
       };
     case InputTypeEnum.mobile:
       return {
@@ -134,6 +147,7 @@ export function generateInputBasedOnType(
         placeholder: 'بدون صفر و کد کشور',
         addOnAfterTempRef,
         possibleErrors: [{required: 'وارد کردن شماره همراه الزامی است'}, {pattern: 'شماره تلفن وارد شده درست نیست'}],
+        formDirection: 'ltr'
       };
     case InputTypeEnum.home_phone:
       return {
@@ -143,6 +157,7 @@ export function generateInputBasedOnType(
         placeholder: 'بدون صفر و کد کشور',
         addOnAfterTempRef,
         possibleErrors: [{required: 'وارد کردن شماره تلفن الزامی است'}, {pattern: 'شماره تلفن وارد شده درست نیست'}],
+        formDirection: 'ltr'
       };
     case InputTypeEnum.english_text:
       return {
@@ -151,6 +166,7 @@ export function generateInputBasedOnType(
         label: '',
         placeholder: 'only in english',
         possibleErrors: [{required: 'پر کردن این فیلد الزامی است'}, {pattern: 'فقط از حروف انگلیسی استفاده کنید'}],
+        formDirection: 'ltr'
       };
     case InputTypeEnum.persian_text:
       return {
@@ -162,6 +178,7 @@ export function generateInputBasedOnType(
           {required: 'پر کردن این فیلد الزامی است'},
           {notPersianCharacters: 'فقط از حروف فارسی استفاده کنید'},
         ],
+        formDirection: 'rtl'
       };
     case InputTypeEnum.address:
       return {
@@ -173,6 +190,7 @@ export function generateInputBasedOnType(
           {required: 'پر کردن این فیلد الزامی است'},
           {notPersianCharacters: 'فقط از حروف فارسی استفاده کنید'},
         ],
+        formDirection: 'rtl'
       };
     case InputTypeEnum.email_getter:
       return {
@@ -181,6 +199,25 @@ export function generateInputBasedOnType(
         label: 'آدرس ایمیل',
         placeholder: 'sample@email.com',
         possibleErrors: [{required: 'وارد کردن آدرس ایمیل الزامی است'}, {email: 'آدرس ایمیل صحیح نیست'}],
+        formDirection: 'ltr'
+      };
+    case InputTypeEnum.instagram:
+      return {
+        prefixTemplateRef,
+        prefixIcon: 'fa-brands fa-instagram',
+        label: 'نام کاربری در اینستاگرام',
+        placeholder: 'negarhoseeini',
+        possibleErrors: [{required: 'وارد کردن نام کاربری الزامی است'}, {pattern: 'نام کاربری صحیح نیست'}],
+        formDirection: 'ltr'
+      };
+    case InputTypeEnum.twitter:
+      return {
+        prefixTemplateRef,
+        prefixIcon: 'fa-brands fa-twitter',
+        label: 'نام کاربری در X (توئیتر سابق)',
+        placeholder: 'mrezasoltani',
+        possibleErrors: [{required: 'وارد کردن نام کاربری الزامی است'}, {pattern: 'نام کاربری صحیح نیست'}],
+        formDirection: 'ltr'
       };
   }
 }

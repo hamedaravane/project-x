@@ -5,8 +5,10 @@
     [nzSuffix]="input().suffixTemplateRef"
     [nzAddOnAfter]="input().addOnAfterTempRef"
     [nzAddOnBefore]="input().addOnBeforeTempRef"
+    [dir]="input().formDirection"
   >
-    <input nz-input [formControl]="formController" [disabled]="_isDisabled" [placeholder]="input().placeholder">
+    <input nz-input [dir]="input().formDirection" [formControl]="formController" [disabled]="_isDisabled"
+           [placeholder]="input().placeholder">
   </nz-input-group>
 </nz-form-control>
 
@@ -17,12 +19,20 @@
   <i [class]="input().suffixIcon"></i>
 </ng-template>
 <ng-template #addOnAfter>
-  <nz-select [(ngModel)]="dialCode">
-    <ng-container *ngFor="let country of countries">
-      <nz-option [nzCustomContent]="true" [nzValue]="country.dial_code" [nzKey]="country.key_id">
-        <span [innerHTML]="country.unicode"></span><span class="text-base"> {{country.fa_name}} ({{country.dial_code}}) </span>
-      </nz-option>
-    </ng-container>
+  <nz-select [(ngModel)]="dialCode"
+             [nzOptionOverflowSize]="10"
+             [nzSuffixIcon]="chevDownIcon"
+             [nzCustomTemplate]="selectionTemplate">
+    <nz-option *ngFor="let country of countries"
+               nzCustomContent
+               [nzValue]="country.dial_code"
+               [nzKey]="country.key_id">
+      <div class="flex" dir="rtl">
+        <span dir="ltr">{{country.dial_code}}</span>
+        <span>&#20;</span>
+        <span [innerHTML]="country.unicode"></span>
+      </div>
+    </nz-option>
   </nz-select>
 </ng-template>
 <ng-template #addOnBefore>
@@ -36,4 +46,12 @@
       }
     </ng-container>
   </ng-container>
+</ng-template>
+
+<ng-template #selectionTemplate let-selected>
+  <ng-container *ngTemplateOutlet="selected.template"></ng-container>
+</ng-template>
+
+<ng-template #chevDownIcon>
+  <i class="fa-solid fa-chevron-down"></i>
 </ng-template>
