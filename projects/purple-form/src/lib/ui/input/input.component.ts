@@ -1,21 +1,34 @@
+import {Dir} from '@angular/cdk/bidi';
+import {NgForOf, NgTemplateOutlet} from '@angular/common';
 import {Component, Input, TemplateRef, ViewChild, computed} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NzInputDirective, NzInputGroupComponent} from 'ng-zorro-antd/input';
-import {
-  InputTypeEnum, transformInputTypeToEnum, generateInputBasedOnType, Countries,
-} from '../../data-access/entity/purple-form.entity';
-import {NgForOf, NgTemplateOutlet} from '@angular/common';
 import {NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent} from 'ng-zorro-antd/form';
+import {NzInputDirective, NzInputGroupComponent} from 'ng-zorro-antd/input';
 import {NzOptionComponent, NzSelectComponent} from 'ng-zorro-antd/select';
 import CountriesDialCode from '../../data-access/countries-dial-code.json';
 import countries from '../../data-access/countries-dial-code.json';
-import {Dir} from '@angular/cdk/bidi';
+import {
+  Countries,
+  InputTypeEnum,
+  generateInputBasedOnType,
+  transformInputTypeToEnum,
+} from '../../data-access/entity/purple-form.entity';
 
 @Component({
   selector: 'purple-form-input',
   imports: [
-    NzInputGroupComponent, NzInputDirective, NgTemplateOutlet, NzFormItemComponent, NzFormControlComponent,
-    NzFormLabelComponent, ReactiveFormsModule, NgForOf, NzSelectComponent, NzOptionComponent, FormsModule, Dir,
+    NzInputGroupComponent,
+    NzInputDirective,
+    NgTemplateOutlet,
+    NzFormItemComponent,
+    NzFormControlComponent,
+    NzFormLabelComponent,
+    ReactiveFormsModule,
+    NgForOf,
+    NzSelectComponent,
+    NzOptionComponent,
+    FormsModule,
+    Dir,
   ],
   templateUrl: 'input.component.html',
   styleUrl: './input.component.scss',
@@ -29,23 +42,27 @@ export class InputComponent {
   })
   inputType!: InputTypeEnum;
   countries: Countries[] = CountriesDialCode;
-  dialCode = '+98'
+  dialCode = '+98';
   @ViewChild('prefixIcon', {
     read: TemplateRef,
     static: true,
-  }) prefixIconRef?: TemplateRef<void> | string;
+  })
+  prefixIconRef?: TemplateRef<void> | string;
   @ViewChild('suffixIcon', {
     read: TemplateRef,
     static: true,
-  }) suffixIconRef?: TemplateRef<void> | string;
+  })
+  suffixIconRef?: TemplateRef<void> | string;
   @ViewChild('addOnAfter', {
     read: TemplateRef,
     static: true,
-  }) addOnAfterRef?: TemplateRef<void> | string;
+  })
+  addOnAfterRef?: TemplateRef<void> | string;
   @ViewChild('addOnBefore', {
     read: TemplateRef,
     static: true,
-  }) addOnBeforeRef?: TemplateRef<void> | string;
+  })
+  addOnBeforeRef?: TemplateRef<void> | string;
   INPUT_TYPE_ENUM = InputTypeEnum;
   _isDisabled = false;
   input = computed(() => {

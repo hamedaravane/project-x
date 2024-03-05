@@ -19,6 +19,8 @@
   <i [class]="input().suffixIcon"></i>
 </ng-template>
 <ng-template #addOnAfter>
+</ng-template>
+<ng-template #addOnBefore>
   <nz-select [(ngModel)]="dialCode"
              [nzOptionOverflowSize]="10"
              [nzSuffixIcon]="chevDownIcon"
@@ -34,8 +36,6 @@
       </div>
     </nz-option>
   </nz-select>
-</ng-template>
-<ng-template #addOnBefore>
 </ng-template>
 
 <ng-template #errors let-control>
