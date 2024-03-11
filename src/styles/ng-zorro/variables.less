@@ -1,58 +1,42 @@
 @import "colors";
-@import "~node_modules/ng-zorro-antd/style/variable";
 
-@ant-prefix: ant;
-@html-selector: html;
-
-@{html-selector} {
-  @base-primary: @purple-6;
-}
-
-@processing-color: @purple-4;
+// -------- Colors -----------
+// >>> Primary
+@primary-color: @blue-6;
+@processing-color: @primary-color;
+// >>> Info
+@info-color: @primary-color;
+// >>> Success
+@success-color: @green-6;
+// >>> Warning
+@warning-color: @yellow-6;
+// >>> Error
+@error-color: @red-5;
 @highlight-color: @red-5;
-@normal-color: @stone-1;
-@body-background: @zinc-1;
-@component-background: @neutral-1;
-@popover-background: @component-background;
-@popover-customize-border-color: @border-color-split;
-@font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-@border-color-base: hsv(0, 0, 85%);
-@border-color-split: rgba(0, 0, 0, 0.06);
-@text-selection-bg: @primary-color;
-@font-size-base: 14px;
-@font-size-lg: @font-size-base + 2px;
-@font-size-sm: 12px;
-@heading-1-size: ceil(@font-size-base * 2.71);
-@heading-2-size: ceil(@font-size-base * 2.14);
-@heading-3-size: ceil(@font-size-base * 1.71);
-@heading-4-size: ceil(@font-size-base * 1.42);
-@heading-5-size: ceil(@font-size-base * 1.14);
-
-@line-height-base: 1.5715;
-@border-radius-base: 2px;
-
-@padding-lg: 24px;
-@padding-md: 16px;
-@padding-sm: 12px;
-@padding-xs: 8px;
-@padding-xss: 4px;
-
-@margin-lg: 24px;
-@margin-md: 16px;
-@margin-sm: 12px;
-@margin-xs: 8px;
-@margin-xss: 4px;
-
+// Background color for `<body>`
+@body-background: #fff;
+// Base background color for most components
+@component-background: #fff;
+@font-family: 'Vazirmatn', 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+'Noto Color Emoji';
+@font-size-base: 12px;
+@font-size-sm: 10px;
+@line-height-base: 1.53;
+@border-radius-base: 4px;
+// height rules
 @height-base: 32px;
 @height-lg: 40px;
 @height-sm: 24px;
+// Border color
+@border-color-base: @gray-1;
+@border-color-split: @gray-2;
 
-@item-hover-bg: #f5f5f5;
+@background-color-light: @gray-1;
+@background-color-base: @gray-2;
 
-@iconfont-css-prefix: anticon;
-
-@background-color-light: hsv(0, 0, 98%);
-@background-color-base: hsv(0, 0, 96%);
-
-@disabled-color: fade(#000, 25%);
-@disabled-color-dark: fade(#fff, 35%);
+// Rate
+// ---
+@rate-star-color: @amber-5;
+@rate-star-size: 12px;
+@rate-star-hover-scale: scale(1.1);

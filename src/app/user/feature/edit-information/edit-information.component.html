@@ -99,18 +99,7 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <label class="my-1" for="mobilePhoneNumber">شماره موبایل ایران</label>
-    <nz-form-control [nzSpan]="14" [nzXs]="12" [nzErrorTip]="IranianMobilePhoneNumberErrorsTip">
-      <nz-input-group nzAddOnBefore="+98" dir="ltr">
-        <input
-          type="number"
-          dir="ltr"
-          id="mobilePhoneNumber"
-          nz-input
-          placeholder="شماره موبایل (ایران)"
-          formControlName="mobilePhoneNumber" />
-      </nz-input-group>
-    </nz-form-control>
+    <purple-form-input inputType="mobile" [formController]="userInfoForm.controls['mobilePhoneNumber']"></purple-form-input>
   </nz-form-item>
   <nz-form-item>
     <label class="my-1" for="businessAddress">آدرس</label>

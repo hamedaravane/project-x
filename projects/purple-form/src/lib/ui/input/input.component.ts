@@ -40,6 +40,8 @@ export class InputComponent {
     required: true,
     transform: transformInputTypeToEnum,
   })
+  @Input({required: false}) placeholder: string | null = null;
+  @Input({required: false}) label: string | null = null;
   inputType!: InputTypeEnum;
   countries: Countries[] = CountriesDialCode;
   dialCode = '+98';
@@ -68,6 +70,8 @@ export class InputComponent {
   input = computed(() => {
     return generateInputBasedOnType(
       this.inputType,
+      this.label,
+      this.placeholder,
       this.prefixIconRef,
       this.suffixIconRef,
       this.addOnAfterRef,
@@ -75,7 +79,7 @@ export class InputComponent {
     );
   });
 
-  public objectKeys(obj: Object) {
+  public objectKeys(obj: {[key: string]: string}) {
     return Object.keys(obj);
   }
 }

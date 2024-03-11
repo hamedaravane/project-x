@@ -1,4 +1,5 @@
 import {TemplateRef} from '@angular/core';
+import {keyframes} from '@angular/animations';
 
 export type InputType =
   | 'email-getter'
@@ -78,6 +79,10 @@ type FontAwesomeIcon =
   | 'fa-solid fa-eye-slash'
   | undefined;
 
+interface PossibleError {
+  [key: string]: string;
+}
+
 export interface InputMetrics {
   prefixIcon?: FontAwesomeIcon;
   suffixIcon?: FontAwesomeIcon;
@@ -87,12 +92,14 @@ export interface InputMetrics {
   addOnBeforeTempRef?: TemplateRef<void> | string;
   label: string;
   placeholder: string;
-  possibleErrors?: Record<string, string>[];
+  possibleErrors?: PossibleError[];
   formDirection: 'rtl' | 'ltr';
 }
 
 export function generateInputBasedOnType(
   inputType: InputTypeEnum,
+  label: string | null,
+  placeholder: string | null,
   prefixTemplateRef?: TemplateRef<void> | string,
   suffixTemplateRef?: TemplateRef<void> | string,
   addOnAfterTempRef?: TemplateRef<void> | string,
@@ -103,9 +110,12 @@ export function generateInputBasedOnType(
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-solid fa-envelope',
-        label: 'آدرس ایمیل',
-        placeholder: 'sample@email.com',
-        possibleErrors: [{required: 'وارد کردن آدرس ایمیل الزامی است'}, {email: 'آدرس ایمیل صحیح نیست'}],
+        label: label ?? 'آدرس ایمیل',
+        placeholder: placeholder ?? 'sample@email.com',
+        possibleErrors: [
+          {required: 'وارد کردن آدرس ایمیل الزامی است'},
+          {email: 'آدرس ایمیل صحیح نیست'}
+        ],
         formDirection: 'ltr',
       };
     case InputTypeEnum.password_getter:
@@ -114,8 +124,8 @@ export function generateInputBasedOnType(
         suffixTemplateRef,
         prefixIcon: 'fa-solid fa-lock',
         suffixIcon: 'fa-solid fa-eye',
-        label: 'کلمه عبور',
-        placeholder: 'sample@email.com',
+        label: label ?? 'کلمه عبور',
+        placeholder: placeholder ?? '',
         formDirection: 'ltr',
       };
     case InputTypeEnum.password_validator:
@@ -124,8 +134,9 @@ export function generateInputBasedOnType(
         suffixTemplateRef,
         prefixIcon: 'fa-solid fa-lock',
         suffixIcon: 'fa-solid fa-eye',
-        label: 'انتخاب کلمه عبور',
-        placeholder: 'sample@email.com',
+        label: label ?? 'انتخاب کلمه عبور',
+        placeholder: placeholder ?? '',
+        possibleErrors: [{confirm: 'کلمه عبور یکسان نیست'}, {required: 'وارد کردن تکرار کلمه عبور الزامی است'}],
         formDirection: 'ltr',
       };
     case InputTypeEnum.password_confirmation:
@@ -134,8 +145,8 @@ export function generateInputBasedOnType(
         suffixTemplateRef,
         prefixIcon: 'fa-solid fa-lock',
         suffixIcon: 'fa-solid fa-eye',
-        label: 'تکرار کلمه عبور',
-        placeholder: 'sample@email.com',
+        label: label ?? 'تکرار کلمه عبور',
+        placeholder: placeholder ?? '',
         possibleErrors: [{confirm: 'کلمه عبور یکسان نیست'}, {required: 'وارد کردن تکرار کلمه عبور الزامی است'}],
         formDirection: 'ltr',
       };
@@ -143,8 +154,8 @@ export function generateInputBasedOnType(
       return {
         suffixTemplateRef,
         suffixIcon: 'fa-solid fa-mobile',
-        label: 'شماره تلفن همراه',
-        placeholder: 'بدون صفر و کد کشور',
+        label: label ??'شماره تلفن همراه',
+        placeholder: placeholder ?? 'بدون صفر و کد کشور',
         addOnBeforeTempRef,
         possibleErrors: [{required: 'وارد کردن شماره همراه الزامی است'}, {pattern: 'شماره تلفن وارد شده درست نیست'}],
         formDirection: 'ltr',
@@ -153,8 +164,8 @@ export function generateInputBasedOnType(
       return {
         suffixTemplateRef,
         suffixIcon: 'fa-solid fa-phone',
-        label: 'شماره تلفن',
-        placeholder: 'بدون صفر و کد کشور',
+        label: label ?? 'شماره تلفن',
+        placeholder: placeholder ?? 'بدون صفر و کد کشور',
         addOnBeforeTempRef,
         possibleErrors: [{required: 'وارد کردن شماره تلفن الزامی است'}, {pattern: 'شماره تلفن وارد شده درست نیست'}],
         formDirection: 'ltr',
@@ -163,8 +174,8 @@ export function generateInputBasedOnType(
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-solid fa-input-text',
-        label: '',
-        placeholder: 'only in english',
+        label: label ?? '',
+        placeholder: placeholder ?? 'only in english',
         possibleErrors: [{required: 'پر کردن این فیلد الزامی است'}, {pattern: 'فقط از حروف انگلیسی استفاده کنید'}],
         formDirection: 'ltr',
       };
@@ -172,8 +183,8 @@ export function generateInputBasedOnType(
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-solid fa-input-text',
-        label: '',
-        placeholder: 'از حروف فارسی استفاده شود',
+        label: label ?? '',
+        placeholder: placeholder ?? 'از حروف فارسی استفاده شود',
         possibleErrors: [
           {required: 'پر کردن این فیلد الزامی است'},
           {notPersianCharacters: 'فقط از حروف فارسی استفاده کنید'},
@@ -184,8 +195,8 @@ export function generateInputBasedOnType(
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-solid fa-location-dot',
-        label: 'آدرس',
-        placeholder: 'تهران، بلوار شریعتی، خیابان مدرس، پلاک ۱',
+        label: label ?? 'آدرس',
+        placeholder: placeholder ?? 'تهران، بلوار شریعتی، خیابان مدرس، پلاک ۱',
         possibleErrors: [
           {required: 'پر کردن این فیلد الزامی است'},
           {notPersianCharacters: 'فقط از حروف فارسی استفاده کنید'},
@@ -196,8 +207,8 @@ export function generateInputBasedOnType(
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-solid fa-envelope',
-        label: 'آدرس ایمیل',
-        placeholder: 'sample@email.com',
+        label: label ?? 'آدرس ایمیل',
+        placeholder: placeholder ?? 'sample@email.com',
         possibleErrors: [{required: 'وارد کردن آدرس ایمیل الزامی است'}, {email: 'آدرس ایمیل صحیح نیست'}],
         formDirection: 'ltr',
       };
@@ -205,8 +216,8 @@ export function generateInputBasedOnType(
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-brands fa-instagram',
-        label: 'نام کاربری در اینستاگرام',
-        placeholder: 'negarhoseeini',
+        label: label ?? 'نام کاربری در اینستاگرام',
+        placeholder: placeholder ?? 'negarhoseeini',
         possibleErrors: [{required: 'وارد کردن نام کاربری الزامی است'}, {pattern: 'نام کاربری صحیح نیست'}],
         formDirection: 'ltr',
       };
@@ -214,8 +225,8 @@ export function generateInputBasedOnType(
       return {
         prefixTemplateRef,
         prefixIcon: 'fa-brands fa-twitter',
-        label: 'نام کاربری در X (توئیتر سابق)',
-        placeholder: 'mrezasoltani',
+        label: label ?? 'نام کاربری در X (توئیتر سابق)',
+        placeholder: placeholder ?? 'mrezasoltani',
         possibleErrors: [{required: 'وارد کردن نام کاربری الزامی است'}, {pattern: 'نام کاربری صحیح نیست'}],
         formDirection: 'ltr',
       };

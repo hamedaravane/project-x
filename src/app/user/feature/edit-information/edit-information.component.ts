@@ -15,6 +15,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {firstValueFrom} from 'rxjs';
+import {InputComponent} from 'purple-form';
 
 @Component({
   standalone: true,
@@ -35,6 +36,7 @@ import {firstValueFrom} from 'rxjs';
     NgOptimizedImage,
     NzModalModule,
     NgClass,
+    InputComponent,
   ],
 })
 export class EditInformationComponent extends PhotoComponent implements OnInit {
